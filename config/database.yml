@@ -6,14 +6,14 @@ default: &default
 development:
   <<: *default
   database: giftify_development
-  username: cassini
-  password: asd1234
+  username: vinegod
+  password: asdf1234
 
 test:
   <<: *default
   database: giftify_test
-  username: cassini
-  password: asd1234
+  username: vinegod
+  password: asdf1234
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is

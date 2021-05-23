@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { User.new(first_name: 'Name', last_name: 'Surname', email: 'test@gmail.com')}
+  let(:user) { build(:random_user)}
 
   it 'is invalid with incorrect data' do
     expect(user.invalid?).to be_truthy

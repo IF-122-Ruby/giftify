@@ -19,6 +19,7 @@ gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'react_on_rails'
 
 group :development, :test do
   gem 'any_login'
@@ -27,8 +28,11 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'pry'
   gem 'rspec-rails'
+  gem 'annotate'
 end
-
+group :test do
+  gem 'shoulda-matchers', '~> 4.0'
+end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'

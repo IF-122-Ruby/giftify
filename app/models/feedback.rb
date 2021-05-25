@@ -12,7 +12,7 @@
 #  updated_at :datetime         not null
 #
 class Feedback < ApplicationRecord
-  validates :name, :email, :reason, :subject, presence: true
+  validates :name, :email, :reason, :subject, :message, presence: true
   
   validates :email, length: { maximum: 255 },
                     format: { with: Devise::email_regexp,

@@ -1,0 +1,111 @@
+| <!doctype html>
+html[lang="en"]
+  head
+    meta[charset="utf-8"]
+    meta[name="viewport" content="width=device-width, initial-scale=1"]
+    link[href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"]
+    script[src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"]
+    script[src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"]
+
+    script[src="https://www.google.com/jsapi"]
+    script
+      |  google.load("visualization", "1", {packages:["corechart"]}); google.setOnLoadCallback(drawChart); function drawChart() { var data = google.visualization.arrayToDataTable([ ['Users', 'Orders', 'Count'], ['Users', 25, 70], ['Orders', 100, 120], ['Count', 70, 20] ]); var options = { title: 'Statistic gisto', hAxis: {title: 'Time.now'}, vAxis: {title: ' '} }; var chart = new google.visualization.ColumnChart(document.getElementById('statistic')); chart.draw(data, options); }
+  body
+
+    = render :partial => './shared/navbar'
+    .container-fluid[style="margin:  0.3em 0;"]
+      .row.flex-nowrap
+        .col.py-3.col-sm-9
+          |  Content area...
+        .col-md-4.col-xl-3.px-sm-2.px-0[style="background-color: #7951b3;"]
+          .d-flex.flex-column.align-items-center.align-items-sm-start.px-3.pt-2.text-white.min-vh-100[style="background-color: #7951b3; color: white; "]
+            a.d-flex.align-items-center.pb-3.mb-md-0.me-md-auto.text-white.text-decoration-none[href="/"]
+              span.fs-5.d-none.d-sm-inline
+                | Menu
+            #statistic[style="width: 100%; height: auto; "]
+            ul#menu.nav.nav-pills.flex-column.mb-sm-auto.mb-0.align-items-center.align-items-sm-start
+              li.nav-item
+                a.nav-link.align-middle.px-0[href="#"]
+                  i.fs-4.bi-house
+                  span.ms-1.d-none.d-sm-inline[style="color:white;"]
+                    | Home
+              li
+                a.nav-link.px-0.align-middle[href="#submenu1" data-bs-toggle="collapse"]
+                  i.fs-4.bi-speedometer2
+                  span.ms-1.d-none.d-sm-inline[style="color:white;"]
+                    | Dashboard
+                ul#submenu1.collapse.show.nav.flex-column.ms-1[data-bs-parent="#menu"]
+                  li.w-100
+                    a.nav-link.px-0[href="#"]
+                      span.d-none.d-sm-inline[style="color:white;"]
+                        | Item
+                  li
+                    a.nav-link.px-0[href="#"]
+                      span.d-none.d-sm-inline[style="color:white;"]
+                        | Item
+              li
+                a.nav-link.px-0.align-middle[href="#"]
+                  i.fs-4.bi-table
+                  span.ms-1.d-none.d-sm-inline[style="color:white;"]
+                    | Orders
+              li
+                a.nav-link.px-0.align-middle[href="#submenu2" data-bs-toggle="collapse"]
+                  i.fs-4.bi-bootstrap
+                  span.ms-1.d-none.d-sm-inline[style="color:white;"]
+                    | Bootstrap
+                ul#submenu2.collapse.nav.flex-column.ms-1[data-bs-parent="#menu"]
+                  li.w-100
+                    a.nav-link.px-0[href="#"]
+                      span.d-none.d-sm-inline[style="color:white;"]
+                        | Item
+                  li
+                    a.nav-link.px-0[href="#"]
+                      span.d-none.d-sm-inline[style="color:white;"]
+                        | Item
+              li
+                a.nav-link.px-0.align-middle[href="#submenu3" data-bs-toggle="collapse"]
+                  i.fs-4.bi-grid
+                  span.ms-1.d-none.d-sm-inline[style="color:white;"]
+                    | Products
+                ul#submenu3.collapse.nav.flex-column.ms-1[data-bs-parent="#menu"]
+                  li.w-100
+                    a.nav-link.px-0[href="#"]
+                      span.d-none.d-sm-inline[style="color:white;"]
+                        | Product
+                  li
+                    a.nav-link.px-0[href="#"]
+                      span.d-none.d-sm-inline[style="color:white;"]
+                        | Product
+                  li
+                    a.nav-link.px-0[href="#"]
+                      span.d-none.d-sm-inline[style="color:white;"]
+                        | Product
+                  li
+                    a.nav-link.px-0[href="#"]
+                      span.d-none.d-sm-inline[style="color:white;"]
+                        | Product
+              li
+                a.nav-link.px-0.align-middle[href="#"]
+                  i.fs-4.bi-people
+                  span.ms-1.d-none.d-sm-inline[style="color:white;"]
+                    | Customers
+            hr
+            .dropdown.pb-4
+              a#dropdownUser1.d-flex.align-items-center.text-white.text-decoration-none.dropdown-toggle[href="#" data-bs-toggle="dropdown" aria-expanded="false"]
+                img.rounded-circle[src="https://i.ibb.co/McTWtRr/giftify.png" alt="giftify" width="30" height="30"]
+                span.d-none.d-sm-inline.mx-1[style="color:white; "]
+                  | Profile
+              ul.dropdown-menu.dropdown-menu-dark.text-small.shadow[style="background-color: #734daa; border-color:white; "]
+                li
+                  a.dropdown-item[href="#" style="color:white;"]
+                    | New project...
+                    hr.dropdown-divider
+                li
+                a.dropdown-item[href="#" style="color:white;"]
+                    | Settings
+                    hr.dropdown-divider
+                li
+                a.dropdown-item[href="#" style="color:white;"]
+                    | Profile
+= render :partial => './shared/footer'
+

@@ -31,4 +31,8 @@ RSpec.describe Organization, type: :model do
     it { is_expected.to validate_presence_of :name }
     it { is_expected.to validate_numericality_of :monthly_point }
   end
+
+  describe 'association' do
+    it { is_expected.to belong_to :user }
+  end
 end

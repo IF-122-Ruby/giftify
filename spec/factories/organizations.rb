@@ -22,7 +22,7 @@ FactoryBot.define do
   factory :organization, class: Organization do
     name { Faker::Company.name }
     user
-    monthly_point { Faker::Number.number(digits: 10) }
+    monthly_point { Faker::Number.within(range: 1..10) }
     logo { Faker::Avatar.image }
   end
 end

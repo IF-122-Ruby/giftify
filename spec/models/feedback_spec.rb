@@ -14,11 +14,9 @@
 require 'rails_helper'
 
 RSpec.describe Feedback, type: :model do
-  let!(:feedback) { FactoryBot.build(:feedback) }
-  
   context "when valid Factory feedback" do
     it "has a valid feedback" do
-      expect(feedback).to be_valid
+      expect(build(:feedback)).to be_valid
     end
   end
 

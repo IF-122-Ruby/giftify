@@ -16,11 +16,11 @@ ActiveRecord::Schema.define(version: 2021_05_24_173909) do
   enable_extension "plpgsql"
 
   create_table "feedbacks", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "reason"
-    t.string "subject"
-    t.text "message"
+    t.string "name", null: false
+    t.string "email", limit: 255, null: false
+    t.string "reason", null: false
+    t.string "subject", limit: 15, null: false
+    t.text "message", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

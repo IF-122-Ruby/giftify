@@ -3,11 +3,11 @@
 # Table name: feedbacks
 #
 #  id         :bigint           not null, primary key
-#  email      :string
-#  message    :text
-#  name       :string
-#  reason     :string
-#  subject    :string
+#  email      :string(255)      not null
+#  message    :text             not null
+#  name       :string           not null
+#  reason     :string           not null
+#  subject    :string(15)       not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

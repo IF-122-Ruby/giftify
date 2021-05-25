@@ -14,13 +14,21 @@
 require 'rails_helper'
 
 RSpec.describe Feedback, type: :model do
-  it { is_expected.to validate_presence_of :name }
-  it { is_expected.to validate_presence_of :email }
-  it { is_expected.to validate_presence_of :reason }
-  it { is_expected.to validate_presence_of :subject }
+  let!(:feedback) { FactoryBot.build(:feedback) }
+  
+  context "when valid Factory feedback" do
+    it "has a valid feedback" do
+      expect(feedback).to be_valid
+    end
+  end
 
-  it { is_expected.to validate_length_of(:email).is_at_most(255) }
-  it { is_expected.to validate_length_of(:subject).is_at_most(15) }
-  it { is_expected.to allow_value('example@email.com').for(:email) }
-
+  describe 'validation' do
+    it { is_expected.to validate_presence_of :name }
+    it { is_expected.to validate_length_of(:email).is_at_most(255) }
+    it { is_expected.to validate_presence_of :email }
+    it { is_expected.to allow_value('example@email.com').for(:email) }
+    it { is_expected.to validate_presence_of :reason }
+    it { is_expected.to validate_presence_of :subject }
+    it { is_expected.to validate_length_of(:subject).is_at_most(15) }
+  end 
 end

@@ -19,7 +19,9 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Organization < ApplicationRecord
+  has_many :roles
   belongs_to :user
+  has_many :users, through: :roles
   validates :name, presence: true
   validates :monthly_point, numericality: { only_integer: true }
 end

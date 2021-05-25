@@ -21,6 +21,12 @@
 require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
+  context "when valid Factory organization" do
+    it "has a valid organization" do
+      expect(build(:organization)).to be_valid
+    end
+  end
+
   describe 'validations' do
     it { is_expected.to validate_presence_of :name }
     it { is_expected.to validate_numericality_of :monthly_point }

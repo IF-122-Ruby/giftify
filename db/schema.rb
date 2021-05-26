@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 2021_05_25_170911) do
     t.index ["user_id"], name: "index_organizations_on_user_id"
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "organization_id", null: false
+    t.string "role", default: "user", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["organization_id"], name: "index_roles_on_organization_id"
+    t.index ["user_id"], name: "index_roles_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"

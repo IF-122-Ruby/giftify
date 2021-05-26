@@ -23,14 +23,13 @@
 
 class User < ApplicationRecord
   has_one :role
-  has_one :creator, class_name: 'Organization'
+  has_one :owned_organization, class_name: 'Organization'
   has_one :organization, through: :role
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   validates :first_name, :last_name, presence: true
 
-  accepts_nested_attributes_for :creator
-
+  accepts_nested_attributes_for :owned_organization 
 end
 

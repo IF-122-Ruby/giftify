@@ -27,7 +27,4 @@ class Role < ApplicationRecord
   belongs_to :organization
 
   validates :role, inclusion: { in: roles.values }
-
-  accepts_nested_attributes_for :user
-  accepts_nested_attributes_for :organization
 end

@@ -25,4 +25,8 @@ class Organization < ApplicationRecord
 
   validates :name, presence: true
   validates :monthly_point, numericality: { only_integer: true }
+
+  after_commit do
+    self.roles.create(role: :admin, user_id: user_id)
+  end
 end

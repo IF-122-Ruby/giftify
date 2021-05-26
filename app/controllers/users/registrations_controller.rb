@@ -10,11 +10,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    build_resource(sign_up_params)
-    super
-    resource.build_role(role: 'admin', organization_id: resource.creator.id).save
-  end
+  # def create
+  #   super
+  # end
 
   # GET /resource/edit
   # def edit
@@ -70,7 +68,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :email,
       :password,
       :password_confirmation,
-      creator_attributes: [:name]
+      owned_organization_attributes: [ :name ]
     )
   end
 end

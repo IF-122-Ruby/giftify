@@ -15,12 +15,15 @@
 #  index_roles_on_user_id          (user_id)
 #
 class Role < ApplicationRecord
-  belongs_to :user
-  belongs_to :organization
+
   SUPERADMIN = 'superadmin'.freeze
   ADMIN = 'admin'.freeze
   MANAGER = 'manager'.freeze
   USER = 'user'.freeze
 
-  validates :role, inclusion: [SUPERADMIN, ADMIN, MANAGER, USER]
+  belongs_to :user
+  belongs_to :organization
+
+  USER_ROLES = [SUPERADMIN, ADMIN, MANAGER, USER].freeze
+  validates :role, inclusion: { in: USER_ROLES }
 end

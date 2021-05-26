@@ -3,7 +3,7 @@
 # Table name: roles
 #
 #  id              :bigint           not null, primary key
-#  role            :string           default("user"), not null
+#  role            :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  organization_id :bigint           not null
@@ -22,7 +22,7 @@ RSpec.describe Role, type: :model do
     it { is_expected.to belong_to(:user) }
   end
   describe 'validation' do
-    it { is_expected.to validate_inclusion_of(:role).in_array(['superadmin', 'admin', 'manager', 'user']) }
+    it { is_expected.to define_enum_for(:role).with_values(Role::USER_ROLES) }
     
     context "when valid Factory role" do
       it "has a valid Role" do

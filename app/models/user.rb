@@ -22,8 +22,8 @@
 #
 
 class User < ApplicationRecord
-  has_one :role
-  has_one :organization, through: :role
+  has_many :roles
+  has_many :organizations, through: :roles
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 

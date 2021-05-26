@@ -4,7 +4,7 @@
 #
 #  id            :bigint           not null, primary key
 #  logo          :string
-#  monthly_point :integer
+#  monthly_point :integer          default(10)
 #  name          :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null

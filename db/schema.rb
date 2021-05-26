@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_05_25_170911) do
   create_table "organizations", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id", null: false
-    t.integer "monthly_point"
+    t.integer "monthly_point", default: 10
     t.string "logo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

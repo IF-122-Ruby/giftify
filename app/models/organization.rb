@@ -4,7 +4,7 @@
 #
 #  id            :bigint           not null, primary key
 #  logo          :string
-#  monthly_point :integer
+#  monthly_point :integer          default(10)
 #  name          :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
@@ -22,6 +22,7 @@ class Organization < ApplicationRecord
   has_many :roles
   belongs_to :user
   has_many :users, through: :roles
+
   validates :name, presence: true
   validates :monthly_point, numericality: { only_integer: true }
 end

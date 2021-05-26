@@ -1,38 +1,26 @@
 h2
   | Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = render "users/shared/error_messages", resource: resource
   .field
     = f.fields_for :owned_organization, resource.build_owned_organization do |org|
-      = org.label 'Organization Name'
-      br
-      = org.text_field :name
+      = org.input :name, label: 'Organization Name'
   .field
-    = f.label :first_name
-    br
-    = f.text_field :first_name, autofocus: true, autocomplete: "first name"
+    = f.input :first_name, autofocus: true, autocomplete: "first name"
   .field
-    = f.label :last_name
-    br
-    = f.text_field :last_name, autofocus: true, autocomplete: "last name"
+    = f.input :last_name, autofocus: true, autocomplete: "last name"
   .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
+    = f.input :email, autofocus: true, autocomplete: "email", required: true
   div
   .field
-    = f.label :password
     - if @minimum_password_length
       em
         | (
         = @minimum_password_length
         |  characters minimum)
-    br
-    = f.password_field :password, autocomplete: "new-password"
+    = f.input :password, autocomplete: "new-password", required: true
   .field
-    = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation, autocomplete: "new-password"
+    = f.input :password_confirmation, autocomplete: "new-password", required: true
   .actions
     = f.submit "Sign up"
 = render "users/shared/links"

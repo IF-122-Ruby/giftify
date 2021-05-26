@@ -3,7 +3,7 @@
 # Table name: roles
 #
 #  id              :bigint           not null, primary key
-#  role            :integer
+#  role            :string           default("user"), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  organization_id :bigint           not null
@@ -15,7 +15,7 @@
 #  index_roles_on_user_id          (user_id)
 #
 FactoryBot.define do
-  factory :role do
+  factory :role, class: Role do
     user
     organization
     role { Role::USER }

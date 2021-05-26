@@ -3,7 +3,7 @@
 # Table name: roles
 #
 #  id              :bigint           not null, primary key
-#  role            :integer
+#  role            :string           default("user"), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  organization_id :bigint           not null
@@ -21,10 +21,10 @@ class Role < ApplicationRecord
   USER = 'user'.freeze
   USER_ROLES = [SUPERADMIN, ADMIN, MANAGER, USER].freeze
 
-  enum role: USER_ROLES
+  enum role: { superadmin: SUPERADMIN, admin: ADMIN, manager: MANAGER, user: USER }
 
   belongs_to :user
   belongs_to :organization
 
-  validates :role, inclusion: { in: USER_ROLES }
+  validates :role, inclusion: { in: roles.values }
 end

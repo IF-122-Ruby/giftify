@@ -3,7 +3,7 @@
 # Table name: roles
 #
 #  id              :bigint           not null, primary key
-#  role            :string
+#  role            :string           default("user"), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  organization_id :bigint           not null

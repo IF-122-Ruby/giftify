@@ -3,14 +3,14 @@ h2
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = render "users/shared/error_messages", resource: resource
   .field
-    = f.fields_for :owned_organization do |org|
-      = org.input :name, label: 'Organization Name'
+    = f.fields_for :owned_organization do |organization|
+      = organization.input :name, autofocus: true, label: 'Organization Name'
   .field
-    = f.input :first_name, autofocus: true, autocomplete: "first name"
+    = f.input :first_name, autocomplete: "first name"
   .field
-    = f.input :last_name, autofocus: true, autocomplete: "last name"
+    = f.input :last_name, autocomplete: "last name"
   .field
-    = f.input :email, autofocus: true, autocomplete: "email", required: true
+    = f.input :email, autocomplete: "email", required: true
   div
   .field
     - if @minimum_password_length

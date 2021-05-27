@@ -11,8 +11,8 @@
 #
 # Indexes
 #
-#  index_roles_on_organization_id  (organization_id)
-#  index_roles_on_user_id          (user_id) UNIQUE
+#  index_roles_on_organization_id              (organization_id)
+#  index_roles_on_user_id_and_organization_id  (user_id,organization_id) UNIQUE
 #
 require 'rails_helper'
 

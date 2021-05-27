@@ -22,8 +22,12 @@
 #
 
 class User < ApplicationRecord
+  has_one :role
+  has_one :author, class_name: 'Organization', foreign_key: :user_id
+  has_one :organization, through: :role
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   validates :first_name, :last_name, presence: true
 end
+

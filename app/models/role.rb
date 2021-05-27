@@ -12,7 +12,7 @@
 # Indexes
 #
 #  index_roles_on_organization_id  (organization_id)
-#  index_roles_on_user_id          (user_id)
+#  index_roles_on_user_id          (user_id) UNIQUE
 #
 class Role < ApplicationRecord
   SUPERADMIN = 'superadmin'.freeze
@@ -27,4 +27,5 @@ class Role < ApplicationRecord
   belongs_to :organization
 
   validates :role, inclusion: { in: roles.values }
+  validates_uniqueness_of :user_id, scope: :organization_id
 end

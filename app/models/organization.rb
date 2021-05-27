@@ -30,7 +30,7 @@ class Organization < ApplicationRecord
 
   private
 
-    def add_role
-      self.roles.create(role: :admin, user_id: user_id)
-    end 
+  def add_role
+    self.roles.create(role: :admin, user_id: user_id)
+  end 
 end

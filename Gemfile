@@ -15,6 +15,9 @@ gem 'sass-rails', '>= 6'
 gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
+gem 'simple_form'
+
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 

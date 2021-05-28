@@ -1,5 +1,5 @@
 - @organizations.each do |organization|
   ul
     li = organization.name 
-    li = link_to "Show", account_admin_organization_path(id: organization.id)
+    li = link_to "Show", admin_organization_path(id: organization.id)
       

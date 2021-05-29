@@ -4,7 +4,7 @@
 #
 #  id            :bigint           not null, primary key
 #  logo          :string
-#  monthly_point :integer
+#  monthly_point :integer          default(10)
 #  name          :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
@@ -22,7 +22,6 @@ FactoryBot.define do
   factory :organization, class: Organization do
     name { Faker::Company.name }
     user
-    monthly_point { Faker::Number.number(digits: 10) }
     logo { Faker::Avatar.image }
   end
 end

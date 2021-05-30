@@ -1,27 +1,32 @@
 require 'rails_helper'
 
 RSpec.describe Account::UserPolicy, type: :policy do
-  let(:user) { User.new }
-
+  let(:user) { FactoryBot.create(:user) }
+  let(:admin) { FactoryBot.create(:user) }
+  let(:organization) { FactoryBot.create(:organization) }
   subject { described_class }
 
-  permissions ".scope" do
-    pending "add some examples to (or delete) #{__FILE__}"
+  permissions :index? do
+    before do
+      Role.create(user_id: user.id, organization_id: organization.id)
+    end
+
+    it 'grant access' do
+      expect(subject).to permit(user)
+    end
   end
 
   permissions :show? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
+    before do
+      Role.create(user_id: user.id, organization_id: organization.id)
+      Role.create(user_id: admin.id, organization_id: organization.id, role: Role::ADMIN)
+    end
+    it 'grant access' do
+      expect(subject).to permit(admin)
+    end
 
-  permissions :create? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
-  permissions :update? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
-  permissions :destroy? do
-    pending "add some examples to (or delete) #{__FILE__}"
+    it 'denied access' do
+      expect(subject).not_to permit(user)
+    end
   end
 end

@@ -1,4 +1,4 @@
-class Admin::OrganizationPolicy < ApplicationPolicy
+class Superadmin::OrganizationPolicy < ApplicationPolicy
   def index?
     user.role.superadmin?
   end

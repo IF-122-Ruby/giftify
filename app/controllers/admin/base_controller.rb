@@ -5,6 +5,6 @@ class Admin::BaseController < ApplicationController
   private
 
   def require_superadmin
-    authorize [:admin, :base]
+    authorize [:admin, :base], :require_superadmin?
   end
 end

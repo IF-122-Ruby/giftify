@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Account::UsersController, type: :request do
-  let(:admin) { FactoryBot.create(:user, :with_admin_role) }
+  let(:admin) { FactoryBot.create(:user, :admin) }
 
   before { sign_in admin }
 

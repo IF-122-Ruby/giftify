@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Admin::OrganizationsController, type: :request do
-  let(:superadmin) { FactoryBot.create(:user, :with_superadmin_role) }
+  let(:superadmin) { FactoryBot.create(:user, :superadmin) }
 
   before { sign_in superadmin }
 

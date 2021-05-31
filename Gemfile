@@ -33,7 +33,6 @@ end
 group :test do
   gem 'capybara'
   gem 'shoulda-matchers', '~> 4.0'
-  # gem 'rails-controller-testing'
 end
 
 group :development do

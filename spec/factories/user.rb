@@ -7,21 +7,21 @@ FactoryBot.define do
     email { Faker::Internet.email }
     password { Faker::Lorem.characters(number: 10) }
 
-    trait :with_superadmin_role do
+    trait :superadmin do
       role
       after(:create) do |user|
         user.role.superadmin!
       end
     end
 
-    trait :with_admin_role do
+    trait :admin do
       role
       after(:create) do |user|
         user.role.admin!
       end
     end
 
-    trait :with_user_role do
+    trait :simple do
       role
     end
   end

@@ -1,11 +1,5 @@
-class Admin::BasePolicy < ApplicationPolicy
+class Admin::BasePolicy < Struct.new(:user, :superadmin)
   def require_superadmin?
     user.role.superadmin?
-  end
-
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
   end
 end

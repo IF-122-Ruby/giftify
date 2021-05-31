@@ -1,18 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe Admin::OrganizationsController, type: :controller do
-  let!(:superadmin) { FactoryBot.create(:user) }
+RSpec.describe Admin::OrganizationsController, type: :request do
+  let(:superadmin) { FactoryBot.create(:user, :with_superadmin_role) }
+
   before { sign_in superadmin }
-  describe "GET#index" do
-    subject do
-      get :index
+
+  describe "organizations" do
+    it "returns http success if signed in as superadmin" do
+      get '/admin/organizations'
+      expect(response).to have_http_status(:success)
     end
-    it { expect(response).to have_http_status(:success) }
-  end
-  describe "GET#show" do
-    subject do
-      get :show, params: {id: organization.id}
-    end
-    it { expect(response).to have_http_status(:success) }
   end
 end

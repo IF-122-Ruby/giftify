@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
-  root to: 'roots#index'
+
+  root to: 'homes#index'
+  
   namespace :account do
     resources :users, only: [:index, :show]
   end

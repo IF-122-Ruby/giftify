@@ -1,17 +1,19 @@
 $main-color: #450683;
 $main-color-hover: #6f0683;
 
-.header {
+.menu {
   background-color: $main-color;
   width: 30%;
   height: 100%;
   float: left;
   height: 100rem;
+  
   .text_color {
     color: #fff;
   }
 }
-.header-btn {
+
+.menu-btn {
   margin-right: 5rem;
   margin-top: 1rem;
 }
@@ -20,7 +22,7 @@ $main-color-hover: #6f0683;
   background-color: #fff;
   border-color: $main-color;
   color: $main-color;
-  
+
   &:hover {
     background-color: $main-color-hover;
   }
@@ -28,6 +30,7 @@ $main-color-hover: #6f0683;
 .btn-bg-color {
   background-color: $main-color;
   border-color: $main-color;
+
   &:hover {
     background-color: $main-color-hover;
   }

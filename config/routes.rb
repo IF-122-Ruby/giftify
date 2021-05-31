@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show]
   end
   
-  namespace :superadmin do
+  namespace :admin do
     resources :organizations, only: [:index, :show]
   end
 end

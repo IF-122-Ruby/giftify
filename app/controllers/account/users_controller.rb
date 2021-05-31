@@ -1,19 +1,18 @@
 class Account::UsersController < Account::AccountsController
-  before_action :set_organization
+  before_action :authorize_user
   
   def index
-    @users = @organization.users.all
-    authorize([:account, current_user])
+    @users = current_organization.users.all
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_organization.users.find(params[:id])
     authorize([:account, current_user])
   end
 
   private
 
-  def set_organization
-    @organization = current_user.organization
+  def authorize_user 
+    authorize([:account, current_user])
   end
 end

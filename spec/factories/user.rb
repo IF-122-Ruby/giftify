@@ -6,5 +6,12 @@ FactoryBot.define do
     avatar { Faker::LoremFlickr.image }
     email { Faker::Internet.email }
     password { Faker::Lorem.characters(number: 10) }
+
+    trait :with_organization_and_role do
+      after(:create) do |user|
+        FactoryBot.create(:organization, user: user)
+        FactoryBot.create(:role, user: user, organization: organization, role: Role::ADMIN)
+      end
+    end
   end
 end

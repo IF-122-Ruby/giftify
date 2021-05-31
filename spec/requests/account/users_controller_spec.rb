@@ -1,13 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Account::UsersController, type: :controller do
+RSpec.describe Account::UsersController, type: :request do
   let!(:admin) { FactoryBot.create(:user) }
-  let!(:organization) { FactoryBot.create(:organization) }
-  before do
-    Role.create(user_id: admin.id, organization_id: organization.id, role: Role::ADMIN)
-    sign_in admin
-  end
-
+  before { sign_in superadmin }
+  
   describe "GET#index" do
     subject do
       get :index

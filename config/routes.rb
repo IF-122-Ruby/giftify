@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'static_pages#home'
-  
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   namespace :account do
     resources :users, only: [:index, :show]
   end
-  
+
   namespace :admin do
     resources :organizations, only: [:index, :show]
   end

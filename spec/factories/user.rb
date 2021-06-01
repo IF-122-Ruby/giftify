@@ -6,5 +6,17 @@ FactoryBot.define do
     avatar { Faker::LoremFlickr.image }
     email { Faker::Internet.email }
     password { Faker::Lorem.characters(number: 10) }
+
+    trait :superadmin do
+      role { build(:role, role: :superadmin) }
+    end
+
+    trait :admin do
+      role { build(:role, role: :admin) }
+    end
+
+    trait :simple do
+      role
+    end
   end
 end

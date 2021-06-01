@@ -8,17 +8,13 @@ FactoryBot.define do
     password { Faker::Lorem.characters(number: 10) }
 
     trait :superadmin do
-      role
-      after(:create) do |user|
-        user.role.superadmin!
-      end
+      organization
+      role { Role.new(organization: organization, role: Role::SUPERADMIN) }
     end
 
     trait :admin do
-      role
-      after(:create) do |user|
-        user.role.admin!
-      end
+      organization
+      role { Role.new(organization: organization, role: Role::ADMIN) }
     end
 
     trait :simple do

@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Account::UserPolicy, type: :policy do
-  let(:user) { FactoryBot.create(:user, :simple) }
-  let(:admin) { FactoryBot.create(:user, :admin) }
+  let(:user) { create(:user, :simple) }
+  let(:admin) { create(:user, :admin) }
   subject { described_class }
 
   permissions :index? do

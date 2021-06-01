@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Admin::BasePolicy, type: :policy do
-  let(:user) { FactoryBot.create(:user, :simple) }
-  let(:superadmin) { FactoryBot.create(:user, :superadmin) }
+  let(:user) { create(:user, :simple) }
+  let(:superadmin) { create(:user, :superadmin) }
   
   subject { described_class }
 

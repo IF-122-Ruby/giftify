@@ -23,6 +23,17 @@ module.exports = function(api) {
           targets: {
             node: 'current'
           }
+        }
+      ],
+      (isProductionEnv || isDevelopmentEnv) && [
+        '@babel/preset-env',
+        {
+          forceAllTransforms: true,
+          useBuiltIns: 'entry',
+          corejs: 3,
+          modules: false,
+          exclude: ['transform-typeof-symbol']
+        }
       ]
     ].filter(Boolean),
     plugins: [
@@ -45,9 +56,7 @@ module.exports = function(api) {
       [
         '@babel/plugin-transform-runtime',
         {
-          helpers: false,
-          regenerator: true,
-          corejs: false
+          helpers: false
         }
       ],
       [

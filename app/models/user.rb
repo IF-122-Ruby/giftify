@@ -22,7 +22,7 @@
 #
 
 class User < ApplicationRecord
-  has_one :role
+  has_one :role, dependent: :destroy
   has_one :owned_organization, class_name: 'Organization'
   has_one :organization, through: :role
 
@@ -32,5 +32,6 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true
 
   accepts_nested_attributes_for :owned_organization 
+  accepts_nested_attributes_for :role, allow_destroy: true
 end
 

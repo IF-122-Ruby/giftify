@@ -1,0 +1,6 @@
+ul
+  - @users.each do |user|
+    li = user.first_name
+    li = user.last_name
+    li = link_to "Show", account_user_path(id: user.id)
+      

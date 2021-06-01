@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
+  root to: 'static_pages#home'
+  
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
 
+
+  namespace :account do
+    resources :users, only: [:index, :show]
+  end
   
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace :admin do
+    resources :organizations, only: [:index, :show]
+  end
 end

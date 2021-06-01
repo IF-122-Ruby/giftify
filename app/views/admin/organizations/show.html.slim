@@ -1,0 +1,8 @@
+ul
+  li = @organization.name
+
+  li = @organization.user.first_name
+
+  li = @organization.monthly_point
+  
+  li = link_to "Back", admin_organizations_path

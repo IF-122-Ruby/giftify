@@ -1,37 +1,37 @@
 $main-color: #450683;
 $main-color-hover: #6f0683;
-header
-  .menu {
-    background-color: $main-color;
-    width: 30%;
-    height: 100%;
-    float: left;
-    height: 100rem;
 
-    .text_color {
-      color: #fff;
-    }
+.menu {
+  background-color: $main-color;
+  width: 30%;
+  height: 100%;
+  float: left;
+  height: 100rem;
+
+  .text_color {
+    color: #fff;
   }
+}
 
-  .menu-btn {
-    margin-right: 5rem;
-    margin-top: 1rem;
+.menu-btn {
+  margin-right: 5rem;
+  margin-top: 1rem;
+}
+
+.btn-color {
+  background-color: #fff;
+  border-color: $main-color;
+  color: $main-color;
+
+  &:hover {
+    background-color: $main-color-hover;
   }
+}
+.btn-bg-color {
+  background-color: $main-color;
+  border-color: $main-color;
 
-  .btn-color {
-    background-color: #fff;
-    border-color: $main-color;
-    color: $main-color;
-
-    &:hover {
-      background-color: $main-color-hover;
-    }
+  &:hover {
+    background-color: $main-color-hover;
   }
-  .btn-bg-color {
-    background-color: $main-color;
-    border-color: $main-color;
-
-    &:hover {
-      background-color: $main-color-hover;
-    }
-  }
+}

@@ -1,8 +1,14 @@
-| <!doctype html>
-html[lang="en"]
+doctype html
+html
   head
-    meta[charset="utf-8"]
-    meta[name="viewport" content="width=device-width, initial-scale=1"]
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title Giftify
+    meta content="width=device-width,initial-scale=1" name="viewport" /
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
     script[src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"]
 
@@ -16,8 +22,8 @@ html[lang="en"]
     .container-fluid[style="margin:  0.3em 0;"]
       .row.flex-nowrap
         .col.col-sm-9
-          = render partial: 'admin/shared/statistic'
           = render partial: 'admin/shared/content'
+          = render partial: 'admin/shared/statistic'
           = render partial: 'admin/shared/developers'
         .col.py-3.col-sm-12[style="background-color: #7951b3;border-radius:5px;"]
             = render partial: 'admin/shared/sidebar'

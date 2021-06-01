@@ -1,0 +1,23 @@
+.home-page {
+  padding-left: 2rem;
+  padding-right: 5rem;
+  float: left;
+  width: 70%;
+
+  & section {
+    padding-top: 5rem;
+  }
+}
+
+.head-img {
+  width: 100%;
+  height: auto;
+}
+
+.head-input {
+  margin-right: 1rem;
+  display: inline-block;
+  width: 50%;
+  border: 1px solid #450683;
+  border-radius: 0.39rem;
+}

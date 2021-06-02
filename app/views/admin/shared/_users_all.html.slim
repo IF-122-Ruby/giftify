@@ -1,0 +1,12 @@
+.container.my-5
+  .card
+    .card-header.mb-1 style="background-color:#734dbb"
+      p.h5.text-center.text-light.font-weight-bold.mb-0 Users all
+    .col-12.row.d-flex.justify-items-around
+      - @user.each do |user|
+        .col-2
+          .avatar.white.text-center
+            = image_tag(user.avatar, class: "img-fluid pr-2 rounded-circle z-depth-1 shadow bg-body rounded")
+          .text-center.mt-2
+            h6.font-weight-bold.pt-2.mb-0= user.first_name
+            h6.font-weight-bold.pt-2.mb-0= user.last_name

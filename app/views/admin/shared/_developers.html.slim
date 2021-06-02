@@ -13,75 +13,81 @@
             i.fas.fa-times.fa-sm.pl-3
       .card-body
         .row.pt-4.d-flex.justify-content-center
-          .col-lg-2.col-md-4.col-sm-6.pb-4
-            .avatar.white.text-center
-              img.img-fluid.rounded-circle.z-depth-1.shadow.bg-body.rounded[src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"]
-            .text-center.mt-2
-              h6.font-weight-bold.pt-2.mb-0
-                | Serhii Posternak
-              p.text-muted.mb-0
-                small
-                  | Ruby dev
-          .col-lg-2.col-md-4.col-sm-6.pb-4
-            .avatar.white.text-center
-              img.img-fluid.rounded-circle.z-depth-1.shadow.bg-body.rounded[src="https://i.ibb.co/VTmPhRT/index.jpg"]
-            .text-center.mt-2
-              h6.font-weight-bold.pt-2.mb-0
-                | Dimko
-              p.text-muted.mb-0
-                small
-                  | Ruby dev
-          .col-lg-2.col-md-4.col-sm-6.pb-4
-            .avatar.white.text-center
-              img.img-fluid.rounded-circle.z-depth-1.shadow.bg-body.rounded[src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"]
-            .text-center.mt-2
-              h6.font-weight-bold.pt-2.mb-0
-                | Misha V
-              p.text-muted.mb-0
-                small
-                  | Ruby dev
-          .col-lg-2.col-md-4.col-sm-6.pb-4
-            .avatar.white.text-center
-              img.img-fluid.rounded-circle.z-depth-1.shadow.bg-body.rounded[src="https://i.ibb.co/XV3RGTy/1.jpg"]
-            .text-center.mt-2
-              h6.font-weight-bold.pt-2.mb-0
-                | Diana Godovanets
-              p.text-muted.mb-0
-                small
-                  | Ruby dev
-          .col-lg-2.col-md-4.col-sm-6.pb-4
-            .avatar.white.text-center
-              img.img-fluid.rounded-circle.z-depth-1.shadow.bg-body.rounded[src="https://i.ibb.co/wLy8FvZ/index.jpg"]
-            .text-center.mt-2
-              h6.font-weight-bold.pt-2.mb-0
-                | Romm
-              p.text-muted.mb-0
-                small
-                  | Ruby dev
-          .col-lg-2.col-md-4.col-sm-6.pb-4
-            .avatar.white.text-center
-              img.img-fluid.rounded-circle.z-depth-1.shadow.bg-body.rounded[src="https://i.ibb.co/cvGvXKC/2.jpg"]
-            .text-center.mt-2
-              h6.font-weight-bold.pt-2.mb-0
-                | Sofia
-              p.text-muted.mb-0
-                small
-                  | Ruby dev
-          .col-lg-2.col-md-4.col-sm-6.pb-4
-            .avatar.white.text-center
-              img.img-fluid.rounded-circle.z-depth-1.shadow.bg-body.rounded[src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"]
-            .text-center.mt-2
-              h6.font-weight-bold.pt-2.mb-0
-                | Denys Vinegod
-              p.text-muted.mb-0
-                small
-                  | Ruby dev
-          .col-lg-2.col-md-4.col-sm-6.pb-4
-            .avatar.white.text-center
-              img.img-fluid.rounded-circle.z-depth-1.shadow.bg-body.rounded[src="https://i.ibb.co/M1ThK0Y/index.jpg"]
-            .text-center.mt-2
-              h6.font-weight-bold.pt-2.mb-0
-                | Vasul Yatsushun
-              p.text-muted.mb-0
-                small
-                  | Ruby dev
+          - @developers.each do |developer|
+            .col-lg-2.col-md-4.col-sm-6.pb-4
+
+              .avatar.white.text-center
+                img.img-fluid.rounded-circle.z-depth-1.shadow.bg-body.rounded[src= developer[:avatar]]
+
+              .text-center.mt-2
+                h6.font-weight-bold.pt-2.mb-0
+                  = developer[:name]
+                h6.font-weight-bold.pt-2.mb-0
+                  = developer[:last_name]
+                p.text-muted.mb-0
+                  small
+                    | Ruby dev
+
+          / .col-lg-2.col-md-4.col-sm-6.pb-4
+          /   .avatar.white.text-center
+          /     img.img-fluid.rounded-circle.z-depth-1.shadow.bg-body.rounded[src="https://i.ibb.co/VTmPhRT/index.jpg"]
+          /   .text-center.mt-2
+          /     h6.font-weight-bold.pt-2.mb-0
+          /       | Dimko
+          /     p.text-muted.mb-0
+          /       small
+          /         | Ruby dev
+          / .col-lg-2.col-md-4.col-sm-6.pb-4
+          /   .avatar.white.text-center
+          /     img.img-fluid.rounded-circle.z-depth-1.shadow.bg-body.rounded[src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"]
+          /   .text-center.mt-2
+          /     h6.font-weight-bold.pt-2.mb-0
+          /       | Misha V
+          /     p.text-muted.mb-0
+          /       small
+          /         | Ruby dev
+          / .col-lg-2.col-md-4.col-sm-6.pb-4
+          /   .avatar.white.text-center
+          /     img.img-fluid.rounded-circle.z-depth-1.shadow.bg-body.rounded[src="https://i.ibb.co/XV3RGTy/1.jpg"]
+          /   .text-center.mt-2
+          /     h6.font-weight-bold.pt-2.mb-0
+          /       | Diana Godovanets
+          /     p.text-muted.mb-0
+          /       small
+          /         | Ruby dev
+          / .col-lg-2.col-md-4.col-sm-6.pb-4
+          /   .avatar.white.text-center
+          /     img.img-fluid.rounded-circle.z-depth-1.shadow.bg-body.rounded[src="https://i.ibb.co/wLy8FvZ/index.jpg"]
+          /   .text-center.mt-2
+          /     h6.font-weight-bold.pt-2.mb-0
+          /       | Romm
+          /     p.text-muted.mb-0
+          /       small
+          /         | Ruby dev
+          / .col-lg-2.col-md-4.col-sm-6.pb-4
+          /   .avatar.white.text-center
+          /     img.img-fluid.rounded-circle.z-depth-1.shadow.bg-body.rounded[src="https://i.ibb.co/cvGvXKC/2.jpg"]
+          /   .text-center.mt-2
+          /     h6.font-weight-bold.pt-2.mb-0
+          /       | Sofia
+          /     p.text-muted.mb-0
+          /       small
+          /         | Ruby dev
+          / .col-lg-2.col-md-4.col-sm-6.pb-4
+          /   .avatar.white.text-center
+          /     img.img-fluid.rounded-circle.z-depth-1.shadow.bg-body.rounded[src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"]
+          /   .text-center.mt-2
+          /     h6.font-weight-bold.pt-2.mb-0
+          /       | Denys Vinegod
+          /     p.text-muted.mb-0
+          /       small
+          /         | Ruby dev
+          / .col-lg-2.col-md-4.col-sm-6.pb-4
+          /   .avatar.white.text-center
+          /     img.img-fluid.rounded-circle.z-depth-1.shadow.bg-body.rounded[src="https://i.ibb.co/M1ThK0Y/index.jpg"]
+          /   .text-center.mt-2
+          /     h6.font-weight-bold.pt-2.mb-0
+          /       | Vasul Yatsushun
+          /     p.text-muted.mb-0
+          /       small
+          /         | Ruby dev

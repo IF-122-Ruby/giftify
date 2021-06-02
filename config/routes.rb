@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root to: 'static_pages#home'
-  get 'contact_us', action: :contact_us, controller: 'static_pages'
-  post 'contact_us', action: :create, controller: 'static_pages'
+  get '/contact_us', to: 'feedbacks#new'
   
+  resource :feedback, path: :contact_us, only: :create
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
@@ -14,4 +15,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :organizations, only: [:index, :show]
   end
+
+
+    get 'contact_us', action: :contact_us, controller: 'static_pages'
+    post 'contact_us', action: :create, controller: 'static_pages'
+  
 end

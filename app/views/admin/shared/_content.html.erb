@@ -3,58 +3,58 @@
 
 <section>
 
-<div class="d-flex justify-content-around"><p><h2>Maneging organizations</h2> </p></div>
-<div class="container my-5 mb-1 mt-0">
-  <div class="row">
-    <div class="col d-block">
-      <div class="card" style="background-color: #734dbb;color:white;" >
-        <div class="d-flex justify-content-around align-items-center p-1">
-          <div>
-            <p class="m-0">Organization count: <%=@organization.count%></p>
-          </div>
-          <div>
-            <input type="input" name="" placeholder="Find organization...">
+  <div class="d-flex justify-content-around"><p><h2>Maneging organizations</h2> </p></div>
+  <div class="container my-5 mb-1 mt-0">
+    <div class="row">
+      <div class="col d-block">
+        <div class="card" style="background-color: #734dbb;color:white;" >
+          <div class="d-flex justify-content-around align-items-center p-1">
+            <div>
+              <p class="m-0">Organization count: <%=@organization.count%></p>
+            </div>
+            <div>
+              <input type="input" name="" placeholder="Find organization...">
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div class="container my-5 mt-1">
-  <div class="row">
-    <div class="col d-block">
-      <div class="card" style="background-color: #734dbb;color:white;" >
-        <div class="d-flex justify-content-around align-items-center p-1">
-          <div class="col-3 text-center">Logo</div>
-          <div class="col-3 text-center">Name Organization</div>
-          <div class="col-3 text-center">Monthly point</div>
-          <div class="col-3 text-center">Created_at</div>
+  <div class="container my-5 mt-1">
+    <div class="row">
+      <div class="col d-block">
+        <div class="card" style="background-color: #734dbb;color:white;" >
+          <div class="d-flex justify-content-around align-items-center p-1">
+            <div class="col-3 text-center">Logo</div>
+            <div class="col-3 text-center">Name Organization</div>
+            <div class="col-3 text-center">Monthly point</div>
+            <div class="col-3 text-center">Created_at</div>
+          </div>
         </div>
+        <% @organization.last(6).each do |organization|%>
+        <%= link_to admin_organizations_path(@organization), class: 'text-decoration-none' do %>
+        <div class="card ">
+          <div class="d-flex justify-content-around align-items-center p-1 ">
+
+            <div class="col-3 text-center ">
+              <%=image_tag(organization.logo,class: 'img-fluid rounded-circle z-depth-1 shadow bg-body rounded' ,style:"width:100px;")%>
+            </div>
+            <div class="col-3 text-center">
+              <span> <%= organization.name %></span>
+            </div>
+            <div class="col-3 text-center">
+              <span><%= organization.monthly_point %></span>
+            </div>
+            <div class="col-3 text-center">
+              <%= organization.created_at %>
+            </div>
+          </div>
+
+        </div>
+        <% end %>
+        <% end %>
       </div>
-      <% @organization.last(6).each do |organization|%>
-      <%= link_to admin_organizations_path(@organization), class: 'text-decoration-none' do %>
-      <div class="card ">
-      <div class="d-flex justify-content-around align-items-center p-1 ">
-
-          <div class="col-3 text-center ">
-            <%=image_tag(organization.logo,class: 'img-fluid rounded-circle z-depth-1 shadow bg-body rounded' ,style:"width:100px;")%>
-          </div>
-          <div class="col-3 text-center">
-            <span> <%= organization.name %></span>
-          </div>
-          <div class="col-3 text-center">
-            <span><%= organization.monthly_point %></span>
-          </div>
-          <div class="col-3 text-center">
-            <%= organization.created_at %>
-          </div>
-        </div>
-
-        </div>
-      <% end %>
-    <% end %>
+    </div>
   </div>
-  </div>
-</div>
 </section>
 

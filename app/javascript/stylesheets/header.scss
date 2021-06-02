@@ -1,37 +1,53 @@
 $main-color: #450683;
 $main-color-hover: #6f0683;
 
-.menu {
-  background-color: $main-color;
-  width: 30%;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background: #F7F7F7;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: fixed;
+  width: 75px;
   height: 100%;
-  float: left;
-  height: 100rem;
-
-  .text_color {
-    color: #fff;
-  }
+  background: rgb(86,1,142);
+  background: linear-gradient(176deg, rgba(86,1,142,1) 1%, rgba(128,6,227,1) 100%);
+  transition: 0.5s;
+  display: flex;
 }
 
-.menu-btn {
-  margin-right: 5rem;
-  margin-top: 1rem;
+.sidebar .icon {
+  margin-left: 10px;
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: #F7F7F7;
+  font-size: 30px;
 }
 
-.btn-color {
-  background-color: #fff;
-  border-color: $main-color;
-  color: $main-color;
-
-  &:hover {
-    background-color: $main-color-hover;
-  }
+.sidebar .title{
+  display: none;
 }
-.btn-bg-color {
-  background-color: $main-color;
-  border-color: $main-color;
-
-  &:hover {
-    background-color: $main-color-hover;
-  }
+.sidebar:hover .title{
+  width: 300px;
+  display: flex;
+  color: #F7F7F7;
+  flex-direction: row;
 }
+
+.sidebar li {
+  margin-top: 100px;
+  padding-left: 10px;
+}
+
+
+
+
+

@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :organizations, only: [:index, :show]
   end
+
+
 end

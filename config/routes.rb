@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   }
 
   namespace :account do
-    resources :users, expect: [:create, :new]
+    resources :users, except: [:create, :new]
   end
   
   namespace :admin do

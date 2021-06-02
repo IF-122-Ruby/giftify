@@ -1,6 +1,6 @@
 = simple_form_for [:account, @user] do |f|
   = f.fields_for :role do |role|
-    = role.input :role, autofocus: true
+    = role.input :role, collection: Role::roles.except(:superadmin), include_blank: false
   .field
     = f.input :first_name, autocomplete: "first name"
   .field

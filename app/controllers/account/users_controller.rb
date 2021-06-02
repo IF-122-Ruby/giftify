@@ -40,7 +40,7 @@ class Account::UsersController < Account::AccountsController
   private
 
   def authorize_user 
-    authorize([:account, current_user])
+    authorize([:account, :user])
   end
 
   def collection

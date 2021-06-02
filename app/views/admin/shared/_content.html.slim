@@ -1,0 +1,37 @@
+/! make this vith erb organizations
+section
+  .d-flex.justify-content-center
+    p
+    h2 Maneging organizations
+  .container.my-5.mb-1.mt-0
+    .row
+      .col.d-block
+        .card style=("background-color: #734dbb;color:white;")
+          .d-flex.justify-content-around.align-items-center.p-1
+            div
+              p.m-0
+                | Organization count: #{@organization.count}
+            div
+              input name="" placeholder=("Find organization...") type="input" /
+  .container.my-5.mt-1
+    .row
+      .col.d-block
+        .card style=("background-color: #734dbb;color:white;")
+          .d-flex.justify-content-around.align-items-center.p-1
+            .col-3.text-center Logo
+            .col-3.text-center Name Organization
+            .col-3.text-center Monthly point
+            .col-3.text-center Created_at
+        - @organization.last(6).each do |organization|
+          = link_to admin_organizations_path(@organization), class: 'text-decoration-none' do
+            .card
+              .d-flex.justify-content-around.align-items-center.p-1
+                .col-3.text-center
+                  = image_tag(organization.logo,class: 'img-fluid rounded-circle z-depth-1 shadow bg-body rounded' ,style:"width:100px;")
+                .col-3.text-center
+                  span
+                    = organization.name
+                .col-3.text-center
+                  span= organization.monthly_point
+                .col-3.text-center
+                  = organization.created_at

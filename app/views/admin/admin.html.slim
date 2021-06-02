@@ -9,27 +9,16 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-
-
-
-
     script[src="https://www.google.com/jsapi"]
-
-
   body
 
     = render partial: 'admin/shared/navbar'
     .container-fluid[style="margin:  0.3em 0;"]
       .row.flex-nowrap
         .col.col-sm-9
-          /= render partial: 'admin/shared/users_all'
           = render partial: 'admin/shared/content'
-          /= render partial: 'admin/shared/developers'
+          = render partial: 'admin/shared/developers'
         .col[style="background-color: #7951b3;border-radius:5px;"]
             = render partial: 'admin/shared/sidebar'
-
-
-
-
-= render partial: 'admin/shared/footer'
+  = render partial: 'admin/shared/footer'
 

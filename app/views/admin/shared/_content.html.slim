@@ -6,7 +6,7 @@ section
   .container.my-5.mb-1.mt-0
     .row
       .col.d-block
-        .card style=("background-color: #734dbb;color:white;")
+        .tc.bgc.card
           .d-flex.justify-content-around.align-items-center.p-1
             div
               p.m-0
@@ -16,7 +16,7 @@ section
   .container.my-5.mt-1
     .row
       .col.d-block
-        .card style=("background-color: #734dbb;color:white;")
+        .tc.bgc.card
           .d-flex.justify-content-around.align-items-center.p-1
             .col-3.text-center Logo
             .col-3.text-center Name Organization
@@ -27,11 +27,11 @@ section
             .card
               .d-flex.justify-content-around.align-items-center.p-1
                 .col-3.text-center
-                  = image_tag(organization.logo,class: 'img-fluid rounded-circle z-depth-1 shadow bg-body rounded' ,style:"width:100px;")
+                  = image_tag(organization.logo,class: 'img-fluid img-organization rounded-circle z-depth-1 shadow bg-body rounded')
                 .col-3.text-center
                   span
                     = organization.name
                 .col-3.text-center
                   span= organization.monthly_point
                 .col-3.text-center
-                  = organization.created_at
+                  = organization.created_at.to_formatted_s(:short)

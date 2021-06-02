@@ -1,8 +1,8 @@
 class AdminController < ActionController::Base
 
 def admin
-  @user = User.all
-  @organization = Organization.all
+  @users = User.all
+  @organizations = Organization.all
 end
 
 

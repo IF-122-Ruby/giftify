@@ -2,7 +2,7 @@
 section
   .d-flex.justify-content-center
     p
-    h2 Maneging organizations
+    h2 Menaging organizations
   .container.my-5.mb-1.mt-0
     .row
       .col.d-block
@@ -10,7 +10,7 @@ section
           .d-flex.justify-content-around.align-items-center.p-1
             div
               p.m-0
-                | Organization count: #{@organization.count}
+                | Organization count: #{@organizations.count}
             div
               input name="" placeholder=("Find organization...") type="input" /
   .container.my-5.mt-1
@@ -22,8 +22,8 @@ section
             .col-3.text-center Name Organization
             .col-3.text-center Monthly point
             .col-3.text-center Created_at
-        - @organization.last(6).each do |organization|
-          = link_to admin_organizations_path(@organization), class: 'text-decoration-none' do
+        - @organizations.last(6).each do |organization|
+          = link_to admin_organizations_path(@organizations), class: 'text-decoration-none' do
             .card
               .d-flex.justify-content-around.align-items-center.p-1
                 .col-3.text-center

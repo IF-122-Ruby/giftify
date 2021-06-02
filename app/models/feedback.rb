@@ -4,6 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  email      :string(255)      not null
+#  is_read    :boolean          default(FALSE)
 #  message    :text             not null
 #  name       :string           not null
 #  reason     :string           not null

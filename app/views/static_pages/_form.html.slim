@@ -1,0 +1,26 @@
+section.team-section.col
+  = simple_form_for @feedback, url:'contact_us', method: :post do |f|
+    .container.my-5  
+    .card.m-2
+      .card-header[style="background-color:#734dbb"]
+        p.h5.text-center.text-light.font-weight-bold.mb-0
+          | Feedback
+
+          .field.mb-3
+            = f.input :name, label: "Your name:", class: 'form-control'
+
+          .field.mb-3
+            = f.input :email, label: "Your Email:", placeholder: 'example@email.com'
+
+          .field.mb-3
+            = f.input :subject, label: "Subject:"
+
+          .field.mb-3.feedback-form
+            = f.input :reason, as: :radio_buttons, collection: [['Want delete organization','0'],['Find bug','1'],
+                                                        ['About partnership','2'],['Other','3']] 
+
+          .field.mb-3
+            = f.input :message, label: "Reason: ", placeholder: "Write message ... ", as: :text, :html_input => {:cols => 5, :rows => 15}
+
+          .action
+            = f.submit "Send"

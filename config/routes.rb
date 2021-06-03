@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root to: 'static_pages#home'
   get '/admin', to: 'admin#index'
-  get '/about', to: 'static_pages#about'
+  get 'about', to: 'static_pages#about'
+
+  resource :feedback, path: :contact_us, only: [:create, :new]
 
   devise_for :users, controllers: {
     registrations: 'users/registrations'

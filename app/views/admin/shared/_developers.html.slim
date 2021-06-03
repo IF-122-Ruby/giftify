@@ -1,3 +1,11 @@
+- developers = [{name: "Mykhailo",last_name: "Vasylenchuk", avatar: "misha.png"},
+               {name: "Dmutro",last_name: "Azarenko", avatar: "dima.jpg"},
+               {name: "Diana",last_name: "Hodovanets", avatar: "diana.jpg"},
+               {name: "Denys",last_name: "Melnychuk", avatar: "denus.png"},
+               {name: "Roman",last_name: "Panko", avatar: "roma.jpg"},
+               {name: "Vasul",last_name: "Yatsushun", avatar: "vasya.jpg"},
+               {name: "Sofiia",last_name: "Hlushchak", avatar: "sofia.jpg"},
+               {name: "Serhii",last_name: "Posternak", avatar: "serhii.png"}]
 .container.my-5
   section.team-section
     .card
@@ -13,7 +21,7 @@
             i.fas.fa-times.fa-sm.pl-3
       .card-body
         .row.pt-4.d-flex.justify-content-center
-          - PublicPagesHelper::DEVELOPERS.each do |developer|
+          - developers.each do |developer|
             .col-lg-2.col-md-4.col-sm-6.pb-4
 
               .avatar.white.text-center

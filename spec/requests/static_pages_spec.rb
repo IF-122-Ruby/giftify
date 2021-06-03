@@ -8,9 +8,9 @@ RSpec.describe "StaticPages", type: :request do
     end
   end
 
-  describe "GET /contact_us" do
+  describe "GET /contact_us/new" do
     it "returns http success" do
-      get "/contact_us"
+      get new_feedback_path
       expect(response).to have_http_status(:success)
     end
   end

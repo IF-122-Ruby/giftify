@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   root to: 'static_pages#home'
-  get '/contact_us', to: 'feedbacks#new'
   get 'about', to: 'static_pages#about'
 
   
-  resource :feedback, path: :contact_us, only: :create
+  resource :feedback, path: :contact_us, only: [:create, :new]
 
   devise_for :users, controllers: {
     registrations: 'users/registrations'

@@ -32,14 +32,14 @@ RSpec.describe Account::UsersController, type: :request do
   end
 
   describe 'PATCH #update' do
-    let(:new_admin_name) { Faker::Name.first_name }
-    let(:user_params)    { { user: { first_name: new_admin_name, last_name:  'Last name Admin' } } }
+    let(:user_update_params)     { attributes_for :user }
+    let(:edited_user_first_name) { user_update_params[:first_name] }
 
     it 'shound update user (in this case admin)' do
-      patch account_user_path(admin), params: user_params
+      patch account_user_path(admin), params: { user: user_update_params }
 
       admin.reload
-      expect(admin.first_name).to eq new_admin_name
+      expect(admin.first_name).to eq edited_user_first_name
     end
   end
 

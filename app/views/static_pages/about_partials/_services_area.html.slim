@@ -1,0 +1,21 @@
+.container
+  .row
+    .col-lg-12.text-center.services-title
+      h2.text-uppercase.title-text.section-title Services Offers
+      p.para
+        | There are many variations of passages of Lorem Ipsum available, but the majority have
+        | suffered alteration in some form, by injected humour
+.container.services-list
+  .row
+    - (1..4).each do |service|
+      .col-lg-3.col-md-6.col-sm-12
+        .services
+          .sevices-img.text-center.py-4
+           = image_tag "about/services/s#{service}.png" 
+          .card-body.text-center
+            h5.card-title.text-uppercase.font-roboto Wp developer
+            p.card-text.text-secondary
+              | Some quick example text to build on the card
+              | title and make up
+              | the bulk of the card's content.
+   

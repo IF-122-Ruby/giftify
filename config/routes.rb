@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   namespace :account do
     resources :users, only: [:index, :show]
+    resources :gifts
   end
   
   namespace :admin do

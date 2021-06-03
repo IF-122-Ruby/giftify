@@ -1,0 +1,5 @@
+h2 = @gifts.first.organization.name
+ul.list-group
+  - @gifts.each do |gift|
+    = render 'gift', gift: gift
+    

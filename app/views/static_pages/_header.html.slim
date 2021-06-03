@@ -8,5 +8,5 @@
     a.nav-link.text_color href="#"  Contact Us
 
 .d-grid.gap-2.d-md-flex.justify-content-md-end.menu-btn
-  button.btn.btn-primary.me-md-2.btn-color Log in
-  button.btn.btn-primary.btn-lg.btn-bg-color Sign Up
+  = button_to 'Log in', new_user_session_path, class: "btn btn-primary me-md-2 btn-color"
+  = button_to 'Sign Up', new_user_registration_path, method: :get, class: "btn btn-primary btn-lg btn-bg-color"

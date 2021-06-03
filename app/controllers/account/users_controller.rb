@@ -1,20 +1,23 @@
 class Account::UsersController < Account::AccountsController
-  before_action :authorize_user
   
   def index
     @users = collection
+    authorize([:account, @users])
   end
 
   def show
     @user = resource
+    authorize([:account, @user])
   end
 
   def edit
     @user = resource
+    authorize([:account, @user])
   end
 
   def update
     @user = resource
+    authorize([:account, @user])
 
     respond_to do |format|
       if @user.update(user_update_params)
@@ -29,7 +32,8 @@ class Account::UsersController < Account::AccountsController
   
   def destroy
     @user = resource
-  
+    authorize([:account, @user])
+
     @user.destroy
     respond_to do |format|
       format.html { redirect_to account_users_path, notice: 'User was successfully destroyed.' }
@@ -38,10 +42,6 @@ class Account::UsersController < Account::AccountsController
   end
 
   private
-
-  def authorize_user 
-    authorize([:account, :user])
-  end
 
   def collection
     current_organization.users

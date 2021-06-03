@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Account::UsersController, type: :request do
-  let(:admin)          { create(:user, :admin) }
-  let(:admin_id)       { admin.id }
+  let!(:admin) { create(:user, :admin) }
 
   before do
     sign_in admin
@@ -10,7 +9,7 @@ RSpec.describe Account::UsersController, type: :request do
 
   describe 'GET #index' do
     it "returns http success if signed in as admin" do
-      get '/account/users'
+      get account_users_path
 
       expect(response).to be_successful
     end
@@ -18,7 +17,7 @@ RSpec.describe Account::UsersController, type: :request do
 
   describe 'GET #show' do
     it 'returns http success status' do
-      get "/account/users/#{admin.id}"
+      get account_user_path(admin)
 
       expect(response).to be_successful
     end
@@ -26,7 +25,7 @@ RSpec.describe Account::UsersController, type: :request do
 
   describe 'GET #edit' do
     it 'renders edit template' do
-      get "/account/users/#{admin.id}/edit"
+      get edit_account_user_path(admin)
 
       expect(response).to be_successful 
     end
@@ -37,7 +36,7 @@ RSpec.describe Account::UsersController, type: :request do
     let(:user_params)    { { user: { first_name: new_admin_name, last_name:  'Last name Admin' } } }
 
     it 'shound update user (in this case admin)' do
-      patch "/account/users/#{admin.id}", params: user_params
+      patch account_user_path(admin), params: user_params
 
       admin.reload
       expect(admin.first_name).to eq new_admin_name
@@ -51,9 +50,8 @@ RSpec.describe Account::UsersController, type: :request do
     before { admin.organization.users << new_user }
 
     it 'should destroy users from admin`s organization' do
-
       expect do
-        delete "/account/users/#{new_user.id}"
+        delete account_user_path(new_user)
       end.to change(User, :count).by(-1)
     end
   end

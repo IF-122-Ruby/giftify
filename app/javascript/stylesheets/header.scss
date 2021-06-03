@@ -1,37 +1,80 @@
 $main-color: #450683;
 $main-color-hover: #6f0683;
-header
-  .menu {
-    background-color: $main-color;
-    width: 30%;
-    height: 100%;
-    float: left;
-    height: 100rem;
 
-    .text_color {
-      color: #fff;
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(90deg, rgb(111,6,131) 50%, rgb(69,6,131) 100%);
+
+  .navbar-toggler {
+    border-color: rgba(255,255,255,0.5);
+    background: white;
+
+    span {
+      color: white;
     }
   }
 
-  .menu-btn {
-    margin-right: 5rem;
-    margin-top: 1rem;
+  li {
+    a {
+      color: white !important;
+      font-size: 20px;
+      text-transform: uppercase;
+      transition: all .5s ease;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
-  .btn-color {
-    background-color: #fff;
-    border-color: $main-color;
-    color: $main-color;
+  .nav-btn {
+    color: white !important;
+    border: 1px solid white !important;
+
+    &:first-child {
+      margin-right: 20px;
+    }
 
     &:hover {
-      background-color: $main-color-hover;
+      background: rgb(111,6,131);
     }
   }
-  .btn-bg-color {
-    background-color: $main-color;
-    border-color: $main-color;
+}
 
-    &:hover {
-      background-color: $main-color-hover;
-    }
+.menu {
+  background-color: $main-color;
+  width: 30%;
+  height: 100%;
+  float: left;
+  height: 100rem;
+
+  .text_color {
+    color: #fff;
   }
+}
+
+.menu-btn {
+  margin-right: 5rem;
+  margin-top: 1rem;
+}
+
+.btn-color {
+  background-color: #fff;
+  border-color: $main-color;
+  color: $main-color;
+
+  &:hover {
+    background-color: $main-color-hover;
+  }
+}
+
+.btn-bg-color {
+  background-color: $main-color;
+  border-color: $main-color;
+
+  &:hover {
+    background-color: $main-color-hover;
+  }
+}

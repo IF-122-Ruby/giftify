@@ -1,0 +1,12 @@
+= simple_form_for [:account, @user] do |f|
+  = f.fields_for :role do |role|
+    = role.input :role, collection: Role::roles.except(:superadmin), include_blank: false
+  .field
+    = f.input :first_name, autocomplete: "first name"
+  .field
+    = f.input :last_name, autocomplete: "last name"
+  .field
+    = f.input :birthday, label: "Birthday", start_year: 1970, end_year: Time.now.year, order: [:day, :month, :year], required: true, prompt: true, default: nil
+  .actions
+    = f.submit
+    

@@ -18,14 +18,13 @@ class Account::UsersController < Account::AccountsController
   def update
     @user = resource
     authorize([:account, @user])
+    @user.assign_attributes(user_update_params)
 
     respond_to do |format|
-      if @user.update(user_update_params)
+      if @user.save(context: user_role_context)
         format.html { redirect_to account_user_path, notice: 'User was successfully updated.' }
-        format.json { redirect_to [:account, @user], status: :ok, location: @user }
       else
         format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -37,11 +36,14 @@ class Account::UsersController < Account::AccountsController
     @user.destroy
     respond_to do |format|
       format.html { redirect_to account_users_path, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
   private
+
+  def user_role_context
+    current_user.role.admin? ? :admin_context : :manager_context
+  end
 
   def collection
     current_organization.users

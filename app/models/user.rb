@@ -32,6 +32,6 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true
 
   accepts_nested_attributes_for :owned_organization 
-  accepts_nested_attributes_for :role
+  accepts_nested_attributes_for :role, reject_if: :all_blank
 end
 

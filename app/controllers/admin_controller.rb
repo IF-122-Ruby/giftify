@@ -1,6 +1,6 @@
 class AdminController < ActionController::Base
+  layout "admin"
   def index
-    @users = User.all
     @organizations = Organization.all
   end
 end

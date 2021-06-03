@@ -1,0 +1,11 @@
+.container
+  .row.mb-4
+    .col
+      h2.brand-title.text-center.text-uppercase.section-title
+        | Our Clients
+  .row.d-flex.justify-content-between
+    - (1..6).each do |brand|
+      .col-lg-4.col-md-6.col-sm-6
+        .single-brand
+          = image_tag "about/brands/b#{brand}.png"
+    

@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-
   namespace :account do
     resources :users, only: [:index, :show]
   end

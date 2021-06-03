@@ -10,9 +10,9 @@ nav.navbar.navbar-expand-lg.navbar-light
         li.nav-item
           = link_to 'Pricing', pricing_path, class: 'nav-link'
         li.nav-item
-          = link_to 'About', "#", class: 'nav-link'
+          = link_to 'About', about_path, class: 'nav-link'
         li.nav-item
-          = link_to 'Contact us', "#", class: 'nav-link'
+          = link_to 'Contact us', new_feedback_path, class: 'nav-link'
       form.d-flex
         = button_to "Login",  new_user_session_path, class: 'btn btn-outline-success nav-btn'
         = button_to "Sign Up", new_user_registration_path, class: "btn btn-outline-success nav-btn", method: :get

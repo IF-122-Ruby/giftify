@@ -17,6 +17,11 @@ $main-color-hover: #6f0683;
   }
 
   //section1
+  // abbr[title="required"] {
+  //   color: red;
+  //   text-decoration: none;
+  // }
+  //
   .head-img {
     position: relative;
     width: 100%;
@@ -77,45 +82,4 @@ $main-color-hover: #6f0683;
   margin: auto;
   width: 50%;
 
-}
-
-// PRICING PAGE
-.pricing-page {
-
-  h1 {
-    margin-top: 5rem;
-    text-align: center;
-  }
-}
-
-.pricing {
-  margin-top: 15rem;
-  text-align: center;
-
-  h4 {
-    color: $main-color;
-  }
-
-  .pricing-btn {
-    background: $main-color;
-    color: #ffffff;
-    border:  1px solid $main-color-hover;
-
-    &:hover {
-      background: $main-color-hover;
-    }
-  }
-
-  .pricing-card {
-    padding: 2rem;
-    border: 1px solid $main-color;
-  }
-
-  .price {
-    font-size: 30px;
-  }
-
-  .cart-text {
-    font-size: 15px;
-  }
 }

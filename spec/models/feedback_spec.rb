@@ -29,5 +29,6 @@ RSpec.describe Feedback, type: :model do
     it { is_expected.to validate_presence_of :reason }
     it { is_expected.to validate_presence_of :subject }
     it { is_expected.to validate_length_of(:subject).is_at_most(15) }
+    it { is_expected.to validate_inclusion_of(:reason).in_array(Feedback::REASONS) }
   end 
 end

@@ -13,8 +13,7 @@
 #  updated_at :datetime         not null
 #
 class Feedback < ApplicationRecord
-  REASON = [['Want delete organization','0'],['Find bug','1'],
-            ['About partnership','2'],['Other','3']].freeze
+  REASONS = ['Want delete organization', 'Find bug', 'About partnership', 'Other'].freeze
 
   validates :name, :email, :reason, :subject, :message, presence: true
   
@@ -23,5 +22,4 @@ class Feedback < ApplicationRecord
                               message: "Email seems invalid" }
   
   validates :subject, length: { maximum: 15 }
-
 end

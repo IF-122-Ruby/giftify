@@ -6,7 +6,7 @@ class FeedbacksController < ApplicationController
   def create
     @feedback = Feedback.create(feedback_params)
     if @feedback.save
-      redirect_to :root, notice: "#{@feedback.name}, thank you for your feedback. The administration will contact you shourtly."
+      redirect_to root_path, notice: "#{@feedback.name}, thank you for your feedback. The administration will contact you shourtly."
     else
       render :new
     end

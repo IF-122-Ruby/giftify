@@ -12,7 +12,7 @@ nav.navbar.navbar-expand-lg.navbar-light
         li.nav-item
           = link_to 'About', about_path, class: 'nav-link'
         li.nav-item
-          = link_to 'Contact us', "#", class: 'nav-link'
+          = link_to 'Contact us', new_feedback_path, class: 'nav-link'
       form.d-flex
       = button_to 'Log in', new_user_session_path, class: "btn btn-primary me-md-2 btn-color"
       = button_to 'Sign Up', new_user_registration_path, method: :get, class: "btn btn-primary btn-lg btn-bg-color"

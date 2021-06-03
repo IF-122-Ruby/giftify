@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_06_02_082028) do
+=======
+ActiveRecord::Schema.define(version: 2021_06_03_140421) do
+>>>>>>> 1fcb2a58b7958a549d3404e22874608f5ea65a08
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +27,7 @@ ActiveRecord::Schema.define(version: 2021_06_02_082028) do
     t.text "message", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "viewed", default: false, null: false
   end
 
   create_table "gifts", force: :cascade do |t|

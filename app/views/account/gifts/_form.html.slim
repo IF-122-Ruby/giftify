@@ -1,10 +1,6 @@
 = simple_form_for @gift, url: account_gifts_path, method: :post do |f|
   = f.input :name, label: "Gift name:", class: 'form-control'
-
   = f.input :description, label: "Please, add some description", as: :text, :html_input => {:cols => 5, :rows => 15}
-
   = f.input :amount, label: 'Write amount of gifts', as: :integer  
-
   = f.input :gift_type, collection: Gift::gift_types.except(:superadmin), include_blank: false
-  
   = f.submit "Send"

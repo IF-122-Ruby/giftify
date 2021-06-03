@@ -1,23 +1,73 @@
+// HOME PAGE
+main {
+  margin: 0;
+}
 .home-page {
   padding-left: 2rem;
-  padding-right: 5rem;
+  padding-right: 2rem;
   float: left;
-  width: 70%;
+  width: 83.8%;
+  h1 {
+    padding-bottom: 2rem;
+    text-align: center;
+  }
+  section {
+    display: block;
+    margin-top: 5rem;
+    //section1
+  }
+  .head-img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-radius: 17px;
+  }
+  .head {
+    .icons {
+      position: absolute;
+    }
+    .icon1 {
+      max-width: 15%;
+      left: 32rem;
+      top: 29rem;
+      transform: rotate(-20deg);
+    }
+    .icon2 {
+      max-width: 10%;
+      right: 15rem;
+      top: 37rem;
+      transform: rotate(7deg);
+    }
+  }
 
-  & section {
-    padding-top: 5rem;
+  //section2
+  .organizations {
+    .org-img {
+      max-width: 100%;
+    }
+  }
+
+  //section3
+  .tools {
+    .tool-link {
+      max-width: 100%;
+      justify-content: center;
+    }
+    .tool-img {
+      max-width: 500px;
+    }
+    .icon-img {
+      margin-right: 0.5rem;
+    }
+    .tool-menu {
+      text-align: left;
+      padding-left: 0;
+    }
   }
 }
 
-.head-img {
-  width: 100%;
-  height: auto;
-}
-
-.head-input {
-  margin-right: 1rem;
-  display: inline-block;
+.center {
+  margin: auto;
   width: 50%;
-  border: 1px solid #450683;
-  border-radius: 0.39rem;
+
 }

@@ -15,9 +15,4 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :organizations, only: [:index, :show]
   end
-
-
-    get 'contact_us', action: :contact_us, controller: 'static_pages'
-    post 'contact_us', action: :create, controller: 'static_pages'
-  
 end

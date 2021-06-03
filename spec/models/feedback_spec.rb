@@ -4,11 +4,11 @@
 #
 #  id         :bigint           not null, primary key
 #  email      :string(255)      not null
-#  is_read    :boolean          default(FALSE)
 #  message    :text             not null
 #  name       :string           not null
 #  reason     :string           not null
 #  subject    :string(15)       not null
+#  viewed     :boolean          default(FALSE), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

@@ -1,10 +1,10 @@
 section.team-section.col
   = simple_form_for @feedback, url: feedback_path, method: :post do |f|
-    .container.my-5  
+    .container.my-5.feedback 
     .card.m-2
       .card-header[style="background-color:#734dbb"]
         p.h5.text-center.text-light.font-weight-bold.mb-0
-          | Feedback
+          | Contact form
        
           .field.mb-3
             = f.input :name, label: "Your name:", class: 'form-control'

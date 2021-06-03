@@ -1,12 +1,54 @@
 $main-color: #450683;
 $main-color-hover: #6f0683;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(90deg, rgb(111,6,131) 50%, rgb(69,6,131) 100%);
+
+  .navbar-toggler {
+    border-color: rgba(255,255,255,0.5);
+    background: white;
+
+    span {
+      color: white;
+    }
+  }
+  
+  li {
+    a {
+      color: white !important;
+      font-size: 20px;
+      text-transform: uppercase;
+      transition: all .5s ease;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .nav-btn {
+    color: white !important;
+    border: 1px solid white !important;
+
+    &:first-child {
+      margin-right: 20px;
+    }
+
+    &:hover {
+      background: rgb(111,6,131);
+    }
+  }
 }
+
+.menu {
+  background-color: $main-color;
+  width: 30%;
+  height: 100%;
+  float: left;
+  height: 100rem;
 
 body {
   background: #F7F7F7;
@@ -32,9 +74,10 @@ body {
   font-size: 30px;
 }
 
-.sidebar .title{
+.sidebar .title {
   display: none;
 }
+
 .sidebar:hover .title{
   width: 300px;
   display: flex;
@@ -42,12 +85,13 @@ body {
   flex-direction: row;
 }
 
+.btn-bg-color {
+  background-color: $main-color;
+  border-color: $main-color;
+}
+
 .sidebar li {
   margin-top: 100px;
   padding-left: 10px;
 }
-
-
-
-
-
+}

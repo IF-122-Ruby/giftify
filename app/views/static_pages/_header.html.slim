@@ -1,12 +1,18 @@
-.menu
-  img.logo src="#"
-  /! Nav tabs
-  nav.nav.justify-content-center
-    = link_to 'Home', root_path, class: "nav-link text_color active", aria_current: "page"
-    a.nav-link.text_color Pricing
-    a.nav-link.text_color href="#"  About
-    a.nav-link.text_color href="#"  Contact Us
-
-.d-grid.gap-2.d-md-flex.justify-content-md-end.menu-btn
-  button.btn.btn-primary.me-md-2.btn-color Log in
-  button.btn.btn-primary.btn-lg.btn-bg-color Sign Up
+nav.navbar.navbar-expand-lg.navbar-light
+  .container-fluid
+    a.navbar-brand href="#"  Giftify
+    button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button" 
+      span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        li.nav-item
+          = link_to 'Home', root_path, class: 'nav-link'
+        li.nav-item
+          = link_to 'Pricing', "#", class: 'nav-link'
+        li.nav-item
+          = link_to 'About', about_path, class: 'nav-link'
+        li.nav-item
+          = link_to 'Contact us', new_feedback_path, class: 'nav-link'
+      form.d-flex
+        button.btn.btn-outline-success.nav-btn type="submit"  Sign Up
+        button.btn.btn-outline-success.nav-btn type="submit"  Login

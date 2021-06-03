@@ -1,21 +1,22 @@
+$main-color: #450683;
+$main-color-hover: #6f0683;
+
 // HOME PAGE
-main {
-  margin: 0;
-}
 .home-page {
   padding-left: 2rem;
   padding-right: 2rem;
-  float: left;
-  width: 83.8%;
+
   h1 {
     padding-bottom: 2rem;
     text-align: center;
   }
+
   section {
     display: block;
     margin-top: 5rem;
-    //section1
   }
+
+  //section1
   .head-img {
     position: relative;
     width: 100%;
@@ -26,17 +27,19 @@ main {
     .icons {
       position: absolute;
     }
+
     .icon1 {
       max-width: 15%;
-      left: 32rem;
-      top: 29rem;
+      left: 18rem;
+      top: 35rem;
       transform: rotate(-20deg);
     }
+
     .icon2 {
       max-width: 10%;
-      right: 15rem;
-      top: 37rem;
-      transform: rotate(7deg);
+      right: 20rem;
+      top: 42rem;
+      transform: rotate(9deg);
     }
   }
 
@@ -49,19 +52,23 @@ main {
 
   //section3
   .tools {
+    margin-bottom: 5rem;
+
     .tool-link {
       max-width: 100%;
       justify-content: center;
     }
+
     .tool-img {
       max-width: 500px;
     }
+
     .icon-img {
       margin-right: 0.5rem;
     }
+
     .tool-menu {
       text-align: left;
-      padding-left: 0;
     }
   }
 }
@@ -70,4 +77,45 @@ main {
   margin: auto;
   width: 50%;
 
+}
+
+// PRICING PAGE
+.pricing-page {
+
+  h1 {
+    margin-top: 5rem;
+    text-align: center;
+  }
+}
+
+.pricing {
+  margin-top: 15rem;
+  text-align: center;
+
+  h4 {
+    color: $main-color;
+  }
+
+  .pricing-btn {
+    background: $main-color;
+    color: #ffffff;
+    border:  1px solid $main-color-hover;
+
+    &:hover {
+      background: $main-color-hover;
+    }
+  }
+
+  .pricing-card {
+    padding: 2rem;
+    border: 1px solid $main-color;
+  }
+
+  .price {
+    font-size: 30px;
+  }
+
+  .cart-text {
+    font-size: 15px;
+  }
 }

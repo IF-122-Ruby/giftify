@@ -8,11 +8,11 @@ nav.navbar.navbar-expand-lg.navbar-light
         li.nav-item
           = link_to 'Home', root_path, class: 'nav-link'
         li.nav-item
-          = link_to 'Pricing', "#", class: 'nav-link'
+          = link_to 'Pricing', pricing_path, class: 'nav-link'
         li.nav-item
           = link_to 'About', "#", class: 'nav-link'
         li.nav-item
           = link_to 'Contact us', "#", class: 'nav-link'
       form.d-flex
-        button.btn.btn-outline-success.nav-btn type="submit"  Sign Up
-        button.btn.btn-outline-success.nav-btn type="submit"  Login
+        = button_to "Login",  new_user_session_path, class: 'btn btn-outline-success nav-btn'
+        = button_to "Sign Up", new_user_registration_path, class: "btn btn-outline-success nav-btn", method: :get

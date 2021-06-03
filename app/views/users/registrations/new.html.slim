@@ -1,26 +1,48 @@
-h2
-  | Sign up
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "users/shared/error_messages", resource: resource
-  .field
-    = f.fields_for :owned_organization, resource.build_owned_organization do |organization|
-      = organization.input :name, autofocus: true, label: 'Organization Name'
-  .field
-    = f.input :first_name, autocomplete: "first name"
-  .field
-    = f.input :last_name, autocomplete: "last name"
-  .field
-    = f.input :email, autocomplete: "email", required: true
-  div
-  .field
-    - if @minimum_password_length
-      em
-        | (
-        = @minimum_password_length
-        |  characters minimum)
-    = f.input :password, autocomplete: "new-password", required: true
-  .field
-    = f.input :password_confirmation, autocomplete: "new-password", required: true
-  .actions
-    = f.submit "Sign up"
-= render "users/shared/links"
+.container
+  h2.header-sign_up
+    | Sign up
+  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = render "users/shared/error_messages", resource: resource
+    .field.form-group
+      = f.fields_for :owned_organization, resource.build_owned_organization do |organization|
+        = organization.label 'Organization Name', class: "form-label text-center"
+        = organization.text_field :name, autofocus: true, class: "form-control form-input"
+
+    .field.form-group
+      = f.label "First name", class: "form-label text-center"
+      = f.text_field :first_name, autocomplete: "first name", class: "form-control form-input"
+
+    .field.form-group
+      = f.label "Last", class: "form-label text-center"
+      = f.text_field :last_name, autocomplete: "last name", class: "form-control form-input"
+
+    .field.form-group
+      = f.label "Email", class: "form-label text-center"
+      = f.text_field :email, autocomplete: "email", required: true, class: "form-control form-input", id: "exampleInputEmail1"
+
+    .field.form-group
+      .row
+        .col-md-3.offset-md-3
+          = f.label "Password", class: "form-label pasw-label"
+
+        .col-md-3
+          = f.text_field :password, autocomplete: "new-password", required: true, class: "form-control", id: "exampleInputEmail1"
+
+        .col-md-3
+          - if @minimum_password_length
+            em
+              | (
+              = @minimum_password_length
+              |  characters minimum)
+
+    .field
+      .row
+        .col-md-3.offset-md-3
+          = f.label "Confirmation password", class: "form-label pasw-label"
+
+        .col-md-3
+          = f.text_field :password_confirmation, autocomplete: "new-password", required: true, class: "form-control", id: "exampleInputEmail1"
+
+      .actions.link-center
+        = f.submit "Sign up", class: "btn btn-primary btn-lg btn-bg-color btn-form"
+        = render "users/shared/links"

@@ -1,17 +1,10 @@
-.home-page {
-  padding-left: 2rem;
-  padding-right: 5rem;
-  float: left;
-  width: 70%;
-
-  & section {
-    padding-top: 5rem;
-  }
-}
-
 .head-img {
+  display: block;
   width: 100%;
+  max-width: 600px;
   height: auto;
+  margin: 0 auto;
+  margin-top: 50px;
 }
 
 .head-input {

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: 'static_pages#home'
   get '/admin', to: 'admin#index'
+  get '/about', to: 'static_pages#about'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations'

@@ -22,7 +22,7 @@ class Account::GiftsController < Account::AccountsController
       redirect_to account_users_path
     else
       flash[:notice] = 'Something went wrong.'
-      redirect_back(fallback_location: account_users_path)
+      render :new
     end
   end
   
@@ -32,7 +32,7 @@ class Account::GiftsController < Account::AccountsController
       redirect_to account_users_path
     else
       flash[:notice] = 'Something went wrong.'
-      redirect_back(fallback_location: account_users_path)
+      render :new
     end
   end
 

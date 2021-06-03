@@ -17,10 +17,10 @@
 #
 FactoryBot.define do
   factory :gift do
-    name { "MyString" }
-    description { "MyText" }
-    amount { 1 }
-    gift_type { "MyString" }
+    name { Faker::Company.name }
+    description { Faker::Lorem.sentence(word_count: 10) }
+    amount { 100 }
+    gift_type { Gift::MERCH }
     organization
   end
 end

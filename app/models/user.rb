@@ -25,7 +25,7 @@ class User < ApplicationRecord
   has_one :role
   has_one :owned_organization, class_name: 'Organization'
   has_one :organization, through: :role
-  has_many :colleagues, -> { where(roles: { organization: 'organization_id' }) }, source: :user, through: :role
+  has_many :colleagues, -> { where(roles: { organization: first.organization }) }, source: :user, through: :role
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
@@ -33,8 +33,4 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true
 
   accepts_nested_attributes_for :owned_organization
-  
-  # def colleagues
-  #   User.joins(:role).where(roles: { organization: organization }).where.not(roles: { user: self })
-  # end
 end

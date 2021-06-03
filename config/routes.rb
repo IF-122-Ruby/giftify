@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root to: 'static_pages#home'
-  get '/admin', to: 'admin#index'
   get 'about', to: 'static_pages#about'
 
   resource :feedback, path: :contact_us, only: [:create, :new]
@@ -15,5 +14,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :organizations, only: [:index, :show]
+    root to: 'admin#index'
   end
 end

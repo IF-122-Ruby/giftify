@@ -1,4 +1,4 @@
-class AdminController < ActionController::Base
+class Admin::AdminController < ActionController::Base
   layout "admin"
   def index
     @organizations = Organization.all

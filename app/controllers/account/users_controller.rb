@@ -1,6 +1,6 @@
 class Account::UsersController < Account::AccountsController
   before_action :authorize_user
-  
+
   def index
     @users = current_organization.users.all
   end

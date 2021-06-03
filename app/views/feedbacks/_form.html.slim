@@ -16,8 +16,7 @@ section.team-section.col
             = f.input :subject, label: "Subject:"
 
           .field.mb-3.feedback-form
-            = f.input :reason, as: :radio_buttons, collection: [['Want delete organization','0'],['Find bug','1'],
-                                                        ['About partnership','2'],['Other','3']] 
+            = f.input :reason, as: :radio_buttons, collection: Feedback::REASON
 
           .field.mb-3
             = f.input :message, label: "Reason: ", placeholder: "Write message ... ", as: :text, input_html: { rows: 5 }

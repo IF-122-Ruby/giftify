@@ -7,9 +7,9 @@ RSpec.describe Account::GiftsController, type: :request do
     sign_in admin
   end
 
-  describe "gifts" do
+  describe "GET #index" do
     it "returns http success if signed in as admin" do
-      get '/account/gifts'
+      get new_account_gift_path
       expect(response).to have_http_status(:success)
     end
   end

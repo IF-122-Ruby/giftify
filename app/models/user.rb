@@ -25,8 +25,7 @@ class User < ApplicationRecord
   has_one :role
   has_one :owned_organization, class_name: 'Organization'
   has_one :organization, through: :role
-  has_many :colleagues, -> { where(roles: { organization: first.organization }) }, source: :user, through: :role
-
+  has_many :colleagues, through: :organization, source: :users, class_name: "User"
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 

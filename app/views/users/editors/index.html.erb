@@ -1,7 +1,9 @@
 <% if @user %>
-    <%= "Name: #{@user.first_name}" %>
-    <%= "Surname: #{@user.last_name}" %>
+  <ul>
+    <li> <%= "Name: #{@user.first_name}" %>
+    <li> <%= "Surname: #{@user.last_name}" %>
+  </ul>
 <% else %>
-    # guest user (unauthorized)
+    <%#guest user (unauthorized)%>
     <%= "Guest" %>
 <% end %>

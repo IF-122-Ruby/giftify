@@ -28,9 +28,11 @@ class Organization < ApplicationRecord
 
   after_commit :add_role
 
+  scope :ordered, ->{order(id: :desc).limit(6)}
+
   private
 
   def add_role
     self.roles.create(role: :admin, user_id: user_id)
-  end 
+  end
 end

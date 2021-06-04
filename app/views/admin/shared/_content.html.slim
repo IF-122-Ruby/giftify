@@ -21,7 +21,7 @@ section
             .col-3.text-center Name Organization
             .col-3.text-center Monthly point
             .col-3.text-center Created_at
-        - @organizations.order(id: :desc).limit(6).each do |organization|
+        - @organizations.ordered.each do |organization|
           = link_to admin_organizations_path(@organizations), class: 'text-decoration-none' do
             .card
               .d-flex.justify-content-around.align-items-center.p-1

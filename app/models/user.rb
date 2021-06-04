@@ -22,6 +22,11 @@
 #
 
 class User < ApplicationRecord
+  scope :admins, -> { where(role: Role.from('roles').where(role: 'admin')) }
+  scope :managers, -> { where(role: Role.from('roles').where(role: 'manager')) }
+  scope :users, -> { where(role: Role.from('roles').where(role: 'user')) }
+  scope :superadmins, -> { where(role: Role.from('roles').where(role: 'superadmin')) }
+
   has_one :role, dependent: :destroy
   has_one :owned_organization, class_name: 'Organization'
   has_one :organization, through: :role
@@ -33,5 +38,14 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :owned_organization 
   accepts_nested_attributes_for :role, reject_if: :all_blank
+
+  def self.grouped_collection_by_role
+    {
+      'admin' => User.admins,
+      'manager' => User.managers,
+      'user' => User.users,
+      'superadmin' => User.superadmins
+    }
+  end
 end
 

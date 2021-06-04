@@ -7,6 +7,7 @@
 #  description     :text
 #  gift_type       :string
 #  name            :string
+#  price           :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  organization_id :bigint

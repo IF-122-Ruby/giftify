@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2021_06_03_140421) do
     t.string "name"
     t.text "description"
     t.integer "amount"
+    t.integer "price"
     t.string "gift_type"
     t.bigint "organization_id"
     t.datetime "created_at", precision: 6, null: false

@@ -26,7 +26,7 @@ class Account::GiftsController < Account::AccountsController
       flash[:notice] = 'Gift create succesfully!'
       redirect_to account_gifts_path
     else
-      flash[:notice] = 'Something went wrong.'
+      flash[:warning] = 'Wrong input data.'
       redirect_to new_account_gift_path
     end
   end
@@ -34,11 +34,13 @@ class Account::GiftsController < Account::AccountsController
   def update
     @gift = collection.find(params[:id])
     authorize([:account, @gift])
-    if @gift.update(gift_params)
+    @gift.assign_attributes(gift_params)
+
+    if @gift.save
       flash[:notice] = 'Gift update succesfully!'
       redirect_to account_gifts_path
     else
-      flash[:notice] = 'Something went wrong.'
+      flash[:warning] = 'Wrong input data.'
       redirect_to edit_account_gift_path
     end
   end
@@ -54,7 +56,7 @@ class Account::GiftsController < Account::AccountsController
   private
   
   def gift_params
-    params.require(:gift).permit(:name, :description, :amount, :gift_type)
+    params.require(:gift).permit(:name, :description, :amount, :price, :gift_type)
   end
 
   def collection

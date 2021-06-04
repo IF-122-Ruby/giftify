@@ -7,6 +7,7 @@
 #  description     :text
 #  gift_type       :string
 #  name            :string
+#  price           :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  organization_id :bigint
@@ -21,7 +22,7 @@ class Gift < ApplicationRecord
   MERCH = 'merch'.freeze
   COUPON = 'coupon'.freeze
 
-  GIFTS_TYPE = [MERCH, COUPON].freeze
+  GIFTS_TYPE = Set[MERCH, COUPON].freeze
 
   enum gift_type: { merch: MERCH, coupon: COUPON }
   

@@ -4,6 +4,7 @@ class CreateGifts < ActiveRecord::Migration[6.1]
       t.string :name
       t.text :description
       t.integer :amount
+      t.integer :price
       t.string :gift_type
       t.references :organization
 

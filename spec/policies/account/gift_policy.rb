@@ -27,44 +27,4 @@ RSpec.describe Account::GiftPolicy, type: :policy do
     end
   end
 
-  permissions :edit? do
-    it 'grant access' do
-      expect(subject).to permit(admin)
-    end
-
-    it 'denied access' do
-      expect(subject).not_to permit(user)
-    end
-  end
-
-  permissions :create? do
-    it 'grant access' do
-      expect(subject).to permit(admin)
-    end
-
-    it 'denied access' do
-      expect(subject).not_to permit(user)
-    end
-  end
-
-  permissions :update? do
-    it 'grant access' do
-      expect(subject).to permit(admin)
-    end
-
-    it 'denied access' do
-      expect(subject).not_to permit(user)
-      p 'asdsa'
-    end
-  end
-
-  permissions :destroy? do
-    it 'grant access' do
-      expect(subject).to permit(admin)
-    end
-
-    it 'denied access' do
-      expect(subject).not_to permit(user)
-    end
-  end
 end

@@ -17,5 +17,5 @@ nav.navbar.navbar-expand-lg.navbar-light
       - if current_user
         = link_to "Sign Out", destroy_user_session_path, class:"btn btn-outline-success nav-btn", method: :delete
       - else
-        = button_to 'Log in', new_user_session_path, class: "btn btn-primary me-md-2 btn-color"
-        = button_to 'Sign Up', new_user_registration_path, method: :get, class: "btn btn-primary btn-lg btn-bg-color"
+        = link_to 'Log in', new_user_session_path, class: "btn btn-outline-success nav-btn"
+        = link_to 'Sign Up', new_user_registration_path, method: :get, class: "btn btn-outline-success nav-btn"

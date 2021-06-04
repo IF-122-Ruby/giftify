@@ -22,10 +22,10 @@
 #
 
 class User < ApplicationRecord
-  scope :admins, -> { where(role: Role.from('roles').where(role: 'admin')) }
-  scope :managers, -> { where(role: Role.from('roles').where(role: 'manager')) }
-  scope :users, -> { where(role: Role.from('roles').where(role: 'user')) }
-  scope :superadmins, -> { where(role: Role.from('roles').where(role: 'superadmin')) }
+  scope :admins, -> { joins(:role).where(roles: { role: Role::ADMIN }) }
+  scope :managers, -> { joins(:role).where(roles: { role: Role::MANAGER }) }
+  scope :users, -> { joins(:role).where(roles: { role: Role::USER }) }
+  scope :superadmins, -> { joins(:role).where(roles: { role: Role::SUPERADMIN }) }
 
   has_one :role, dependent: :destroy
   has_one :owned_organization, class_name: 'Organization'

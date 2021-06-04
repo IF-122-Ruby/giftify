@@ -19,10 +19,10 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Organization < ApplicationRecord
-  has_many :gifts
   has_many :roles
   belongs_to :user
   has_many :users, through: :roles
+  has_many :gifts
 
   validates :name, presence: true
   validates :monthly_point, numericality: { only_integer: true }

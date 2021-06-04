@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Account::GiftsController, type: :request do
-  let(:admin) { create(:user, :admin) }
-  let(:gift)  { create(:gift) }
+  let!(:admin) { create(:user, :admin) }
+  let!(:gift) { create(:gift) }
 
   before do
     sign_in admin
@@ -32,7 +32,7 @@ RSpec.describe Account::GiftsController, type: :request do
   describe "GET #edit" do
     it "returns http success if signed in as admin" do
       get edit_account_gift_path(gift)
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(:redirect)
     end
   end
 
@@ -42,26 +42,28 @@ RSpec.describe Account::GiftsController, type: :request do
     it 'creates gift with valid params' do
       post account_gifts_path, params: { gift: gift_params }
 
-      expect(response).to redirect_to(account_users_path)
+      expect(response).to redirect_to(account_gifts_path)
     end
 
     it 'does not create unit with invalid params' do
       gift_params[:name] = ''
-      post account_gift_path, params: { gift: gift_params }
+      post account_gifts_path, params: { gift: gift_params }
 
-      expect(response).to render_template(:new)
+      expect(response).to redirect_to(new_account_gift_path)
     end
   end
 
   describe "PATCH #update" do
+    let(:gift_params) { attributes_for(:gift) }
+
     it "returns http success if signed in as admin" do
-      patch account_gift_path
+      patch account_gift_path(gift), params: { gift: gift_params }
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "DELETE #destroy" do
-    it "returns http success if signed in as admin" do
+    it "return success if destroy gift" do
       delete account_gift_path(gift)
       expect(response).to have_http_status(:success)
     end

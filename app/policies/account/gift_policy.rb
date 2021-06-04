@@ -16,7 +16,7 @@ class Account::GiftPolicy < ApplicationPolicy
   end
 
   def create?
-    new?
+    user.role.admin?
   end
   
   def update?

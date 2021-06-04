@@ -1,5 +1,6 @@
 h2 = @current_organization.name
 ul.list-group
+  = link_to 'New gift', new_account_gift_path, class: 'btn btn-primary button-width'
   - @gifts.each do |gift|
     = render 'gift', gift: gift
     

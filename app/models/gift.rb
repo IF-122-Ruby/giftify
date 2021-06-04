@@ -24,6 +24,7 @@ class Gift < ApplicationRecord
   GIFTS_TYPE = [MERCH, COUPON].freeze
 
   enum gift_type: { merch: MERCH, coupon: COUPON }
+  
   validates :name, presence: true
   validates :gift_type, inclusion: { in: gift_types.values }
 end

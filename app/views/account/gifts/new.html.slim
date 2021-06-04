@@ -1,4 +1,4 @@
 h1 
   | New Gift
-  = render 'form', gift: @gift, path: new_account_gift_path
+  = render 'account/gifts/form', gift: @gift, path: [:account, @gift], back_path: [:account, @gift] 
   = link_to 'Back', account_gifts_path

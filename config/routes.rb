@@ -8,10 +8,12 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  get 'users/self_edit', to: 'account/users#self_editor'
-
   namespace :account do
     resources :users, only: [:index, :show]
+  end
+
+  namespace :users do
+    get 'edit_self', to: 'editors#index'
   end
 
   namespace :admin do

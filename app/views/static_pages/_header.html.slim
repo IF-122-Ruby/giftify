@@ -14,5 +14,5 @@ nav.navbar.navbar-expand-lg.navbar-light
         li.nav-item
           = link_to 'Contact us', new_feedback_path, class: 'nav-link'
       form.d-flex
-        = button_to "Login",  new_user_session_path, class: 'btn btn-outline-success nav-btn'
-        = button_to "Sign Up", new_user_registration_path, class: "btn btn-outline-success nav-btn", method: :get
+        = link_to "Login",  new_user_session_path, class: 'btn btn-outline-success nav-btn'
+        = link_to "Sign Up", new_user_registration_path, class: "btn btn-outline-success nav-btn"

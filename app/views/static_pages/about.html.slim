@@ -15,8 +15,9 @@
               | here
           .site-buttons
             .d-flex.flex-row.flex-wrap
-              =button_to "Contact", new_feedback_path, class: "btn btn-outline-primary about_btn", method: :get
-              = button_to "Pricing", pricing_path, class: "btn btn-outline-primary about_btn", method: :get
+              = link_to "Contact", new_feedback_path, class: "btn btn-outline-primary about_btn"
+              = link_to "Pricing", pricing_path, class: "btn btn-outline-primary about_btn"
+
         .col-lg-6.col-md-12.banner-image
           = image_tag "about/banner-image.png"
 

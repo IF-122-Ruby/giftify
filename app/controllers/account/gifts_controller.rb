@@ -1,26 +1,27 @@
 class Account::GiftsController < Account::AccountsController
   def index
-    @gifts = current_gifts
+    @gifts = collection
     authorize([:account, @gifts])
   end
 
   def show
-    @gift = current_gifts.find(params[:id])
+    @gift = collection.find(params[:id])
     authorize([:account, @gift])
   end
 
   def new
-    @gift = current_gifts.new
+    @gift = collection.new
     authorize([:account, @gift])
   end
 
   def edit
-    @gift = current_gifts.find(params[:id])
+    @gift = collection.find(params[:id])
     authorize([:account, @gift])
   end
 
   def create
-    @gift = current_gifts.new(gift_params)
+    @gift = collection.new(gift_params)
+    authorize([:account, @gift])
     if @gift.save
       flash[:notice] = 'Gift create succesfully!'
       redirect_to account_gifts_path
@@ -31,18 +32,20 @@ class Account::GiftsController < Account::AccountsController
   end
   
   def update
-    @gift = current_gifts.find(params[:id])
+    @gift = collection.find(params[:id])
+    authorize([:account, @gift])
     if @gift.update(gift_params)
       flash[:notice] = 'Gift update succesfully!'
       redirect_to account_gifts_path
     else
       flash[:notice] = 'Something went wrong.'
-      render :new
+      redirect_to edit_account_gift_path
     end
   end
 
   def destroy
-    @gift = current_gifts.find(params[:id])
+    @gift = collection.find(params[:id])
+    authorize([:account, @gift])
     @gift.destroy
     flash[:notice] = 'Gift succesfully deleted!'
     redirect_to account_gifts_path
@@ -54,7 +57,7 @@ class Account::GiftsController < Account::AccountsController
     params.require(:gift).permit(:name, :description, :amount, :gift_type)
   end
 
-  def current_gifts
+  def collection
     current_organization.gifts
   end
 end

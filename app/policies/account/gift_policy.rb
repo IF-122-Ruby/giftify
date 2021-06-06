@@ -1,4 +1,6 @@
 class Account::GiftPolicy < ApplicationPolicy
+  delegate :admin?, to: :user
+  
   def index?
     true
   end
@@ -25,12 +27,6 @@ class Account::GiftPolicy < ApplicationPolicy
 
   def destroy?
     admin?
-  end
-
-  private
-
-  def admin?
-    user.role.admin?
   end
 
   class Scope < Scope

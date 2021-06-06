@@ -1,20 +1,22 @@
 class Account::UserPolicy < ApplicationPolicy
+  delegate :admin?, :manager?, to: :user
+
   def index?
     true
   end
 
   def show?
-    user.role.admin?
+    admin?
   end
 
   def update?
-    user.role.admin? || user.role.manager?
+    admin? || manager? 
   end
 
   def destroy?
-    user.role.admin?
+    admin?
   end
-  
+
   class Scope < Scope
     def resolve
       scope.all

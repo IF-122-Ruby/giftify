@@ -1,0 +1,5 @@
+h1 Change organization settings
+= simple_form_for @organization, url: account_my_organization_path do |f|
+  = f.input :monthly_point, label: 'Write monthly point', as: :integer, label_html: {class:  "gift-text-size"}
+  = f.file_field :logo, label: "Change logo", multiple: true, label_html: {class:  "gift-text-size"}
+  = f.submit "Send", class: "btn btn-primary"

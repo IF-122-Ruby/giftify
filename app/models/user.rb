@@ -37,7 +37,7 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, presence: true
 
-  accepts_nested_attributes_for :owned_organization 
+  accepts_nested_attributes_for :owned_organization
   accepts_nested_attributes_for :role, reject_if: :all_blank
 
   def self.grouped_collection_by_role
@@ -47,5 +47,13 @@ class User < ApplicationRecord
       'user' => User.users,
       'superadmin' => User.superadmins
     }
+  end
+
+  def admin?
+    role.admin?
+  end
+
+  def manager?
+    role.manager?
   end
 end

@@ -1,4 +1,4 @@
-= simple_form_for gift, url: [:account, @gift] do |f|
+= simple_form_for gift, url: [:account, gift] do |f|
   = f.input :name, label: "Gift name:", label_html: {class:  "gift-text-size"}
   = f.input :description, label: "Please, add some description", as: :text, :html_input => {:cols => 5, :rows => 15}, label_html: {class:  "gift-text-size"}
   = f.input :amount, label: 'Write amount of gifts', as: :integer, label_html: {class:  "gift-text-size"}

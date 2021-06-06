@@ -32,6 +32,8 @@ class User < ApplicationRecord
   has_one :organization, through: :role
   has_many :colleagues, -> { where.not(users: { id: id }) }, through: :organization, source: :users, class_name: 'User'
 
+  delegate :admin?, :manager?, to: :role
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -47,13 +49,5 @@ class User < ApplicationRecord
       'user' => User.users,
       'superadmin' => User.superadmins
     }
-  end
-
-  def admin?
-    role.admin?
-  end
-
-  def manager?
-    role.manager?
   end
 end

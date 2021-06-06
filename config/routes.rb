@@ -12,10 +12,6 @@ Rails.application.routes.draw do
     resources :users, except: [:create, :new]
   end
 
-  namespace :users do
-    get 'edit_self', to: 'editors#index'
-  end
-
   namespace :admin do
     resources :organizations, only: [:index, :show]
   end

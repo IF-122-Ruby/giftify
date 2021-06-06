@@ -1,8 +1,6 @@
 h2 = current_organization.name
 ul.list-group
   = link_to 'New gift', new_account_gift_path, class: 'btn btn-primary button-width'
-  - if current_user && current_user.admin?
-    = link_to "Update org", edit_account_my_organization_url(current_user), class:"btn btn-outline-success nav-btn"
   - @gifts.each do |gift|
     = render 'gift', gift: gift
     

@@ -26,7 +26,7 @@ class Account::GiftsController < Account::AccountsController
       flash[:notice] = 'Gift create succesfully!'
       redirect_to account_gifts_path
     else
-      flash[:warning] = 'Wrong input data.'
+      flash.now[:warning] = 'Wrong input data. Gift wasn`t created'
       redirect_to new_account_gift_path
     end
   end
@@ -40,7 +40,7 @@ class Account::GiftsController < Account::AccountsController
       flash[:notice] = 'Gift update succesfully!'
       redirect_to account_gifts_path
     else
-      flash[:warning] = 'Wrong input data.'
+      flash.now[:warning] = 'Wrong input data. Gift wasn`t updated'
       redirect_to edit_account_gift_path
     end
   end

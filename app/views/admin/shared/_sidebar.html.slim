@@ -1,90 +1,57 @@
-.col-1.color-bg.bgc.wrap
-  .d-flex.flex-column.align-items-center.align-items-sm-start.px-3.pt-2.bgc.tc.min-vh-100
+.col-12
+  .d-flex.flex-column.align-items-sm-start.px-3.pt-2.tc
     a.d-flex.align-items-center.pb-3.mb-md-0.me-md-auto.text-white.text-decoration-none[href="#"]
-      span.fs-5.d-none.d-sm-inline
-        | Menu
-
-    ul#menu.nav.nav-pills.flex-column.mb-sm-auto.mb-0.align-items-center.align-items-sm-start
+    .dropdown.pb-4
+      a#dropdownUser1.d-flex.align-items-center.text-white.text-decoration-none.dropdown-toggle[href="#" data-bs-toggle="dropdown" aria-expanded="false"]
+        span.d-none.d-sm-inline.mx-1.tc
+          | Profile
+        = image_tag 'giftify.png', class: 'logo_organization-admin rounded-circle'
+      ul.dropdown-menu.bgc.border-color.text-small.shadow
+        li
+            = link_to "New project...", root_url, class: "tc dropdown-item a"
+            hr.dropdown-divider
+        li
+            = link_to "Settings", root_url, class: "tc dropdown-item a"
+            hr.dropdown-divider
+        li
+            = link_to "Profile", root_url, class: "tc dropdown-item a"
+    ul#menu.nav.nav-pills.flex-column.mb-sm-auto.mb-0.align-items-sm-start
       li.nav-item
-        a.nav-link.align-middle.px-0[href="/"]
-          i.fs-4.bi-house
-          span.ms-1.d-none.d-sm-inline.tc
+        =link_to root_url, class: "text-decoration-none"  do
+          span.ms-1.d-sm-inline.tc
             | Home
       li
         a.nav-link.px-0.align-middle[href="#submenu1" data-bs-toggle="collapse"]
           i.fs-4.bi-speedometer2
-          span.ms-1.d-none.d-sm-inline.tc
+          span.ms-1.d-sm-inline.dropdown-toggle.tc
             | Dashboard
         ul#submenu1.collapse.show.nav.flex-column.ms-1[data-bs-parent="#menu"]
           li.w-100
             a.nav-link.px-0[href="#"]
-              span.d-none.d-sm-inline.tc
+              span.d-sm-inline.tc
                 | Item
           li
             a.nav-link.px-0[href="#"]
-              span.d-none.d-sm-inline.tc
+              span.d-sm-inline.tc
                 | Item
       li
-        a.nav-link.px-0.align-middle[href="#"]
-          i.fs-4.bi-table
-          span.ms-1.d-none.d-sm-inline.tc
+        =link_to root_url, class: "text-decoration-none"  do
+          span.ms-1.d-sm-inline.tc
             | Orders
       li
         a.nav-link.px-0.align-middle[href="#submenu2" data-bs-toggle="collapse"]
-          i.fs-4.bi-bootstrap
-          span.ms-1.d-none.d-sm-inline.tc
+          span.ms-1.d-sm-inline.tc
             | Bootstrap
         ul#submenu2.collapse.nav.flex-column.ms-1[data-bs-parent="#menu"]
           li.w-100
             a.nav-link.px-0[href="#"]
-              span.d-none.d-sm-inline.tc
+              span.d-sm-inline.tc
                 | Item
           li
             a.nav-link.px-0[href="#"]
               span.d-none.d-sm-inline.tc
                 | Item
       li
-        a.nav-link.px-0.align-middle[href="#submenu3" data-bs-toggle="collapse"]
-          i.fs-4.bi-grid
-          span.ms-1.d-none.d-sm-inline.tc
-            | Products
-        ul#submenu3.collapse.nav.flex-column.ms-1[data-bs-parent="#menu"]
-          li.w-100
-            a.nav-link.px-0[href="#"]
-              span.d-none.d-sm-inline.tc
-                | Product
-          li
-            a.nav-link.px-0[href="#"]
-              span.d-none.d-sm-inline.tc
-                | Product
-          li
-            a.nav-link.px-0[href="#"]
-              span.d-none.d-sm-inline.tc
-                | Product
-          li
-            a.nav-link.px-0[href="#"]
-              span.d-none.d-sm-inline.tc
-                | Product
-      li
-        a.nav-link.px-0.align-middle[href="#"]
-          i.fs-4.bi-people
-          span.ms-1.d-none.d-sm-inline.tc
-            | Customers
-    hr
-    .dropdown.pb-4
-      a#dropdownUser1.d-flex.align-items-center.text-white.text-decoration-none.dropdown-toggle[href="#" data-bs-toggle="dropdown" aria-expanded="false"]
-        img.rounded-circle[src="https://i.ibb.co/McTWtRr/giftify.png" alt="giftify" width="30" height="30"]
-        span.d-none.d-sm-inline.mx-1.tc
-          | Profile
-      ul.dropdown-menu.dropdown-menu-dark.bgc.border-color.text-small.shadow
-        li
-          a.dropdown-item.tc[href="#"]
-            | New project...
-            hr.dropdown-divider
-        li
-        a.dropdown-item.tc[href="#"]
-            | Settings
-            hr.dropdown-divider
-        li
-        a.dropdown-item.tc[href="#"]
-            | Profile
+
+
+

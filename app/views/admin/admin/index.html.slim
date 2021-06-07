@@ -1,8 +1,8 @@
 .container-fluid.mt-2.mb-2
-  .row.flex-nowrap
+  .row
     .col.col-sm-9
       = render partial: 'admin/shared/content'
       = render partial: 'admin/shared/developers'
-    .col.bgc.rounded
-        = render partial: 'admin/shared/sidebar'
+    .col.bgc.rounded.order-sm-last.order-first
+      = render partial: 'admin/shared/sidebar'
 

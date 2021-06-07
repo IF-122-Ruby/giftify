@@ -28,7 +28,7 @@ class Organization < ApplicationRecord
 
   after_commit :add_role
 
-  scope :ordered, ->{order(id: :desc).limit(6)}
+  scope :ordered, ->{order(id: :desc)}
 
   private
 

@@ -1,5 +1,6 @@
 class Admin::OrganizationsController < Admin::BaseController
   def index
+    @time = Time.new
     @organizations = Organization.all
   end
 

@@ -1,7 +1,7 @@
 $admin-purple: #734dbb;
 
 .bgc{
-  background-color: $admin-purple;
+  background: linear-gradient(90deg, #6f0683 50%, #450683 100%);
 }
 
 .tc{
@@ -11,7 +11,10 @@ $admin-purple: #734dbb;
 .logo-admin_layout{
 height: 2.5em;
 }
-
+.logo_organization-admin{
+  width: 40px;
+  height: 40px;
+}
 .nav-link-admin{
   color: white !important;
 }

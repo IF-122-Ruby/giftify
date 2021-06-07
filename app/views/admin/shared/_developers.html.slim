@@ -15,11 +15,9 @@
       .card-body
         .row.pt-4.d-flex.justify-content-center
           - developers.each do |developer|
-            .col-lg-2.col-md-4.col-sm-6.pb-4
-
+            .col-lg-2.col-md-4.pb-4
               .avatar.white.text-center
                 = image_tag developer[:avatar], class:"img-fluid rounded-circle z-depth-1 shadow bg-body rounded"
-
               .text-center.mt-2
                 h6.font-weight-bold.pt-2.mb-0
                   = developer[:name]

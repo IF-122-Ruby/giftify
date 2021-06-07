@@ -57,7 +57,7 @@ body {
 
 .sidebar {
   position: fixed;
-  width: 125px;
+  width: 75px;
   height: 100%;
   background: rgb(86,1,142);
   background: linear-gradient(176deg, rgba(86,1,142,1) 1%, rgba(128,6,227,1) 100%);
@@ -77,6 +77,13 @@ body {
   display: none;
 }
 
+.sidebar:hover .title{
+  width: 300px;
+  display: flex;
+  color: #F7F7F7;
+  flex-direction: row;
+}
+
 .btn-bg-color {
   background-color: $main-color;
   border-color: $main-color;
@@ -85,5 +92,10 @@ body {
 .sidebar li {
   margin-top: 100px;
   list-style-type: none;
+  padding-left: 10px;
 }
+}
+
+
+
 

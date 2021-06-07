@@ -96,10 +96,7 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
-    e2mmap (0.1.0)
     erubi (1.10.0)
-    et-orbi (1.2.4)
-      tzinfo
     execjs (2.8.1)
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
@@ -109,9 +106,6 @@ GEM
     faker (2.18.0)
       i18n (>= 1.6, < 2)
     ffi (1.15.1)
-    fugit (1.4.5)
-      et-orbi (~> 1.1, >= 1.1.8)
-      raabro (~> 1.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.10)
@@ -152,7 +146,6 @@ GEM
       nio4r (~> 2.0)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
-    raabro (1.4.0)
     racc (1.5.2)
     rack (2.2.3)
     rack-mini-profiler (2.3.2)
@@ -199,7 +192,6 @@ GEM
       rails (>= 3.2)
       rainbow (~> 3.0)
       webpacker (>= 4.0)
-    redis (4.2.5)
     regexp_parser (2.1.1)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -221,8 +213,6 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
-    rufus-scheduler (3.7.0)
-      fugit (~> 1.1, >= 1.1.6)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -236,17 +226,6 @@ GEM
     semantic_range (3.0.0)
     shoulda-matchers (4.5.1)
       activesupport (>= 4.2.0)
-    sidekiq (6.2.1)
-      connection_pool (>= 2.2.2)
-      rack (~> 2.0)
-      redis (>= 4.2.0)
-    sidekiq-scheduler (3.1.0)
-      e2mmap
-      redis (>= 3, < 5)
-      rufus-scheduler (~> 3.2)
-      sidekiq (>= 3)
-      thwait
-      tilt (>= 1.4.0)
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -267,8 +246,6 @@ GEM
       sprockets (>= 3.0.0)
     temple (0.8.2)
     thor (1.1.0)
-    thwait (0.2.0)
-      e2mmap
     tilt (2.0.10)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
@@ -321,8 +298,6 @@ DEPENDENCIES
   rspec-rails
   sass-rails (>= 6)
   shoulda-matchers (~> 4.0)
-  sidekiq
-  sidekiq-scheduler
   simple_form
   slim-rails
   spring

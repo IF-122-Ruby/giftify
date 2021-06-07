@@ -1,4 +1,0 @@
-:schedule:
-  schedule_post:
-    cron: '0 * * * * *'
-    class: SetPublishedWorker

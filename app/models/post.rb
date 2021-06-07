@@ -4,7 +4,6 @@
 #
 #  id           :bigint           not null, primary key
 #  description  :text
-#  is_published :boolean
 #  published_at :datetime
 #  title        :string
 #  created_at   :datetime         not null
@@ -22,15 +21,11 @@
 class Post < ApplicationRecord
   belongs_to :user
 
-  before_save :set_published_status
-
   validates :title, :description, presence: true
 
-  def set_published_status
-    if self.published_at.blank? || self.published_at < Time.zone.now
-      self.is_published = true
-    else
-      self.is_published = false
-    end
+  scope :published, -> { where('published_at <= ?', Time.zone.now) }
+
+  def published?
+    published_at.present? && published_at <= Time.zone.now
   end
 end

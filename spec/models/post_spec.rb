@@ -4,7 +4,6 @@
 #
 #  id           :bigint           not null, primary key
 #  description  :text
-#  is_published :boolean
 #  published_at :datetime
 #  title        :string
 #  created_at   :datetime         not null
@@ -34,7 +33,7 @@ RSpec.describe Post, type: :model do
       let(:post) { create(:post, user: user, published_at: Time.zone.now - 10.minutes) }
       
       it 'should return false for is_published column' do  
-        expect(post.is_published).to be_truthy
+        expect(post.published?).to be_truthy
       end
     end
 
@@ -42,7 +41,7 @@ RSpec.describe Post, type: :model do
       let(:post) { create(:post, user: user, published_at: Time.zone.now + 10.minutes) }
 
       it 'should return true for is_published column' do
-        expect(post.is_published).to be_falsy
+        expect(post.published?).to be_falsy
       end
     end
     

@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 2021_06_06_165235) do
     t.string "title"
     t.text "description"
     t.datetime "published_at"
-    t.boolean "is_published"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"

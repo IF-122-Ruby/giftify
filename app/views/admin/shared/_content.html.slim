@@ -1,25 +1,24 @@
 /! make this vith erb organizationss
 section
   .d-flex.justify-content-center
-    h2 Menaging organizations
+    h2 Managing organizations
   .container.my-5.mb-1.mt-0
     .row
       .col
-        .tc.bgc.card
-          .d-flex.justify-content-betwen.align-items-center.p-1
+        .text-white.background-color.card
+          .d-flex.justify-content-between.align-items-center.p-1
             div
-              p
-                | Organization count: #{@organizations.count}
+              | Organization count: #{@organizations.count}
             div
               input name="" placeholder=("Find organization...") type="input" /
   .container.my-5.mt-1
     .row
       .col.d-block
-        .tc.bgc.card
+        .text-white.background-color.card
           .d-flex.justify-content-around.align-items-center.p-1
             .col-3.text-center Logo
-            .col-3.text-center Name Organization
-            .col-3.text-center Monthly point
+            .col-3.text-center Organization Name
+            .col-3.text-center Monthly points
             .col-3.text-center Created
         - @organizations.ordered.each do |organization|
           = link_to admin_organizations_path(@organizations), class: 'text-decoration-none' do

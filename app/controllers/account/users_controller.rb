@@ -27,7 +27,7 @@ class Account::UsersController < Account::AccountsController
       end
     end
   end
-  
+
   def destroy
     @user = resource
     authorize([:account, @user])

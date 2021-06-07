@@ -4,7 +4,7 @@ class Account::UserPolicy < ApplicationPolicy
   end
 
   def show?
-    user.role.admin?
+    true
   end
 
   def update?
@@ -14,7 +14,7 @@ class Account::UserPolicy < ApplicationPolicy
   def destroy?
     user.role.admin?
   end
-  
+
   class Scope < Scope
     def resolve
       scope.all

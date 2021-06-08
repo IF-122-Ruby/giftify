@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Account::GiftsController, type: :request do
-  render_views
-
   let!(:organization) { create(:organization) } 
   let!(:admin) { create(:user, :admin, organization: organization) } 
   let!(:gift) { create(:gift, organization: organization) }
@@ -52,7 +50,7 @@ RSpec.describe Account::GiftsController, type: :request do
       gift_params[:name] = ''
       post account_gifts_path, params: { gift: gift_params }
 
-      expect(response).to render_template(:new)
+      expect(response.body).to include('Wrong input data. Gift wasn`t created')
     end
   end
 

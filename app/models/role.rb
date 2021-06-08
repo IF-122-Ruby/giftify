@@ -21,7 +21,7 @@ class Role < ApplicationRecord
   USER = 'user'.freeze
   USER_ROLES = [SUPERADMIN, ADMIN, MANAGER, USER].freeze
 
-  enum role: { superadmin: SUPERADMIN, admin: ADMIN, manager: MANAGER, user: USER }
+  enum role: { superadmin: SUPERADMIN, admin: ADMIN, manager: MANAGER, simple: USER }
 
   belongs_to :user
   belongs_to :organization
@@ -29,6 +29,6 @@ class Role < ApplicationRecord
   validates :role, inclusion: { in: roles.values }, on: :superadmin_context
   validates :role, inclusion: { in: roles.values.excluding('superadmin') }, on: :admin_context
   validates :role, inclusion: { in: roles.values.excluding('superadmin', 'admin') }, on: :manager_context
-  
+
   validates_uniqueness_of :user_id, scope: :organization_id
 end

@@ -20,11 +20,11 @@ class Gift < ApplicationRecord
   MERCH = 'merch'.freeze
   COUPON = 'coupon'.freeze
   GIFT_TYPES = [MERCH, COUPON].freeze
-  
-  belongs_to :organization
 
   enum gift_type: { merch: MERCH, coupon: COUPON }
-  
+
+  belongs_to :organization
+
   validates :name, :description, presence: true
   validates :gift_type, inclusion: { in: gift_types.values }
 end

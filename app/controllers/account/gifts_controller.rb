@@ -34,9 +34,7 @@ class Account::GiftsController < Account::AccountsController
   def update
     @gift = resource
     authorize([:account, @gift])
-    @gift.assign_attributes(gift_params)
-
-    if @gift.save
+    if @gift.update(gift_params)
       flash[:notice] = 'Gift update succesfully!'
       redirect_to account_gifts_path
     else

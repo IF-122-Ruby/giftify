@@ -1,7 +1,9 @@
-= simple_form_for gift, url: [:account, gift], html: { autocomplete: 'off' } do |f|
-  = f.input :name, placeholder: "gift name *", label: false, html_input: { class: 'form-control' }
-  = f.input :description, placeholder: "Description *", label: false, as: :text, html_input: { cols: 5, rows: 15, class: 'form-control'}
-  = f.input :amount, placeholder: 'Amount *', as: :integer, label: false, html_input: { class: 'form-control' }
-  = f.input :price, placeholder: 'Price *', as: :integer, label: false, html_input: { class: 'form-control' }
-  = f.input :gift_type, collection: Gift::gift_types, include_blank: false, html_input: { class: 'form-control' }
-  = f.submit "Send", class: "btn btn-primary"
+= simple_form_for gift, url: [:account, gift], html: { autocomplete: 'off', class: 'gift-create-form' } do |f|
+  = f.input :name, label: "Gift name", input_html: { class: 'form-control gift-create-form__input' }
+  = f.input :description, label: "Description", as: :text, input_html: { cols: 5, rows: 5, class: 'form-control gift-create-form__input'}
+  = f.input :amount, label: 'Amount', as: :integer, input_html: { class: 'form-control gift-create-form__input' }
+  = f.input :price, label: 'Price', as: :integer, input_html: { class: 'form-control gift-create-form__input' }
+  = f.input :gift_type, collection: Gift::gift_types, include_blank: false, input_html: { class: 'form-control gift-create-form__input' }
+  .d-flex.justify-content-between
+    = link_to 'Back', account_gifts_path, class: 'btn btn-outline-secondary'
+    = f.submit "Send", class: "btn btn-light"

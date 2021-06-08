@@ -1,0 +1,15 @@
+.gift-create-form{
+  .gift-create-form__input{
+    margin-bottom: 1rem;
+  }
+  
+  .gift-create-form__input:focus {
+    box-shadow: 0 0 0 1px #5369f8;
+  }
+
+  @media (max-width: 770px) {
+    .row {
+      justify-content: center;
+    }  
+  }
+}

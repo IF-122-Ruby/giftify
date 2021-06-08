@@ -1,7 +1,8 @@
-.row
-  .col-6
-    .card
-      .card-body
-        .header-title.mt-0 Edit Gift
-          = render 'account/gifts/form', gift: @gift 
-          = link_to 'Back', account_gifts_path, class: "gift-text-size btn btn-primary"
+.content-page.mt-4
+  .content
+    .container-fluid.container
+      .row
+        .col-8.offset-md-2
+          .card-body.shadow-sm.p-3.mb-5.bg-white.rounded
+            .header-title.mt-0 Edit Gift
+            = render 'account/gifts/form', gift: @gift 

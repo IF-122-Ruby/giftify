@@ -17,12 +17,11 @@
 #  index_gifts_on_organization_id  (organization_id)
 #
 class Gift < ApplicationRecord
-  belongs_to :organization
-
   MERCH = 'merch'.freeze
   COUPON = 'coupon'.freeze
-
   GIFT_TYPES = [MERCH, COUPON].freeze
+  
+  belongs_to :organization
 
   enum gift_type: { merch: MERCH, coupon: COUPON }
   

@@ -1,8 +1,11 @@
-td = gift.name
-td = gift.description
-td = gift.amount
-td = gift.price
-td = gift.gift_type
-td 
-  = link_to 'Edit', edit_account_gift_path(gift), class: 'btn btn-primary button-width gift-button-item'
-  = link_to 'Delete', account_gift_path(gift), method: :delete, class: 'btn btn-primary button-width gift-button-item'
+- if action_name == 'index'
+  td.text-center = link_to gift.name, account_gift_path(gift)
+- else
+  td.text-center = gift.name
+td.text-center = gift.description
+td.text-center = gift.amount
+td.text-center = gift.price
+td.text-center = gift.gift_type
+td.d-flex.justify-content-around
+  = link_to 'Edit', edit_account_gift_path(gift), class: 'link-secondary'
+  = link_to 'Delete', account_gift_path(gift), method: :delete, class: 'link-secondary'

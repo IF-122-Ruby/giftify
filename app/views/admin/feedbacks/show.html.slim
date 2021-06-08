@@ -10,11 +10,11 @@
                   h3.card-title.m-2  
                     = @feedback.name
                 .col-6.col-md-4.text-muted 
-                  = @feedback.created_at
+                  = @feedback.created_at.strftime("Received on: %d %B at: (%I:%M), %Y")
               .row 
                 .col-4.d-flex.justify-content-space-between
-                  h7.card-subtitle.m-2.text-muted   From: 
-                  h7.card-subtitle.m-2.text-muted 
+                  h6.card-subtitle.m-2.text-muted   From: 
+                  h6.card-subtitle.m-2.text-muted 
                     = @feedback.email
               dl.row
                 dt.col-sm-3 Subject:

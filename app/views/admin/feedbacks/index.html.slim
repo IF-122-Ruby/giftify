@@ -3,7 +3,7 @@
     .container-fluid
       .row
         .col-8.offset-md-2
-          .card-body.shadow-lg.p-4.mb-2.bg-white.rounded
+          .card-body.shadow-lg.mb-2.bg-white.rounded
             h2.header-title.m-2.text-center.fs-1.fw-bold Feedback list
             table#basic-datatable.table.dt-responsive.nowrap.table-hover
               thead
@@ -14,18 +14,18 @@
                   th Date
                   th Read
               tbody
-                - @feedback.each do |feedback|                  
+                - @feedbacks.each do |feedback|                  
                   tr class = (feedback.viewed ? "text-muted" : '')
-                    th scope="row"
+                    th.size-column 
                       = feedback.subject
-                    th scope="row"
+                    th.size-column  
                       = feedback.reason
-                    th scope="row"
-                      = feedback.message.slice(0..20) + "..."
-                    th
+                    th.size-column 
+                      = feedback.message.truncate(15, omission: '...')
+                    th.size-column 
                       = feedback.created_at.strftime("%Y-%m-%d")
-                    th scope="row"
-                      = button_to "Read message", admin_feedback_path(feedback), method: :get, class:"btn btn-outline-primary"
+                    th.size-column 
+                      = button_to "Read message", admin_feedback_path(feedback), method: :get, class: "btn btn-outline-primary"
              
             .digg_pagination.d-flex.justify-content-center
               = will_paginate @feedback

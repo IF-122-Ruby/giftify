@@ -29,4 +29,9 @@ class Feedback < ApplicationRecord
   validates :subject, length: { maximum: 15 }
 
   validates :reason, inclusion: { in: REASONS }
+
+  def mark_as_viewed
+    self.viewed = true
+    self.save!
+  end
 end

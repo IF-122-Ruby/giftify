@@ -1,6 +1,13 @@
 h2 = current_organization.name
-ul.list-group
-  = link_to 'New gift', new_account_gift_path, class: 'btn btn-primary button-width'
-  - @gifts.each do |gift|
-    = render 'gift', gift: gift
+= link_to 'New gift', new_account_gift_path, class: 'btn btn-primary button-width'
+table.table.table-striped
+  thead
+    tr
+      th scope="col" Name
+      th scope="col" Amount
+      th scope="col" Price
+      th scope="col" Type
+  tbody
+    - @gifts.each do |gift|
+      tr = render 'account/gifts/gift', gift: gift
     

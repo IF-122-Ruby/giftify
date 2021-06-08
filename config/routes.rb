@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   namespace :account do
     resources :gifts
     resources :users, except: [:create, :new]
-    resources :my_organizations, only: [:edit, :update]
   end
   
   namespace :admin do

@@ -1,20 +1,8 @@
-li.list-group-item
-  ul.list-group
-    li.list-group-item.bg-primary.list-group-item-action.text-white
-      span Name: 
-      = gift.name
-    li.list-group-item.list-group-item-action
-      span Amount: 
-      = gift.amount
-    li.list-group-item.list-group-item-action
-      span Price: 
-      = gift.price
-    li.list-group-item.list-group-item-action
-      span Group: 
-      = gift.gift_type
-    li.list-group-item
-      span Description: 
-      = gift.description
-.gift-button-container
+td = gift.name
+td = gift.description
+td = gift.amount
+td = gift.price
+td = gift.gift_type
+td 
   = link_to 'Edit', edit_account_gift_path(gift), class: 'btn btn-primary button-width gift-button-item'
   = link_to 'Delete', account_gift_path(gift), method: :delete, class: 'btn btn-primary button-width gift-button-item'

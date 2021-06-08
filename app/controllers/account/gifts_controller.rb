@@ -5,7 +5,7 @@ class Account::GiftsController < Account::AccountsController
   end
 
   def show
-    @gift = collection.find(params[:id])
+    @gift = resource
     authorize([:account, @gift])
   end
 
@@ -15,7 +15,7 @@ class Account::GiftsController < Account::AccountsController
   end
 
   def edit
-    @gift = collection.find(params[:id])
+    @gift = resource
     authorize([:account, @gift])
   end
 
@@ -27,12 +27,12 @@ class Account::GiftsController < Account::AccountsController
       redirect_to account_gifts_path
     else
       flash.now[:warning] = 'Wrong input data. Gift wasn`t created'
-      redirect_to new_account_gift_path
+      render :new
     end
   end
   
   def update
-    @gift = collection.find(params[:id])
+    @gift = resource
     authorize([:account, @gift])
     @gift.assign_attributes(gift_params)
 
@@ -41,12 +41,12 @@ class Account::GiftsController < Account::AccountsController
       redirect_to account_gifts_path
     else
       flash.now[:warning] = 'Wrong input data. Gift wasn`t updated'
-      redirect_to edit_account_gift_path
+      render :edit
     end
   end
 
   def destroy
-    @gift = collection.find(params[:id])
+    @gift = resource
     authorize([:account, @gift])
     @gift.destroy
     flash[:notice] = 'Gift succesfully deleted!'
@@ -61,5 +61,9 @@ class Account::GiftsController < Account::AccountsController
 
   def collection
     current_organization.gifts
+  end
+
+  def resource
+    collection.find(params[:id])
   end
 end

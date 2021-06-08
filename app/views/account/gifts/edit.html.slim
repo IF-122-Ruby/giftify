@@ -1,4 +1,7 @@
-h1 
-  | Edit Gift
-  = render 'account/gifts/form', gift: @gift 
-  = link_to 'Back', account_gifts_path, class: "gift-text-size btn btn-primary"
+.row
+  .col-6
+    .card
+      .card-body
+        .header-title.mt-0 Edit Gift
+          = render 'account/gifts/form', gift: @gift 
+          = link_to 'Back', account_gifts_path, class: "gift-text-size btn btn-primary"

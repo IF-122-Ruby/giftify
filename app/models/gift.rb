@@ -22,10 +22,10 @@ class Gift < ApplicationRecord
   MERCH = 'merch'.freeze
   COUPON = 'coupon'.freeze
 
-  GIFTS_TYPE = Set[MERCH, COUPON].freeze
+  GIFT_TYPES = [MERCH, COUPON].freeze
 
   enum gift_type: { merch: MERCH, coupon: COUPON }
   
-  validates :name, presence: true
+  validates :name, :description, presence: true
   validates :gift_type, inclusion: { in: gift_types.values }
 end

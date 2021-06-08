@@ -9,7 +9,7 @@ Organization.all.each do |organization|
   FactoryBot.create_list(:user, 10, organization: organization, password: '123456')  
 end
 
-FactoryBot.create_list(:feedback, 10)
+FactoryBot.create_list(:feedback, 30)
 
 user = FactoryBot.create(:user)
 FactoryBot.create(:organization, user: user)

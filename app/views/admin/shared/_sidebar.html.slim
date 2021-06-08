@@ -1,0 +1,51 @@
+.row.min-vh-100.shadow-sm.pt-3.mb-2.bg-white.rounded
+  .col
+    .d-flex.justify-content-start
+      = image_tag("serhii.png",class: 'img-fluid img-organization rounded-circle z-depth-1 shadow bg-body rounded w-25')
+      .d-flex.flex-column.justify-content-center.px-3
+        span Org name Org name
+        span.text-black-50 administrator
+      .dropdown.d-flex.flex-column.justify-content-center
+        a#dropdownMenuLink1.btn.btn-secondary.toggle aria-expanded="false" data-bs-toggle="dropdown" href="#" role="button"
+          i.fas.fa-chevron-down
+        ul.dropdown-menu.shadow-sm.p-3.mb-5.bg-white.rounded aria-labelledby="dropdownMenuLink1"
+          .d-flex.align-items-center.test
+            i.fas.fa-home.m-1
+            = link_to "My account", root_url, class: "text-decoration-none text-reset"
+          hr/
+          .d-flex.align-items-center.test
+            i.fas.fa-cog.m-1
+            = link_to "Settings", root_url, class: "text-decoration-none text-reset"
+          hr/
+          .d-flex.align-items-center.test
+            i.fas.fa-sign-out-alt.m-1
+            = link_to "Logout", root_url, class: "text-decoration-none text-reset"
+    hr/
+    .py-3.item-hover
+      = link_to root_url, class: "text-decoration-none text-reset" do
+        .test.d-flex.justify-content-between.m-1
+          span
+            i.fas.fa-tachometer-alt
+            span.px-3 Dashbord
+          i.fas.fa-chevron-right
+    .py-3.item-hover
+      = link_to root_url, class: "text-decoration-none text-reset" do
+        .test.d-flex.justify-content-between.m-1
+          span
+            i.fas.fa-sitemap
+            span.px-3 Organizations
+          i.fas.fa-chevron-right
+    .py-3.item-hover
+      = link_to root_url, class: "text-decoration-none text-reset" do
+        .test.d-flex.justify-content-between.m-1
+          span
+            i.fas.fa-users
+            span.px-3 Users
+          i.fas.fa-chevron-right
+    .py-3.item-hover
+      = link_to root_url, class: "text-decoration-none text-reset" do
+        .test.d-flex.justify-content-between.m-1
+          span
+            i.fas.fa-comment-dots
+            span.px-3 Feedbacks
+          i.fas.fa-chevron-right

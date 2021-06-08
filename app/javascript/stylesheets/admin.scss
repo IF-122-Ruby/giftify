@@ -3,11 +3,19 @@
 }
 
 .test {
-transition: .4s;
+  transition: .4s;
 }
 
 .test:hover {
-transition: .4s;
-color: rgba(3, 169, 244, 0.7);
+  transition: .4s;
+  color: rgba(3, 169, 244, 0.7);
+}
+
+.item-hover {
+  background-color: white;
+}
+
+.item-hover:hover {
+ background-color: #f3f4f7;
 }
 

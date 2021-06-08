@@ -1,0 +1,31 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-white.shadow-sm.p-3.bg-white.rounded
+  .container-fluid
+    = link_to "Giftify", root_url, class: "navbar-brand"
+    button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button"
+      span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      .navbar-nav.me-auto.mb-2.mb-lg-0
+        = link_to "Home page", root_url, class: "text-decoration-none text-dark text-bold"
+      form.d-flex
+        button.btn.btn-secondary.m-1 type="button"
+          i.fas.fa-search
+        .form-outline.p-1
+          input#form1.form-control.bg-light placeholder="Search..." type="search" /
+      .d-flex.justify-content-end
+        button.btn.btn-secondary.m-1
+          i.fas.fa-bell
+        .btn-group
+          button.btn.btn-secondary.dropdown-toggle.m-1 aria-expanded="false" data-bs-toggle="dropdown" type="button"
+            i.fas.fa-cog
+          ul.dropdown-menu.dropdown-menu-end.shadow-sm.p-3.mb-5.bg-white.rounded
+            .d-flex.align-items-center.test
+              i.fas.fa-user-circle.m-1
+              = link_to "My account", root_url, class: "text-decoration-none text-reset"
+            hr/
+            .d-flex.align-items-center.test
+              i.fas.fa-cog.m-1
+              = link_to "Settings", root_url, class: "text-decoration-none text-reset"
+            hr/
+            .d-flex.align-items-center.test
+              i.fas.fa-sign-out-alt.m-1
+              = link_to "Logout", root_url, class: "text-decoration-none text-reset"

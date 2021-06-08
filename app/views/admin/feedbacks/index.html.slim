@@ -1,0 +1,30 @@
+.content-page.mt-4
+  .content
+    .container-fluid
+      .row
+        .col-8.offset-md-2
+          .card
+            .card-body.shadow-lg.p-4.mb-2.bg-white.rounded
+              h2.header-title.m-2.text-center.fs-1.fw-bold Feedback list
+              table#basic-datatable.table.dt-responsive.nowrap.table-hover
+                thead
+                  tr.fs-3
+                    th Subject
+                    th Reason
+                    th Message
+                    th Date
+                    th Read
+                tbody
+                  - @feedback.each do |feedback| 
+                    tr
+                      th scope="row"
+                        = feedback.subject
+                      th scope="row"
+                        = feedback.reason
+                      th scope="row"
+                        = feedback.message.slice(0..20) + "..."
+                      th
+                        = feedback.created_at.strftime("%Y-%m-%d")
+                      th scope="row"
+                        = button_to "Read message", admin_feedback_path(feedback), method: :get, class:"btn btn-outline-primary"
+                        

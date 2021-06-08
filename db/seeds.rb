@@ -10,3 +10,7 @@ Organization.all.each do |organization|
 end
 
 FactoryBot.create_list(:feedback, 10)
+
+user = FactoryBot.create(:user)
+FactoryBot.create(:organization, user: user)
+user.role.update(role: Role::SUPERADMIN)

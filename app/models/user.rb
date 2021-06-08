@@ -30,6 +30,7 @@ class User < ApplicationRecord
   has_one :role, dependent: :destroy
   has_one :owned_organization, class_name: 'Organization'
   has_one :organization, through: :role
+  has_many :posts, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

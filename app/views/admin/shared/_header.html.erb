@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <div class="container-fluid">
+    <%= link_to "Giftify", root_url, class: "navbar-brand"%>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="navbar-nav me-auto mb-2 mb-lg-0">
+       <%= link_to "Home page", root_url, class: "text-decoration-none text-dark text-bold"%>
+     </div>
+     <form class="d-flex">
+      <button type="button" class="btn btn-secondary m-1">
+        <i class="fas fa-search"></i>
+      </button>
+      <div class="form-outline p-1">
+        <input type="search" id="form1" class="form-control bg-light" placeholder="Search..." />
+      </div>
+    </form>
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-secondary m-1" >
+        <i class="fas fa-bell"></i>
+      </button>
+      <div class="btn-group">
+        <button type="button" class="btn btn-secondary dropdown-toggle m-1" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-cog"></i>
+        </button>
+
+        <ul class="dropdown-menu dropdown-menu-end">
+          <%= link_to "Home page", root_url, class: "text-decoration-none text-dark p-1"%>
+          <hr>
+          <%= link_to "Home page", root_url, class: "text-decoration-none text-dark p-1"%>
+          <hr>
+          <%= link_to "Home page", root_url, class: "text-decoration-none text-dark p-1"%>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</nav>

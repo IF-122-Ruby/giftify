@@ -1,33 +1,13 @@
-$admin-purple: #734dbb;
-
-.background-color{
-  background: linear-gradient(90deg, #6f0683 50%, #450683 100%);
+.content-bg {
+  background-color: #f3f4f7;
 }
 
-.logo-admin_layout {
-  height: 2.5em;
+.test {
+transition: .4s;
 }
 
-.logo_organization-admin{
-  width: 40px;
-  height: 40px;
-}
-.nav-link-admin{
-  color: white !important;
+.test:hover {
+transition: .4s;
+color: rgba(3, 169, 244, 0.7);
 }
 
-.img-organization{
-  width: 5em;
-}
-
-.t-decor{
-  text-decoration: none;
-}
-
-.border-color{
-  border-color:white;
-}
-
-.footer-color-bg{
-  background-color: #7148ad;
-}

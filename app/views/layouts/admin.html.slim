@@ -11,6 +11,7 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    = render partial: 'static_pages/header'
+    = render partial: 'admin/shared/header'
     = yield
     = render partial: 'admin/shared/footer'
+    = any_login_here if defined?(AnyLogin)

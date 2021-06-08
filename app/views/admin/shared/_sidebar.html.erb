@@ -1,0 +1,58 @@
+
+  <div class="row">
+    <div class="col">
+      <div class="d-flex justify-content-start" >
+        <%= image_tag("serhii.png",class: 'img-fluid img-organization rounded-circle z-depth-1 shadow bg-body rounded w-25')%>
+          <div class="d-flex flex-column justify-content-center px-3">
+            <span class="">Org nameOrg name</span>
+            <span class="text-black-50">administrator</span>
+          </div>
+          <div class="dropdown d-flex flex-column justify-content-center">
+            <a class="btn btn-secondary toggle" href="#" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-sort-down pb-1 m-0"></i>
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+              <%= link_to "Settings", root_url, class: "text-decoration-none text-reset p-2" %>
+              <hr>
+              <%= link_to "Settings", root_url, class: "text-decoration-none text-reset p-2" %>
+              <hr>
+              <%= link_to "Settings", root_url, class: "text-decoration-none text-reset p-2" %>
+            </ul>
+          </div>
+      </div>
+      <hr>
+      <div class="py-3">
+        <%= link_to root_url, class: "text-decoration-none text-reset" do %>
+        <div class="test">
+        <i class="fas fa-tachometer-alt"></i>
+        <span class="px-3">Dashbord</span>
+        </div>
+        <%end%>
+      </div>
+       <div class="py-3">
+        <%= link_to root_url, class: "text-decoration-none text-reset" do %>
+        <div class="test">
+        <i class="fas fa-sitemap"></i>
+        <span class="px-3">Organizations</span>
+        </div>
+        <%end%>
+      </div>
+       <div class="py-3">
+        <%= link_to root_url, class: "text-decoration-none text-reset" do %>
+        <div class="test">
+        <i class="fas fa-users"></i>
+        <span class="px-3">Users</span>
+        </div>
+        <%end%>
+      </div>
+      <div class="py-3">
+        <%= link_to root_url, class: "text-decoration-none text-reset" do %>
+        <div class="test">
+        <i class="fas fa-comment-dots"></i>
+        <span class="px-3">Feedback</span>
+        </div>
+        <%end%>
+      </div>
+
+    </div>
+  </div>

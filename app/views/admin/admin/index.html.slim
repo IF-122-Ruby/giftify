@@ -1,8 +1,8 @@
-.container-fluid.mt-2.mb-2
+.container-fluid.mb-2
   .row
+    .col.md-3
+      = render partial: 'admin/shared/sidebar'
     .col.col-sm-9
       = render partial: 'admin/shared/content'
-      = render partial: 'admin/shared/developers'
-    .col.background-color.rounded.order-sm-last.order-first
-      = render partial: 'admin/shared/sidebar'
+
 

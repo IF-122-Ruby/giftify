@@ -20,4 +20,3 @@ RSpec.describe Admin::OrganizationsController, type: :request do
     end
   end
 end
- 

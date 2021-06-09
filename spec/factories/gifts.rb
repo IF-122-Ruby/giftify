@@ -22,6 +22,7 @@ FactoryBot.define do
     description { Faker::Lorem.sentence(word_count: 10) }
     amount { 100 }
     gift_type { Gift::MERCH }
+    price { Faker::Number.number(digits: 2) }
     organization
   end
 end

@@ -33,6 +33,18 @@ ActiveRecord::Schema.define(version: 2021_06_09_205744) do
     t.boolean "viewed", default: false, null: false
   end
 
+  create_table "gifts", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "amount"
+    t.integer "price"
+    t.string "gift_type"
+    t.bigint "organization_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["organization_id"], name: "index_gifts_on_organization_id"
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id", null: false

@@ -20,6 +20,8 @@ class Feedback < ApplicationRecord
   
   REASONS = [DELETE_ORGANIZATION, FIND_BUG, PARTNERSHIP, OTHER].freeze
 
+  scope :ordered_by_created_at, -> { order(created_at: :desc) }
+
   validates :name, :email, :reason, :subject, :message, presence: true
   
   validates :email, length: { maximum: 255 },
@@ -29,4 +31,9 @@ class Feedback < ApplicationRecord
   validates :subject, length: { maximum: 15 }
 
   validates :reason, inclusion: { in: REASONS }
+
+  def mark_as_viewed!
+    self.viewed = true
+    self.save!
+  end
 end

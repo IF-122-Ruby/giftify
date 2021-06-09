@@ -1,21 +1,35 @@
-nav.navbar.navbar-expand-lg.navbar-light
+/! Topbar Start
+.navbar.navbar-expand.flex-column.flex-md-row.navbar-custom
   .container-fluid
-    a.navbar-brand href="#"  Giftify
-    button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button" 
-      span.navbar-toggler-icon
-    #navbarSupportedContent.collapse.navbar-collapse
-      ul.navbar-nav.me-auto.mb-2.mb-lg-0
-        li.nav-item
-          = link_to 'Home', root_path, class: 'nav-link'
-        li.nav-item
-          = link_to 'Pricing', "#", class: 'nav-link'
-        li.nav-item
-          = link_to 'About', about_path, class: 'nav-link'
-        li.nav-item
-          = link_to 'Contact us', new_feedback_path, class: 'nav-link'
-      form.d-flex
-      - if current_user
-        = link_to "Sign Out", destroy_user_session_path, class:"btn btn-outline-success nav-btn", method: :delete
-      - else
-        = link_to 'Log in', new_user_session_path, class: "btn btn-outline-success nav-btn"
-        = link_to 'Sign Up', new_user_registration_path, method: :get, class: "btn btn-outline-success nav-btn"
+    /! LOGO
+    a.navbar-brand.mr-0.mr-md-2.logo href="index.html"
+      span.logo-lg
+        img alt="" height="24" src="assets/images/logo.png" /
+        span.d-inline.h5.ml-1.text-logo Giftify
+      span.logo-sm
+        img alt="" height="24" src="assets/images/logo.png" /
+    .d-grid.gap-2.d-md-flex.justify-content-md-end
+      = link_to "Login",  new_user_session_path, class: 'btn btn-soft-primary me-md-2', method: :get
+      = link_to "Sign Up", new_user_registration_path, class: "btn btn-soft-primary", method: :get
+
+/! end Topbar
+
+.left-side-menu
+  .sidebar-content
+    /! - Sidemenu
+    #sidebar-menu
+      #menu-bar
+        ul.nav-second-level aria-expanded="false"
+          li
+            a href="pages-starter.html"  HOME
+          li
+            a href="pages-profile.html"  PRICING
+          li
+            a href="pages-activity.html"  ABOUT
+          li
+            a href="pages-invoice.html"  BLOG
+          li
+            a href="pages-pricing.html"  CONTACT US
+
+
+  /! End Sidebar

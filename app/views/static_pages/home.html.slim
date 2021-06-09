@@ -1,21 +1,63 @@
-.text-center.home-page
-  .container-fluid
-    section.head
-      h1 ENJOY YOUR WORK AND HAVE FAN WITH US
-      p
-        | Any words about company
+.home-page.justify-content-center
+  section.head
+    .container
+      .row
+        .col-lg-6.title
+          h1 ENJOY YOUR WORK AND HAVE FAN WITH US
+        .col-lg-6
+          .section-content
+            = image_tag 'section1_icon1.png', class: 'icon1 icons'
+            = image_tag 'section1_icon2.png', class: 'icon2 icons'
+            = image_tag 'section1_main_photo.jpg', class: 'head-img'
 
-      input.form-control.head-input aria-describedby="button-addon2" aria-label=("Recipient's username") placeholder=("Enter your email") type="text" /
-      button.btn.btn-primary.btn-lg.btn-bg-color Sign Up
 
-      = image_tag 'head-img.jpg', class: 'head-img'
+  section.organizations
+    .container
+      .row
+        .col-lg-6
+          .orgs
+            = image_tag 'section2_coax.png', class: 'org-img'
+            = image_tag 'section2_softserve.png', class: 'org-img'
+            = image_tag 'section2_beetroot.png', class: 'org-img'
+            
+        .col-lg-6.title
+          h1 ORGANIZATIONS THAT SUPPORT US
 
-  .container
-    section.feedback
-      h1 some header
-      p some words
-      img.feedback src="#"
-    section.tools
-      h1 some header
-      p some WORDS
-      img.tools src="#"
+  section.tools
+    .container
+      .row
+        .col-lg-6.title
+          h1 SIMPLE AND EASY TO USE
+        .col-lg-6
+          .tools-content
+            .container
+              .d-flex.align-items-start.tool-link
+                #v-pills-tab.nav.flex-column.nav-pills.me-3.tool-menu aria-orientation="vertical" role="tablist"
+                  button#v-pills-home-tab.nav-link.active aria-controls="v-pills-home" aria-selected="true" data-bs-target="#v-pills-home" data-bs-toggle="pill" role="tab"
+                    = image_tag 'section3_icon_get_culture.png', class: 'icon-img'
+                    | Get Culture Insights
+                  button#v-pills-profile-tab.nav-link aria-controls="v-pills-profile" aria-selected="false" data-bs-target="#v-pills-profile" data-bs-toggle="pill" role="tab"
+                    = image_tag 'section3_icon_recognition.png', class: 'icon-img'
+                    | Give Recognition
+                  button#v-pills-messages-tab.nav-link aria-controls="v-pills-messages" aria-selected="false" data-bs-target="#v-pills-messages" data-bs-toggle="pill" role="tab"
+                    = image_tag 'section3_icon_rewargs.png', class: 'icon-img'
+                    | Offer Rewards
+
+                #v-pills-tabContent.tab-content
+                  #v-pills-home.tab-pane.fade.show.active aria-labelledby="v-pills-home-tab" role="tabpanel"
+                    = image_tag 'section3_get_culture.jpg', class: 'tool-img'
+
+                  #v-pills-profile.tab-pane.fade aria-labelledby="v-pills-profile-tab" role="tabpanel"
+                    = image_tag 'section3_recognition.jpg', class: 'tool-img'
+
+                  #v-pills-messages.tab-pane.fade aria-labelledby="v-pills-messages-tab" role="tabpanel"
+                    = image_tag 'section3_offer_rewards.jpg', class: 'tool-img'
+
+  section.posts
+    .container
+      .row
+        .col-lg-6.title
+          h1  SHARE YOUR NEWS WITH OTHERS
+        .col-lg-6
+          .posts-content
+            = image_tag 'section1_main_phot.jpg', class: 'post'

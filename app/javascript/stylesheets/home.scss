@@ -1,77 +1,86 @@
 .home-page {
   padding-left: 2rem;
   padding-right: 2rem;
-
-  h1 {
-    padding-bottom: 2rem;
-    text-align: center;
-  }
+  margin-left: 250px;
+  margin-top: 150px;
 
   section {
+    width: 100%;
     display: block;
     margin-top: 5rem;
+
+    .title {
+      display: flex;
+      vertical-align: middle;
+      h1 {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 28px;
+        font-weight: 400;
+      }
+    }
+
+    .section-content {
+      .head-img {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-radius: 17px;
+      }
+      .icons {
+        position: absolute;
+      }
+
+      .icon1 {
+        width: 15%;
+        right: 43rem;
+        top: 20rem;
+
+        transform: rotate(-20deg);
+      }
+
+      .icon2 {
+        width: 10%;
+        right: 0.5rem;
+        top: 27rem;
+
+        transform: rotate(13deg);
+      }
+    }
+
+    //section2
+    .orgs {
+      .org-img {
+        width: 33%;
+      }
+    }
+
+    //section3
+    .tools-content {
+      .tool-link {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .tool-img {
+        max-width: 500px;
+      }
+
+      .icon-img {
+        margin-right: 0.5rem;
+      }
+
+      .tool-menu {
+        text-align: left;
+      }
+    }
+
+    //section4
+    .posts-content {
+      margin-bottom: 5rem;
+      .post {
+        width: 100%;
+      }
+    }
   }
-
-
-  .head-img {
-    position: relative;
-    width: 100%;
-    height: auto;
-    border-radius: 17px;
-  }
-
-  .head {
-    .icons {
-      position: absolute;
-    }
-
-    .icon1 {
-      max-width: 15%;
-      left: 18rem;
-      top: 35rem;
-      transform: rotate(-20deg);
-    }
-
-    .icon2 {
-      max-width: 10%;
-      right: 20rem;
-      top: 42rem;
-      transform: rotate(9deg);
-    }
-  }
-
-  //section2
-  .organizations {
-    .org-img {
-      max-width: 100%;
-    }
-  }
-
-  //section3
-  .tools {
-    margin-bottom: 5rem;
-
-    .tool-link {
-      max-width: 100%;
-      justify-content: center;
-    }
-
-    .tool-img {
-      max-width: 500px;
-    }
-
-    .icon-img {
-      margin-right: 0.5rem;
-    }
-
-    .tool-menu {
-      text-align: left;
-    }
-  }
-}
-
-.center {
-  margin: auto;
-  width: 50%;
-
 }

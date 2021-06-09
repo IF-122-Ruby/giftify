@@ -34,5 +34,4 @@ production:
   <<: *default
   database: giftify_production
   username: deploy
-  password: 123giftify456 
-  #<%= ENV['GIFTIFY_DATABASE_PASSWORD'] %>
+  password: <%= ENV['GIFTIFY_DATABASE_PASSWORD'] %>

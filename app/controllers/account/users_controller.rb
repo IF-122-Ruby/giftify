@@ -1,6 +1,6 @@
 class Account::UsersController < Account::AccountsController
   before_action :authorize_user
-
+  
   def index
     @users = collection
     authorize([:account, @users])

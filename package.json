@@ -6,8 +6,6 @@
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@popperjs/core": "^2.9.2",
     "@rails/actioncable": "^6.1.3",
-    "@rails/activestorage": "^6.1.3",
-    "@rails/ujs": "^6.1.3",
     "@rails/webpacker": "5.4.0",
     "bootstrap": "^5.0.0-beta3",
     "prop-types": "^15.7.2",

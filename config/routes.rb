@@ -9,10 +9,12 @@ Rails.application.routes.draw do
   }
 
   namespace :account do
+    resources :gifts
     resources :users, except: [:create, :new]
   end
   
   namespace :admin do
     resources :organizations, only: [:index, :show]
+    resources :feedbacks, only: [:index, :show]
   end
 end

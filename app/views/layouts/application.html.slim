@@ -12,8 +12,8 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    = render 'shared/header'
+    = render "shared/header"
     main
-      = render 'shared/flashes'
+      = render 'shared/flash_messages'
       = yield
     = any_login_here if defined?(AnyLogin)

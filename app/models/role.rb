@@ -21,7 +21,7 @@ class Role < ApplicationRecord
   USER = 'user'.freeze
   USER_ROLES = [SUPERADMIN, ADMIN, MANAGER, USER].freeze
 
-  enum role: { superadmin: SUPERADMIN, admin: ADMIN, manager: MANAGER, user: USER }
+  enum role: { superadmin: SUPERADMIN, admin: ADMIN, manager: MANAGER, simple: USER }
 
   belongs_to :user
   belongs_to :organization

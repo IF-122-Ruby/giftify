@@ -30,13 +30,17 @@ class User < ApplicationRecord
   has_one :role, dependent: :destroy
   has_one :owned_organization, class_name: 'Organization'
   has_one :organization, through: :role
+  has_many :posts, dependent: :destroy
+  has_many :colleagues, ->(user) { where.not(id: user.id) }, through: :organization, source: :users, class_name: 'User'
+
+  delegate :superadmin?, :admin?, :manager?, :simple?, to: :role
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   validates :first_name, :last_name, presence: true
 
-  accepts_nested_attributes_for :owned_organization 
+  accepts_nested_attributes_for :owned_organization
   accepts_nested_attributes_for :role, reject_if: :all_blank
 
   def self.grouped_collection_by_role
@@ -48,4 +52,3 @@ class User < ApplicationRecord
     }
   end
 end
-

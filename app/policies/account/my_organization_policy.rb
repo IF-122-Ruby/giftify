@@ -1,4 +1,4 @@
-class Account::MyOrganizationPolicy < Struct.new(:user, :dashboard)
+class Account::MyOrganizationPolicy < Struct.new(:user, :admin)
   def edit?
     user.admin?
   end

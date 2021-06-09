@@ -1,0 +1,22 @@
+div style='background-color: #b5bec1; border-radius: 20px; width: 90%; margin: 0 auto; padding-bottom: 30px;'
+  h1 style='text-align: center; font-weight: bold; padding: 20px 25px;'
+    | Hello Superadmin #{@superadmin.first_name}!
+  hr style='width: 90%; text-align: center;'
+  h2 style='text-align: center;'
+    | Organization created successfully:
+  table style='margin:auto; font-size: 23px; padding: 10px;'
+    tr
+      td = @organization.name  
+    tr
+      td Logo: 
+      td = image_tag "#{@organization.logo}"
+    tr
+      td Monthly points: 
+      td = @organization.monthly_point
+    tr
+      td Created at:
+      td = @organization.created_at.strftime("%d - %m - %Y %I:%M%p") 
+  p style='text-align: center;'
+    = link_to admin_organization_url(@organization)
+      button style='cursor: pointer; font-size: 16px; color: #fff; text-decoration: none; border-radius: 3px; line-height: 35px; background-color: #989ba0; display: inline-block'
+        span Show Organization

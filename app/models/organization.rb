@@ -27,10 +27,15 @@ class Organization < ApplicationRecord
   validates :monthly_point, numericality: { only_integer: true }
 
   after_commit :add_role
+  after_create :send_mail_to_superadmin
 
   private
 
   def add_role
     self.roles.create(role: :admin, user_id: user_id)
   end 
+
+  def send_mail_to_superadmin
+    SuperadminMailer.superadmin_notification(self).deliver_now
+  end
 end

@@ -1,0 +1,35 @@
+<main class="my-5">
+    <div class="container-fluid">
+        <h4 class="mb-5 text-center"><strong>Latest posts</strong></h4>
+        <div class="col d-flex position-relative ">
+            <div class="col-lg-2 m-5">
+                <div class="position-fixed fixed-left">
+                    <%= render 'posts/categories'%>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-12 text-center">
+                <div class="row">
+                    <% @posts.each do |post| %>
+                        <div class="col-4 col-lg-4  col-md-12 mb-4">
+                            <div class="card shadow p-3 mb-5 bg-white rounded border-0">
+                                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                                    <%= image_tag post.image, class: 'img-fluid', size: '900x400' %>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= post.title %></h5>
+                                    <p class="card-text">
+                                        <%= truncate post.description, length: 80 %>
+                                    </p>
+                                    <%= button_to 'Read more', post_path(post), method: :get, class:"button btn btn-outline-secondary nav-btn card-button" %>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+                <div class="digg_pagination">
+                    <%= will_paginate @posts, :container => false %>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

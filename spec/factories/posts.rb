@@ -4,10 +4,12 @@
 #
 #  id           :bigint           not null, primary key
 #  description  :text
+#  image        :string
 #  published_at :datetime
 #  title        :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  category_id  :integer
 #  user_id      :bigint           not null
 #
 # Indexes
@@ -23,6 +25,8 @@ FactoryBot.define do
     title { Faker::Movies::Hobbit.character}
     description { Faker::Lorem.sentence(word_count: 230) }
     published_at { Time.zone.now + 10.minutes }
+    image { Faker::LoremFlickr.image(size: '2000x1000', search_terms: ['posts']) }
     user
+    category
   end
 end

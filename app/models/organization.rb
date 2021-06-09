@@ -22,6 +22,7 @@ class Organization < ApplicationRecord
   has_many :roles
   belongs_to :user
   has_many :users, through: :roles
+  has_many :posts, through: :users
 
   validates :name, presence: true
   validates :monthly_point, numericality: { only_integer: true }

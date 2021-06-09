@@ -4,10 +4,12 @@
 #
 #  id           :bigint           not null, primary key
 #  description  :text
+#  image        :string
 #  published_at :datetime
 #  title        :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  category_id  :integer
 #  user_id      :bigint           not null
 #
 # Indexes
@@ -20,6 +22,7 @@
 #
 class Post < ApplicationRecord
   belongs_to :user
+  belongs_to :category
 
   validates :title, :description, presence: true
 

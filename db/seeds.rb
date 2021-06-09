@@ -10,3 +10,9 @@ Organization.all.each do |organization|
 end
 
 FactoryBot.create_list(:feedback, 10)
+
+FactoryBot.create_list(:category, 3)
+
+Category.all.each do |category|
+  FactoryBot.create_list(:post, 3, category: category)
+end

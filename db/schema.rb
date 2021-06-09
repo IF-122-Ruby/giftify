@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_06_165235) do
+ActiveRecord::Schema.define(version: 2021_06_09_205744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_categories_on_name", unique: true
+  end
 
   create_table "feedbacks", force: :cascade do |t|
     t.string "name", null: false
@@ -43,6 +50,8 @@ ActiveRecord::Schema.define(version: 2021_06_06_165235) do
     t.datetime "published_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image"
+    t.integer "category_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 

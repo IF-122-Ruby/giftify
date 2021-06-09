@@ -1,0 +1,14 @@
+$main-color: #450683;
+$main-color-hover: #6f0683;
+
+.card-button {
+    transition: all 0.5s ease 0s;
+}
+.card-button:hover {
+    background-color: rgb(111,6,131);
+    color: #fff;
+    transform: translateY(-2px);
+}
+.list-group-item.active {
+    background-color: $main-color-hover;
+}

@@ -1,0 +1,32 @@
+<main class="my-5">
+    <div class="container-fluid">
+        <h1 class="fw-bolder mb-1 text-center"><%= @post.title%></h1>
+        <div class="col d-flex position-relative ">
+            <div class="col-lg-2 m-5">
+                <div class="position-fixed fixed-left"> 
+                    <%= render 'posts/categories'%>
+                </div>
+            </div>
+            <div class="col-lg-8r">
+                   
+                    <article>
+                       
+                        <header class="mb-4">
+                            
+                            
+                            <div class="text-muted fst-italic mb-2 ">Posted <%= @post.created_at%></div>
+                           
+                        </header>
+                      
+                        <figure class="mb-4 text-center">
+                            <%= image_tag @post.image, class: 'img-thumbnail rounded', size: '900x400' %>
+                        </figure>
+                       
+                        <section class="mb-5">
+                            <p class="fs-5 mb-4 lead p-3" style="text-align: justify; text-justify: inter-word;"> &nbsp &nbsp &nbsp &nbsp &nbsp <%= @post.description%></p>
+                        </section>
+                    </article>
+                </div>
+       </div>
+    </div>
+</main> 

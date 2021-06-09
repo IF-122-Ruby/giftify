@@ -2,20 +2,19 @@
   background-color: #f3f4f7;
 }
 
-.test {
+.change-color {
   transition: .4s;
 }
 
-.test:hover {
+.change-color:hover {
   transition: .4s;
   color: rgba(3, 169, 244, 0.7);
 }
 
-.item-hover {
-  background-color: white;
+.change-bg-color {
+  background-color: transparent;
 }
 
-.item-hover:hover {
+.change-bg-color:hover {
   background-color: #f3f4f7;
 }
-

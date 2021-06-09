@@ -4,11 +4,5 @@
       h1 Gift
       table.table
         thead
-          tr
-            th.text-center scope="col" Name
-            th.text-center scope="col" Description
-            th.text-center scope="col" Amount
-            th.text-center scope="col" Price
-            th.text-center scope="col" Type
-            th.text-center
+          = render 'account/gifts/gift_table_head'
         tr = render "account/gifts/gift", gift: @gift

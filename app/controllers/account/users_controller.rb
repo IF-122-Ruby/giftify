@@ -1,4 +1,5 @@
 class Account::UsersController < Account::AccountsController
+
   def index
     @users = collection
     authorize([:account, @users])

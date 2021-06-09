@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   }
 
   namespace :account do
+    resources :gifts
     resources :users, except: [:create, :new]
   end
   

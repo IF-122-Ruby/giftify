@@ -1,4 +1,3 @@
-
 FactoryBot.create_list(:user, 2)
 
 User.all.each do |user|
@@ -12,5 +11,3 @@ end
 FactoryBot.create_list(:feedback, 30)
 
 FactoryBot.create(:user, :superadmin)
-
-

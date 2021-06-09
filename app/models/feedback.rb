@@ -30,7 +30,7 @@ class Feedback < ApplicationRecord
 
   validates :reason, inclusion: { in: REASONS }
 
-  def mark_as_viewed
+  def mark_as_viewed!
     self.viewed = true
     self.save!
   end

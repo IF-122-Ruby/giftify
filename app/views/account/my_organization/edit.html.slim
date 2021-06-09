@@ -1,8 +1,9 @@
 .row
-  .col-8.offset-md-2
-    .card-body.shadow-sm.p-3.mb-5.bg-white.rounded  
-      h4.header-title.mt-0 New Gift
-      = simple_form_for @organization, url: account_my_organization_path, html: { autocomplete: 'off', class: 'form' } do |f|
-        = f.input :monthly_point, label: 'Write monthly point', as: :integer, input_html: { class: 'form-control form__input' }
-        = f.file_field :logo, label: "Change logo", class: "form-control-file d-block form__input"
-        = f.submit "Send", class: "btn btn-light"
+  .d-flex.justify-content-center
+    .col-4
+      .card-body.shadow-sm.p-3.mb-5.bg-white.rounded  
+        h4.header-title.mt-0 New Gift
+        = simple_form_for @organization, url: account_my_organization_path, html: { autocomplete: 'off', class: 'form' } do |f|
+          = f.input :monthly_point, label: 'Write monthly point', as: :integer, input_html: { class: 'form-control form__input' }
+          = f.file_field :logo, label: "Change logo", class: "form-control-file d-block form__input"
+          = f.submit "Send", class: "btn btn-light"

@@ -8,12 +8,6 @@ Organization.all.each do |organization|
   FactoryBot.create_list(:user, 10, organization: organization, password: '123456')
 end
 
-FactoryBot.create_list(:feedback, 10)
-
-user = FactoryBot.create(:user)
-FactoryBot.create(:organization, user: user)
-user.role.update(role: Role::SUPERADMIN)
-
 FactoryBot.create_list(:feedback, 30)
 
 FactoryBot.create(:user, :superadmin)

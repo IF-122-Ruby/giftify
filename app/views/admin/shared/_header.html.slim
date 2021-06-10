@@ -6,13 +6,13 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-white.shadow-sm.p-3.bg-white.rounded
     #navbarSupportedContent.collapse.navbar-collapse
       .navbar-nav.me-auto.mb-2.mb-lg-0
         = link_to "Home page", root_url, class: "text-decoration-none text-dark text-bold"
-      .d-flex.justify-content-start
+      .d-flex.justify-content-center
         button.btn.btn-secondary.m-1
           i.fas.fa-bell
         .btn-group
           button.btn.btn-secondary.dropdown-toggle.m-1 aria-expanded="false" data-bs-toggle="dropdown" type="button"
             i.fas.fa-cog
-          ul.dropdown-menu.dropdown-menu-start.shadow-sm.p-3.mb-5.bg-white.rounded
+          ul.dropdown-menu.dropdown-menu-end.shadow-sm.p-3.mb-5.bg-white.rounded
             .d-flex.align-items-center.change-color
               i.fas.fa-user-circle.m-1
               = link_to "My account", root_url, class: "text-decoration-none text-reset"

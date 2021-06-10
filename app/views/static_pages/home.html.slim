@@ -1,63 +1,66 @@
 .home-page.justify-content-center
-  section.head
+  section.tools
+    h1.title SIMPLE AND EASY TO USE
     .container
       .row
-        .col-lg-6.title
-          h1 ENJOY YOUR WORK AND HAVE FAN WITH US
-        .col-lg-6
-          .section-content
-            = image_tag 'section1_icon1.png', class: 'icon1 icons'
-            = image_tag 'section1_icon2.png', class: 'icon2 icons'
-            = image_tag 'section1_main_photo.jpg', class: 'head-img'
+        .col-lg-3
+          .text
+            p
+             | sfsff
+        .col-lg-7.offset-lg-2
+          .container
+            .d-flex.align-items-start.tool-link
+              #v-pills-tab.nav.flex-column.nav-pills.me-3.tool-menu aria-orientation="vertical" role="tablist"
+                button#v-pills-home-tab.nav-link.active aria-controls="v-pills-home" aria-selected="true" data-bs-target="#v-pills-home" data-bs-toggle="pill" role="tab"
+                  = image_tag 'section3_icon_get_culture.png', class: 'icon-img'
+                  | Get Culture Insights
+                button#v-pills-profile-tab.nav-link aria-controls="v-pills-profile" aria-selected="false" data-bs-target="#v-pills-profile" data-bs-toggle="pill" role="tab"
+                  = image_tag 'section3_icon_recognition.png', class: 'icon-img'
+                  | Give Recognition
+                button#v-pills-messages-tab.nav-link aria-controls="v-pills-messages" aria-selected="false" data-bs-target="#v-pills-messages" data-bs-toggle="pill" role="tab"
+                  = image_tag 'section3_icon_rewargs.png', class: 'icon-img'
+                  | Offer Rewards
 
+              #v-pills-tabContent.tab-content
+                #v-pills-home.tab-pane.fade.show.active aria-labelledby="v-pills-home-tab" role="tabpanel"
+                  = image_tag 'section3_get_culture.jpg', class: 'tool-img'
+
+                #v-pills-profile.tab-pane.fade aria-labelledby="v-pills-profile-tab" role="tabpanel"
+                  = image_tag 'section3_recognition.jpg', class: 'tool-img'
+
+                #v-pills-messages.tab-pane.fade aria-labelledby="v-pills-messages-tab" role="tabpanel"
+                  = image_tag 'section3_offer_rewards.jpg', class: 'tool-img'
 
   section.organizations
+    h1.title ORGANIZATIONS THAT SUPPORT US
     .container
       .row
-        .col-lg-6
-          .orgs
-            = image_tag 'section2_coax.png', class: 'org-img'
-            = image_tag 'section2_softserve.png', class: 'org-img'
-            = image_tag 'section2_beetroot.png', class: 'org-img'
-            
-        .col-lg-6.title
-          h1 ORGANIZATIONS THAT SUPPORT US
+        .col-lg-4
+          .rectangle
+          = image_tag 'section2_beetroot.png', class: 'org-img'
 
-  section.tools
-    .container
-      .row
-        .col-lg-6.title
-          h1 SIMPLE AND EASY TO USE
-        .col-lg-6
-          .tools-content
-            .container
-              .d-flex.align-items-start.tool-link
-                #v-pills-tab.nav.flex-column.nav-pills.me-3.tool-menu aria-orientation="vertical" role="tablist"
-                  button#v-pills-home-tab.nav-link.active aria-controls="v-pills-home" aria-selected="true" data-bs-target="#v-pills-home" data-bs-toggle="pill" role="tab"
-                    = image_tag 'section3_icon_get_culture.png', class: 'icon-img'
-                    | Get Culture Insights
-                  button#v-pills-profile-tab.nav-link aria-controls="v-pills-profile" aria-selected="false" data-bs-target="#v-pills-profile" data-bs-toggle="pill" role="tab"
-                    = image_tag 'section3_icon_recognition.png', class: 'icon-img'
-                    | Give Recognition
-                  button#v-pills-messages-tab.nav-link aria-controls="v-pills-messages" aria-selected="false" data-bs-target="#v-pills-messages" data-bs-toggle="pill" role="tab"
-                    = image_tag 'section3_icon_rewargs.png', class: 'icon-img'
-                    | Offer Rewards
+        .col-lg-4.offset-lg-4
+          = image_tag 'section2_coax.png', class: 'org-img'
 
-                #v-pills-tabContent.tab-content
-                  #v-pills-home.tab-pane.fade.show.active aria-labelledby="v-pills-home-tab" role="tabpanel"
-                    = image_tag 'section3_get_culture.jpg', class: 'tool-img'
+        .col-lg-4.offset-lg-4
+          = image_tag 'section2_softserve.png', class: 'org-img'
 
-                  #v-pills-profile.tab-pane.fade aria-labelledby="v-pills-profile-tab" role="tabpanel"
-                    = image_tag 'section3_recognition.jpg', class: 'tool-img'
+  section.head
+    .head-rectangle
+      h1.title ENJOY YOUR WORK AND HAVE FAN WITH US
+      .head-content
+        = image_tag 'teamwork-and-team-building.png', class: 'head-img'
 
-                  #v-pills-messages.tab-pane.fade aria-labelledby="v-pills-messages-tab" role="tabpanel"
-                    = image_tag 'section3_offer_rewards.jpg', class: 'tool-img'
+        p.text Lorem ipsum...
 
   section.posts
     .container
       .row
-        .col-lg-6.title
-          h1  SHARE YOUR NEWS WITH OTHERS
-        .col-lg-6
-          .posts-content
+        .col-lg-5
+          .posts-rectangle
+            .text-rectangle
+            h1.title  SHARE YOUR NEWS WITH OTHERS
+            p.text TEXT
+        .col-lg-6.offset-lg-1
+          .post-img
             = image_tag 'section1_main_phot.jpg', class: 'post'

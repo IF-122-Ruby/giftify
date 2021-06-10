@@ -1,85 +1,157 @@
 .home-page {
-  padding-left: 2rem;
-  padding-right: 2rem;
   margin-left: 250px;
-  margin-top: 150px;
 
   section {
     width: 100%;
     display: block;
-    margin-top: 5rem;
+    padding-top: 7rem;
+    padding-bottom: 2rem;
+    background: #ffffff;
 
     .title {
-      display: flex;
-      vertical-align: middle;
-      h1 {
-        text-align: center;
-        margin-bottom: 2rem;
-        font-size: 28px;
-        font-weight: 400;
-      }
+      padding-bottom: 1rem;
+      padding-left: 3rem;
+      font-size: 72px;
+      font-weight: 400;
+      line-height: 83.16px;
+      font-style: normal;
     }
+  }
 
-    .section-content {
+  .head {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+
+    .head-content {
+      margin-left: 5rem;
+      margin-top: 7rem;
+
       .head-img {
-        position: relative;
-        width: 100%;
-        height: auto;
-        border-radius: 17px;
+        display: inline;
+        float: left;
+        width: 55%;
+        height: 65%;
       }
-      .icons {
+
+      .text {
+        display: inline;
+        padding-left: 3rem;
+        padding-top: 5rem;
+      }
+    }
+
+    .head-rectangle {
+      position: absolute;
+      width: 1304px;
+      height: 680px;
+
+      background: #7954BD;
+    }
+
+    .title {
+      margin-top: 4rem;
+      width: 80%;
+      padding-left: 3rem;
+    }
+  }
+
+  //section2
+  .organizations {
+    .rectangle {
+      position: absolute;
+      width: 721px;
+      height: 361px;
+      top: 46rem;
+      left: 25.8rem;
+
+      border: 3px solid #734DBC;
+      box-sizing: border-box;
+    }
+
+    .title {
+      padding-bottom: 5rem;
+      text-align: center;
+    }
+  }
+  .org-img {
+    position: relative;
+    width: 100%;
+  }
+
+  //section3
+  .tools {
+    background: #f3ebff;
+    .tool-link {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .title {
+      padding-left: 10.5rem;
+    }
+
+    .icon-img {
+      margin-right: 0.5rem;
+    }
+
+    .tool-menu {
+      margin-right: 2rem;
+      text-align: left;
+    }
+
+    .title {
+        width: 45%;
+    }
+  }
+
+  //section4
+  .posts {
+    .container {
+      margin-left: 0;
+    }
+    .posts-rectangle {
+      float:left;
+      margin-top: 36rem;
+      margin-left: 4.2rem;
+      width: 378px;
+      height: 1000px;
+      background: #F3EBFF;
+
+      .text-rectangle {
+        margin-top: 13rem;
+        vertical-align: middle;
         position: absolute;
+        width: 374px;
+        height: 780px;
+        background: rgba(121, 84, 189, 0.43);
+        filter: blur(200px);
       }
 
-      .icon1 {
-        width: 15%;
-        right: 43rem;
-        top: 20rem;
-
-        transform: rotate(-20deg);
+      .title {
+        padding-left: 0;
+        text-align: center;
+        margin-top: 13rem;
       }
-
-      .icon2 {
-        width: 10%;
-        right: 0.5rem;
-        top: 27rem;
-
-        transform: rotate(13deg);
+      .text {
+        margin-left: 5rem;
+        margin-top: 5rem;
       }
     }
 
-    //section2
-    .orgs {
-      .org-img {
-        width: 33%;
-      }
-    }
+    .post-img {
+      float:left;
+      margin-top: 40rem;
+      width: 827px;
+      float: left;
+      height: 917px;
+      background: #7954BD;
 
-    //section3
-    .tools-content {
-      .tool-link {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .tool-img {
-        max-width: 500px;
-      }
-
-      .icon-img {
-        margin-right: 0.5rem;
-      }
-
-      .tool-menu {
-        text-align: left;
-      }
-    }
-
-    //section4
-    .posts-content {
-      margin-bottom: 5rem;
       .post {
-        width: 100%;
+        margin-top: 1.3rem;
+        float: right;
+        justify-content: flex-end;
+        width: 98%;
+        height: 98%;
       }
     }
   }

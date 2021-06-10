@@ -9,6 +9,10 @@
   background-color: #ffffff;
   -webkit-box-shadow: 0 0.05rem 0.01rem rgba(75, 75, 90, 0.075);
           box-shadow: 0 0.05rem 0.01rem rgba(75, 75, 90, 0.075);
+          
+  .text-logo {
+    color: black;
+  }
 }
 
 .left-side-menu {
@@ -34,7 +38,7 @@
   & #menu-bar {
     & ul {
       list-style: none;
-      
+
       li{
         & a {
           color: #4B4B5A;

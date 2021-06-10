@@ -5,4 +5,8 @@ module PostsHelper
     return class_name + 'active' if category_name == params_category_name
     class_name
   end
+
+  def set_count_posts_for_category(category_id)
+    Post.published.group_by(&:category_id).transform_values(&:count)[category_id]
+  end
 end

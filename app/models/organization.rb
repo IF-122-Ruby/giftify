@@ -22,7 +22,6 @@ class Organization < ApplicationRecord
   has_many :roles
   belongs_to :user
   has_many :users, through: :roles
-  has_many :posts, through: :users
   has_many :gifts
 
   validates :name, presence: true

@@ -12,3 +12,13 @@ $main-color-hover: #6f0683;
 .list-group-item.active {
     background-color: $main-color-hover;
 }
+
+.paragraph-description-post {
+    text-align: justify; 
+    text-justify: inter-word;
+    text-indent: 50px;
+}
+
+.badge-bg-color {
+    background-color: $main-color-hover
+}

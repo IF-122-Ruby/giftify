@@ -1,39 +1,25 @@
-.registration-block
+.registration-container.col-xl-3.col-lg-3.col-md-3.col-sm-12.col-xs-12
   = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    h1 Register new account
-    .form-group
-      .input-group
-        span.input-group-addon
-          i.fas.fa-building
-        = f.fields_for :owned_organization, resource.build_owned_organization do |organization|
-          = organization.input :name, label: false, autofocus: true, placeholder: 'organization name'
-    hr.hr-xs
-    .form-group
-      .input-group
-        span.input-group-addon
-          i.fas.fa-user
-        = f.input :first_name, label: false, placeholder: "first name"
-    hr.hr-xs
-    .form-group
-      .input-group
-        span.input-group-addon
-          i.fas.fa-envelope
-        = f.input :email, label: false, placeholder: "email", required: true
-    hr.hr-xs
-    .form-group
-      .input-group
-        span.input-group-addon
-          i.fas.fa-lock
-        = f.input :password, label: false, placeholder: "password", required: true
-    hr.hr-xs
-    .form-group
-      .input-group
-        span.input-group-addon
-          i.fas.fa-lock
-        = f.input :password_confirmation, label: false, placeholder: "confirm password", required: true
-    hr.hr-xs
-    = f.submit "Sign up", class: "btn btn-primary btn-block"
-  .registration-links
-    p.text-center
-      | Already have an account?
-      a.txt-brand href="user-login.html"  Login
+    .text-center
+      h3 Create new account
+    .form-input.mt-4
+      = f.fields_for :owned_organization, resource.build_owned_organization do |organization|
+        p.fs-6.text-secondary.mb-0 Organization name
+        = organization.input :name, label: false, input_html: {class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0'}, label_html: {class: "registration-label text-start"}
+    .form-input.mt-2
+      p.fs-6.text-secondary.mb-0 First name
+      = f.input :first_name, label: false, required: true, input_html: {class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0'}, label_html: {class: "registration-label fs-6 text"}
+      p.fs-6.text-secondary.mb-0 Last name
+      = f.input :last_name, label: false, required: true, input_html: { class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0' }, label_html: {class: "registration-label fs-6 text"}
+    .form-input.mt-2
+      p.fs-6.text-secondary.mb-0 E-mail
+      = f.input :email, label: false, required: true, input_html: {class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0'}, label_html: {class: "registration-label fs-6 text"}
+    .form-input.mt-2
+      p.fs-6.text-secondary.mb-0 Password
+      = f.input :password, label: false, required: true, input_html: {class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0'}, label_html: {class: "registration-label fs-6 text"}
+    .form-input.mt-2.mb-4
+      p.fs-6.text-secondary.mb-0 Retype password
+      = f.input :password_confirmation, label: false, required: true, input_html: {class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0'}, label_html: {class: "registration-label fs-6 text"}
+    .text-center
+      = f.submit "Sign up", class: "btn btn-primary btn-block mt-2"
+      p.mt-3 Already have an account? #{link_to "Login", new_user_session_path}

@@ -5,6 +5,7 @@ $main-color-hover: #6f0683;
   position: sticky;
   top: 0;
   z-index: 10;
+  background: linear-gradient(90deg, rgb(111,6,131) 50%, rgb(69,6,131) 100%);
 
   .navbar-toggler {
     border-color: rgba(255,255,255,0.5);
@@ -37,6 +38,22 @@ $main-color-hover: #6f0683;
     }
 
     &:hover {
+      background: rgb(111,6,131);
+    }
+  }
+}
+
+.menu {
+  background-color: $main-color;
+  width: 30%;
+  height: 100%;
+  float: left;
+  height: 100rem;
+
+body {
+  background: #F7F7F7;
+  min-height: 100vh;
+}
 
 .sidebar {
   position: fixed;
@@ -77,4 +94,4 @@ $main-color-hover: #6f0683;
   margin-top: 100px;
   padding-left: 10px;
 }
-}}}
+}

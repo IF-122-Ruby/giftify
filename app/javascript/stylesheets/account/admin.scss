@@ -1,18 +1,21 @@
 @import "bootstrap";
 
-.change-color {
-  transition: .4s;
+.sidebar,.dropdown-menu {
+    .change-color {
+      transition: .2s;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+    .change-bg-color {
+      background-color: transparent;
+
+    &:hover {
+      background-color: #f3f4f7;
+    }
+  }
 }
 
-.change-color:hover {
-  transition: .4s;
-  color: rgba(3, 169, 244, 0.7);
-}
 
-.change-bg-color {
-  background-color: transparent;
-}
 
-.change-bg-color:hover {
-  background-color: #f3f4f7;
-}

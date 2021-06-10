@@ -10,4 +10,4 @@ end
 
 FactoryBot.create_list(:feedback, 30)
 
-FactoryBot.create(:user, :superadmin)
+FactoryBot.create(:user, :superadmin, email: "giftify@gmai.com", password: "123giftify456")

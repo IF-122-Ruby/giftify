@@ -4,6 +4,7 @@ AnyLogin.setup do |config|
 
   # # enabled or not
   config.enabled = Rails.env.to_s == 'production'
+  config.enabled = Rails.env.to_s == 'development'
 
   # # Account, User, Person, etc
   # config.klass_name = 'User'

@@ -45,10 +45,10 @@ class User < ApplicationRecord
 
   def self.grouped_collection_by_role
     {
-      'admin' => User.admins,
-      'manager' => User.managers,
-      'user' => User.users,
-      'superadmin' => User.superadmins
+      'admin' => User.admins.limit(10),
+      'manager' => User.managers.limit(10),
+      'user' => User.users.limit(10),
+      'superadmin' => User.superadmins.limit(10)
     }
   end
 end

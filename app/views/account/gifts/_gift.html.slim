@@ -1,8 +1,0 @@
-td = gift.name
-td = gift.description
-td = gift.amount
-td = gift.price
-td = gift.gift_type
-td.d-flex.justify-content-around
-  = link_to 'Edit', edit_account_gift_path(gift), class: 'link-secondary'
-  = link_to 'Delete', account_gift_path(gift), method: :delete, class: 'link-secondary'

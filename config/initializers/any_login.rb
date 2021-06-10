@@ -3,8 +3,7 @@ AnyLogin.setup do |config|
   # config.provider = nil
 
   # # enabled or not
-  config.enabled = Rails.env.to_s == ENV["RAILS_ENV"]
-
+  config.enabled = Rails.env.to_s
   # # Account, User, Person, etc
   # config.klass_name = 'User'
 

@@ -1,8 +1,23 @@
-.content-page.mt-4
-  .content
-    .container-fluid
-      h1 Gift
-      table.table
-        thead
-          = render 'account/gifts/gifts_table'
-        tr = render "account/gifts/gift", gift: @gift
+.d-flex.align-content-center
+  .col.offset-md-2
+    .card.card-body.shadow-lg.p-4.mb-2.bg-white.rounded.gift-card
+      .d-flex.flex-direction-row
+        .card-body.gift-card__description
+          h5.card-title 
+            = @gift.name
+          p.card-text
+            = @gift.description
+        .card-body
+          ul.list-group
+            li.list-group-item 
+              | Price: 
+              = @gift.price
+            li.list-group-item 
+              | Amount: 
+              = @gift.amount
+            li.list-group-item 
+              | Gift type: 
+              = @gift.gift_type
+          .card-body
+          = link_to 'Edit', edit_account_gift_path(@gift), class: 'btn btn-primary gift-card__button'
+          = link_to 'Delete', account_gift_path(@gift), class: 'btn btn-light gift-card__button', method: :delete

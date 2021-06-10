@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Account::MyOrganizationPolicy, type: :policy do
+RSpec.describe Account::OrganizationPolicy, type: :policy do
   let(:user) { create(:user, :simple) }
   let(:admin) { create(:user, :admin) }
 

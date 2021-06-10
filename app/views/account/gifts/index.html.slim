@@ -1,12 +1,26 @@
-.row
+.col
   .col-8.offset-md-2
     .card-body.shadow-lg.p-4.mb-2.bg-white.rounded
       h2 = current_organization.name
       = link_to 'New gift', new_account_gift_path, class: 'd-flex flex-row-reverse link-info'
       table.table
         thead
-          = render 'account/gifts/gifts_table'
+          tr
+            th.text-center scope="col" Name
+            th.text-center scope="col" Description
+            th.text-center scope="col" Amount
+            th.text-center scope="col" Price
+            th.text-center scope="col" Type
+            th.text-center
         tbody
           - @gifts.each do |gift|
-            tr = render 'account/gifts/gift', gift: gift
-          
+            tr
+              td = gift.name
+              td = gift.description
+              td = gift.amount
+              td = gift.price
+              td = gift.gift_type
+              td.d-flex.justify-content-around.flex-wrap
+                = link_to 'Show', account_gift_path(gift), class: 'link-secondary'
+                = link_to 'Edit', edit_account_gift_path(gift), class: 'link-secondary'
+                = link_to 'Delete', account_gift_path(gift), method: :delete, class: 'link-secondary'

@@ -6,7 +6,7 @@ set :repo_url, "git@github.com:IF-122-Ruby/giftify.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-set :branch,      fetch(:branch, 'deploy_test')
+set :branch, 'main')
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/home/deploy/#{fetch :application}"
 

@@ -21,10 +21,10 @@ gem 'will_paginate'
 gem 'carrierwave'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'any_login'
 
 group :development, :test do
   gem 'annotate'
-  gem 'any_login'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails'
   gem 'pry'
@@ -34,6 +34,7 @@ end
 group :test do
   gem 'capybara'
   gem 'shoulda-matchers', '~> 4.0'
+  gem 'simplecov', require: false
 end
 
 group :development do
@@ -45,6 +46,10 @@ group :development do
   gem 'rack-mini-profiler', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'capistrano', '~> 3.11'
+  gem 'capistrano-rails', '~> 1.4'
+  gem 'capistrano-passenger', '~> 0.2.0'
+  gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

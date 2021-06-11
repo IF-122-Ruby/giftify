@@ -29,11 +29,12 @@ class Post < ApplicationRecord
   belongs_to :category
 
   scope :published,         -> { where('published_at <= ?', Time.zone.now) }
-  scope :ordered_by_create, -> { order(:created_at) }
+  scope :ordered,           -> { order(:created_at) }
+  scope :by_category_name,  -> (name) { where('name = ?', name) }
 
   validates :title, :description, presence: true
 
   def published?
-    published_at.present? && published_at <= Time.zone.now
+    published_at.present? && published_at <= Time.zone.now 
   end
 end

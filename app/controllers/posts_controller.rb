@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = collection.paginate(page: params[:page], per_page: 6).ordered_by_create
+    @posts = collection.paginate(page: params[:page], per_page: 6).ordered
   end
 
   def show
@@ -11,7 +11,7 @@ class PostsController < ApplicationController
 
   def collection
     if params[:category_name]
-      Post.joins(:category).where(category: { name: params[:category_name] }).published
+      Post.joins(:category).by_category_name(params[:category_name]).published
     else
       Post.published
     end

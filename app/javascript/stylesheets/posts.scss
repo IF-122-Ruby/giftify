@@ -1,21 +1,23 @@
 .card-button {
-    transition: all 0.5s ease 0s;
-}
-.card-button:hover {
+  transition: all 0.5s ease 0s;
+
+  &:hover {
     background-color: $main-color-hover;
     color: #fff;
     transform: translateY(-2px);
+  }
 }
+
 .list-group-item.active {
-    background-color: $main-color-hover;
+  background-color: $main-color-hover;
 }
 
 .paragraph-description-post {
-    text-align: justify; 
-    text-justify: inter-word;
-    text-indent: 50px;
+  text-align: justify;
+  text-justify: inter-word;
+  text-indent: 50px;
 }
 
 .badge-bg-color {
-    background-color: $main-color-hover
+  background-color: $main-color-hover
 }

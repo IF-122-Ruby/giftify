@@ -14,7 +14,8 @@
 class Category < ApplicationRecord
   has_many :posts, dependent: :destroy
 
-  scope :ordered_by_name, -> { order(:name) }
+  scope :ordered_by_name,  -> { order(:name) }
+  
 
   validates :name, presence: true
   validates_uniqueness_of :name

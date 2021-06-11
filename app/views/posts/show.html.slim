@@ -7,7 +7,7 @@
       .col-lg-10.col-md-12
         header.mb-4
           .text-muted.fst-italic.mb-2
-            | Posted #{I18n.l(@post.created_at, format: :short)}
+            | Posted #{l(@post.created_at, format: :short)}
         figure.mb-4.text-center
           = image_tag @post.image.url, class: 'img-thumbnail rounded', size: '900x400'
         section.mb-5

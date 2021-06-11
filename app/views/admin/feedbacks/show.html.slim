@@ -7,12 +7,11 @@
             .row 
               .col-md-8
                 h3.card-title.m-2  
-                  = @feedback.name
+                = @feedback.name
               .col-6.col-md-4.text-muted 
-                = @feedback.created_at.strftime("Received on: %d %B at: (%I:%M), %Y")
-            .row 
-              .col-4.d-flex.justify-content-space-between
-                h6.card-subtitle.m-2.text-muted   From: 
+                = I18n.l(@feedback.created_at, format: :received)
+              .col-6.d-flex.justify-content-space-between
+                h6.card-subtitle.m-2.text-muted From: 
                 h6.card-subtitle.m-2.text-muted 
                   = @feedback.email
             dl.row
@@ -27,4 +26,4 @@
               dt.col-sm-3 Message:
               dt.col-lg = @feedback.message
             .d-flex.flex-row-reverse 
-              = button_to "Close Feedback", admin_feedbacks_path(page: 1), method: :get, class: "btn btn-outline-danger"
+              = link_to "Close Feedback", admin_feedbacks_path, class: "btn btn-outline-danger"

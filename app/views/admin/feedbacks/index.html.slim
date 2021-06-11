@@ -22,9 +22,9 @@
                   th.size-column 
                     = feedback.message.truncate(15, omission: '...')
                   th.size-column 
-                    = feedback.created_at.strftime("%Y-%m-%d")
+                    = I18n.l(feedback.created_at, format: :short_date)
                   th.size-column 
-                    = button_to "Read message", admin_feedback_path(feedback), method: :get, class: "btn btn-outline-primary"
+                    = link_to "Read message", admin_feedback_path(feedback), class: "btn btn-outline-primary"
              
           .digg_pagination.d-flex.justify-content-center
             = will_paginate @feedback

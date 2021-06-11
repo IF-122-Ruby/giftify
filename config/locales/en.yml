@@ -30,4 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  time:
+    formats:
+      short_date: "%Y-%m-%d"
+      received: "Received on: %d %B at: (%I:%M), %Y"

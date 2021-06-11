@@ -1,0 +1,16 @@
+.registration-container.col-xl-3.col-lg-3.col-md-3.col-sm-12.col-xs-12
+  = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .text-center
+      h3 Log In
+      .form-input.mt-2
+        p.fs-6.text-secondary.mb-0 E-mail
+        = f.input :email, label: false, required: true, input_html: {class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0'}
+      .form-input.mt-2
+        p.fs-6.text-secondary.mb-0 Password
+        = f.input :password, label: false, required: true, input_html: {class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0'}
+    - if devise_mapping.rememberable?
+      .field
+        = f.input :remember_me, as: :boolean
+    .actions
+      = f.submit "Log in"
+  = render "users/shared/links"

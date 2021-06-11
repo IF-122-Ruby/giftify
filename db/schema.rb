@@ -63,7 +63,8 @@ ActiveRecord::Schema.define(version: 2021_06_09_205744) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
-    t.integer "category_id"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -94,5 +95,6 @@ ActiveRecord::Schema.define(version: 2021_06_09_205744) do
   end
 
   add_foreign_key "organizations", "users"
+  add_foreign_key "posts", "categories"
   add_foreign_key "posts", "users"
 end

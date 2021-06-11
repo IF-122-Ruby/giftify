@@ -1,8 +1,8 @@
 h3.mb-3= link_to 'Categories', posts_path, class: 'list-group-item list-group-item-action border-0'
 .list-group
   - Category.ordered_by_name.each do |category|
-    = link_to(posts_path(category_name: category.name), class: set_class_for_category_link(category.name, params[:category_name])) do
+    = link_to(posts_path(category_name: category.name), class: "list-group-item list-group-item-action border-0 #{category.name == params[:category_name] ? 'active' : ''}") do
       .d-flex.justify-content-between
         div= category.name
         div
-          span.badge.badge-bg-color= set_count_posts_for_category(category.id)
+          span.badge.badge-bg-color= category.posts.published.count

@@ -10,7 +10,7 @@
             .col-lg-4.col-md-12.mb-4.text-center.btn
               .card.shadow.p-3.mb-5.bg-white.border-0
                 .bg-image
-                  = image_tag post.image, class: 'img-fluid'
+                  = image_tag post.image.url, width: '250', height: '150', class: 'img-fluid'
                 .card-body
                   h5.card-title= post.title
                   p.card-text

@@ -1,12 +1,6 @@
 class PostsController < ApplicationController
-  # include Rails::Pagination
   def index
-    @posts = if params[:category_name]
-      Category.find_by(name: params[:category_name]).posts.published
-    else
-      collection
-    end
-    @posts = @posts.paginate(page: params[:page], per_page: 6).order(:created_at)
+    @posts = collection.paginate(page: params[:page], per_page: 6).ordered_by_create
   end
 
   def show
@@ -16,7 +10,11 @@ class PostsController < ApplicationController
   private
 
   def collection
-    Post.published
+    if params[:category_name]
+      Post.joins(:category).where(category: { name: params[:category_name] }).published
+    else
+      Post.published
+    end
   end
 
   def resource

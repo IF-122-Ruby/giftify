@@ -32,8 +32,14 @@ class Feedback < ApplicationRecord
 
   validates :reason, inclusion: { in: REASONS }
 
+  after_create_commit :new_feedback_notification_to_superadmins
+
   def mark_as_viewed!
     self.viewed = true
     self.save!
+  end
+
+  def new_feedback_notification_to_superadmins
+    SuperadminMailer.send_mail_when_new_feedback_created(self).deliver_now if User.superadmins.any?
   end
 end

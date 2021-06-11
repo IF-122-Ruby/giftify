@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resource :feedback, path: :contact_us, only: [:create, :new]
 
   devise_for :users, controllers: {
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
   }
 
   namespace :account do

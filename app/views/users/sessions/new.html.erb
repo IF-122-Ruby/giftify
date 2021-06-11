@@ -1,3 +1,4 @@
+
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -6,7 +7,7 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
+  <div class="field d-flex flex-direction-row-reverse">
     <%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
@@ -24,3 +25,5 @@
 <% end %>
 
 <%= render "users/shared/links" %>
+
+</div>

@@ -31,7 +31,7 @@ class Organization < ApplicationRecord
 
   after_create_commit :new_organization_notification_to_superadmins
 
-  def new_feedback_notification_to_superadmins
+  def new_organization_notification_to_superadmins
     SuperadminMailer.send_mail_when_new_organization_created(self).deliver_now if User.superadmins.any?
   end
 

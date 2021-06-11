@@ -1,0 +1,7 @@
+h1 = "User #{@feedback.name} sent feedback"
+ul
+  li = "Email - #{@feedback.email}"
+  li = "Subject - #{@feedback.subject}"
+  li = "Reason - #{@feedback.reason}"
+  li = "Created at - #{@feedback.created_at}"
+p = @feedback.message

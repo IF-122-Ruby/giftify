@@ -11,10 +11,10 @@ class PostsController < ApplicationController
 
   def collection
     if params[:category_name]
-      Post.joins(:category).by_category_name(params[:category_name]).published
+      Post.by_category_name(params[:category_name])  
     else
-      Post.published
-    end
+      Post.all
+    end.published
   end
 
   def resource

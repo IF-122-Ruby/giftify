@@ -1,6 +1,41 @@
-- @organizations.each do |organization|
-  ul
-    li = organization.name
+.container.p-0
+  .shadow-sm.py-3
+    .d-flex.justify-content-around.border-bottom
+      .col-1.text-center.h6 Logo
+      .col-1.text-center.h6 ID
+      .col-3.text-center.h6 Organization Name
+      .col-3.text-center.h6 Monthly points
+      .col-3.text-center.h6 Created
+    - @organizations.each do |organization|
+      = link_to admin_organization_path(id: organization.id), class: 'text-decoration-none text-reset' do
+        .border-bottom.
+          .d-flex.justify-content-around.align-items-center.p-1
+            .col-1.text-center
+              = image_tag organization.logo, class: "img-fluid"
+            .col-1.text-center
+              = organization.id
+            .col-3.text-center
+              span = organization.name
+            .col-3.text-center
+              span = organization.monthly_point
+            .col-3.text-center
+              = organization.created_at.to_formatted_s(:short)
 
-    li = link_to "Show", admin_organization_path(id: organization.id)
+
+/ - @organizations.each do |organization|
+/   = link_to admin_organization_path(id: organization.id), class: 'text-decoration-none text-reset' do
+/       .d-flex.justify-content-around.align-items-center
+/         .col-1.text-center
+/           span.p-2
+/             = organization.id
+/         .col-3.text-center
+/           span.p-2
+/             = organization.name.truncate(20)
+/         .col-3.text-center
+/           span.d-none.d-sm-block
+/             = organization.monthly_point
+/         .col-3.text-center.d-none.d-sm-block
+/           = organization.created_at.to_formatted_s(:short)
+/         .col-2.text-center
+/           = button_to "View", admin_organization_path(id: organization.id),class: "text-white btn btn-secondary"
 

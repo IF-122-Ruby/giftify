@@ -24,8 +24,7 @@ module.exports = function(api) {
             node: 'current'
           },
           modules: 'commonjs'
-        },
-        '@babel/preset-react'
+        }
       ],
       (isProductionEnv || isDevelopmentEnv) && [
         '@babel/preset-env',
@@ -35,13 +34,6 @@ module.exports = function(api) {
           corejs: 3,
           modules: false,
           exclude: ['transform-typeof-symbol']
-        }
-      ],
-      [
-        '@babel/preset-react',
-        {
-          development: isDevelopmentEnv || isTestEnv,
-          useBuiltIns: true
         }
       ]
     ].filter(Boolean),

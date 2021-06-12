@@ -1,31 +1,33 @@
 /! Topbar Start
-.navbar.navbar-expand.flex-column.flex-md-row.navbar-custom
+nav.navbar.navbar-expand.flex-column.flex-md-row.navbar-custom
   .container-fluid
     /! LOGO
-    a.navbar-brand.mr-0.mr-md-2.logo
-      span.d-inline.h5.ml-1.text-logo Giftify
-    .d-grid.gap-2.d-md-flex.justify-content-md-end
-      = link_to "Login",  new_user_session_path, class: 'btn btn-soft-primary me-md-2', method: :get
-      = link_to "Sign Up", new_user_registration_path, class: "btn btn-soft-primary", method: :get
+    a.navbar-brand.mr-0.logo
+      span.logo-lg
+        span.d-inline.h5.ml-1.text-logo Giftify
+    button.navbar-toggler aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label=("Toggle navigation") data-bs-target="#navbarNavAltMarkup" data-bs-toggle="collapse" type="button"
+      span.navbar-toggler-icon
+        i.fa.fa-bars
+    ul.navbar-nav.flex-row.ml-auto.d-flex.list-unstyled.topnav-menu.float-right.mb-0
+      li.d-none.d-sm-block
+        = link_to "Login",  new_user_session_path, class: 'btn btn-soft-primary me-md-2', method: :get
+
+      li.d-none.d-sm-block
+        = link_to "Sign Up", new_user_registration_path, class: "btn btn-soft-primary", method: :get
 
 /! end Topbar
 
-.left-side-menu
-  .sidebar-content
-    /! - Sidemenu
-    #sidebar-menu
-      #menu-bar
-        ul.nav-second-level aria-expanded="false"
-          li
-            a href="pages-starter.html"  HOME
-          li
-            a href="pages-profile.html"  PRICING
-          li
-            a href="pages-activity.html"  ABOUT
-          li
-            a href="pages-invoice.html"  BLOG
-          li
-            a href="pages-pricing.html"  CONTACT US
+#navbarNavAltMarkup.collapse.navbar-collapse.left-side-menu
+  #sidebar-menu
+    .navbar-nav
+      a href="pages-starter.html"  HOME
+      a href="pages-profile.html"  PRICING
+      a href="pages-activity.html"  ABOUT
+      a href="pages-invoice.html"  BLOG
+      a href="pages-pricing.html"  CONTACT US
 
 
   /! End Sidebar
+
+
+/! .d-grid.gap-4.d-md-flex.justify-content-md-end.buttons

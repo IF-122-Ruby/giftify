@@ -5,26 +5,89 @@
     width: 100%;
     display: block;
     padding-top: 7rem;
-    padding-bottom: 2rem;
+    padding-bottom: 3rem;
     background: #ffffff;
 
     .title {
       padding-bottom: 1rem;
-      padding-left: 3rem;
       font-size: 72px;
       font-weight: 400;
       line-height: 83.16px;
       font-style: normal;
     }
+
+    .text {
+      font-size: 20px;
+    }
   }
 
+  //section1
+  .tools {
+    background: #f3ebff;
+
+    .text {
+      width: 45%;
+      padding: 5rem;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .tool-links {
+      width: 75%;
+      margin: 0;
+      display: inline-block;
+      padding: 0;
+      padding-left: 10rem;
+    }
+
+    .title {
+      padding-left: 7rem;
+    }
+
+    .tool-menu {
+      margin-top: 5rem;
+      margin-right: 3rem;
+      width: 10%;
+      line-height: 4rem;
+
+      .active {
+        background: white;
+        border: 2px solid black;
+      }
+
+      .icon-img {
+        display: flex;
+        margin-right: 1rem;
+        width: 95%;
+      }
+    }
+  }
+
+  //section2
+  .organizations {
+    .title {
+      padding-bottom: 3rem;
+      text-align: center;
+    }
+  }
+
+  .org-img {
+    position: relative;
+    width: 100%;
+  }
+
+  .google {
+    background: white;
+  }
+
+  //section3
   .head {
     padding-top: 3rem;
     padding-bottom: 3rem;
 
     .head-content {
       margin-left: 5rem;
-      margin-top: 7rem;
+      margin-top: 5rem;
 
       .head-img {
         display: inline;
@@ -42,8 +105,8 @@
 
     .head-rectangle {
       position: absolute;
-      width: 1304px;
-      height: 680px;
+      width: 75%;
+      height: 68%;
 
       background: #7954BD;
     }
@@ -55,74 +118,27 @@
     }
   }
 
-  //section2
-  .organizations {
-    .rectangle {
-      position: absolute;
-      width: 721px;
-      height: 361px;
-      top: 46rem;
-      left: 25.8rem;
-
-      border: 3px solid #734DBC;
-      box-sizing: border-box;
-    }
-
-    .title {
-      padding-bottom: 5rem;
-      text-align: center;
-    }
-  }
-  .org-img {
-    position: relative;
-    width: 100%;
-  }
-
-  //section3
-  .tools {
-    background: #f3ebff;
-    .tool-link {
-      width: 100%;
-      justify-content: center;
-    }
-
-    .title {
-      padding-left: 10.5rem;
-    }
-
-    .icon-img {
-      margin-right: 0.5rem;
-    }
-
-    .tool-menu {
-      margin-right: 2rem;
-      text-align: left;
-    }
-
-    .title {
-        width: 45%;
-    }
-  }
-
   //section4
   .posts {
+
     .container {
-      margin-left: 0;
+      margin: 0;
     }
+
     .posts-rectangle {
       float:left;
-      margin-top: 36rem;
-      margin-left: 4.2rem;
-      width: 378px;
-      height: 1000px;
+      margin-top: 20rem;
+      margin-left: 4.4rem;
+      width: 70%;
+      height: 75%;
       background: #F3EBFF;
 
       .text-rectangle {
-        margin-top: 13rem;
+        margin-top: 22rem;
         vertical-align: middle;
         position: absolute;
-        width: 374px;
-        height: 780px;
+        width:25%;
+        height: 50%;
         background: rgba(121, 84, 189, 0.43);
         filter: blur(200px);
       }
@@ -130,7 +146,7 @@
       .title {
         padding-left: 0;
         text-align: center;
-        margin-top: 13rem;
+        margin-top: 22rem;
       }
       .text {
         margin-left: 5rem;
@@ -138,20 +154,459 @@
       }
     }
 
-    .post-img {
-      float:left;
+    .post {
       margin-top: 40rem;
-      width: 827px;
-      float: left;
-      height: 917px;
+      padding-top: 1.5rem;
+      padding-left: 1.5rem;
+      width: 95%;
       background: #7954BD;
+    }
+  }
+
+  // WIDTH < 1200px
+  @media (max-width: 1200px) {
+
+    section {
+      padding-top: 5rem;
+      padding-bottom: 1rem;
+
+      .title {
+        padding-bottom: 0.5rem;
+        padding-left: 1rem;
+        font-size: 48px;
+        font-weight: 500;
+        line-height: 73.16px;
+        font-style: normal;
+      }
+    }
+
+    //section1
+    .tools {
+      .title {
+        padding-left: 2rem;
+        width: 100%;
+      }
+
+      .text {
+        text-align: center;
+      }
+
+      .tool-links {
+        max-width: 55%;
+      }
+
+      .tool-menu {
+        margin-right: 0.5rem;
+        margin-top: 2rem;
+        width: 50%;
+        line-height: 2rem;
+      }
+
+      .tool-img-all {
+        max-width: 50%;
+        margin-left: 1rem;
+      }
+
+      .tool-link {
+        text-align: left;
+      }
+    }
+
+    //section2
+    .org-img {
+      position: relative;
+      width: 100%;
+    }
+
+    //section3
+    .head {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+
+      .head-content {
+        margin-left: 1rem;
+        margin-top: 3rem;
+
+
+        .text {
+          padding-left: 1rem;
+          padding-top: 1rem;
+        }
+      }
+
+      .head-rectangle {
+        height: 48%;
+      }
+
+      .title {
+        margin-top: 1rem;
+        width: 100%;
+        text-align: center;
+        padding: 0;
+      }
+    }
+
+    //section4
+    .posts {
+      .posts-rectangle {
+        margin-left: 3rem;
+        margin-top: 20rem;
+        height: 65%;
+
+
+        .text-rectangle {
+          margin-top: 10rem;
+        }
+
+        .title {
+          margin-top: 10rem;
+        }
+        .text {
+          margin: 0;
+          text-align: center;
+          padding-top: 1rem;
+        }
+      }
 
       .post {
-        margin-top: 1.3rem;
-        float: right;
-        justify-content: flex-end;
-        width: 98%;
-        height: 98%;
+        margin-top: 25rem;
+        padding-top: 1rem;
+        padding-left: 1rem;
+        width: 90%;
+      }
+    }
+  }
+
+  //WIDTH < 1050px
+  @media (max-width: 1050px) {
+
+    section {
+      .title {
+        font-size: 44px;
+      }
+    }
+
+    //section1
+    .tools {
+      .title {
+        padding-left: 1rem;
+        width: 100%;
+      }
+
+      .text {
+        text-align: center;
+      }
+
+      .tool-links {
+        max-width: 55%;
+      }
+
+      .tool-menu {
+        margin-right: 0.5rem;
+        margin-top: 2rem;
+        width: 50%;
+        line-height: 2rem;
+      }
+
+      .tool-img-all {
+        max-width: 50%;
+        margin-left: 1rem;
+      }
+
+      .tool-link {
+        text-align: left;
+
+        .icon-img {
+          display: none;
+        }
+
+        p {
+          display: none;
+        }
+      }
+    }
+
+    //section3
+    .head {
+      padding-top: 0;
+      padding-bottom: 0;
+
+      .head-content {
+        margin-top: 2rem;
+      }
+
+      .head-rectangle {
+        height: 44%;
+      }
+
+      .title {
+        margin-top: 0;
+      }
+    }
+
+    //section4
+    .posts {
+      .posts-rectangle {
+        margin-left: 3rem;
+        margin-top: 18rem;
+        height: 68%;
+        width: 60%;
+      }
+
+      .post {
+        margin-top: 22rem;
+      }
+    }
+  }
+}
+
+//WIDTH < 991px
+@media (max-width: 991px) {
+  .home-page {
+    margin-left: 0;
+
+    section {
+      width: 100%;
+      display: block;
+
+      .title {
+        margin-left: 1rem;
+        font-size: 40px;
+      }
+    }
+
+    //section1
+    .tools {
+      .title {
+        width: 50%;
+      }
+
+      .container {
+        margin: 0;
+      }
+
+      .tool-links {
+        max-width: 90%;
+      }
+
+      .tool-menu {
+        margin-right: 0.5rem;
+        margin-top: 4rem;
+        width: 40%;
+        line-height: 1.5rem;
+      }
+
+      .tool-img-all {
+        max-width: 60%;
+        margin-left: 2rem;
+      }
+
+      .tool-link {
+        vertical-align: middle;
+      }
+    }
+
+    //section3
+    .head {
+      padding-top: 1rem;
+
+      .title {
+        text-align: left;
+      }
+
+      .head-content {
+        margin-top: 1rem;
+        .head-img {
+          height: 45%;
+        }
+      }
+
+      .head-rectangle {
+        width: 80%;
+        height: 52%;
+      }
+    }
+
+    //section4
+    .posts {
+      .title {
+        font-size: 36px;
+      }
+
+      .posts-rectangle {
+        margin-top: 10rem;
+        height: 80%;
+        width: 70%;
+      }
+
+      .post {
+        margin-top: 21rem;
+        width: 100%;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 767px) {
+  .home-page {
+    section {
+      width: 100%;
+      display: block;
+
+      .title {
+        text-align: center;
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+
+    //section1
+    .tools {
+      .tool-links {
+        width: 100%;
+      }
+
+      .text {
+        text-align: right;
+      }
+
+      .tool-menu {
+        margin-top: 1rem;
+        line-height: 1rem;
+      }
+
+      .tool-img-all {
+        margin-left: 2rem;
+        width: 100%;
+
+        .tool-img {
+          width: 100%;
+        }
+      }
+    }
+
+    //section2
+    .organizations {
+      padding-top: 2rem;
+    }
+
+    //section3
+    .head {
+      padding-top: 1rem;
+
+      .title {
+        text-align: center;
+        margin: 0;
+      }
+
+      .head-content {
+        margin-top: 1rem;
+        .head-img {
+          width: 45%;
+        }
+      }
+
+      .head-rectangle {
+        width: 100%;
+        height: 67%;
+      }
+    }
+
+    //section4
+    .posts {
+      .title {
+        margin-left: 3rem;
+      }
+
+      .posts-rectangle {
+        margin-top: 12em;
+        width: 95%;
+        height: 70%;
+        background: #ffffff;
+
+        .text-rectangle {
+          width: 70%;
+          height: 30%;
+        }
+      }
+
+      .post {
+        margin-top: 3rem;
+        margin-left: 7rem;
+        width: 95%;
+      }
+    }
+  }
+}
+
+//WIDTH 576px
+@media (max-width: 575px) {
+  .home-page {
+    .title {
+      font-size: 34px;
+      width: 80%;
+    }
+
+    //section1
+    .tools {
+      .title {
+        width: 100%;
+        }
+      .text {
+        text-align: left;
+      }
+
+      .tool-menu {
+        margin-top: 0;
+        font-size: 10px;
+        padding: 0;
+      }
+    }
+
+    //section2
+    .organizations {
+      .org-img {
+        width: 80%;
+      }
+    }
+
+    //section3
+    .head {
+      .head-content {
+        .head-img {
+          width: 55%;
+        }
+      }
+
+      .head-rectangle {
+        width: 95%;
+        height: 53%;
+      }
+    }
+
+    //section4
+    .posts {
+      .title {
+        margin-left: 1rem;
+      }
+
+      .posts-rectangle {
+        margin-top: 12em;
+        width: 70%;
+        height: 60%;
+        background: #ffffff;
+
+        .text-rectangle {
+          width: 40%;
+          height: 25%;
+        }
+      }
+
+      .post {
+        margin-top: 3rem;
+        margin-left: 4rem;
+        width: 70%;
       }
     }
   }

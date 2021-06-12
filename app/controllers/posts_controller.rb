@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts =  if params[:category_name]
+    @posts = if params[:category_name]
       collection.by_category_name(params[:category_name])  
     else
       collection

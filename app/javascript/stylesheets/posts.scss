@@ -8,18 +8,24 @@
   }
 }
 
-.posts-categories-list-item {
-  &.active{ 
+.posts-categories-list {
+  .posts-category-list-item {
+    &.active {
+      background-color: $main-color-hover;
+    }
+  }
+}
+
+.posts-badge {
+  .badge-bg-color {
     background-color: $main-color-hover;
   }
 }
 
-.posts-badge-bg-color {
-  background-color: $main-color-hover;
-}
-
-.posts-p-description {
-  text-align: justify;
-  text-justify: inter-word;
-  text-indent: 50px;
+.post-item {
+  .post-description {
+    text-align: justify;
+    text-justify: inter-word;
+    text-indent: 50px;
+  }
 }

@@ -16,6 +16,8 @@ Rails.application.routes.draw do
               controller: :organization
   end
 
+  resources :posts
+
   namespace :admin do
     resources :organizations, only: [:index, :show]
     root to: 'admin#index'

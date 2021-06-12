@@ -1,0 +1,20 @@
+.main.m-4
+  .container-fluid
+    h1.fw-bolder.mb-5.mt-5.text-center Latest posts
+    .row
+      .col-lg-2
+        = render 'posts/categories'
+      .col-lg-10.col-md-12.ml-4
+        .row
+          - @posts.each do |post|
+            .col-lg-4.col-md-12.mb-4.text-center.btn
+              .card.shadow.p-3.mb-5.bg-white.border-0
+                .bg-image
+                  = image_tag post.image.url, width: '250', height: '150', class: 'img-fluid'
+                .card-body
+                  h5.card-title= post.title
+                  p.card-text
+                    = truncate post.description, length: 80
+                  = link_to 'Read more', post_path(post), class:"button btn btn-outline-secondary nav-btn posts__card-button"
+        .digg_pagination
+          = will_paginate @posts, container: false

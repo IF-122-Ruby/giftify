@@ -33,4 +33,4 @@ en:
   time:
     formats:
       short_date: "%Y-%m-%d"
-      received: "Received on: %d %B at: (%I:%M), %Y"
+      received: "%d %B %Y, (%I:%M)"

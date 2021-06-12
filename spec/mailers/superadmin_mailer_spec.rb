@@ -35,6 +35,10 @@ RSpec.describe SuperadminMailer, type: :mailer do
       it "renders the body" do
         expect(mail.body.encoded).to match("was successfully created")
       end
+
+      it 'sends an email' do
+        expect { mail }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      end
     end
   end
 end

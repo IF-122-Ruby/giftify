@@ -30,14 +30,18 @@
       padding: 5rem;
       display: inline-block;
       vertical-align: middle;
+
+      h5 {
+        font-size: 25px;
+        font-weight: 500;
+      }
     }
 
     .tool-links {
-      width: 75%;
+      width: 55%;
       margin: 0;
       display: inline-block;
       padding: 0;
-      padding-left: 10rem;
     }
 
     .title {

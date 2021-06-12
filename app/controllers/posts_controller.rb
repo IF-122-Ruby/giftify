@@ -1,11 +1,10 @@
 class PostsController < ApplicationController
   def index
-    if params[:category_name]
-      @posts = collection.by_category_name(params[:category_name])  
+    @posts =  if params[:category_name]
+      collection.by_category_name(params[:category_name])  
     else
-      @posts = collection
-    end
-    @posts = @posts.paginate(page: params[:page], per_page: 6).ordered
+      collection
+    end.paginate(page: params[:page], per_page: 6).ordered
   end
 
   def show

@@ -15,6 +15,6 @@
                   h5.card-title= post.title
                   p.card-text
                     = truncate post.description, length: 80
-                  = link_to 'Read more', post_path(post), class:"button btn btn-outline-secondary nav-btn posts-card-button"
+                  = link_to 'Read more', post_path(post), class:"button btn btn-outline-secondary nav-btn posts__card-button"
         .digg_pagination
           = will_paginate @posts, container: false

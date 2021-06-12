@@ -1,4 +1,4 @@
-.posts-card-button {
+.posts__card-button {
   transition: all 0.5s ease 0s;
 
   &:hover {
@@ -8,8 +8,8 @@
   }
 }
 
-.posts-categories-list {
-  .posts-category-list-item {
+.posts-сategories-list {
+  &__item {
     &.active {
       background-color: $main-color-hover;
     }
@@ -17,13 +17,13 @@
 }
 
 .posts-badge {
-  .badge-bg-color {
+  &__count {
     background-color: $main-color-hover;
   }
 }
 
 .post-item {
-  .post-description {
+  &__description{
     text-align: justify;
     text-justify: inter-word;
     text-indent: 50px;

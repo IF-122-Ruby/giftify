@@ -1,6 +1,11 @@
 class PostsController < ApplicationController
   def index
-    @posts = collection.paginate(page: params[:page], per_page: 6).ordered
+    if params[:category_name]
+      @posts = collection.by_category_name(params[:category_name])  
+    else
+      @posts = collection
+    end
+    @posts = @posts.paginate(page: params[:page], per_page: 6).ordered
   end
 
   def show
@@ -10,11 +15,7 @@ class PostsController < ApplicationController
   private
 
   def collection
-    if params[:category_name]
-      Post.by_category_name(params[:category_name])  
-    else
-      Post.all
-    end.published
+    Post.published
   end
 
   def resource

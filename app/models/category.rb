@@ -12,10 +12,10 @@
 #  index_categories_on_name  (name) UNIQUE
 #
 class Category < ApplicationRecord
-  scope :ordered_by_name,  -> { order(:name) }
+  scope :ordered_by_name, ->{ order(:name) }
 
   has_many :posts, dependent: :destroy
   
   validates :name, presence: true
-  validates_uniqueness_of :name
+  validates :name, uniqueness: true
 end

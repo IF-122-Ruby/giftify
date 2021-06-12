@@ -25,12 +25,12 @@
 class Post < ApplicationRecord
   mount_uploader :image, ImageUploader
 
+  belongs_to :user
+  belongs_to :category
+
   scope :published,        ->{ where('published_at <= ?', Time.zone.now) }
   scope :ordered,          ->{ order(:created_at) }
   scope :by_category_name, ->(category_name) { joins(:category).where(category: { name: category_name } ) }
-
-  belongs_to :user
-  belongs_to :category
 
   validates :title, :description, presence: true
 

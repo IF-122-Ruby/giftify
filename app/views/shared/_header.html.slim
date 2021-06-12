@@ -21,15 +21,15 @@
       #menu-bar
         ul.nav-second-level aria-expanded="false"
           li
-            a href="pages-starter.html"  HOME
+            = link_to 'Home', root_path
           li
-            a href="pages-profile.html"  PRICING
+            = link_to 'Pricing'
+
           li
-            a href="pages-activity.html"  ABOUT
+            = link_to 'About', about_path
+
           li
-            a href="pages-invoice.html"  BLOG
-          li
-            a href="pages-pricing.html"  CONTACT US
+            = link_to 'Contact us', new_feedback_path
 
 
   /! End Sidebar

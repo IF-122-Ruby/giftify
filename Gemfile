@@ -6,6 +6,7 @@ gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
 
 gem 'any_login'
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'carrierwave'
 gem 'devise'
 gem 'factory_bot_rails'
 gem 'faker'

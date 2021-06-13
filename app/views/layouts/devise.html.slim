@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title Giftify
+    meta content="width=device-width,initial-scale=1" name="viewport" /
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
+    body.authentication-bg
+      .account-pages.my-5
+        .container
+          .row.justify-content-center
+            .col-xl-10
+              .card
+                .row
+                  = yield

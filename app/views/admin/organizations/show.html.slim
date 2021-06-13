@@ -11,8 +11,8 @@
         = @organization.user.first_name
         = @organization.user.last_name
       .col.m-2
-        span Monthly points: 
-        = @organization.monthly_point
+        span Users count: 
+        = @organization.users.count
       .col.m-2
         span Created: 
         = @organization.created_at.to_formatted_s(:short) 

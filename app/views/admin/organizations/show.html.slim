@@ -1,24 +1,22 @@
-
-  .container.col.p-0
-      .d-flex.shadow-sm.p-0.m-0.align-items-center.p-2
-        .col-2
-          = image_tag @organization.logo, class: "img-fluid"
-        .col-6.d-flex.flex-column.align-items-left
-          .col.m-2
-            span Organization name: 
-            = @organization.name
-          .col.m-2
-            span Administrator: 
-            = @organization.user.first_name
-            = @organization.user.last_name
-          .col.m-2
-            span Monthly points: 
-            = @organization.monthly_point
-          .col.m-2
-            span Created: 
-            = @organization.created_at.to_formatted_s(:short) 
-        .col-2.d-flex.align-items-center.justify-items-center
-            
-        .col-2.d-flex.align-items-center.justify-items-center
-          = button_to "Back", admin_organizations_url, class: "btn btn-secondary", method: :get
-
+.container.col.p-0
+  .d-flex.shadow-sm.p-0.m-0.align-items-center.p-2
+    .col-2
+      = image_tag @organization.logo, class: "img-fluid"
+    .col-6.d-flex.flex-column.align-items-left
+      .col.m-2
+        span Organization name: 
+        = @organization.name
+      .col.m-2
+        span Administrator: 
+        = @organization.user.first_name
+        = @organization.user.last_name
+      .col.m-2
+        span Monthly points: 
+        = @organization.monthly_point
+      .col.m-2
+        span Created: 
+        = @organization.created_at.to_formatted_s(:short) 
+    .col-2.d-flex.align-items-center.justify-items-center
+        
+    .col-2.d-flex.align-items-center.justify-items-center
+      = button_to "Back", admin_organizations_url, class: "btn btn-secondary", method: :get

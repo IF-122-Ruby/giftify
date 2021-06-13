@@ -23,11 +23,18 @@ class Organization < ApplicationRecord
   belongs_to :user
   has_many :users, through: :roles
   has_many :gifts
+  has_many :transactions, as: :sender
 
   validates :name, presence: true
   validates :monthly_point, numericality: { only_integer: true }
 
   after_commit :add_role
+
+  after_create_commit :new_organization_notification_to_superadmins
+
+  def new_organization_notification_to_superadmins
+    SuperadminMailer.send_mail_when_new_organization_created(self).deliver_now
+  end
 
   private
 

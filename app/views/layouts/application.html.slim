@@ -12,11 +12,12 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    = render "shared/header"
-
-  main
-    = render 'shared/flash_messages'
-    = yield
-
-  footer
-    = render 'shared/footer'
+    = render partial: "shared/header"
+    .row.p-0.m-0
+      .col-xl-3.col-lg-3.col-md-3.col-sm-12.col-xs-12
+        = render partial: 'shared/flash_messages'
+        = render partial: 'shared/header'
+      .col.p-0.m-0
+        = yield
+    = render partial: 'shared/footer'
+    = any_login_here if defined?(AnyLogin)

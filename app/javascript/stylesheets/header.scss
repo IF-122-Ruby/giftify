@@ -1,11 +1,8 @@
 .navbar-custom {
   padding: 0 22px 0 37px;
   position: fixed;
-  top: 0px;
-  left: 0px;
-  right: 0px;
   height: 72px;
-  z-index: 100;
+  z-index: 2;
   background-color: white;
   box-shadow: 0 0.05rem 0.01rem rgba(75, 75, 90, 0.075);
 
@@ -23,7 +20,7 @@
   top: 72px;
   transition-duration: .2s;
   box-shadow: 1px 0.05rem 0.01rem rgba(75, 75, 90, 0.075);
-  z-index: 99;
+  z-index: 1;
 }
 
 #sidebar-menu {

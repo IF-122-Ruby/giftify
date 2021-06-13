@@ -1,37 +1,38 @@
 .container.p-0.sidebar
-  .row.h-100.shadow-sm.pt-3.mb-2.bg-white.order-first.pl-1
-    .d-flex.justify-content-around
-      = image_tag("serhii.png",class: 'img-fluid rounded-circle z-depth-1 shadow bg-body rounded w-25')
-      .d-flex.flex-column.justify-content-center.px-3
-        span Org name
-        span.text-black-50 administrator
-    span.mt-2
-      hr/
-    .py-3.change-bg-color
-      = link_to root_url, class: "text-decoration-none text-reset" do
-        .change-color.d-flex.justify-content-between.m-1
-          span
-            i.fas.fa-tachometer-alt
-            span.px-3 Dashbord
-          i.fas.fa-chevron-right
-    .py-3.change-bg-color
-      = link_to admin_organizations_path, class: "text-decoration-none text-reset" do
-        .change-color.d-flex.justify-content-between.m-1
-          span
-            i.fas.fa-sitemap
-            span.px-3 Organizations
-          i.fas.fa-chevron-right
-    .py-3.change-bg-color
-      = link_to root_url, class: "text-decoration-none text-reset" do
-        .change-color.d-flex.justify-content-between.m-1
-          span
-            i.fas.fa-users
-            span.px-3 Users
-          i.fas.fa-chevron-right
-    .py-3.change-bg-color
-      = link_to admin_feedbacks_path, class: "text-decoration-none text-reset" do
-        .change-color.d-flex.justify-content-between.m-1
-          span
-            i.fas.fa-comment-dots
-            span.px-3 Feedbacks
-          i.fas.fa-chevron-right
+  .min-vh-100.shadow-sm
+    .row.pt-3.mb-2.bg-white.order-first.pl-1
+      .d-flex.justify-content-around
+        = image_tag("serhii.png",class: 'img-fluid rounded-circle z-depth-1 shadow bg-body rounded w-25')
+        .d-flex.flex-column.justify-content-center.px-3
+          span Org name
+          span.text-black-50 administrator
+      span.mt-2
+        hr/
+      .py-3.change-bg-color
+        = link_to root_url, class: "text-decoration-none text-reset" do
+          .change-color.d-flex.justify-content-between.m-1
+            span
+              i.fas.fa-tachometer-alt
+              span.px-3 Dashbord
+            i.fas.fa-chevron-right
+      .py-3.change-bg-color
+        = link_to admin_organizations_path, class: "text-decoration-none text-reset" do
+          .change-color.d-flex.justify-content-between.m-1
+            span
+              i.fas.fa-sitemap
+              span.px-3 Organizations
+            i.fas.fa-chevron-right
+      .py-3.change-bg-color
+        = link_to root_url, class: "text-decoration-none text-reset" do
+          .change-color.d-flex.justify-content-between.m-1
+            span
+              i.fas.fa-users
+              span.px-3 Users
+            i.fas.fa-chevron-right
+      .py-3.change-bg-color
+        = link_to admin_feedbacks_path, class: "text-decoration-none text-reset" do
+          .change-color.d-flex.justify-content-between.m-1
+            span
+              i.fas.fa-comment-dots
+              span.px-3 Feedbacks
+            i.fas.fa-chevron-right

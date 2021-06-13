@@ -1,114 +1,114 @@
-.navbar-custom {
-  padding: 0 22px 0 37px;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  height: 72px;
-  z-index: 100;
-  background-color: white;
-  box-shadow: 0 0.05rem 0.01rem rgba(75, 75, 90, 0.075);
-
-  .text-logo {
-    color: black;
-  }
-}
-
-.left-side-menu {
-  width: 250px;
-  background: white;
-  bottom: 0;
-  padding: 0 0 30px 0;
-  position: fixed;
-  top: 72px;
-  transition-duration: .2s;
-  box-shadow: 1px 0.05rem 0.01rem rgba(75, 75, 90, 0.075);
-  z-index: 99;
-}
-
-#sidebar-menu {
-  padding-bottom: 30px;
-  height: 100%;
-
-  .buttons-toggle-menu {
-    display: none;
-  }
-
-  a {
-    color: $text-color-menu;
-    display: block;
-    padding: 12px 30px;
-    font-size: 15px;
-    font-weight: 400;
-    text-decoration: none;
-    position: relative;
-    transition: all 0.4s;
-    border-left: 3px solid transparent;
-
-    &:hover, &:focus, &:active {
-      border-left: 3px solid $focus-text-color-menu;
-      color: $focus-text-color-menu;
-      text-decoration: none;
-      background-color: $focus-background-color-menu;
-    }
-  }
-}
-
-@media (min-width: 992px) {
-  .collapse:not(.show) {
-    display: block;
-  }
-}
-
-@media (max-width: 991px) {
-  .navbar-toggler {
-    display: block!important;
-
-    .navbar-toggler-icon {
-      height: 1.2em;
-    }
-  }
-
-  .nav-position {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-
-  }
-
-  .left-side-menu {
-    width: 100%;
-    height: 50%;
-  }
-}
-
-@media (max-width: 767px) {
-  .navbar-custom {
-    position: unset;
-    flex-wrap: nowrap;
-    justify-content: center;
-
-    .buttons {
-      display: none;
-    }
-
-    .logo {
-      margin-left: 1rem
-    }
-  }
-
-  .left-side-menu {
-    position: unset;
-  }
-
-  #sidebar-menu {
-    padding: 0;
-    
-    .buttons-toggle-menu {
-      display: block;
-      .btn {
-        text-align: left;
-      }
-    }
-  }
-}
+// .navbar-custom {
+//   padding: 0 22px 0 37px;
+//   position: fixed;
+//   top: 0px;
+//   left: 0px;
+//   right: 0px;
+//   height: 72px;
+//   z-index: 100;
+//   background-color: white;
+//   box-shadow: 0 0.05rem 0.01rem rgba(75, 75, 90, 0.075);
+//
+//   .text-logo {
+//     color: black;
+//   }
+// }
+//
+// .left-side-menu {
+//   width: 250px;
+//   background: white;
+//   bottom: 0;
+//   padding: 0 0 30px 0;
+//   position: fixed;
+//   top: 72px;
+//   transition-duration: .2s;
+//   box-shadow: 1px 0.05rem 0.01rem rgba(75, 75, 90, 0.075);
+//   z-index: 99;
+// }
+//
+// #sidebar-menu {
+//   padding-bottom: 30px;
+//   height: 100%;
+//
+//   .buttons-toggle-menu {
+//     display: none;
+//   }
+//
+//   a {
+//     color: $text-color-menu;
+//     display: block;
+//     padding: 12px 30px;
+//     font-size: 15px;
+//     font-weight: 400;
+//     text-decoration: none;
+//     position: relative;
+//     transition: all 0.4s;
+//     border-left: 3px solid transparent;
+//
+//     &:hover, &:focus, &:active {
+//       border-left: 3px solid $focus-text-color-menu;
+//       color: $focus-text-color-menu;
+//       text-decoration: none;
+//       background-color: $focus-background-color-menu;
+//     }
+//   }
+// }
+//
+// @media (min-width: 992px) {
+//   .collapse:not(.show) {
+//     display: block;
+//   }
+// }
+//
+// @media (max-width: 991px) {
+//   .navbar-toggler {
+//     display: block!important;
+//
+//     .navbar-toggler-icon {
+//       height: 1.2em;
+//     }
+//   }
+//
+//   .nav-position {
+//     display: flex;
+//     justify-content: flex-start;
+//     flex-wrap: nowrap;
+//
+//   }
+//
+//   .left-side-menu {
+//     width: 100%;
+//     height: 50%;
+//   }
+// }
+//
+// @media (max-width: 767px) {
+//   .navbar-custom {
+//     position: unset;
+//     flex-wrap: nowrap;
+//     justify-content: center;
+//
+//     .buttons {
+//       display: none;
+//     }
+//
+//     .logo {
+//       margin-left: 1rem
+//     }
+//   }
+//
+//   .left-side-menu {
+//     position: unset;
+//   }
+//
+//   #sidebar-menu {
+//     padding: 0;
+//
+//     .buttons-toggle-menu {
+//       display: block;
+//       .btn {
+//         text-align: left;
+//       }
+//     }
+//   }
+// }

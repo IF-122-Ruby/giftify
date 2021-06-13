@@ -1,39 +1,11 @@
-/! Topbar Start
-nav.navbar.navbar-expand.flex-column.flex-md-row.navbar-custom
+nav.navbar.navbar-expand-lg.navbar-light.bg-white.shadow-sm.p-3.bg-white.rounded
   .container-fluid
-    .nav-position
-      button.navbar-toggler aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label=("Toggle navigation") data-bs-target="#navbarNavAltMarkup" data-bs-toggle="collapse" type="button"
-        span.navbar-toggler-icon
-          i.fa.fa-bars
-      /! LOGO
-      a.navbar-brand.mr-0.logo
-        span.logo-lg
-          span.d-inline.h5.ml-1.text-logo Giftify
-
-    ul.navbar-nav.flex-row.ml-auto.d-flex.list-unstyled.topnav-menu.float-right.mb-0.buttons
-      li.d-none.d-sm-block
-        = link_to "Login",  new_user_session_path, class: 'btn btn-soft-primary me-md-2'
-
-      li.d-none.d-sm-block
-        = link_to "Sign Up", new_user_registration_path, class: "btn btn-soft-primary"
-
-/! end Topbar
-
-#navbarNavAltMarkup.collapse.navbar-collapse.left-side-menu
-  #sidebar-menu
-    .navbar-nav
-      = link_to "HOME", root_path
-      = link_to "PRICING"
-      = link_to "ABOUT", about_path
-      = link_to "BLOG", posts_path
-      = link_to "CONTACT US", new_feedback_path
-      .buttons-toggle-menu
-        hr
-        = link_to "Login",  new_user_session_path, class: 'btn btn-soft-primary me-md-2'
-        = link_to "Sign Up", new_user_registration_path, class: "btn btn-soft-primary"
-
-
-  /! End Sidebar
-
-
-/! .d-grid.gap-4.d-md-flex.justify-content-md-end.buttons
+    = link_to "Giftify", root_url, class: "navbar-brand"
+    
+    button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button"
+      span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      .navbar-nav.me-auto.mb-2.mb-lg-0
+      .d-flex.justify-content-center
+      = link_to "Login",  new_user_session_path, class: 'btn btn-soft-primary me-md-2'
+      = link_to "Sign Up", new_user_registration_path, class: "btn btn-soft-primary"

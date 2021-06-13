@@ -4,7 +4,21 @@ class SuperadminMailer < ApplicationMailer
   def send_mail_when_new_feedback_created(feedback)
     @feedback = feedback
 
-    mail(to: superadmins_emails_list, subject: 'Someone wrote new feedback!')
+    emails = superadmins_emails_list
+
+    return if emails.empty?
+
+    mail(to: emails, subject: 'Someone wrote new feedback!')
+  end
+
+  def send_mail_when_new_organization_created(organization)
+    @organization = organization
+
+    emails = superadmins_emails_list
+
+    return if emails.empty?
+
+    mail(to: emails, subject: 'Someone create new organization!')
   end
 
   private

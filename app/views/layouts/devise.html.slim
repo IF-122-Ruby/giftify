@@ -11,11 +11,13 @@ html
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
-    body.authentication-bg
+    body.devise
       .account-pages.my-5
         .container
           .row.justify-content-center
-            .col-xl-10
+            .col-md-5
+              = render 'shared/flash_messages'
               .card
-                .row
-                  = yield
+                .card-body.p-0
+                  .col
+                    = yield

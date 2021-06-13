@@ -1,27 +1,10 @@
-.devise-form {
-  background-color: $form-color;
-  padding: 30px;
-  box-shadow: 0 3px 50px 0 rgba(0,0,0,.1);
-  margin: 10px auto 10px auto;
-}
+.devise {
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-bottom: 0;
+  background-color: #f3f4f7;
 
-body {
-  &.authentication-bg {
-      background-size: cover;
-      background-repeat: no-repeat;
-      padding-bottom: 0;
-  }
-}
-
-.authentication-form {
-  .form-group {
-      .input-group-text {
-          background-color: transparent;
-
-          svg {
-              height: 22px;
-              width: 22px;
-          }
-      }
+  .form-control:focus {
+    box-shadow: 0 0 0 1px rgb(13 110 253 / 25%);
   }
 }

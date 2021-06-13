@@ -23,6 +23,7 @@ class Organization < ApplicationRecord
   belongs_to :user
   has_many :users, through: :roles
   has_many :gifts
+  has_many :transactions, as: :sender
 
   validates :name, presence: true
   validates :monthly_point, numericality: { only_integer: true }

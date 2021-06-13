@@ -6,7 +6,7 @@
   right: 0px;
   height: 72px;
   z-index: 100;
-  background-color: #ffffff;
+  background-color: white;
   box-shadow: 0 0.05rem 0.01rem rgba(75, 75, 90, 0.075);
 
   .text-logo {
@@ -16,38 +16,40 @@
 
 .left-side-menu {
   width: 250px;
-  background: #ffffff;
+  background: white;
   bottom: 0;
   padding: 0 0 30px 0;
   position: fixed;
   top: 72px;
-  -webkit-transition-duration: .2s;
-          transition-duration: .2s;
-  -webkit-box-shadow: 1px 0.05rem 0.01rem rgba(75, 75, 90, 0.075);
-          box-shadow: 1px 0.05rem 0.01rem rgba(75, 75, 90, 0.075);
+  transition-duration: .2s;
+  box-shadow: 1px 0.05rem 0.01rem rgba(75, 75, 90, 0.075);
   z-index: 99;
 }
 
 #sidebar-menu {
   padding-bottom: 30px;
   height: 100%;
+
+  .buttons-toggle-menu {
+    display: none;
+  }
+
   a {
-    color: #4B4B5A;
+    color: $text-color-menu;
     display: block;
     padding: 12px 30px;
     font-size: 15px;
     font-weight: 400;
     text-decoration: none;
     position: relative;
-    -webkit-transition: all 0.4s;
     transition: all 0.4s;
     border-left: 3px solid transparent;
 
     &:hover, &:focus, &:active {
-      border-left: 3px solid #5369f8;
-      color: #5369f8;
+      border-left: 3px solid $focus-text-color-menu;
+      color: $focus-text-color-menu;
       text-decoration: none;
-      background-color: #f7f7ff;
+      background-color: $focus-background-color-menu;
     }
   }
 }
@@ -59,12 +61,54 @@
 }
 
 @media (max-width: 991px) {
-
   .navbar-toggler {
     display: block!important;
+
+    .navbar-toggler-icon {
+      height: 1.2em;
+    }
   }
 
-  .logo {
-    display: none;
+  .nav-position {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+
+  }
+
+  .left-side-menu {
+    width: 100%;
+    height: 50%;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-custom {
+    position: unset;
+    flex-wrap: nowrap;
+    justify-content: center;
+
+    .buttons {
+      display: none;
+    }
+
+    .logo {
+      margin-left: 1rem
+    }
+  }
+
+  .left-side-menu {
+    position: unset;
+  }
+
+  #sidebar-menu {
+    padding: 0;
+    
+    .buttons-toggle-menu {
+      display: block;
+      .btn {
+        text-align: left;
+      }
+    }
   }
 }

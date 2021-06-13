@@ -14,10 +14,9 @@ html
   body
     = render "shared/header"
 
-    main
-      = render 'shared/flash_messages'
-      = yield
-    = any_login_here if defined?(AnyLogin)
+  main
+    = render 'shared/flash_messages'
+    = yield
 
-    footer
-      = render 'shared/footer'
+  footer
+    = render 'shared/footer'

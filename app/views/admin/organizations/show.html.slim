@@ -1,8 +1,11 @@
-ul
-  li = @organization.name
+.container.shadow-sm.mt-3
+  .col.d-flex
+    .col-4
+      = image_tag @organization.logo
+    .col-7.d-flex
+      span = @organization.name
+      span = @organization.user.first_name
+      span = @organization.monthly_point
+    .col-1
+     = button_to "Back", admin_organizations_url, class: "btn btn-secondary", method: :get
 
-  li = @organization.user.first_name
-
-  li = @organization.monthly_point
-  
-  li = link_to "Back", admin_organizations_path

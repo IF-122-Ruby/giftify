@@ -1,6 +1,25 @@
-- @organizations.each do |organization|
-  ul
-    li = organization.name
-
-    li = link_to "Show", admin_organization_path(id: organization.id)
+.container.p-0
+  .shadow-sm.mb-4
+    .d-flex.justify-content-around.border-bottom.pt-3
+      .col-1.text-center.h6 Logo
+      .col-1.text-center.h6 ID
+      .col-3.text-center.h6 Organization Name
+      .col-3.text-center.h6 Monthly points
+      .col-3.text-center.h6 Created
+    - @organizations.each do |organization|
+      = link_to admin_organization_path(id: organization.id), class: 'text-decoration-none text-reset' do
+        .border-bottom.
+          .d-flex.justify-content-around.align-items-center.p-1
+            .col-1.text-center
+              = image_tag organization.logo, class: "img-fluid"
+            .col-1.text-center
+              = organization.id
+            .col-3.text-center
+              span = organization.name
+            .col-3.text-center
+              span = organization.monthly_point
+            .col-3.text-center
+              = organization.created_at.to_formatted_s(:short)
+  .digg_pagination.d-flex.justify-content-center
+    = will_paginate @organization_paginate
 

@@ -18,51 +18,67 @@
 
     .text {
       font-size: 20px;
+      text-align: center;
     }
   }
 
   //section1
   .tools {
     background: #f3ebff;
+    padding: 3rem 5rem;
 
-    .text {
-      width: 45%;
-      padding: 5rem;
-      display: inline-block;
-      vertical-align: middle;
-
-      h5 {
-        font-size: 25px;
-        font-weight: 500;
-      }
+    .title {
+      padding-top: 4rem;
+      padding-left: 2rem;
     }
 
     .tool-links {
-      width: 55%;
-      margin: 0;
-      display: inline-block;
-      padding: 0;
-    }
+      margin-top: 3rem;
 
-    .title {
-      padding-left: 7rem;
-    }
-
-    .tool-menu {
-      margin-top: 5rem;
-      margin-right: 3rem;
-      width: 10%;
-      line-height: 4rem;
-
-      .active {
-        background: white;
-        border: 2px solid black;
+      .nav {
+        flex-wrap: nowrap;
       }
 
-      .icon-img {
-        display: flex;
-        margin-right: 1rem;
-        width: 95%;
+      .tool-menu {
+        max-width: 50%;
+        margin: auto;
+
+        .active {
+          background: #7954BD;
+          border: 2px solid black;
+        }
+
+        .tool-link {
+          width: 40%;
+          .icon-img {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .tool-content {
+      padding-bottom: 3rem;
+      padding-left: 5rem;
+      margin: auto;
+
+      .text {
+        width: 45%;
+        max-height: 340px;
+        overflow: hidden;
+        padding-right: 10rem;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: left;
+
+        h5 {
+          font-size: 25px;
+          font-weight: bold;
+        }
+      }
+
+      .tool-img {
+        display: inline-block;
       }
     }
   }
@@ -86,31 +102,32 @@
 
   //section3
   .head {
-    padding-top: 3rem;
+    padding-top: 2rem;
     padding-bottom: 3rem;
 
     .head-content {
-      margin-left: 5rem;
-      margin-top: 5rem;
+      margin-left: 3rem;
+      margin-top: 0.5rem;
 
       .head-img {
-        display: inline;
+        display: inline-block;
         float: left;
         width: 55%;
         height: 65%;
       }
 
       .text {
-        display: inline;
+        display: inline-block;
         padding-left: 3rem;
-        padding-top: 5rem;
+        padding-right: 2rem;
+        width: 30%;
       }
     }
 
     .head-rectangle {
       position: absolute;
-      width: 75%;
-      height: 68%;
+      width: 65%;
+      height: 88%;
 
       background: #7954BD;
     }
@@ -125,8 +142,8 @@
   //section4
   .posts {
 
-    .container {
-      margin: 0;
+    .posts-container {
+      margin: 0!important;
     }
 
     .posts-rectangle {
@@ -153,8 +170,7 @@
         margin-top: 22rem;
       }
       .text {
-        margin-left: 5rem;
-        margin-top: 5rem;
+        margin-top: 3rem;
       }
     }
 
@@ -164,6 +180,62 @@
       padding-left: 1.5rem;
       width: 95%;
       background: #7954BD;
+    }
+  }
+
+  @media (max-width: 1400px) {
+    //section1
+    .tools {
+      padding: 3rem 5rem;
+
+      .title {
+        padding-left: 0;
+      }
+
+      .tool-links {
+        .tool-menu {
+          .tool-link {
+            width: 60%;
+          }
+        }
+      }
+
+      .tool-content {
+        padding-left: 0;
+
+        .text {
+          width: 30%;
+          padding-right: 0;
+        }
+
+        .tool-img {
+          padding-left: 3rem;
+        }
+      }
+    }
+
+    //section3
+    .head {
+      .title {
+        margin-top: 2rem;
+        width: 100%;
+      }
+
+      .head-rectangle {
+        width: 75%;
+        height: 78%;
+      }
+
+      .head-content {
+        .head-img {
+          height: 80%;
+        }
+
+        .text {
+          padding-left: 1rem;;
+          padding-right: 0;
+        }
+      }
     }
   }
 
@@ -182,37 +254,37 @@
         line-height: 73.16px;
         font-style: normal;
       }
+
+      .text {
+        font-size: 18px;
+      }
     }
 
     //section1
     .tools {
-      .title {
-        padding-left: 2rem;
-        width: 100%;
-      }
+      padding: 2rem;
 
-      .text {
+      .title {
         text-align: center;
       }
 
       .tool-links {
-        max-width: 55%;
+        padding-left: 1rem;
+        .tool-menu {
+          .tool-link {
+            width: 60%;
+          }
+        }
       }
 
-      .tool-menu {
-        margin-right: 0.5rem;
-        margin-top: 2rem;
-        width: 50%;
-        line-height: 2rem;
-      }
+      .tool-content {
+        .text {
+          width: 26%;
+        }
 
-      .tool-img-all {
-        max-width: 50%;
-        margin-left: 1rem;
-      }
-
-      .tool-link {
-        text-align: left;
+        .tool-img {
+          padding-left: 2rem;
+        }
       }
     }
 
@@ -224,29 +296,22 @@
 
     //section3
     .head {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-
       .head-content {
-        margin-left: 1rem;
-        margin-top: 3rem;
-
-
         .text {
-          padding-left: 1rem;
-          padding-top: 1rem;
+          width: 45%;
+          padding-right: 2rem;
+          padding-left: 2rem;
         }
       }
 
       .head-rectangle {
-        height: 48%;
+        width: 75%;
+        height: 65%;
       }
 
       .title {
-        margin-top: 1rem;
-        width: 100%;
-        text-align: center;
-        padding: 0;
+        width: 80%;
+        padding-left: 1rem;
       }
     }
 
@@ -259,11 +324,11 @@
 
 
         .text-rectangle {
-          margin-top: 10rem;
+          margin-top: 7rem;
         }
 
         .title {
-          margin-top: 10rem;
+          margin-top: 4rem;
         }
         .text {
           margin: 0;
@@ -292,55 +357,32 @@
 
     //section1
     .tools {
-      .title {
-        padding-left: 1rem;
-        width: 100%;
-      }
-
-      .text {
-        text-align: center;
-      }
-
       .tool-links {
-        max-width: 55%;
+        padding-left: 2rem;
+
+        .tool-menu {
+          .tool-link {
+            width: 60%;
+          }
+        }
       }
 
-      .tool-menu {
-        margin-right: 0.5rem;
-        margin-top: 2rem;
-        width: 50%;
-        line-height: 2rem;
-      }
-
-      .tool-img-all {
-        max-width: 50%;
-        margin-left: 1rem;
-      }
-
-      .tool-link {
-        text-align: left;
-
-        .icon-img {
-          display: none;
+      .tool-content {
+        .text {
+          width: 25%;
         }
 
-        p {
-          display: none;
+        .tool-img {
+          width: 75%;
         }
       }
     }
 
     //section3
     .head {
-      padding-top: 0;
-      padding-bottom: 0;
-
-      .head-content {
-        margin-top: 2rem;
-      }
-
       .head-rectangle {
-        height: 44%;
+        width: 73%;
+        height: 55%;
       }
 
       .title {
@@ -352,13 +394,21 @@
     .posts {
       .posts-rectangle {
         margin-left: 3rem;
-        margin-top: 18rem;
-        height: 68%;
-        width: 60%;
+        margin-top: 13rem;
+        height: 75%;
+        width: 67%;
       }
 
       .post {
         margin-top: 22rem;
+      }
+
+      .title {
+        font-size: 40px;
+      }
+
+      .text {
+        padding-top: 0.5rem;
       }
     }
   }
@@ -381,32 +431,24 @@
 
     //section1
     .tools {
-      .title {
-        width: 50%;
-      }
-
-      .container {
-        margin: 0;
-      }
-
       .tool-links {
-        max-width: 90%;
+        padding-right: 2rem;
+        .tool-menu {
+          .tool-link {
+            width: 60%;
+          }
+        }
       }
 
-      .tool-menu {
-        margin-right: 0.5rem;
-        margin-top: 4rem;
-        width: 40%;
-        line-height: 1.5rem;
-      }
+      .tool-content {
+        .text {
+          width: 35%;
+        }
 
-      .tool-img-all {
-        max-width: 60%;
-        margin-left: 2rem;
-      }
-
-      .tool-link {
-        vertical-align: middle;
+        .tool-img {
+          width: 65%;
+          padding-left: 3rem;
+        }
       }
     }
 
@@ -416,6 +458,7 @@
 
       .title {
         text-align: left;
+        width: 100%;
       }
 
       .head-content {
@@ -427,7 +470,7 @@
 
       .head-rectangle {
         width: 80%;
-        height: 52%;
+
       }
     }
 
@@ -438,13 +481,17 @@
       }
 
       .posts-rectangle {
-        margin-top: 10rem;
-        height: 80%;
-        width: 70%;
+        margin-top: 6rem;
+        height: 83%;
+        width: 73%;
+
+        .text {
+          padding-top: 0.1rem;
+        }
       }
 
       .post {
-        margin-top: 21rem;
+        margin-top: 18rem;
         width: 100%;
       }
     }
@@ -468,31 +515,38 @@
     //section1
     .tools {
       .tool-links {
-        width: 100%;
+        margin-top: 2rem;
+        .tool-menu {
+          .tool-link {
+            width: 70%;
+          }
+        }
       }
 
-      .text {
-        text-align: right;
-      }
+      .tool-content {
+        padding-bottom: 2rem;
+        .text {
+          width: 100%;
+          text-align: center;
+          height: 2rem;
+          overflow: hidden;
 
-      .tool-menu {
-        margin-top: 1rem;
-        line-height: 1rem;
-      }
-
-      .tool-img-all {
-        margin-left: 2rem;
-        width: 100%;
+          h5 {
+            font-size: 22px;
+          }
+        }
 
         .tool-img {
           width: 100%;
+          padding-left: 0;
         }
       }
     }
 
+
     //section2
     .organizations {
-      padding-top: 2rem;
+      padding: 2rem 0;
     }
 
     //section3
@@ -501,30 +555,30 @@
 
       .title {
         text-align: center;
-        margin: 0;
+        width: 100%;
+        padding-left: 0;
       }
 
       .head-content {
-        margin-top: 1rem;
-        .head-img {
-          width: 45%;
-        }
+        margin-top: 0.5rem;
       }
 
       .head-rectangle {
         width: 100%;
-        height: 67%;
+        height: 61%;
       }
     }
 
     //section4
     .posts {
-      .title {
-        margin-left: 3rem;
+      padding-bottom: 2rem;
+      .posts-container {
+        margin: auto!important;
       }
 
       .posts-rectangle {
-        margin-top: 12em;
+        margin-top: 25em;
+        margin-left: 0;
         width: 95%;
         height: 70%;
         background: #ffffff;
@@ -537,7 +591,7 @@
 
       .post {
         margin-top: 3rem;
-        margin-left: 7rem;
+        margin-left: 1rem;
         width: 95%;
       }
     }
@@ -547,24 +601,22 @@
 //WIDTH 576px
 @media (max-width: 575px) {
   .home-page {
-    .title {
-      font-size: 34px;
-      width: 80%;
+    section {
+      width: 100%;
+      display: block;
+
+      .title {
+        width: 100%;
+        font-size: 36px;
+      }
     }
 
     //section1
     .tools {
-      .title {
-        width: 100%;
-        }
-      .text {
-        text-align: left;
-      }
+      padding: 1rem;
 
-      .tool-menu {
-        margin-top: 0;
-        font-size: 10px;
-        padding: 0;
+      .tool-links {
+        margin-top: 1rem;
       }
     }
 
@@ -578,23 +630,27 @@
     //section3
     .head {
       .head-content {
+        margin-left: 1rem;
+
         .head-img {
           width: 55%;
+          height: 100%;
+        }
+
+        .text {
+          padding-right: 1rem;
+          padding-left: 1rem;
         }
       }
 
       .head-rectangle {
-        width: 95%;
-        height: 53%;
+        width: 100%;
+        height: 60%;
       }
     }
 
     //section4
     .posts {
-      .title {
-        margin-left: 1rem;
-      }
-
       .posts-rectangle {
         margin-top: 12em;
         width: 70%;
@@ -608,9 +664,82 @@
       }
 
       .post {
-        margin-top: 3rem;
-        margin-left: 4rem;
-        width: 70%;
+        margin-left: 2rem;
+        width: 85%;
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .home-page {
+    section {
+      .title {
+        font-size: 30px;
+        font-weight: 100;
+        padding: 0;
+      }
+    }
+
+
+    //section1
+    .tools {
+      .tool-links {
+        .tool-menu {
+          max-width: 75%;
+
+          .tool-link {
+            width: 80%;
+          }
+        }
+
+        .nav-link {
+          padding: 0.7rem;
+        }
+      }
+    }
+
+    //section2
+    .organizations {
+      .title {
+        padding: 0;
+      }
+    }
+
+    //section3
+    .head {
+      .head-content {
+        margin-left: 2rem;
+
+        .head-img {
+          width: 90%;
+        }
+
+        .text {
+          display: none;
+        }
+      }
+
+      .head-rectangle {
+        height: 50%;
+      }
+    }
+
+    //section4
+    .posts {
+      .posts-rectangle {
+        margin-top: 15em;
+        width: 100%;
+        height: 50%;
+
+        .text-rectangle {
+          width: 100%;
+        }
+      }
+
+      .post {
+        margin-left: 1rem;
+        width: 90%;
       }
     }
   }

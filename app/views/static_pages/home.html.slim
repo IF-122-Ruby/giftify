@@ -1,55 +1,55 @@
 .home-page.justify-content-center
   section.tools
-    h1.title SIMPLE AND EASY TO USE
-    .text
-      #v-pills-tabContent.tab-content
-        #v-pills-home.tab-pane.fade.show.active aria-labelledby="v-pills-home-tab" role="tabpanel"
-          h5 Get Culture Insights
-          p
-           | Learn everything you need to know about how your team is engaging.
-           | Our insights helped an organization uncover that some departments were
-           | working together more frequently than expected.
-
-        #v-pills-profile.tab-pane.fade aria-labelledby="v-pills-profile-tab" role="tabpanel"
-          h5 Give Recognition
-          p
-            | When giving recognition to a coworker, your message should be
-            | specific, the reason should be significant, and you should do it
-            | publicly. Assembly makes it very easy and encourages all three –
-            | especially around specificity.
-
-        #v-pills-messages.tab-pane.fade aria-labelledby="v-pills-messages-tab" role="tabpanel"
-          h5 Offer Rewards
-          p
-            | Set up all the rewards that you think will excite your team
-            | members. We have a library of over 50+ personalized ideas. You
-            | can also set up paid rewards from over 600+ gift cards and
-            | charities (all rewards are optional).
-
-
-
-
+    h1.title SIMPLE AND EATHY TO USE
     .tool-links
-      .d-flex.align-items-start
-        #v-pills-tab.nav.flex-column.nav-pills.tool-menu aria-orientation="vertical" role="tablist"
-          button#v-pills-home-tab.nav-link.active.tool-link aria-selected="true" data-bs-target="#v-pills-home" data-bs-toggle="pill" role="tab"
+      #pills-tabContent.tab-content.tool-content
+        #pills-home.tab-pane.fade.show.active aria-labelledby="pills-home-tab" role="tabpanel"
+          .text
+            h5 Get Culture Insights
+            p
+             | Learn everything you need to know about how your team is engaging.
+             | Our insights helped an organization uncover that some departments were
+             | working together more frequently than expected.
+
+          = image_tag 'section3_get_culture.png', class: 'tool-img'
+
+        #pills-profile.tab-pane.fade aria-labelledby="pills-profile-tab" role="tabpanel"
+          .text
+            h5 Give Recognition
+            p
+              | When giving recognition to a coworker, your message should be
+              | specific, the reason should be significant, and you should do it
+              | publicly. Assembly makes it very easy and encourages all three –
+              | especially around specificity.
+
+          = image_tag 'section3_recognitio.jpg', class: 'tool-img'
+
+        #pills-contact.tab-pane.fade aria-labelledby="pills-contact-tab" role="tabpanel"
+          .text
+            h5 Offer Rewards
+            p
+              | Set up all the rewards that you think will excite your team
+              | members. We have a library of over 50+ personalized ideas. You
+              | can also set up paid rewards from over 600+ gift cards and
+              | charities (all rewards are optional)
+
+          = image_tag 'section3_offer_rewards.png', class: 'tool-img'
+
+      ul#pills-tab.nav.nav-pills.tool-menu role="tablist"
+        li.nav-item role="presentation"
+          button#pills-home-tab.nav-link.active.tool-link aria-controls="pills-home" aria-selected="true" data-bs-target="#pills-home" data-bs-toggle="pill" role="tab" type="button"
             = image_tag 'chart-and-polyline.png', class: 'icon-img'
 
-          button#v-pills-profile-tab.nav-link.tool-link aria-selected="false" data-bs-target="#v-pills-profile" data-bs-toggle="pill" role="tab"
+        li.nav-item role="presentation"
+          button#pills-profile-tab.nav-link.tool-link aria-controls="pills-profile" aria-selected="false" data-bs-target="#pills-profile" data-bs-toggle="pill" role="tab" type="button"
             = image_tag 'medal.png', class: 'icon-img'
 
-          button#v-pills-messages-tab.nav-link.tool-link aria-selected="false" data-bs-target="#v-pills-messages" data-bs-toggle="pill" role="tab"
+        li.nav-item role="presentation"
+          button#pills-contact-tab.nav-link.tool-link aria-controls="pills-contact" aria-selected="false" data-bs-target="#pills-contact" data-bs-toggle="pill" role="tab" type="button"
             = image_tag 'gift.png', class: 'icon-img'
 
-        #v-pills-tabContent.tab-content.tool-img-all
-          #v-pills-home.tab-pane.fade.show.active aria-labelledby="v-pills-home-tab" role="tabpanel"
-            = image_tag 'section3_get_culture.png', class: 'tool-img'
 
-          #v-pills-profile.tab-pane.fade aria-labelledby="v-pills-profile-tab" role="tabpanel"
-            = image_tag 'section3_recognitio.jpg', class: 'tool-img'
 
-          #v-pills-messages.tab-pane.fade aria-labelledby="v-pills-messages-tab" role="tabpanel"
-            = image_tag 'section3_offer_rewards.png', class: 'tool-img'
 
   section.organizations
     h1.title ORGANIZATIONS THAT SUPPORT US
@@ -71,15 +71,19 @@
       .head-content
         = image_tag 'teamwork-and-team-building.png', class: 'head-img'
 
-        p.text Lorem ipsum...
+        p.text
+          | We are not a team because we work together. We are a team because
+          | respect, trust and care for each other.
 
   section.posts
-    .container
+    .container.posts-container
       .row
         .col-lg-5.col-md-5.col-sm-12
           .posts-rectangle
             .text-rectangle
             h1.title  SHARE YOUR NEWS WITH OTHERS
-            p.text TEXT
+            p.text
+              | Whether your team is in the same building or spread
+              | across the world, make sure everyone is aligned around the same core values.
         .col-lg-5.offset-lg-2.col-md-5.offset-md-2.col-sm-12
           = image_tag 'section1_main_phot.jpg', class: 'post'

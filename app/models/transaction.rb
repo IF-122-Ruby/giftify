@@ -18,7 +18,7 @@
 #
 class Transaction < ApplicationRecord
   belongs_to :sender, polymorphic: true
-	belongs_to :receiver, polymorphic: true
+  belongs_to :receiver, polymorphic: true
 
   validates :amount, presence: true, numericality: { greater_than: 0 }
   validates :sender, presence: true

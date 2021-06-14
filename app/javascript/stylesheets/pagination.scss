@@ -2,9 +2,15 @@
   background: white;
   cursor: default;
 
+
   .pagination {
     margin-right: 0.9em;
   }
+ }
+
+ .position {
+   display: flex;
+   justify-content: center;
  }
 
 .digg_pagination a, .digg_pagination span, .digg_pagination em {

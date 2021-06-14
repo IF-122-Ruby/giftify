@@ -1,430 +1,426 @@
-section {
-  width: 100%;
-  display: block;
-  padding-top: 7rem;
-  padding-bottom: 3rem;
-  background: white;
-
-  .title {
-    padding-bottom: 1rem;
-    font-size: 70px;
-    font-weight: 400;
-    line-height: 83.16px;
-    font-style: normal;
-  }
-
-  .text {
-    font-size: 20px;
-    text-align: center;
-  }
-}
-
-//section1
-.tools {
-  background: $tools-color;
-  padding: 3rem 5rem;
-
-  .title {
-    padding-top: 4rem;
-    padding-left: 2rem;
-  }
-
-  .tool-links {
-    margin-top: 3rem;
-
-    .nav {
-      flex-wrap: nowrap;
-    }
-
-    .tool-menu {
-      max-width: 50%;
-      margin: auto;
-
-      .active {
-        background: $head-rectangle-color;
-        border: 2px solid black;
-      }
-
-      .tool-link {
-        width: 40%;
-        .icon-img {
-          width: 100%;
-        }
-      }
-    }
-  }
-
-  .tool-content {
-    padding-bottom: 3rem;
-    padding-left: 5rem;
-    margin: auto;
-
-    .text {
-      width: 45%;
-      max-height: 340px;
-      overflow: hidden;
-      padding-right: 10rem;
-      display: inline-block;
-      vertical-align: middle;
-      text-align: left;
-
-      h5 {
-        font-size: 25px;
-        font-weight: bold;
-      }
-    }
-
-    .tool-img {
-      display: inline-block;
-    }
-  }
-}
-
-//section2
-.organizations {
-  .title {
-    padding-bottom: 3rem;
-    text-align: center;
-  }
-}
-
-.org-img {
-  position: relative;
-  width: 100%;
-}
-
-.google {
-  background: white;
-}
-
-//section3
-.head {
-  padding-top: 2rem;
-  padding-bottom: 3rem;
-
-  .head-content {
-    margin-left: 3rem;
-    margin-top: 2rem;
-
-    .head-img {
-      display: inline-block;
-      float: left;
-      width: 55%;
-      height: 65%;
-    }
-
-    .text {
-      display: inline-block;
-      padding-left: 2rem;
-      padding-right: 2rem;
-      width: 30%;
-    }
-  }
-
-  .head-rectangle {
-    position: absolute;
-    width: 65%;
-    height: 80%;
-
-    background: $head-rectangle-color;
-  }
-
-  .title {
-    margin-top: 4rem;
-    width: 80%;
-    padding-left: 3rem;
-  }
-}
-
-//section4
-.posts {
-
-  .posts-container {
-    margin: 0!important;
-  }
-
-  .posts-rectangle {
-    float:left;
-    margin-top: 20rem;
-    margin-left: 4.4rem;
-    width: 70%;
-    height: 75%;
-    background: $tools-color;
-
-    .text-rectangle {
-      margin-top: 22rem;
-      vertical-align: middle;
-      position: absolute;
-      width:25%;
-      height: 50%;
-      background: rgba($text-rectangle-color, 0.43);
-      filter: blur(200px);
-    }
-
-    .title {
-      padding-left: 0;
-      text-align: center;
-      margin-top: 22rem;
-    }
-    .text {
-      margin-top: 3rem;
-    }
-  }
-
-  .post {
-    margin-top: 40rem;
-    padding-top: 1.5rem;
-    padding-left: 1.5rem;
-    width: 95%;
-    background: $head-rectangle-color;
-  }
-}
-
-@media (max-width: 1440px) {
-  //section1
-  .tools {
-    padding: 3rem 5rem;
-
-    .title {
-      padding-left: 0;
-    }
-
-    .tool-links {
-      .tool-menu {
-        .tool-link {
-          width: 60%;
-        }
-      }
-    }
-
-    .tool-content {
-      padding-left: 0;
-
-      .text {
-        width: 30%;
-        padding-right: 0;
-      }
-
-      .tool-img {
-        padding-left: 3rem;
-      }
-    }
-  }
-
-  //section3
-  .head {
-    .title {
-      margin-top: 2rem;
-      width: 100%;
-    }
-
-    .head-rectangle {
-      width: 75%;
-      height: 78%;
-    }
-
-    .head-content {
-      .head-img {
-        height: 80%;
-      }
-
-      .text {
-        padding-left: 1rem;;
-        padding-right: 0;
-      }
-    }
-  }
-}
-
-// WIDTH < 1200px
-@media (max-width: 1200px) {
-
+.home-page {
   section {
-    padding-top: 5rem;
-    padding-bottom: 1rem;
+    width: 100%;
+    display: block;
+    padding-top: 7rem;
+    padding-bottom: 3rem;
+    background: white;
 
     .title {
-      padding-bottom: 0.5rem;
-      padding-left: 1rem;
-      font-size: 48px;
-      font-weight: 500;
-      line-height: 73.16px;
+      padding-bottom: 1rem;
+      font-size: 70px;
+      font-weight: 400;
+      line-height: 83.16px;
       font-style: normal;
     }
 
     .text {
-      font-size: 18px;
+      font-size: 20px;
+      text-align: center;
     }
   }
 
   //section1
   .tools {
-    padding: 2rem;
+    background: $tools-color;
+    padding: 3rem 5rem;
 
     .title {
-      text-align: center;
+      padding-top: 4rem;
+      padding-left: 2rem;
     }
 
     .tool-links {
-      padding-left: 1rem;
+      margin-top: 3rem;
+
+      .nav {
+        flex-wrap: nowrap;
+      }
+
       .tool-menu {
+        max-width: 50%;
+        margin: auto;
+
+        .active {
+          background: $head-rectangle-color;
+          border: 2px solid black;
+        }
+
         .tool-link {
-          width: 60%;
+          width: 40%;
+          .icon-img {
+            width: 100%;
+          }
         }
       }
     }
 
     .tool-content {
+      padding-bottom: 3rem;
+      padding-left: 5rem;
+      margin: auto;
+
       .text {
-        width: 26%;
+        width: 45%;
+        max-height: 340px;
+        overflow: hidden;
+        padding-right: 10rem;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: left;
+
+        h5 {
+          font-size: 25px;
+          font-weight: bold;
+        }
       }
 
       .tool-img {
-        padding-left: 2rem;
+        display: inline-block;
       }
     }
   }
 
   //section2
+  .organizations {
+    .title {
+      padding-bottom: 3rem;
+      text-align: center;
+    }
+  }
+
   .org-img {
     position: relative;
     width: 100%;
   }
 
+  .google {
+    background: white;
+  }
+
   //section3
   .head {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+
     .head-content {
+      margin-left: 3rem;
+      margin-top: 2rem;
+
+      .head-img {
+        display: inline-block;
+        float: left;
+        width: 55%;
+        height: 65%;
+      }
+
       .text {
-        width: 45%;
-        padding-right: 2rem;
+        display: inline-block;
         padding-left: 2rem;
+        padding-right: 2rem;
+        width: 30%;
       }
     }
 
     .head-rectangle {
-      width: 75%;
-      height: 65%;
+      position: absolute;
+      width: 65%;
+      height: 60%;
+
+      background: $head-rectangle-color;
     }
 
     .title {
+      margin-top: 4rem;
       width: 80%;
-      padding-left: 1rem;
+      padding-left: 3rem;
     }
   }
 
   //section4
   .posts {
-    .posts-rectangle {
-      margin-left: 3rem;
-      margin-top: 20rem;
-      height: 65%;
 
+    .posts-container {
+      margin: 0!important;
+    }
+
+    .posts-rectangle {
+      float:left;
+      margin-top: 20rem;
+      margin-left: 4.4rem;
+      width: 70%;
+      height: 75%;
+      background: $tools-color;
 
       .text-rectangle {
-        margin-top: 7rem;
+        margin-top: 22rem;
+        vertical-align: middle;
+        position: absolute;
+        width:25%;
+        height: 50%;
+        background: rgba($text-rectangle-color, 0.43);
+        filter: blur(200px);
       }
 
       .title {
-        margin-top: 4rem;
-      }
-      .text {
-        margin: 0;
+        padding-left: 0;
         text-align: center;
-        padding-top: 1rem;
+        margin-top: 22rem;
+      }
+
+      .text {
+        margin-top: 3rem;
       }
     }
 
     .post {
-      margin-top: 25rem;
-      padding-top: 1rem;
-      padding-left: 1rem;
-      width: 90%;
-    }
-  }
-}
-
-//WIDTH < 1050px
-@media (max-width: 1050px) {
-
-  section {
-    .title {
-      font-size: 44px;
+      margin-top: 40rem;
+      padding-top: 1.5rem;
+      padding-left: 1.5rem;
+      width: 95%;
+      background: $head-rectangle-color;
     }
   }
 
-  //section1
-  .tools {
-    .tool-links {
-      padding-left: 2rem;
+  @media (max-width: 1440px) {
+    //section1
+    .tools {
+      padding: 3rem 5rem;
 
-      .tool-menu {
-        .tool-link {
-          width: 60%;
+      .title {
+        padding-left: 0;
+      }
+
+      .tool-links {
+        .tool-menu {
+          .tool-link {
+            width: 60%;
+          }
+        }
+      }
+
+      .tool-content {
+        padding-left: 0;
+
+        .text {
+          width: 30%;
+          padding-right: 0;
+        }
+
+        .tool-img {
+          padding-left: 3rem;
         }
       }
     }
 
-    .tool-content {
-      .text {
-        width: 25%;
+    //section3
+    .head {
+      .title {
+        margin-top: 2rem;
+        width: 100%;
       }
 
-      .tool-img {
+      .head-rectangle {
         width: 75%;
+        height: 78%;
+      }
+
+      .head-content {
+        .head-img {
+          height: 80%;
+        }
+
+        .text {
+          padding-left: 1rem;;
+          padding-right: 0;
+        }
       }
     }
   }
 
-  //section3
-  .head {
-    .head-rectangle {
-      width: 73%;
-      height: 55%;
-    }
-
-    .title {
-      margin-top: 0;
-    }
-  }
-
-  //section4
-  .posts {
-    .posts-rectangle {
-      margin-left: 3rem;
-      margin-top: 13rem;
-      height: 75%;
-      width: 67%;
-    }
-
-    .post {
-      margin-top: 22rem;
-    }
-
-    .title {
-      font-size: 40px;
-    }
-
-    .text {
-      padding-top: 0.5rem;
-    }
-  }
-}
-
-
-//WIDTH < 991px
-@media (max-width: 991px) {
-  .home-page {
-    margin-left: 0;
-
+  // WIDTH < 1200px
+  @media (max-width: 1200px) {
     section {
-      width: 100%;
-      display: block;
+      padding-top: 5rem;
+      padding-bottom: 1rem;
 
       .title {
-        margin-left: 1rem;
-        font-size: 40px;
+        padding-bottom: 0.5rem;
+        padding-left: 1rem;
+        font-size: 48px;
+        font-weight: 500;
+        line-height: 73.16px;
+        font-style: normal;
+      }
+
+      .text {
+        font-size: 18px;
       }
     }
+
+    //section1
+    .tools {
+      padding: 2rem;
+
+      .title {
+        text-align: center;
+      }
+
+      .tool-links {
+        padding-left: 1rem;
+        .tool-menu {
+          .tool-link {
+            width: 60%;
+          }
+        }
+      }
+
+      .tool-content {
+        .text {
+          width: 26%;
+        }
+
+        .tool-img {
+          padding-left: 2rem;
+        }
+      }
+    }
+
+    //section2
+    .org-img {
+      position: relative;
+      width: 100%;
+    }
+
+    //section3
+    .head {
+      .head-content {
+        .text {
+          width: 45%;
+          padding-right: 2rem;
+          padding-left: 2rem;
+        }
+      }
+
+      .head-rectangle {
+        width: 75%;
+        height: 65%;
+      }
+
+      .title {
+        width: 80%;
+        padding-left: 1rem;
+      }
+    }
+
+    //section4
+    .posts {
+      .posts-rectangle {
+        margin-left: 3rem;
+        margin-top: 20rem;
+        height: 65%;
+
+
+        .text-rectangle {
+          margin-top: 7rem;
+        }
+
+        .title {
+          margin-top: 4rem;
+        }
+        .text {
+          margin: 0;
+          text-align: center;
+          padding-top: 1rem;
+        }
+      }
+
+      .post {
+        margin-top: 25rem;
+        padding-top: 1rem;
+        padding-left: 1rem;
+        width: 90%;
+      }
+    }
+  }
+
+  //WIDTH < 1050px
+  @media (max-width: 1050px) {
+    section {
+      .title {
+        font-size: 44px;
+      }
+    }
+
+    //section1
+    .tools {
+      .tool-links {
+        padding-left: 2rem;
+
+        .tool-menu {
+          .tool-link {
+            width: 60%;
+          }
+        }
+      }
+
+      .tool-content {
+        .text {
+          width: 25%;
+        }
+
+        .tool-img {
+          width: 75%;
+        }
+      }
+    }
+
+    //section3
+    .head {
+      .head-rectangle {
+        width: 73%;
+        height: 55%;
+      }
+
+      .title {
+        margin-top: 0;
+      }
+    }
+
+    //section4
+    .posts {
+      .posts-rectangle {
+        margin-left: 3rem;
+        margin-top: 13rem;
+        height: 75%;
+        width: 67%;
+      }
+
+      .post {
+        margin-top: 22rem;
+      }
+
+      .title {
+        font-size: 40px;
+      }
+
+      .text {
+        padding-top: 0.5rem;
+      }
+    }
+  }
+
+  //WIDTH < 991px
+  @media (max-width: 991px) {
+    section {
+        width: 100%;
+        display: block;
+
+        .title {
+          margin-left: 1rem;
+          font-size: 40px;
+        }
+      }
 
     //section1
     .tools {
@@ -493,11 +489,8 @@ section {
       }
     }
   }
-}
 
-
-@media (max-width: 767px) {
-  .home-page {
+  @media (max-width: 767px) {
     section {
       width: 100%;
       display: block;
@@ -593,11 +586,9 @@ section {
       }
     }
   }
-}
 
-//WIDTH 576px
-@media (max-width: 575px) {
-  .home-page {
+  //WIDTH 576px
+  @media (max-width: 575px) {
     section {
       width: 100%;
       display: block;
@@ -666,10 +657,8 @@ section {
       }
     }
   }
-}
 
-@media (max-width: 450px) {
-  .home-page {
+  @media (max-width: 450px) {
     section {
       .title {
         font-size: 30px;
@@ -677,7 +666,6 @@ section {
         padding: 0;
       }
     }
-
 
     //section1
     .tools {

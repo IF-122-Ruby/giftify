@@ -1,0 +1,23 @@
+.col-md-12.p-3
+  .mx-auto
+    h3 = link_to "Giftify", root_path, class: "d-inline-block text-dark align-middle mt-3 text-decoration-none"
+  .text-center
+    h6.h5.mb-0.mt-4 Welcome back!
+    p.text-muted.mt-1.mb-4 Enter your email address and password
+  = simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'devise-form'}) do |f| 
+    .mb-3.mt-2
+      label.form-label Email Address
+      .input-group.flex-nowrap
+        .col-12
+          = f.input :email, label: false, required: true, input_html: {id: 'email', placeholder: "hello@coderthemes.com", class: 'rounded-0 border-top-0 border-start-0 border-end-0' }
+    .mb-3
+      label.form-label Password
+      .input-group.flex-nowrap
+        .col-12
+          = f.input :password, label: false, required: true, input_html: { id: "password", placeholder: "Enter your password", class: 'rounded-0 border-top-0 border-start-0 border-end-0' }
+    .mb-3.mb-4
+      = f.input :remember_me, as: :boolean, label: "Remember me", label_html: {class: 'form-check-label'}
+    .mb-3.text-center
+      = f.submit "Log in", class: "btn btn-primary btn-block w-75"
+    p.mt-3
+      = render "users/shared/links"

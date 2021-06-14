@@ -6,9 +6,7 @@ RSpec.describe MonthlyPointsWorker, type: :worker do
   let!(:organization) { create(:organization, user: user) }
 
   it 'changes job count' do
-    Sidekiq::Testing.inline! do
-      MonthlyPointsWorker.new.perform
-      expect(user.balance).to eq 10
-    end
+    MonthlyPointsWorker.new.perform
+    expect(user.balance).to eq 10
   end
 end

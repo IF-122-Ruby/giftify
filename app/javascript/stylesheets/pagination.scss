@@ -7,6 +7,11 @@
   }
  }
 
+ .pagination-position {
+   display: flex;
+   justify-content: center;
+ }
+
 .digg_pagination a, .digg_pagination span, .digg_pagination em {
   padding: 0.2em 0.8em;
   display: block;

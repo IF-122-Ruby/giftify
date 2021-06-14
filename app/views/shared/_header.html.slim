@@ -1,21 +1,14 @@
-nav.navbar.navbar-expand-lg.navbar-light
+nav.navbar.navbar-expand-lg.navbar-light.bg-white.shadow-sm.p-3.bg-white.rounded
   .container-fluid
-    a.navbar-brand href="#"  Giftify
+    = link_to "Giftify", root_url, class: "navbar-brand"
+
     button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button"
       span.navbar-toggler-icon
     #navbarSupportedContent.collapse.navbar-collapse
-      ul.navbar-nav.me-auto.mb-2.mb-lg-0
-        li.nav-item
-          = link_to 'Home', root_path, class: 'nav-link'
-        li.nav-item
-          = link_to 'Pricing', pricing_path, class: 'nav-link'
-        li.nav-item
-          = link_to 'About', about_path, class: 'nav-link'
-        li.nav-item
-          = link_to 'Contact us', new_feedback_path, class: 'nav-link'
-      .d-flex
-        - if current_user
-          = link_to "Sign Out", destroy_user_session_path, class:"btn btn-outline-success nav-btn", method: :delete
-        - else
-          = link_to 'Log in', new_user_session_path, class: "btn btn-outline-success nav-btn"
-          = link_to 'Sign Up', new_user_registration_path, method: :get, class: "btn btn-outline-success nav-btn"
+      .navbar-nav.me-auto.mb-2.mb-lg-0
+      .hide-toggle-menu
+        = render 'shared/sidebar'
+
+      .d-flex.justify-content-center.mt-2
+      = link_to "Login",  new_user_session_path, class: 'btn btn-soft-primary me-md-2'
+      = link_to "Sign Up", new_user_registration_path, class: "btn btn-soft-primary"

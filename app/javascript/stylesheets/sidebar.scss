@@ -1,6 +1,6 @@
 @media (max-width: 991px) {
-    .hide-sidebar-menu {
-      display: none;
+  .hide-sidebar-menu {
+    display: none;
   }
 
   .collapse {
@@ -8,7 +8,7 @@
       display: block;
       border-bottom: 1px solid grey;
 
-      .shadow-sm {
+      .shadow-toggle-menu-none {
         box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 0%) !important;
       }
     }

@@ -1,18 +1,17 @@
-#navbarSupportedContent.collapse.navbar-collapse.show-menu
-  .container.sidebar.p-0
-    .row.h-100.pt-3.mb-2.bg-white.shadow-sm.order-first.pl-1
-      .py-3.change-bg-color
-        = link_to "HOME", root_url, class: "text-decoration-none text-reset"
+.container.sidebar.p-0.hide-sidebar-menu
+  .row.h-100.pt-3.mb-2.bg-white.shadow-sm.order-first.pl-1
+    .py-3.change-bg-color
+      = link_to "HOME", root_url, class: "text-decoration-none text-reset"
 
-      .py-3.change-bg-color
-        = link_to "ABOUT", about_path, class: "text-decoration-none text-reset"
+    .py-3.change-bg-color
+      = link_to "ABOUT", about_path, class: "text-decoration-none text-reset"
 
-      .py-3.change-bg-color
-        = link_to "BLOG", posts_path, class: "text-decoration-none text-reset btn-toggle collapsed", 'aria-expanded'=> "true", 'data-bs-target'=> "#home-collapse", 'data-bs-toggle'=> "collapse"
+    .py-3.change-bg-color
+      = link_to "BLOG", posts_path, class: "text-decoration-none text-reset btn-toggle collapsed", 'aria-expanded'=> "true", 'data-bs-target'=> "#home-collapse", 'data-bs-toggle'=> "collapse"
 
-        #home-collapse.collapse
-          ul.btn-toggle-nav.list-unstyled.fw-normal.pb-1.small
-            = render 'posts/categories'
+      #home-collapse.collapse
+        ul.btn-toggle-nav.list-unstyled.fw-normal.pb-1.small
+          = render 'posts/categories'
 
-      .py-3.change-bg-color
-        = link_to "CONTACT US", new_feedback_path, class: "text-decoration-none text-reset"
+    .py-3.change-bg-color
+      = link_to "CONTACT US", new_feedback_path, class: "text-decoration-none text-reset"

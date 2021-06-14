@@ -8,8 +8,7 @@
         = @organization.name
       .col.m-2
         span Administrator: 
-        = @organization.user.first_name
-        = @organization.user.last_name
+        = @organization.user.full_name
       .col.m-2
         span Users countf: 
         = @organization.users.count

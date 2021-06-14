@@ -51,4 +51,8 @@ class User < ApplicationRecord
       'user' => User.users.limit(10)
     }
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

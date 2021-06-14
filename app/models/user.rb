@@ -33,6 +33,8 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :colleagues, ->(user) { where.not(id: user.id) }, through: :organization, source: :users, class_name: 'User'
   has_many :invitations, class_name: 'Invite', foreign_key: 'user_id'
+  has_many :sender_transactions, as: :sender, class_name: "Transaction"
+  has_many :receiver_transactions, as: :receiver, class_name: "Transaction"
 
   delegate :superadmin?, :admin?, :manager?, :simple?, to: :role
 
@@ -51,5 +53,9 @@ class User < ApplicationRecord
       'manager' => User.managers.limit(10),
       'user' => User.users.limit(10)
     }
+  end
+
+  def balance
+    receiver_transactions.sum(:amount) - sender_transactions.sum(:amount)
   end
 end

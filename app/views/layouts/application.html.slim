@@ -1,9 +1,9 @@
 doctype html
 html
   head
+    = display_meta_tags site: 'Giftify'
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
-    title Giftify
-    meta content="width=device-width,initial-scale=1" name="viewport" /
+    meta content="width=device-width, initial-scale=1" name="viewport" /
     = csrf_meta_tags
     = csp_meta_tag
 
@@ -22,3 +22,4 @@ html
       = yield
 
   = render partial: 'shared/footer'
+  = any_login_here if defined?(AnyLogin)

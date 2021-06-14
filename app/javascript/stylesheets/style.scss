@@ -1,1 +1,8 @@
 
+.registration-login-form {
+  background-color: #f3f4f7;
+
+  .form-control:focus {
+    box-shadow: 0 0 0 1px rgb(13 110 253 / 25%);
+  }
+}

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'static_pages#home'
+  get 'sitemap.xml', to: 'sitemaps#index', format: 'xml', as: :sitemap
   get 'about', to: 'static_pages#about'
   get 'pricing', to: 'static_pages#pricing'
 

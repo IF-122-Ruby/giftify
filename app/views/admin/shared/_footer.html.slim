@@ -1,4 +1,4 @@
-footer.text-center.text-lg-start.text-muted.bg-secondary.pt-1.footer-fixed-bottom.mt-3
+footer.text-center.text-lg-start.text-muted.bg-secondary.pt-1.footer-fixed-bottom.mt-3.fixed-bottom
   section.text-white
     .container.text-center.text-md-start.mt-5
       .row.mt-3
@@ -7,22 +7,18 @@ footer.text-center.text-lg-start.text-muted.bg-secondary.pt-1.footer-fixed-botto
             i.fas.fa-gem.me-3
             | Giftify software
           p
-            |  We make a software startup for big organizations who include meny of people. Our app make people happy.
+            |  We make a software startup for big organizations who include many of people. Our app make people happy.
         .col-md-2.col-lg-2.col-xl-2.mx-auto.mb-4
           h6.text-uppercase.fw-bold.mb-4
             |  Products
           p
-            = link_to root_url, class: "text-decoration-none text-white"  do
-              | Ruby
+            | Ruby
           p
-            = link_to root_url, class: "text-decoration-none text-white"  do
-              | React
+            | React
           p
-            = link_to root_url, class: "text-decoration-none text-white"  do
-              | Postgres
+            | Postgres
           p
-            = link_to root_url, class: "text-decoration-none text-white"  do
-              | Heroku
+            | Heroku
         .col-md-3.col-lg-2.col-xl-2.mx-auto.mb-4
           h6.text-uppercase.fw-bold.mb-4
             |  Useful links
@@ -47,6 +43,7 @@ footer.text-center.text-lg-start.text-muted.bg-secondary.pt-1.footer-fixed-botto
           p
             i.fas.fa-envelope.me-3
             = mail_to "giftify.team@gmail.com", "giftify.team@gmail.com", class: "text-decoration-none text-white"
+
           p
             i.fas.fa-phone.me-3
             |  + 01 234 567 88

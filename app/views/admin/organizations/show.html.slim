@@ -15,7 +15,7 @@
         = @organization.users.count
       .col.m-2
         span Created: 
-        = @organization.created_at.to_formatted_s(:short) 
+        = l(@organization.created_at, format: :short_date)
     .col-2.d-flex.align-items-center.justify-items-center
         
     .col-2.d-flex.align-items-center.justify-items-center

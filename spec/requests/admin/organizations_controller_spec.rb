@@ -10,5 +10,15 @@ RSpec.describe Admin::OrganizationsController, type: :request do
       get '/admin/organizations'
       expect(response).to have_http_status(:success)
     end
+
+    it "Must render admin/organizations/show" do
+      get "/admin/organizations/"
+      expect(response).to have_http_status(:success)
+    end
+
+    it "Must render admin/organizations/show" do
+      get "/admin/organizations"
+      expect(response).to have_http_status(:success)
+    end
   end
 end

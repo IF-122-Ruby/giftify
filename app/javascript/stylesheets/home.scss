@@ -1,0 +1,731 @@
+.home-page {
+  section {
+    width: 100%;
+    display: block;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    background: white;
+
+    .title {
+      padding-bottom: 1rem;
+      font-size: 70px;
+      font-weight: 400;
+      line-height: 83.16px;
+      font-style: normal;
+    }
+
+    .text {
+      font-size: 20px;
+      text-align: center;
+    }
+  }
+
+  //section1
+  .tools {
+    background: $tools-color;
+    padding: 3rem 5rem;
+
+    .title {
+      
+      padding-left: 2rem;
+    }
+
+    .tool-links {
+      margin-top: 3rem;
+
+      .nav {
+        flex-wrap: nowrap;
+      }
+
+      .tool-menu {
+        max-width: 50%;
+        margin: auto;
+
+        .active {
+          background: $head-rectangle-color;
+          border: 2px solid black;
+        }
+
+        .tool-link {
+          width: 40%;
+          .icon-img {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .tool-content {
+      padding-bottom: 3rem;
+      padding-left: 5rem;
+      margin: auto;
+
+      .text {
+        width: 45%;
+        max-height: 340px;
+        overflow: hidden;
+        padding-right: 10rem;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: left;
+
+        h5 {
+          font-size: 25px;
+          font-weight: bold;
+        }
+      }
+
+      .tool-img {
+        display: inline-block;
+      }
+    }
+  }
+
+  //section2
+  .organizations {
+    .title {
+      padding-bottom: 3rem;
+      text-align: center;
+    }
+  }
+
+  .org-img {
+    position: relative;
+    width: 100%;
+  }
+
+  .google {
+    background: white;
+  }
+
+  //section3
+  .head {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+
+    .head-content {
+      margin-left: 3rem;
+      margin-top: 2rem;
+
+      .head-img {
+        display: inline-block;
+        float: left;
+        width: 55%;
+        height: 65%;
+      }
+
+      .text {
+        display: inline-block;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        width: 30%;
+      }
+    }
+
+    .head-rectangle {
+      position: absolute;
+      width: 65%;
+      height: 60%;
+
+      background: $head-rectangle-color;
+    }
+
+    .title {
+      margin-top: 4rem;
+      width: 80%;
+      padding-left: 3rem;
+    }
+  }
+
+  //section4
+  .posts {
+
+    .posts-container {
+      margin: 0!important;
+    }
+
+    .posts-rectangle {
+      float:left;
+      margin-top: 20rem;
+      margin-left: 4.4rem;
+      width: 70%;
+      height: 75%;
+      background: $tools-color;
+
+      .text-rectangle {
+        margin-top: 22rem;
+        vertical-align: middle;
+        position: absolute;
+        width:25%;
+        height: 50%;
+        background: rgba($text-rectangle-color, 0.43);
+        filter: blur(200px);
+      }
+
+      .title {
+        padding-left: 0;
+        text-align: center;
+        margin-top: 22rem;
+      }
+
+      .text {
+        margin-top: 3rem;
+      }
+    }
+
+    .post {
+      margin-top: 40rem;
+      padding-top: 1.5rem;
+      padding-left: 1.5rem;
+      width: 95%;
+      background: $head-rectangle-color;
+    }
+  }
+
+  @media (max-width: 1440px) {
+    //section1
+    .tools {
+      padding: 3rem 5rem;
+
+      .title {
+        padding-left: 0;
+      }
+
+      .tool-links {
+        .tool-menu {
+          .tool-link {
+            width: 60%;
+          }
+        }
+      }
+
+      .tool-content {
+        padding-left: 0;
+
+        .text {
+          width: 30%;
+          padding-right: 0;
+        }
+
+        .tool-img {
+          padding-left: 3rem;
+        }
+      }
+    }
+
+    //section3
+    .head {
+      .title {
+        margin-top: 2rem;
+        width: 100%;
+      }
+
+      .head-rectangle {
+        width: 75%;
+        height: 78%;
+      }
+
+      .head-content {
+        .head-img {
+          height: 80%;
+        }
+
+        .text {
+          padding-left: 1rem;;
+          padding-right: 0;
+        }
+      }
+    }
+  }
+
+  // WIDTH < 1200px
+  @media (max-width: 1200px) {
+    section {
+      padding-top: 5rem;
+      padding-bottom: 1rem;
+
+      .title {
+        padding-bottom: 0.5rem;
+        padding-left: 1rem;
+        font-size: 48px;
+        font-weight: 500;
+        line-height: 73.16px;
+        font-style: normal;
+      }
+
+      .text {
+        font-size: 18px;
+      }
+    }
+
+    //section1
+    .tools {
+      padding: 2rem;
+
+      .title {
+        text-align: center;
+      }
+
+      .tool-links {
+        padding-left: 1rem;
+        .tool-menu {
+          .tool-link {
+            width: 60%;
+          }
+        }
+      }
+
+      .tool-content {
+        .text {
+          width: 26%;
+        }
+
+        .tool-img {
+          padding-left: 2rem;
+        }
+      }
+    }
+
+    //section2
+    .org-img {
+      position: relative;
+      width: 100%;
+    }
+
+    //section3
+    .head {
+      .head-content {
+        .text {
+          width: 45%;
+          padding-right: 2rem;
+          padding-left: 2rem;
+        }
+      }
+
+      .head-rectangle {
+        width: 75%;
+        height: 65%;
+      }
+
+      .title {
+        width: 80%;
+        padding-left: 1rem;
+      }
+    }
+
+    //section4
+    .posts {
+      .posts-rectangle {
+        margin-left: 3rem;
+        margin-top: 20rem;
+        height: 65%;
+
+
+        .text-rectangle {
+          margin-top: 7rem;
+        }
+
+        .title {
+          margin-top: 4rem;
+        }
+        .text {
+          margin: 0;
+          text-align: center;
+          padding-top: 1rem;
+        }
+      }
+
+      .post {
+        margin-top: 25rem;
+        padding-top: 1rem;
+        padding-left: 1rem;
+        width: 90%;
+      }
+    }
+  }
+
+  //WIDTH < 1050px
+  @media (max-width: 1050px) {
+    section {
+      .title {
+        font-size: 44px;
+      }
+    }
+
+    //section1
+    .tools {
+      .tool-links {
+        padding-left: 2rem;
+
+        .tool-menu {
+          .tool-link {
+            width: 60%;
+          }
+        }
+      }
+
+      .tool-content {
+        .text {
+          width: 25%;
+        }
+
+        .tool-img {
+          width: 75%;
+        }
+      }
+    }
+
+    //section3
+    .head {
+      .head-rectangle {
+        width: 73%;
+        height: 55%;
+      }
+
+      .title {
+        margin-top: 0;
+      }
+    }
+
+    //section4
+    .posts {
+      .posts-rectangle {
+        margin-left: 3rem;
+        margin-top: 13rem;
+        height: 75%;
+        width: 67%;
+      }
+
+      .post {
+        margin-top: 22rem;
+      }
+
+      .title {
+        font-size: 40px;
+      }
+
+      .text {
+        padding-top: 0.5rem;
+      }
+    }
+  }
+
+  //WIDTH < 991px
+  @media (max-width: 991px) {
+    section {
+        width: 100%;
+        display: block;
+
+        .title {
+          margin-left: 1rem;
+          font-size: 40px;
+        }
+      }
+
+    //section1
+    .tools {
+      .tool-links {
+        padding-right: 2rem;
+        .tool-menu {
+          .tool-link {
+            width: 60%;
+          }
+        }
+      }
+
+      .tool-content {
+        .text {
+          width: 35%;
+        }
+
+        .tool-img {
+          width: 65%;
+          padding-left: 3rem;
+        }
+      }
+    }
+
+    //section3
+    .head {
+      padding-top: 1rem;
+
+      .title {
+        text-align: left;
+        width: 100%;
+      }
+
+      .head-content {
+        margin-top: 1rem;
+        .head-img {
+          height: 45%;
+        }
+      }
+
+      .head-rectangle {
+        width: 82%;
+
+      }
+    }
+
+    //section4
+    .posts {
+      .title {
+        font-size: 36px;
+      }
+
+      .posts-rectangle {
+        margin-top: 6rem;
+        height: 83%;
+        width: 73%;
+
+        .text {
+          padding-top: 0.1rem;
+        }
+      }
+
+      .post {
+        margin-top: 18rem;
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    section {
+      width: 100%;
+      display: block;
+
+      .title {
+        text-align: center;
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+
+    //section1
+    .tools {
+      .tool-links {
+        margin-top: 2rem;
+        .tool-menu {
+          .tool-link {
+            width: 70%;
+          }
+        }
+      }
+
+      .tool-content {
+        padding-bottom: 2rem;
+        .text {
+          width: 100%;
+          text-align: center;
+          height: 2rem;
+          overflow: hidden;
+
+          h5 {
+            font-size: 22px;
+          }
+        }
+
+        .tool-img {
+          width: 100%;
+          padding-left: 0;
+        }
+      }
+    }
+
+
+    //section2
+    .organizations {
+      padding: 2rem 0;
+    }
+
+    //section3
+    .head {
+      padding-top: 1rem;
+
+      .title {
+        text-align: center;
+        width: 100%;
+        padding-left: 0;
+      }
+
+      .head-content {
+        margin-top: 0.5rem;
+      }
+
+      .head-rectangle {
+        width: 100%;
+        height: 61%;
+      }
+    }
+
+    //section4
+    .posts {
+      padding-bottom: 2rem;
+      .posts-container {
+        margin: auto!important;
+      }
+
+      .posts-rectangle {
+        margin-top: 25em;
+        margin-left: 0;
+        width: 95%;
+        height: 70%;
+        background: white;
+
+        .text-rectangle {
+          width: 70%;
+          height: 30%;
+        }
+      }
+
+      .post {
+        margin-top: 3rem;
+        margin-left: 1rem;
+        width: 95%;
+      }
+    }
+  }
+
+  //WIDTH 576px
+  @media (max-width: 575px) {
+    section {
+      width: 100%;
+      display: block;
+
+      .title {
+        width: 100%;
+        font-size: 36px;
+      }
+    }
+
+    //section1
+    .tools {
+      padding: 1rem;
+
+      .tool-links {
+        margin-top: 1rem;
+      }
+    }
+
+    //section2
+    .organizations {
+      .org-img {
+        width: 80%;
+      }
+    }
+
+    //section3
+    .head {
+      .head-content {
+        margin-left: 1rem;
+
+        .head-img {
+          width: 55%;
+          height: 100%;
+        }
+
+        .text {
+          padding-right: 1rem;
+          padding-left: 1rem;
+        }
+      }
+
+      .head-rectangle {
+        width: 100%;
+        height: 60%;
+      }
+    }
+
+    //section4
+    .posts {
+      .posts-rectangle {
+        margin-top: 12em;
+        width: 70%;
+        height: 60%;
+        background: white;
+
+        .text-rectangle {
+          width: 40%;
+          height: 25%;
+        }
+      }
+
+      .post {
+        margin-left: 2rem;
+        width: 85%;
+      }
+    }
+  }
+
+  @media (max-width: 450px) {
+    section {
+      .title {
+        font-size: 30px;
+        font-weight: 100;
+        padding: 0;
+      }
+    }
+
+    //section1
+    .tools {
+      .tool-links {
+        .tool-menu {
+          max-width: 75%;
+
+          .tool-link {
+            width: 80%;
+          }
+        }
+
+        .nav-link {
+          padding: 0.7rem;
+        }
+      }
+    }
+
+    //section2
+    .organizations {
+      .title {
+        padding: 0;
+      }
+    }
+
+    //section3
+    .head {
+      .head-content {
+        margin-left: 2rem;
+
+        .head-img {
+          width: 90%;
+        }
+
+        .text {
+          display: none;
+        }
+      }
+
+      .head-rectangle {
+        height: 50%;
+      }
+    }
+
+    //section4
+    .posts {
+      .posts-rectangle {
+        margin-top: 15em;
+        width: 100%;
+        height: 50%;
+
+        .text-rectangle {
+          width: 100%;
+        }
+      }
+
+      .post {
+        margin-left: 1rem;
+        width: 90%;
+      }
+    }
+  }
+}

@@ -1,21 +1,21 @@
-.container.col.p-0
-  .d-flex.shadow-sm.p-0.m-0.align-items-center.p-2
-    .col-2
-      = image_tag @organization.logo, class: "img-fluid"
-    .col-6.d-flex.flex-column.align-items-left
-      .col.m-2
-        span Organization name: 
-        = @organization.name
-      .col.m-2
-        span Administrator: 
-        = @organization.user.full_name
-      .col.m-2
-        span Users countf: 
-        = @organization.users.count
-      .col.m-2
-        span Created: 
-        = l(@organization.created_at, format: :short_date)
-    .col-2.d-flex.align-items-center.justify-items-center
-        
-    .col-2.d-flex.align-items-center.justify-items-center
-      = link_to "Back", admin_organizations_url, class: "btn btn-secondary"
+.shadow-sm.p-0
+  .container
+    .col-12.d-flex.p-2.align-items-center.justify-conten-around
+      .col-2.d-none.d-sm-block
+        = image_tag @organization.logo, class: "img-fluid"
+      .col-5
+        .col
+          span Organization name: 
+          = @organization.name
+        .col.d-none.d-sm-block
+          span Users count: 
+          = @organization.users.count
+        .col
+          span Created: 
+          = l(@organization.created_at, format: :short_date)
+      .col-4
+        span Administrators:
+        - @organization.users.where.not(roles: {role: :simple}).each do |u|
+          p.m-0 = u.full_name 
+      .col
+        = link_to "Back", admin_organizations_url, class: "btn btn-secondary"

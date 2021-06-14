@@ -32,6 +32,7 @@ class User < ApplicationRecord
   has_one :organization, through: :role
   has_many :posts, dependent: :destroy
   has_many :colleagues, ->(user) { where.not(id: user.id) }, through: :organization, source: :users, class_name: 'User'
+  has_many :invitations, class_name: 'Invite', foreign_key: 'user_id'
 
   delegate :superadmin?, :admin?, :manager?, :simple?, to: :role
 

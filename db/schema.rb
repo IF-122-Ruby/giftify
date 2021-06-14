@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_09_205744) do
+ActiveRecord::Schema.define(version: 2021_06_14_091311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,17 @@ ActiveRecord::Schema.define(version: 2021_06_09_205744) do
     t.index ["organization_id"], name: "index_gifts_on_organization_id"
   end
 
+  create_table "invites", force: :cascade do |t|
+    t.bigint "organization_id"
+    t.bigint "user_id"
+    t.string "recipient_email"
+    t.string "invite_token"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["organization_id"], name: "index_invites_on_organization_id"
+    t.index ["user_id"], name: "index_invites_on_user_id"
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id", null: false
@@ -76,6 +87,18 @@ ActiveRecord::Schema.define(version: 2021_06_09_205744) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["organization_id"], name: "index_roles_on_organization_id"
     t.index ["user_id", "organization_id"], name: "index_roles_on_user_id_and_organization_id", unique: true
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer "amount"
+    t.string "sender_type"
+    t.bigint "sender_id"
+    t.string "receiver_type"
+    t.bigint "receiver_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["receiver_type", "receiver_id"], name: "index_transactions_on_receiver"
+    t.index ["sender_type", "sender_id"], name: "index_transactions_on_sender"
   end
 
   create_table "users", force: :cascade do |t|

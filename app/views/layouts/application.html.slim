@@ -22,3 +22,4 @@ html
       = yield
 
   = render partial: 'shared/footer'
+  = any_login_here if defined?(AnyLogin)

@@ -1,0 +1,2 @@
+module OrganizationGiftsHelper
+end

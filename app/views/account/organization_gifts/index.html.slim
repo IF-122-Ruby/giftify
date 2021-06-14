@@ -1,0 +1,17 @@
+.main.m-4
+  .container-fluid
+    h1.fw-bolder.mb-5.mt-5.text-center Latest posts
+    - @organization_gifts.each do |organization_gift|
+      .col-lg-4.col-md-12.mb-4.text-center.btn
+        .card.shadow.p-3.mb-5.bg-white.border-0
+          .bg-image
+            = image_tag organization_gift.image.url, width: '250', height: '150', class: 'img-fluid'
+
+          .card-body
+            h5.card-title = organization_gift.title
+            p.card-text
+              = truncate organization_gift.description, length: 80
+            = link_to 'Read more', post_path(post), class:"button btn btn-outline-secondary nav-btn posts__card-button"
+
+  .digg_pagination.pagination-position
+      = will_paginate @posts, container: false

@@ -22,6 +22,8 @@ class Invite < ApplicationRecord
 
   before_create :generate_token
 
+  validates :invite_token, uniqueness: true
+
   def generate_token
     self.token = Digest::SHA1.hexdigest([organization_id, Time.now, rand].join)
   end

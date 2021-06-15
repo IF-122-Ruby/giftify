@@ -12,12 +12,13 @@
 #
 # Indexes
 #
+#  index_invites_on_invite_token     (invite_token) UNIQUE
 #  index_invites_on_organization_id  (organization_id)
 #  index_invites_on_user_id          (user_id)
 #
 class Invite < ApplicationRecord
   belongs_to :organization
-  belongs_to :user
+  belongs_to :sender, class_name: 'User', foreign_key: :user_id
 
   before_create :generate_token
 

@@ -12,14 +12,22 @@
 #
 # Indexes
 #
+#  index_invites_on_invite_token     (invite_token) UNIQUE
 #  index_invites_on_organization_id  (organization_id)
 #  index_invites_on_user_id          (user_id)
 #
 require 'rails_helper'
 
 RSpec.describe Invite, type: :model do
+  let(:invite) { build(:invite) }
+
   describe 'relations' do
-    it { should belong_to :organization }
-    it { should belong_to :user         }
+    it { should belong_to(:organization).class_name('Organization') }
+    it { should belong_to(:sender).class_name('User') }
   end
+
+  it 'has a valid Factory' do
+    expect(invite).to be_valid
+  end
+
 end

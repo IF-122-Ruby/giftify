@@ -12,14 +12,14 @@
 #
 # Indexes
 #
+#  index_invites_on_invite_token     (invite_token) UNIQUE
 #  index_invites_on_organization_id  (organization_id)
 #  index_invites_on_user_id          (user_id)
 #
 FactoryBot.define do
-  factory :invite do
-    invite_token { Digest::SHA1.hexdigest([self.organization_id, Time.now, rand].join) }
+  factory :invite, class: Invite do
     recipient_email { Faker::Internet.email }
     organization
-    user
+    association :sender, factory: :user
   end
 end

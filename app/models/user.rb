@@ -63,7 +63,6 @@ class User < ApplicationRecord
   end
 
   def new_user_notification
-    p self
-    # own_notifications.create!(message: 'Welcome', notificationable: organization, notification_type: Notification::USER_NEW)
+    own_notifications.create!(message: 'Welcome', notificationable: organization, notification_type: Notification::USER_NEW)
   end
 end

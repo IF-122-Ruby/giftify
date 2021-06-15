@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 2021_06_14_190614) do
     t.index ["organization_id"], name: "index_gifts_on_organization_id"
   end
 
-<<<<<<< HEAD
   create_table "notifications", force: :cascade do |t|
     t.bigint "user_id"
     t.text "message"
@@ -58,7 +57,7 @@ ActiveRecord::Schema.define(version: 2021_06_14_190614) do
     t.index ["notificationable_type", "notificationable_id"], name: "index_notifications_on_notificationable"
     t.index ["read"], name: "index_notifications_on_read"
     t.index ["user_id"], name: "index_notifications_on_user_id"
-=======
+
   create_table "invites", force: :cascade do |t|
     t.bigint "organization_id"
     t.bigint "user_id"
@@ -69,7 +68,6 @@ ActiveRecord::Schema.define(version: 2021_06_14_190614) do
     t.index ["invite_token"], name: "index_invites_on_invite_token", unique: true
     t.index ["organization_id"], name: "index_invites_on_organization_id"
     t.index ["user_id"], name: "index_invites_on_user_id"
->>>>>>> 242429658766ce823a6d5b5d5b66ea07d64eb4e7
   end
 
   create_table "organizations", force: :cascade do |t|

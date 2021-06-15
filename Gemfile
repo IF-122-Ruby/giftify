@@ -22,6 +22,9 @@ gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
 gem 'will_paginate'
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
+gem 'activerecord-import'
 
 group :development, :test do
   gem 'annotate'

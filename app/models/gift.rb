@@ -16,6 +16,7 @@
 #
 #  index_gifts_on_organization_id  (organization_id)
 #
+
 class Gift < ApplicationRecord
   MERCH = 'merch'.freeze
   COUPON = 'coupon'.freeze
@@ -26,6 +27,7 @@ class Gift < ApplicationRecord
   belongs_to :organization
   has_many   :transactions, as: :receiver
 
+  include Searchable
 
   validates :name, :description, presence: true
   validates :gift_type, inclusion: { in: gift_types.values }

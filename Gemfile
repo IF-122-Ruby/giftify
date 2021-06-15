@@ -8,6 +8,8 @@ gem 'any_login'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'carrierwave'
 gem 'devise'
+gem 'elasticsearch', '~> 7.13', '>= 7.13.1'
+gem 'elasticsearch-model'
 gem 'factory_bot_rails'
 gem 'faker'
 gem 'jbuilder', '~> 2.7'

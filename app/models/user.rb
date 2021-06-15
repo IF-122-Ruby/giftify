@@ -20,8 +20,11 @@
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
+require 'elasticsearch/model'
 
 class User < ApplicationRecord
+  include Elasticsearch::Model
+  
   scope :admins, -> { joins(:role).where(roles: { role: Role::ADMIN }) }
   scope :managers, -> { joins(:role).where(roles: { role: Role::MANAGER }) }
   scope :users, -> { joins(:role).where(roles: { role: Role::USER }) }

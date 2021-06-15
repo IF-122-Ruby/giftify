@@ -2,6 +2,7 @@ class Account::GiftsController < Account::AccountsController
   def index
     @gifts = collection
     authorize([:account, @gifts])
+    @gift_search
   end
 
   def show
@@ -49,6 +50,10 @@ class Account::GiftsController < Account::AccountsController
     @gift.destroy
     flash[:notice] = 'Gift succesfully deleted!'
     redirect_to account_gifts_path
+  end
+
+  def search
+    @gifts = Gift.search(params[:term])
   end
   
   private

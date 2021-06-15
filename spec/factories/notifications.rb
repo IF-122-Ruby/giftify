@@ -6,7 +6,7 @@
 #  message               :text
 #  notification_type     :string
 #  notificationable_type :string
-#  read                  :boolean
+#  read                  :boolean          default(FALSE)
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #  notificationable_id   :bigint

@@ -1,0 +1,4 @@
+.d-flex.justify-content-center.align-items-center
+  - @notifications.each do |notification|
+    = notification.message
+    = notification.notification_type

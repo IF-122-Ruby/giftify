@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_06_14_190614) do
     t.bigint "user_id"
     t.text "message"
     t.string "notification_type"
-    t.boolean "read"
+    t.boolean "read", default: false
     t.string "notificationable_type"
     t.bigint "notificationable_id"
     t.datetime "created_at", precision: 6, null: false

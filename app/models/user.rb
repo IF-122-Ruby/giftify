@@ -34,6 +34,7 @@ class User < ApplicationRecord
   has_many :colleagues, ->(user) { where.not(id: user.id) }, through: :organization, source: :users, class_name: 'User'
   has_many :sender_transactions, as: :sender, class_name: "Transaction"
   has_many :receiver_transactions, as: :receiver, class_name: "Transaction"
+  has_many :own_notifications, class_name: 'Notification', dependent: :destroy
 
   delegate :superadmin?, :admin?, :manager?, :simple?, to: :role
 
@@ -44,6 +45,8 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :owned_organization
   accepts_nested_attributes_for :role, reject_if: :all_blank
+
+  after_create_commit :new_user_notification
 
   def self.grouped_collection_by_role
     {
@@ -56,5 +59,10 @@ class User < ApplicationRecord
 
   def balance
     receiver_transactions.sum(:amount) - sender_transactions.sum(:amount)
+  end
+
+  def new_user_notification
+    p self
+    # own_notifications.create!(message: 'Welcome', notificationable: organization, notification_type: Notification::USER_NEW)
   end
 end

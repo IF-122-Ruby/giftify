@@ -23,5 +23,6 @@ FactoryBot.define do
     name { Faker::Company.name }
     user
     logo { Faker::Avatar.image }
+    monthly_point { 10 }
   end
 end

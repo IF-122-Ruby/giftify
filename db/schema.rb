@@ -57,7 +57,8 @@ ActiveRecord::Schema.define(version: 2021_06_14_190614) do
     t.index ["notificationable_type", "notificationable_id"], name: "index_notifications_on_notificationable"
     t.index ["read"], name: "index_notifications_on_read"
     t.index ["user_id"], name: "index_notifications_on_user_id"
-
+  end
+  
   create_table "invites", force: :cascade do |t|
     t.bigint "organization_id"
     t.bigint "user_id"

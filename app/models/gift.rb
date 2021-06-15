@@ -26,7 +26,12 @@ class Gift < ApplicationRecord
   belongs_to :organization
   has_many   :transactions, as: :receiver
 
+  after_create :method
 
   validates :name, :description, presence: true
   validates :gift_type, inclusion: { in: gift_types.values }
+  
+  def add_notification_about_new_gift
+    notification.create(notificationable: self)
+  end
 end

@@ -20,10 +20,12 @@
 #
 FactoryBot.define do
   factory :notification do
-    user { "" }
-    message { "MyText" }
-    notification_type { "MyText" }
-    is_read { false }
-    notificationable { "" }
+    user
+    message { Faker::Lorem.sentence(word_count: 20) }
+    association :notificable, factory: :user
+
+    trait :user_added do
+      notification_type { Notification::USER_ADDED }
+    end
   end
 end

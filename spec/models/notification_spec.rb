@@ -21,5 +21,16 @@
 require 'rails_helper'
 
 RSpec.describe Notification, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:notification) { build(:notification) }
+
+  describe 'associations' do
+    it { is_expected.to belong_to(:user) }
+  end
+  describe "validation" do
+    context "when valid Factory notification" do
+      it "has a valid Notification" do
+        expect(build(:notification)).to be_valid
+      end
+    end
+  end
 end

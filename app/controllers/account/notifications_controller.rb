@@ -6,6 +6,6 @@ class Account::NotificationsController < Account::AccountsController
   private
 
   def collection
-    current_user.notifications
+    current_user.own_notifications
   end
 end

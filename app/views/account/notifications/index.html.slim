@@ -1,4 +1,12 @@
-.d-flex.justify-content-center.align-items-center
-  - @notifications.each do |notification|
-    = notification.message
-    = notification.notification_type
+.mx-auto
+  h3.d-inline-block.text-dark.align-middle.mt-3.ms-3 Notifications
+.col
+  .col-8.offset-md-2
+    .d-flex.justify-content-center.flex-column
+      - unless @notifications.any?
+        h3 There are no notifications
+      - else
+          - @notifications.each do |notification|
+            .card
+              .card-body
+                = notification.message

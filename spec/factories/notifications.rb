@@ -22,10 +22,11 @@ FactoryBot.define do
   factory :notification do
     user
     message { Faker::Lorem.sentence(word_count: 20) }
-    association :notificable, factory: :user
+    association :notificationable, factory: :organization
+    notification_type { Notification::USER_NEW }
 
-    trait :user_added do
-      notification_type { Notification::USER_ADDED }
+    trait :organization_created do
+      notification_type { Notification::ORGANIZATION_CREATED }
     end
   end
 end

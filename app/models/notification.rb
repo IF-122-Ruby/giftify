@@ -20,10 +20,8 @@
 #
 class Notification < ApplicationRecord
   USER_NEW = 'USER_NEW'.freeze
-  USER_DELETED = 'USER_DELETED'.freeze
-  GIFT_NEW = 'GIFT_NEW'.freeze
-  GIFT_DELETED = 'GIFT_NEW'.freeze
-  NOTIFICATION_TYPES = [USER_NEW, GIFT_NEW].freeze
+  ORGANIZATION_CREATED = 'ORGANIZATION_CREATED'.freeze
+  NOTIFICATION_TYPES = [USER_NEW, ORGANIZATION_CREATED].freeze
 
   belongs_to :notificationable, polymorphic: true
   belongs_to :user

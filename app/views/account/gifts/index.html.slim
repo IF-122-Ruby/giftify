@@ -17,7 +17,7 @@
           - @gifts.each do |gift|
             tr
               td = gift.name
-              td = image_tag gift.image.url, width: '250', height: '150', class: 'img-fluid'
+              td = image_tag gift.image.url(:list_size_gift), class: 'img-fluid'
               td = gift.description
               td = gift.amount
               td = gift.price

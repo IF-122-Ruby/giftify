@@ -1,12 +1,10 @@
 .main.m-4
   .container-fluid
     h1.fw-bolder.mb-5.mt-5.text-center Gifts
-    p = current_organization.name
     - @organization_gifts.each do |organization_gift|
       .col-lg-4.col-md-12.mb-4.text-center.btn
-        .card.shadow.p-3.mb-5.bg-white.border-0
-          .bg-image
-            = image_tag organization_gift.image.url, width: '350', height: '350', class: 'img-fluid'
+        .card.shadow.p-3.mb-5.bg-white.border-0 style=("width: 18rem;")
+          = image_tag organization_gift.image.url(:card_size_gift), class: 'img-fluid'
 
           .card-body
             h5.card-title = organization_gift.name
@@ -14,8 +12,11 @@
               strong
                 = organization_gift.price
               | points
+          .card-body
             = link_to 'Details', account_organization_gift_path(organization_gift), class:"button btn btn-outline-secondary nav-btn posts__card-button"
 
+            a.like href="#"
+              i.far.fa-heart
 
   .digg_pagination.pagination-position
       = will_paginate @organization_gifts, container: false

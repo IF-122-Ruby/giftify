@@ -1,9 +1,10 @@
 class Account::OrganizationGiftsController < Account::GiftsController
   def index
-    @organization_gifts = collection.all.paginate(page: params[:page], per_page: 10)
+    super
+    @organization_gifts = @gifts.paginate(page: params[:page], per_page: 6)
   end
 
   def show
-    @organization_gift = collection.find(params[:id])
+    @organization_gift = resource
   end
 end

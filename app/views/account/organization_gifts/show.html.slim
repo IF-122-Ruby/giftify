@@ -2,8 +2,16 @@
   .container-fluid
     h1.fw-bolder.mb-5.mt-5.text-center = @organization_gift.name
     figure.mb-4.text-center
-      = image_tag @organization_gift.image.url, class: 'img-thumbnail rounded', size: '900x400'
+      = image_tag @organization_gift.image.url(:card_show_size_gift), class: 'img-thumbnail rounded'
 
     section.mb-5.post-item
-      p.fs-5.mb-4.lead.p-3.post-item__description
+      p.fs-5.mb-4.lead.p-3
+        strong
+          = @organization_gift.price
+        | points
+      p.fs-5.mb-4.lead.p-3
         = @organization_gift.description
+      = link_to 'Back', account_organization_gifts_path, class:"button btn btn-outline-secondary nav-btn posts__card-button"
+
+      a.like href="#"
+        i.far.fa-heart

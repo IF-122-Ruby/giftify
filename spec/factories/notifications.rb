@@ -15,7 +15,6 @@
 # Indexes
 #
 #  index_notifications_on_notificationable  (notificationable_type,notificationable_id)
-#  index_notifications_on_read              (read)
 #  index_notifications_on_user_id           (user_id)
 #
 FactoryBot.define do

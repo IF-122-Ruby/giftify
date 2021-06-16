@@ -15,7 +15,6 @@
 # Indexes
 #
 #  index_notifications_on_notificationable  (notificationable_type,notificationable_id)
-#  index_notifications_on_read              (read)
 #  index_notifications_on_user_id           (user_id)
 #
 class Notification < ApplicationRecord
@@ -23,7 +22,7 @@ class Notification < ApplicationRecord
   ORGANIZATION_CREATED = 'ORGANIZATION_CREATED'.freeze
   NOTIFICATION_TYPES = [USER_NEW, ORGANIZATION_CREATED].freeze
 
-  validates :message , presence: true
+  validates :message, presence: true
 
   belongs_to :notificationable, polymorphic: true
   belongs_to :user

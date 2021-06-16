@@ -30,6 +30,5 @@ FactoryBot.define do
     trait :with_image do
       image { Rack::Test::UploadedFile.new(Rails.root + "spec/files/#{rand(1..10)}.jpg", 'image/jpeg') }
     end
-    
   end
 end

@@ -36,6 +36,7 @@ class User < ApplicationRecord
   has_many :sender_transactions, as: :sender, class_name: "Transaction"
   has_many :receiver_transactions, as: :receiver, class_name: "Transaction"
   has_many :own_notifications, class_name: 'Notification', dependent: :destroy
+  has_many :microposts, class_name: "Micropost", foreign_key: "author_id"
 
   delegate :superadmin?, :admin?, :manager?, :simple?, to: :role
 

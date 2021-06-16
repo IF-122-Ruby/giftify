@@ -7,6 +7,10 @@ FactoryBot.define do
     email { Faker::Internet.email }
     password { Faker::Lorem.characters(number: 10) }
 
+    trait :with_organization do
+      organization
+    end
+
     trait :superadmin do
       role { build(:role, role: :superadmin) }
     end

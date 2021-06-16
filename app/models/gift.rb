@@ -6,6 +6,7 @@
 #  amount          :integer
 #  description     :text
 #  gift_type       :string
+#  image           :string
 #  name            :string
 #  price           :integer
 #  created_at      :datetime         not null
@@ -18,6 +19,8 @@
 #
 
 class Gift < ApplicationRecord
+  mount_uploader :image, ImageUploader
+
   MERCH = 'merch'.freeze
   COUPON = 'coupon'.freeze
   GIFT_TYPES = [MERCH, COUPON].freeze

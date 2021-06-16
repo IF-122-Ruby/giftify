@@ -7,6 +7,7 @@ gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
 gem 'any_login'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'carrierwave'
+gem 'mini_magick'
 gem 'devise'
 gem 'elasticsearch', '~> 7.13', '>= 7.13.1'
 gem 'elasticsearch-model'
@@ -55,6 +56,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.4'
   gem 'capistrano-passenger', '~> 0.2.0'
   gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
+  gem 'capistrano-sidekiq'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

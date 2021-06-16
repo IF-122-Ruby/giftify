@@ -3,20 +3,21 @@
     .card.card-body.shadow-lg.p-4.mb-2.bg-white.rounded.gift-card
       .d-flex.flex-direction-row
         .card-body.gift-card__description
-          h5.card-title 
+          h5.card-title
             = @gift.name
+          = image_tag @gift.image.url(:preview), class: 'img-fluid'
           p.card-text
             = @gift.description
         .card-body
           ul.list-group
-            li.list-group-item 
-              | Price: 
+            li.list-group-item
+              | Price:
               = @gift.price
-            li.list-group-item 
-              | Amount: 
+            li.list-group-item
+              | Amount:
               = @gift.amount
-            li.list-group-item 
-              | Gift type: 
+            li.list-group-item
+              | Gift type:
               = @gift.gift_type
           .card-body
           = link_to 'Edit', edit_account_gift_path(@gift), class: 'btn btn-primary gift-card__button'

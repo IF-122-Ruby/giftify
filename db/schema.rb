@@ -58,6 +58,18 @@ ActiveRecord::Schema.define(version: 2021_06_15_213549) do
     t.index ["user_id"], name: "index_invites_on_user_id"
   end
 
+  create_table "microposts", force: :cascade do |t|
+    t.bigint "author_id"
+    t.bigint "organization_id"
+    t.string "title"
+    t.text "description"
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_microposts_on_author_id"
+    t.index ["organization_id"], name: "index_microposts_on_organization_id"
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id", null: false
@@ -119,6 +131,8 @@ ActiveRecord::Schema.define(version: 2021_06_15_213549) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "microposts", "organizations"
+  add_foreign_key "microposts", "users", column: "author_id"
   add_foreign_key "organizations", "users"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "users"

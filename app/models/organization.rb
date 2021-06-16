@@ -25,6 +25,7 @@ class Organization < ApplicationRecord
   has_many :gifts
   has_many :invites
   has_many :transactions, as: :sender
+  has_many :microposts
 
   validates :name, presence: true
   validates :monthly_point, numericality: { only_integer: true }

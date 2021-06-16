@@ -12,7 +12,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-white.shadow-sm.p-3.bg-white.rounded
             = search_field_tag :search, params[:search], placeholder: "Пошук", class: "form-control bg-light"
             = button_tag "search", :class => 'btn btn-secondary'
         button.btn.btn-secondary.m-1
-          = link_to account_notifications_path, class: "btn btn-secondary m-1" do
+          = link_to account_notifications_path,class: "text-white" do
             i.fas.fa-bell
         .btn-group
           button.btn.btn-secondary.dropdown-toggle.m-1 aria-expanded="false" data-bs-toggle="dropdown" type="button"

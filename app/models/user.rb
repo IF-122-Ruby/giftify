@@ -34,6 +34,7 @@ class User < ApplicationRecord
   has_many :colleagues, ->(user) { where.not(id: user.id) }, through: :organization, source: :users, class_name: 'User'
   has_many :sender_transactions, as: :sender, class_name: "Transaction"
   has_many :receiver_transactions, as: :receiver, class_name: "Transaction"
+  has_many :microposts, class_name: "Micropost", foreign_key: "author_id"
 
   delegate :superadmin?, :admin?, :manager?, :simple?, to: :role
 

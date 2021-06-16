@@ -26,6 +26,10 @@ Rails.application.routes.draw do
     root to: 'admin#index'
 
     resources :feedbacks, only: [:index, :show]
-
+    resources :users do
+      collection do
+        get 'admin/search', to: 'admin#search', as: 'search'
+      end
+    end
   end
 end

@@ -27,8 +27,6 @@ class Gift < ApplicationRecord
   belongs_to :organization
   has_many   :transactions, as: :receiver
 
-  include Searchable
-
   validates :name, :description, presence: true
   validates :gift_type, inclusion: { in: gift_types.values }
 end

@@ -24,7 +24,7 @@ require 'elasticsearch/model'
 
 class User < ApplicationRecord
   include Elasticsearch::Model
-  
+
   scope :admins, -> { joins(:role).where(roles: { role: Role::ADMIN }) }
   scope :managers, -> { joins(:role).where(roles: { role: Role::MANAGER }) }
   scope :users, -> { joins(:role).where(roles: { role: Role::USER }) }
@@ -47,7 +47,7 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :owned_organization
   accepts_nested_attributes_for :role, reject_if: :all_blank
-
+  
   def self.grouped_collection_by_role
     {
       'superadmin' => User.superadmins.limit(10),

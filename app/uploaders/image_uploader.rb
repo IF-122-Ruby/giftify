@@ -6,21 +6,18 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  version :list_size_gift do
-    process :resize_to_fit => [250, 150]
+  version :thumb do
+    process resize_to_fit: [50, 50]
   end
 
-  version :show_size_gift do
-    process :resize_to_fit => [500, 300]
+  version :small do
+    process resize_to_fit: [250, 250]
   end
 
-  version :card_size_gift do
-    process :resize_to_fit => [350, 350]
+  version :preview do
+    process resize_to_fit: [500, 500]
   end
 
-  version :card_show_size_gift do
-    process :resize_to_fit => [500, 400]
-  end
 
   def extension_whitelist
     %w(jpg jpeg gif png)

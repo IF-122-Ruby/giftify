@@ -5,7 +5,7 @@
         .card-body.gift-card__description
           h5.card-title
             = @gift.name
-          = image_tag @gift.image.url(:show_size_gift), class: 'img-fluid'
+          = image_tag @gift.image.url(:preview), class: 'img-fluid'
           p.card-text
             = @gift.description
         .card-body

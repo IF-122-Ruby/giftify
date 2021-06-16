@@ -32,6 +32,7 @@ class User < ApplicationRecord
   has_one :organization, through: :role
   has_many :posts, dependent: :destroy
   has_many :colleagues, ->(user) { where.not(id: user.id) }, through: :organization, source: :users, class_name: 'User'
+  has_many :invites, foreign_key: 'user_id'
   has_many :sender_transactions, as: :sender, class_name: "Transaction"
   has_many :receiver_transactions, as: :receiver, class_name: "Transaction"
 

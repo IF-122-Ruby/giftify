@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_06_15_065725) do
+=======
+ActiveRecord::Schema.define(version: 2021_06_15_091034) do
+>>>>>>> main
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +49,7 @@ ActiveRecord::Schema.define(version: 2021_06_15_065725) do
     t.index ["organization_id"], name: "index_gifts_on_organization_id"
   end
 
+
   create_table "microposts", force: :cascade do |t|
     t.bigint "author_id"
     t.bigint "organization_id"
@@ -55,6 +60,17 @@ ActiveRecord::Schema.define(version: 2021_06_15_065725) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author_id"], name: "index_microposts_on_author_id"
     t.index ["organization_id"], name: "index_microposts_on_organization_id"
+
+  create_table "invites", force: :cascade do |t|
+    t.bigint "organization_id"
+    t.bigint "user_id"
+    t.string "recipient_email"
+    t.string "invite_token"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["invite_token"], name: "index_invites_on_invite_token", unique: true
+    t.index ["organization_id"], name: "index_invites_on_organization_id"
+    t.index ["user_id"], name: "index_invites_on_user_id"
   end
 
   create_table "organizations", force: :cascade do |t|

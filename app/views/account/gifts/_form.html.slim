@@ -1,5 +1,6 @@
 = simple_form_for gift, url: [:account, gift], html: { autocomplete: 'off', class: 'form' } do |f|
   = f.input :name, label: "Gift name", input_html: { class: 'form-control form__input' }
+  = f.input :image, as: :file, label: "Image", input_html: { class: 'form-control form__input' }
   = f.input :description, label: "Description", as: :text, input_html: { cols: 5, rows: 5, class: 'form-control form__input'}
   = f.input :amount, label: 'Amount', as: :integer, input_html: { class: 'form-control form__input' }
   = f.input :price, label: 'Price', as: :integer, input_html: { class: 'form-control form__input' }

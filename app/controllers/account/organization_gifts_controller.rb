@@ -1,6 +1,6 @@
-class OrganizationGiftsController < Account::AccountsController
+class Account::OrganizationGiftsController < Account::GiftsController
   def index
-    @organization_gifts = collection.all.paginate(page: params[:page], per_page: 5)
+    @organization_gifts = collection.all.paginate(page: params[:page], per_page: 10)
   end
 
   def show

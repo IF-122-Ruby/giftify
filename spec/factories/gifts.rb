@@ -6,6 +6,7 @@
 #  amount          :integer
 #  description     :text
 #  gift_type       :string
+#  image           :string
 #  name            :string
 #  price           :integer
 #  created_at      :datetime         not null
@@ -24,5 +25,9 @@ FactoryBot.define do
     gift_type { Gift::MERCH }
     price { Faker::Number.number(digits: 2) }
     organization
+
+    trait :with_image do
+      image { Rack::Test::UploadedFile.new(Rails.root + "spec/files/gifts/#{rand(1..10)}.jpg", 'image/jpeg') }
+    end
   end
 end

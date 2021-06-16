@@ -6,6 +6,7 @@ end
 
 Organization.all.each do |organization|
   FactoryBot.create_list(:user, 10, organization: organization, password: '123456')
+  FactoryBot.create_list(:gift, 10, :with_image, organization: organization)
 end
 
 FactoryBot.create(:user, :superadmin)
@@ -19,4 +20,3 @@ Category.all.each do |category|
 end
 
 FactoryBot.create(:user, :superadmin, email: "team.giftify@gmail.com", password: "123giftify456")
-

@@ -1,7 +1,6 @@
 class Account::OrganizationGiftsController < Account::AccountsController
   def index
     @gifts = collection.paginate(page: params[:page], per_page: 9)
-
   end
 
   def show

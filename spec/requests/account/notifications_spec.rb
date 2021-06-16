@@ -7,7 +7,9 @@ RSpec.describe "Account::Notifications", type: :request do
 
   describe "GET /notifications" do
     it "returns http success" do
-      get "/account/notifications"
+      get account_notifications_path
+      
+
       expect(response).to have_http_status(:success)
     end
   end

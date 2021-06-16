@@ -50,7 +50,7 @@ RSpec.describe Account::GiftsController, type: :request do
       gift_params[:name] = ''
       post account_gifts_path, params: { gift: gift_params }
 
-      expect(response.body).to include('Wrong input data. Gift wasn`t created')
+      expect(response.body).to match /Wrong input data. Gift wasn`t created/
     end
   end
 

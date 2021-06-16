@@ -35,6 +35,7 @@ class User < ApplicationRecord
   has_many :invites, foreign_key: 'user_id'
   has_many :sender_transactions, as: :sender, class_name: "Transaction"
   has_many :receiver_transactions, as: :receiver, class_name: "Transaction"
+  has_many :own_notifications, class_name: 'Notification', dependent: :destroy
   has_many :microposts, class_name: "Micropost", foreign_key: "author_id"
 
   delegate :superadmin?, :admin?, :manager?, :simple?, to: :role
@@ -47,6 +48,8 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :owned_organization
   accepts_nested_attributes_for :role, reject_if: :all_blank
 
+  after_create_commit :new_user_notification
+
   def self.grouped_collection_by_role
     {
       'superadmin' => User.superadmins.limit(10),
@@ -58,5 +61,13 @@ class User < ApplicationRecord
 
   def balance
     receiver_transactions.sum(:amount) - sender_transactions.sum(:amount)
+  end
+
+  def new_user_notification
+    return if organization.nil?
+
+    own_notifications.create(message: "Welcome to organization #{organization.name}",
+                             notificationable: organization,
+                             notification_type: Notification::USER_NEW)
   end
 end

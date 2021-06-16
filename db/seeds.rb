@@ -1,8 +1,4 @@
-FactoryBot.create_list(:user, 2)
-
-User.all.each do |user|
-  FactoryBot.create(:organization, user: user)
-end
+FactoryBot.create_list(:user, 2, :with_organization)
 
 User.all.each do |user|
   FactoryBot.create(:organization, user: user)

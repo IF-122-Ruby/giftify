@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resource :organization,
               only: [:edit, :update],
               controller: :organization
+    resource :transaction, only: [:create], controller: :transaction
   end
 
   resources :posts

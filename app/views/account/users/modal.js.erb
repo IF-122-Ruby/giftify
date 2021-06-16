@@ -1,0 +1,35 @@
+button.btn.btn-primary data-bs-target="#exampleModal" data-bs-toggle="modal" data-bs-whatev   er="@mdo" type="button"  Open modal for @mdo
+button.btn.btn-primary data-bs-target="#exampleModal" data-bs-toggle="modal" data-bs-whatever="@fat" type="button"  Open modal for @fat
+button.btn.btn-primary data-bs-target="#exampleModal" data-bs-toggle="modal" data-bs-whatever="@getbootstrap" type="button"  Open modal for @getbootstrap
+#exampleModal.modal.fade aria-hidden="true" aria-labelledby="exampleModalLabel" tabindex="-1" 
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#exampleModalLabel.modal-title New message
+        button.btn-close aria-label="Close" data-bs-dismiss="modal" type="button" 
+      .modal-body
+        form
+          .mb-3
+            label.col-form-label for="recipient-name"  Recipient:
+            input#recipient-name.form-control type="text" /
+          .mb-3
+            label.col-form-label for="message-text"  Message:
+            textarea#message-text.form-control
+      .modal-footer
+        button.btn.btn-secondary data-bs-dismiss="modal" type="button"  Close
+        button.btn.btn-primary type="button"  Send message
+javascript:
+  | var exampleModal = document.getElementById('exampleModal')
+  | exampleModal.addEventListener('show.bs.modal', function (event) {
+    
+    | var button = event.relatedTarget
+   
+    | var recipient = button.getAttribute('data-bs-whatever')
+  
+   
+    | var modalTitle = exampleModal.querySelector('.modal-title')
+    | var modalBodyInput = exampleModal.querySelector('.modal-body input')
+  
+    | modalTitle.textContent = 'New message to ' + recipient
+    | modalBodyInput.value = recipient
+  | })

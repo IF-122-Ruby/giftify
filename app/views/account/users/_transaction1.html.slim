@@ -1,0 +1,20 @@
+button.btn.btn-primary data-bs-target="#exampleModal" data-bs-toggle="modal" type="button" 
+  | Launch demo modal
+#exampleModal.modal.fade aria-hidden="true" aria-labelledby="exampleModalLabel" tabindex="-1" 
+  .modal-dialog.modal-dialog-centered.modal-lg
+    .modal-content
+      .modal-header
+        h5#exampleModalLabel.modal-title Make a gift
+        button.btn-close aria-label="Close" data-bs-dismiss="modal" type="button" 
+      .modal-body
+        form
+        .form-group
+          label for="exampleInputEmail1"  Users
+          input#exampleInputEmail1.form-control aria-describedby="emailHelp" placeholder=("Enter email") type="email" /
+          small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
+        .form-group
+          label for="exampleInputPassword1"  Password
+          input#exampleInputPassword1.form-control placeholder="Password" type="password" /
+      .modal-footer
+        button.btn.btn-secondary data-bs-dismiss="modal" type="button"  Close
+        button.btn.btn-primary type="button"  Save changes

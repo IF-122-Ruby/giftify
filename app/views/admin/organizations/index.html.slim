@@ -2,7 +2,7 @@
   .shadow-sm.mb-4
     .d-flex.justify-content-around.border-bottom.pt-3
       .col-1.text-center.h6 Logo
-      .col-1.text-center.h6 ID
+      .col-1.text-center.h6 Users
       .col-3.text-center.h6 Organization Name
       .col-3.text-center.h6 Monthly points
       .col-3.text-center.h6 Created
@@ -13,7 +13,7 @@
             .col-1.text-center
               = image_tag organization.logo, class: "img-fluid"
             .col-1.text-center
-              = organization.id
+              = organization.users.count
             .col-3.text-center
               span = organization.name
             .col-3.text-center

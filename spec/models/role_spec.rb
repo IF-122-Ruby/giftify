@@ -21,6 +21,7 @@ RSpec.describe Role, type: :model do
     it { is_expected.to belong_to(:organization) }
     it { is_expected.to belong_to(:user) }
   end
+  
   describe 'validation' do
     it { is_expected.to define_enum_for(:role).with_values(Role.roles).backed_by_column_of_type(:string) }
     

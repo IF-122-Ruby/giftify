@@ -18,6 +18,8 @@ Rails.application.routes.draw do
               only: [:edit, :update],
               controller: :organization
     resources :organization_gifts, path: :rewards, only: [:index, :show]
+
+    resources :notifications, only: :index
   end
 
   resources :posts

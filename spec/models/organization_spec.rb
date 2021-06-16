@@ -35,4 +35,12 @@ RSpec.describe Organization, type: :model do
   describe 'association' do
     it { is_expected.to belong_to :user }
   end
+
+  describe "notification" do
+    let(:organization) { create(:organization) }
+
+    it "create new notification" do
+      expect(organization.user.own_notifications.first.message).to eq("You created new organization #{organization.name}")
+    end
+  end
 end

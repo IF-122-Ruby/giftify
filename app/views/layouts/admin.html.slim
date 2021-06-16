@@ -11,10 +11,10 @@ html
 
   body
     = render partial: 'admin/shared/header'
+    = render 'shared/flash_messages'
     .row.p-0.m-0
       .col-xl-3.col-lg-3.col-md-3.col-sm-12.col-xs-12
         = render partial: 'admin/shared/sidebar'
       .col.p-0.m-0
         = yield
-    = render partial: 'admin/shared/footer'
     = any_login_here if defined?(AnyLogin)

@@ -11,8 +11,11 @@ Rails.application.routes.draw do
   namespace :account do
     resources :gifts
     resources :users, except: [:create, :new]
+    resource  :profile,
+              only: [:update, :edit],
+              controller: :profile
   end
-  
+
   namespace :admin do
     resources :organizations, only: [:index, :show]
     resources :feedbacks, only: [:index, :show]

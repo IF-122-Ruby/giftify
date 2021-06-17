@@ -6,6 +6,7 @@
 #  amount          :integer
 #  description     :text
 #  gift_type       :string
+#  image           :string
 #  name            :string
 #  price           :integer
 #  created_at      :datetime         not null

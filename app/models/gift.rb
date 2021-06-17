@@ -17,8 +17,11 @@
 #
 #  index_gifts_on_organization_id  (organization_id)
 #
+require 'elasticsearch/model'
 
 class Gift < ApplicationRecord
+  include Elasticsearch::Model
+  
   mount_uploader :image, ImageUploader
 
   MERCH = 'merch'.freeze

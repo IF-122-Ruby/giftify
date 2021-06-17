@@ -10,7 +10,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-white.shadow-sm.p-3.bg-white.rounded
         = form_tag search_admin_users_path, :method => "get"
           .input-group.my-1
             = search_field_tag :search, params[:search], placeholder: "Пошук", class: "form-control bg-light"
-            = button_tag "search", :class => 'btn btn-secondary'
+            = button_tag "search", class: 'btn btn-secondary'
         button.btn.btn-secondary.m-1
           = link_to account_notifications_path,class: "text-white" do
             i.fas.fa-bell

@@ -1,12 +1,9 @@
 class Account::ProfileController < Account::AccountsController
   def edit
-    @user = current_user
   end
 
   def update
-    @user = current_user
-
-    if @user.update(user_params)
+    if current_user.update(user_params)
       flash[:notice] = 'Profile updated succesfully!'
       redirect_to edit_account_profile_path
     else

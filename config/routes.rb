@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :notifications, only: :index
     resources :my_favorites, only: :index
     resources :likes, only: :index
+    resource :rewards
   end
 
   resources :posts

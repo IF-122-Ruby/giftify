@@ -2,7 +2,8 @@
   .col-8.offset-md-2
     .card-body.shadow-lg.p-4.mb-2.bg-white.rounded
       h2 = current_organization.name
-      = link_to 'New gift', new_account_gift_path, class: 'd-flex flex-row-reverse link-info'
+      - if current_user.admin?
+        = link_to 'New gift', new_account_gift_path, class: 'd-flex flex-row-reverse link-info'
       table.table
         thead
           tr
@@ -23,6 +24,8 @@
               td = gift.price
               td = gift.gift_type
               td.d-flex.justify-content-around.flex-wrap
-                = link_to 'Show', account_gift_path(gift), class: 'link-secondary'
-                = link_to 'Edit', edit_account_gift_path(gift), class: 'link-secondary'
-                = link_to 'Delete', account_gift_path(gift), method: :delete, class: 'link-secondary'
+                - if current_user.admin?
+                  = link_to 'Get', account_gift_path(gift), class: 'link-secondary'
+                  = link_to 'Show', account_gift_path(gift), class: 'link-secondary'
+                  = link_to 'Edit', edit_account_gift_path(gift), class: 'link-secondary'
+                  = link_to 'Delete', account_gift_path(gift), method: :delete, class: 'link-secondary'

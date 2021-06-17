@@ -23,6 +23,8 @@ gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
 gem 'will_paginate'
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
 gem 'activerecord-import'
 
 group :development, :test do
@@ -52,7 +54,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.4'
   gem 'capistrano-passenger', '~> 0.2.0'
   gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
-  # gem 'capistrano-sidekiq'
+  gem 'capistrano-sidekiq'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

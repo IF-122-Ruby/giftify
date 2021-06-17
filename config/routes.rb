@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     resources :organization_gifts, path: :rewards, only: [:index, :show]
 
     resources :notifications, only: :index
+    resources :my_favorites, only: :index
+    resources :likes, only: :index
   end
 
   resources :posts

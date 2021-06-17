@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_15_213549) do
+ActiveRecord::Schema.define(version: 2021_06_17_143456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,15 @@ ActiveRecord::Schema.define(version: 2021_06_15_213549) do
     t.index ["user_id"], name: "index_invites_on_user_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.bigint "my_favorite_id"
+    t.bigint "gift_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["gift_id"], name: "index_likes_on_gift_id"
+    t.index ["my_favorite_id"], name: "index_likes_on_my_favorite_id"
+  end
+
   create_table "microposts", force: :cascade do |t|
     t.bigint "author_id"
     t.bigint "organization_id"
@@ -68,6 +77,13 @@ ActiveRecord::Schema.define(version: 2021_06_15_213549) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author_id"], name: "index_microposts_on_author_id"
     t.index ["organization_id"], name: "index_microposts_on_organization_id"
+  end
+
+  create_table "my_favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_my_favorites_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -144,6 +160,7 @@ ActiveRecord::Schema.define(version: 2021_06_15_213549) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "likes", "gifts"
   add_foreign_key "microposts", "organizations"
   add_foreign_key "microposts", "users", column: "author_id"
   add_foreign_key "organizations", "users"

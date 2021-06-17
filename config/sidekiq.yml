@@ -1,5 +1,5 @@
 schedule:
   monthly_point:
-    cron: '0 * * * * *'   # Runs once per day (1:00)
+    cron: '0 1 * * *'   # Runs once per day (1:00)
     class: MonthlyPointsWorker
    

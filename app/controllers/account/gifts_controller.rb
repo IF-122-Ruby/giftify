@@ -30,7 +30,7 @@ class Account::GiftsController < Account::AccountsController
       render :new
     end
   end
-  
+
   def update
     @gift = resource
     authorize([:account, @gift])
@@ -50,11 +50,11 @@ class Account::GiftsController < Account::AccountsController
     flash[:notice] = 'Gift succesfully deleted!'
     redirect_to account_gifts_path
   end
-  
+
   private
-  
+
   def gift_params
-    params.require(:gift).permit(:name, :description, :amount, :price, :gift_type)
+    params.require(:gift).permit(:name, :description, :image, :amount, :price, :gift_type)
   end
 
   def collection

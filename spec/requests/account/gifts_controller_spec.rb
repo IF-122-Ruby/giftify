@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Account::GiftsController, type: :request do
-  let!(:organization) { create(:organization) } 
-  let!(:admin) { create(:user, :admin, organization: organization) } 
-  let!(:gift) { create(:gift, organization: organization) }
+  let!(:organization) { create(:organization) }
+  let!(:admin) { create(:user, :admin, organization: organization) }
+  let!(:gift) { create(:gift, :with_image, organization: organization) }
 
   before do
     sign_in admin
@@ -50,7 +50,7 @@ RSpec.describe Account::GiftsController, type: :request do
       gift_params[:name] = ''
       post account_gifts_path, params: { gift: gift_params }
 
-      expect(response.body).to include('Wrong input data. Gift wasn`t created')
+      expect(response.body).to match /Wrong input data. Gift wasn`t created/
     end
   end
 

@@ -17,23 +17,29 @@ class Feedback < ApplicationRecord
   FIND_BUG = 'Find bug'.freeze
   PARTNERSHIP = 'About partnership'.freeze
   OTHER = 'Other'.freeze
-  
+
   REASONS = [DELETE_ORGANIZATION, FIND_BUG, PARTNERSHIP, OTHER].freeze
 
   scope :ordered_by_created_at, -> { order(created_at: :desc) }
 
   validates :name, :email, :reason, :subject, :message, presence: true
-  
+
   validates :email, length: { maximum: 255 },
                     format: { with: Devise::email_regexp,
                               message: "Email seems invalid" }
-  
+
   validates :subject, length: { maximum: 15 }
 
   validates :reason, inclusion: { in: REASONS }
 
+  after_create_commit :new_feedback_notification_to_superadmins
+
   def mark_as_viewed!
     self.viewed = true
     self.save!
+  end
+
+  def new_feedback_notification_to_superadmins
+    SuperadminMailer.send_mail_when_new_feedback_created(self).deliver_now
   end
 end

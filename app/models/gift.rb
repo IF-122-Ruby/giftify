@@ -6,6 +6,7 @@
 #  amount          :integer
 #  description     :text
 #  gift_type       :string
+#  image           :string
 #  name            :string
 #  price           :integer
 #  created_at      :datetime         not null
@@ -17,6 +18,8 @@
 #  index_gifts_on_organization_id  (organization_id)
 #
 class Gift < ApplicationRecord
+  mount_uploader :image, ImageUploader
+
   MERCH = 'merch'.freeze
   COUPON = 'coupon'.freeze
   GIFT_TYPES = [MERCH, COUPON].freeze
@@ -24,6 +27,7 @@ class Gift < ApplicationRecord
   enum gift_type: { merch: MERCH, coupon: COUPON }
 
   belongs_to :organization
+  has_many   :transactions, as: :receiver
 
   validates :name, :description, presence: true
   validates :gift_type, inclusion: { in: gift_types.values }

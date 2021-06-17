@@ -1,0 +1,19 @@
+@import "bootstrap";
+@import "stylesheets/pagination";
+
+.sidebar,.dropdown-menu {
+    .change-color {
+      transition: .2s;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+    .change-bg-color {
+      background-color: transparent;
+
+    &:hover {
+      background-color: #f3f4f7;
+    }
+  }
+}

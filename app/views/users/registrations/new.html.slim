@@ -1,26 +1,29 @@
-h2
-  | Sign up
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { autocomplete: 'off' }) do |f|
-  = render "users/shared/error_messages", resource: resource
-  .field
-    = f.fields_for :owned_organization, resource.build_owned_organization do |organization|
-      = organization.input :name, autofocus: true, label: 'Organization Name'
-  .field
-    = f.input :first_name, autocomplete: "first name"
-  .field
-    = f.input :last_name, autocomplete: "last name"
-  .field
-    = f.input :email, autocomplete: "email", required: true
-  div
-  .field
-    - if @minimum_password_length
-      em
-        | (
-        = @minimum_password_length
-        |  characters minimum)
-    = f.input :password, autocomplete: "new-password", required: true
-  .field
-    = f.input :password_confirmation, autocomplete: "new-password", required: true
-  .actions
-    = f.submit "Sign up"
-= render "users/shared/links"
+.col-md-12.p-4
+  .mx-auto
+    h3 = link_to "Giftify", root_path, class: "d-inline-block text-dark align-middle mt-3 text-decoration-none"
+  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    .text-center
+      h4 Create new account
+    .mb-3.mt-4
+      = f.fields_for :owned_organization, resource.build_owned_organization do |organization|
+        label.fs-6.text-secondary.mb-0 Organization name
+        = organization.input :name, label: false, input_html: {class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0'}
+    .mb-3.mt-2
+      label.fs-6.text-secondary.mb-0 First name
+      = f.input :first_name, label: false, required: true, input_html: {class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0'}
+      label.fs-6.text-secondary.mb-0 Last name
+      = f.input :last_name, label: false, required: true, input_html: { class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0' }
+    .mb-3.mt-2
+      p.fs-6.text-secondary.mb-0 E-mail
+      = f.input :email, label: false, required: true, input_html: {class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0'}
+    .mb-3.mt-2
+      p.fs-6.text-secondary.mb-0 Password
+      = f.input :password, label: false, required: true, input_html: {class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0'}
+    .mb-3.mt-2
+      p.fs-6.text-secondary.mb-0 Retype password
+      = f.input :password_confirmation, label: false, required: true, input_html: {class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0'}
+    .text-center
+      = f.submit "Sign up", class: "btn btn-primary btn-block w-75 mt-2"
+      p.mt-3 
+        | Already have an account? 
+        = render "users/shared/links"

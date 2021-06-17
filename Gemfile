@@ -23,6 +23,8 @@ gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
 gem 'will_paginate'
+gem "sentry-ruby"
+gem "sentry-rails"
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
 gem 'activerecord-import'

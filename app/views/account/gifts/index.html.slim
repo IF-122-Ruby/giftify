@@ -7,6 +7,7 @@
         thead
           tr
             th.text-center scope="col" Name
+            th.text-center scope="col" Image
             th.text-center scope="col" Description
             th.text-center scope="col" Amount
             th.text-center scope="col" Price
@@ -16,6 +17,7 @@
           - @gifts.each do |gift|
             tr
               td = gift.name
+              td = image_tag gift.image.url(:small), class: 'img-fluid'
               td = gift.description
               td = gift.amount
               td = gift.price

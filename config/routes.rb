@@ -17,6 +17,13 @@ Rails.application.routes.draw do
     resource :organization,
               only: [:edit, :update],
               controller: :organization
+    resource  :profile,
+              only: [:edit, :update],
+              controller: :profile
+    resources :organization_gifts, path: :rewards, only: [:index, :show]
+
+    resources :notifications, only: :index
+
     resource :transaction, only: [:create], controller: :transaction
   end
 

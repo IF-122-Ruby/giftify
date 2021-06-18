@@ -14,6 +14,11 @@
               | points
           .card-body
             = link_to 'Details', account_organization_gift_path(gift), class:"button btn btn-outline-secondary nav-btn posts__card-button"
+            - unless current_user.favorite_gifts.exists?(@gift)
+              = link_to 'Add to favorites', favorite_gifts_path(@gift), method: :post
+            - else
+              = link_to 'Remove from favorites', favorite_gift_path(@gift), method: :delete
+
 
   .digg_pagination.pagination-position
-      = will_paginate @gifts, container: false
+      = will_paginate @gifts, container: :post

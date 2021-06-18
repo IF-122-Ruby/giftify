@@ -27,6 +27,7 @@ class Gift < ApplicationRecord
   enum gift_type: { merch: MERCH, coupon: COUPON }
 
   belongs_to :organization
+  has_and_belongs_to_many :my_favorites, dependent: :destroy
   has_many   :transactions, as: :receiver
 
   validates :name, :description, presence: true

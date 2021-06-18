@@ -28,6 +28,8 @@ class User < ApplicationRecord
   scope :superadmins, -> { joins(:role).where(roles: { role: Role::SUPERADMIN }) }
 
   has_one :role, dependent: :destroy
+  has_many :favorites
+  has_many :favorite_gifts, through: :favorites, source: :favorited, source_type: "Gift"
   has_one :owned_organization, class_name: 'Organization'
   has_one :organization, through: :role
   has_many :posts, dependent: :destroy

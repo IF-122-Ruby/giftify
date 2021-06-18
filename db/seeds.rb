@@ -2,11 +2,7 @@ FactoryBot.create_list(:user, 2, :with_organization)
 
 User.all.each do |user|
   FactoryBot.create(:organization, user: user)
-  FactoryBot.create_list(:micropost, 10, author: user)
-end
-
-Organization.all.each do |organization|
-  FactoryBot.create_list(:user, 10, organization: organization, password: '123456')
+  FactoryBot.create_list(:micropost, 10, :with_image, author: user)
 end
 
 FactoryBot.create(:user, :superadmin)

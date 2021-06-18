@@ -1,0 +1,15 @@
+.container.mt-5.mb-5
+  .row.d-flex.align-items-center.justify-content-center
+    .card.bg-light.bg-gradient
+      .d-flex.align-items-center
+        .flex-grow-1.p-2.px-3
+          h5.text-center 
+            strong = current_organization.name.pluralize + " Main Feed"
+        - if current_user.admin?
+          .d-flex.p-2
+            = link_to 'New', new_account_micropost_path, class: 'btn btn-outline-success'
+div data-controller="infinite-scroll" data-action="scroll@window->infinite-scroll#scroll"
+  div data-infinite-scroll-target="entries"
+    = render 'account/microposts/microposts'
+  div.d-lg-none data-infinite-scroll-target="pagination"
+    = will_paginate @microposts

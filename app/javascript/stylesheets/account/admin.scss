@@ -1,6 +1,10 @@
 @import "bootstrap";
 @import "stylesheets/pagination";
+@import "stylesheets/colors";
 
+body {
+background-color: $background-color;
+}
 .sidebar,.dropdown-menu {
     .change-color {
       transition: .2s;

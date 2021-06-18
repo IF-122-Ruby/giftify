@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   }
 
   namespace :account do
+    resources :microposts, path: :feed, except: [:show, :edit]
     resources :gifts
     resources :users, except: [:create, :new]
     resource :organization,

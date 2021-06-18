@@ -18,6 +18,9 @@ Rails.application.routes.draw do
               only: [:edit, :update],
               controller: :organization
     resources :organization_gifts, path: :rewards, only: [:index, :show]
+    resource  :profile,
+              only: [:edit, :update],
+              controller: :profile
     resources :favorite_gifts, only: [:index, :create, :destroy]
 
     resources :notifications, only: :index

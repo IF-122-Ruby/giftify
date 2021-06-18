@@ -53,8 +53,11 @@ ActiveRecord::Schema.define(version: 2021_06_18_070141) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
+<<<<<<< HEAD
     t.boolean "favorite", default: false
     t.bigint "user_id"
+=======
+>>>>>>> 70cdb58443bfac3734ec480569b26802903e9e9f
     t.index ["organization_id"], name: "index_gifts_on_organization_id"
     t.index ["user_id"], name: "index_gifts_on_user_id"
   end

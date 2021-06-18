@@ -1,0 +1,11 @@
+.col-md-8.offset-md-3
+  = simple_form_for user, url: account_profile_path(user) do |f|
+    .container
+        .mb-3.col-sm-5
+          = f.input :first_name, label: "First name:", input_html: { class: 'form__input' }
+        .mb-3.col-sm-5
+          = f.input :last_name, label: "Last name:", input_html: { class: 'form__input' }
+        .mb-3.col-sm-5
+          = f.input :email, label: "Email:", input_html: { class: 'form__input' }
+        .action
+          = f.submit "Send"

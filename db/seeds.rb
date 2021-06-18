@@ -19,5 +19,8 @@ FactoryBot.create_list(:category, 8)
 Category.all.each do |category|
   FactoryBot.create_list(:post, 5, :with_image, category: category)
 end
+<<<<<<< HEAD
 
+=======
+>>>>>>> 23ebe44fdddb312961b0cb0b09008a833f7e7777
 FactoryBot.create(:user, :superadmin, email: "team.giftify@gmail.com", password: "123giftify456")

@@ -1,6 +1,6 @@
 class Account::InvitesController < Account::AccountsController
   def index
-    @invites = collection.includes(:sender).order('created_at DESC')
+    @invites = collection.includes(:sender).by_created_at
   end
 
   def new
@@ -13,7 +13,6 @@ class Account::InvitesController < Account::AccountsController
     @invite.sender = current_user
 
     if @invite.save
-      @invite.send_invite_email
       flash[:success] = 'Invite was successfully sent.'
       redirect_to account_invites_path
     else

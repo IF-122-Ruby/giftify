@@ -20,10 +20,13 @@ class Invite < ApplicationRecord
   belongs_to :organization
   belongs_to :sender, class_name: 'User', foreign_key: :user_id
 
-  before_create :generate_token
-
   validates :invite_token, uniqueness: true
   validates :recipient_email, presence: true, uniqueness: true
+
+  before_create :generate_token
+  after_commit :send_invite_email, on: :create
+
+  scope :by_created_at, -> { order(created_at: :desc)}
 
   def send_invite_email
     InviteMailer.new_user_invite(self).deliver_now

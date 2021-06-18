@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Account::GiftsController, type: :request do
   let!(:organization) { create(:organization) }
   let!(:admin) { create(:user, :admin, organization: organization) }
-  let!(:gift) { create(:gift, :with_image, organization: organization) }
+  let!(:invite) { create(:invite, organization: organization) }
 
   before do
     sign_in admin

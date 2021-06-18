@@ -31,13 +31,4 @@ RSpec.describe Account::InvitesController, type: :request do
     end
 
   end
-
-  describe "render email views" do
-    let(:invite_params) { attributes_for(:invite) }
-
-    it "render email from invitation" do
-      post account_invites_path, params: { invite: invite_params }
-      expect(response.body).to match /Invitation to Giftify organization/
-    end
-  end
 end

@@ -1,4 +1,4 @@
-- @microposts.each do |micropost|
+- microposts.each do |micropost|
   .container.mt-5.mb-5
     .row.d-flex.align-items-center.justify-content-center
       .col-md-6
@@ -32,7 +32,6 @@
               = micropost.title
             hr/
             = image_tag  micropost.image.url, class: "img-fluid" if micropost.image?
-            /img.img-fluid src="https://i.imgur.com/xhzhaGA.jpg" /
             .p-2.px-3
               p.text-justify = micropost.description
               hr/

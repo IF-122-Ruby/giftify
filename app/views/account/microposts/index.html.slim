@@ -10,6 +10,6 @@
             = link_to 'New', new_account_micropost_path, class: 'btn btn-outline-success'
 div data-controller="infinite-scroll" data-action="scroll@window->infinite-scroll#scroll"
   div data-infinite-scroll-target="entries"
-    = render 'account/microposts/microposts'
+    = render 'account/microposts/microposts', microposts: @microposts
   div.d-lg-none data-infinite-scroll-target="pagination"
     = will_paginate @microposts

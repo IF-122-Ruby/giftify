@@ -1,12 +1,13 @@
 class Account::MicropostsController < Account::AccountsController
   def index
     @microposts = collection.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+    sleep 0.5
     authorize([:account, @microposts])
     respond_to do |format|
       format.html
       format.json {
-        render json: { entries: render_to_string(partial: "microposts.html.slim", formats: [:html]),
-                       pagination: render_to_string(partial: "paginate.html.slim") }
+        render json: { entries: render_to_string(partial: "microposts", formats: [:html], locals: { microposts: @microposts}),
+                       pagination: render_to_string(partial: "paginate", formats: [:html], locals: { microposts: @microposts }) }
       }
     end
   end

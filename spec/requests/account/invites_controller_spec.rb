@@ -29,6 +29,5 @@ RSpec.describe Account::InvitesController, type: :request do
 
       expect(response).to redirect_to(account_invites_path)
     end
-
   end
 end

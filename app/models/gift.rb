@@ -5,6 +5,7 @@
 #  id              :bigint           not null, primary key
 #  amount          :integer
 #  description     :text
+#  favorite        :boolean          default(FALSE)
 #  gift_type       :string
 #  image           :string
 #  name            :string
@@ -12,10 +13,12 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  organization_id :bigint
+#  user_id         :bigint
 #
 # Indexes
 #
 #  index_gifts_on_organization_id  (organization_id)
+#  index_gifts_on_user_id          (user_id)
 #
 class Gift < ApplicationRecord
   mount_uploader :image, ImageUploader

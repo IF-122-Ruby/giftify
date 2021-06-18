@@ -1,3 +1,19 @@
-- flash.each do |type, msg|
-  .alert.alert-info
-    = msg
+= if flash.any?
+  - flash.each do |name, msg|
+    javascript:
+      window.onload = function() {
+        var name = "#{name}";
+
+        if (name == 'info' || name == 'notice') {
+          toastr.info("#{msg}");
+        }
+        else if (name == 'success') 
+          toastr.success("#{msg}");
+        }
+        else if (name == 'error' || name == 'unsuccessful') {
+          toastr.error("#{msg}");
+        }
+        else {
+          toastr.info("#{msg}");
+        }
+      };

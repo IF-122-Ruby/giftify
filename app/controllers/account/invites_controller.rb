@@ -26,12 +26,6 @@ class Account::InvitesController < Account::AccountsController
     @invite = resource
     if @invite.delete
       flash[:success] = 'Invitation successfully deleted.'
-      respond_to do |format|
-        format.html
-
-        format.js
-
-      end
     else
       flash[:danger] = 'Failed to delete invitation.'
     end

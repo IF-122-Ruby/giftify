@@ -1,0 +1,18 @@
+h1. My favorites
+
+- @gifts.each do |gift|
+   .col-lg-4.col-md-12.mb-4.text-center.btn
+     .card.shadow.p-3.mb-5.bg-white.border-0.gifts-card
+       = image_tag gift.image.url(:small), class: 'img-fluid'
+
+       .card-body
+         h5.card-title = gift.name
+         p.card-text
+           strong
+             = gift.price
+           | points
+       .card-body
+         = link_to 'Details', account_organization_gift_path(gift), class:"button btn btn-outline-secondary nav-btn posts__card-button"
+
+         article id="#{dom_id(gift)}"
+           = toggle_favorite(gift)

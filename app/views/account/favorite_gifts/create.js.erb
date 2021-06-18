@@ -1,0 +1,3 @@
+let heartIcon = document.querySelector("#gift_<%= @gift.id %>").querySelector('.fa-heart')
+
+heartIcon.parentElement.outerHTML = "<%= escape_javascript(toggle_favorite(@gift)) %>"

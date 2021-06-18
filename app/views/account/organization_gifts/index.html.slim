@@ -15,5 +15,8 @@
           .card-body
             = link_to 'Details', account_organization_gift_path(gift), class:"button btn btn-outline-secondary nav-btn posts__card-button"
 
+            article id="#{dom_id(gift)}" 
+              = toggle_favorite(gift)
+
   .digg_pagination.pagination-position
       = will_paginate @gifts, container: false

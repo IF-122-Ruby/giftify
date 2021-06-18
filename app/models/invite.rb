@@ -23,8 +23,15 @@ class Invite < ApplicationRecord
   before_create :generate_token
 
   validates :invite_token, uniqueness: true
+  validates :recipient_email, presence: true, uniqueness: true
+
+  def send_invite_email
+    InviteMailer.new_user_invite(self).deliver_now
+  end
+
+  private
 
   def generate_token
-    self.token = Digest::SHA1.hexdigest([organization_id, Time.now, rand].join)
+    self.invite_token = Digest::SHA1.hexdigest([organization_id, Time.now, rand].join)
   end
 end

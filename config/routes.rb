@@ -21,7 +21,7 @@ Rails.application.routes.draw do
               only: [:edit, :update],
               controller: :profile
     resources :organization_gifts, path: :rewards, only: [:index, :show]
-
+    resources :invites, except: %i[edit update]
     resources :notifications, only: :index
   end
 

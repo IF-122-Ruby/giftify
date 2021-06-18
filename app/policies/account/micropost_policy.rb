@@ -3,15 +3,7 @@ class Account::MicropostPolicy < ApplicationPolicy
     true
   end
 
-  def show?
-    true
-  end
-
   def new?
-    user.admin?
-  end
-
-  def edit?
     user.admin?
   end
 

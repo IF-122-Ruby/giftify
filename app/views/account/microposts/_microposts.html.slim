@@ -17,7 +17,7 @@
                   ul.dropdown-menu.dropdown-menu-start.shadow-sm.p-3.mb-5.bg-white.rounded
                     .d-flex.align-items-center.change-color
                       i.fas.fa-pen-square.m-1
-                      = link_to "Edit", edit_account_micropost_path(micropost), class: "text-decoration-none text-reset"
+                      = link_to "Edit", account_microposts_path, class: "text-decoration-none text-reset"
                     hr/
                     .d-flex.align-items-center.change-color
                       i.fas.fa-trash-alt.m-1
@@ -36,4 +36,3 @@
             .p-2.px-3
               p.text-justify = micropost.description
               hr/
-              

@@ -1,40 +1,8 @@
-- unless @result_users.nil?
-  - if @result_users.empty?
-    h2 No posts found matching your query.
-  - else
-    .container.mt-3
-      .d-flex.justify-content-center
-        h5.text-uppercase 
-          |find users
-      .row
-        - @result_users.each do |user|
-          = link_to account_user_path(id: user.id), class: "text-reset text-decoration-none"
-            .col.d-flex.align-items-center.border.p-2.rounded.mt-1
-              .col-2 
-                = image_tag user.avatar, class: "img-fluid w-25 rounded-circle"
-              .col-2
-                = user.last_name 
-              .col-2
-                = user.first_name 
-              .col-2
-                = user.created_at.to_date
-- unless @result_gifts.nil?
-  - if @result_gifts.empty?
-    h2 No posts found matching your query.
-  - else
-    .container.mt-3
-      .d-flex.justify-content-center
-        h5.text-uppercase 
-          |find organizations
-      .row
-        - @result_gifts.each do |gift|
-          = link_to account_user_path(id: gift.id), class: "text-reset text-decoration-none"
-            .d-flex.align-items-center.border.p-2.rounded.mt-1
-              .col-2
-                = image_tag gift.image.url, class: "img-fluid w-25 rounded-circle"
-              .col-2
-                = gift.name 
-              .col-2.p-1
-                = gift.description.truncate(30) 
-              .col-2
-                = gift.created_at.to_date
+.container
+  .row.mt-3.p-0
+    - @results.each do |search|
+      - if search.class.to_s == "User"
+        = render partial: "admin/shared/search_users"
+      - else search.class.to_s == "Gift"
+        = render partial: "admin/shared/search_gifts"
+             

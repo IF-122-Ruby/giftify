@@ -7,8 +7,7 @@ class Admin::AdminController < Admin::BaseController
     if params[:search].blank?
       redirect_to(admin_root_path, notice: "Write search request") and return
     else
-      @result_users = User.search(params[:search])
-      @result_gifts = Gift.search(params[:search])
+      @results = Elasticsearch::Model.search(params[:search].to_s, [User, Gift]).records.to_a
     end
   end
 end

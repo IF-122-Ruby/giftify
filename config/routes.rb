@@ -12,12 +12,17 @@ Rails.application.routes.draw do
   }
 
   namespace :account do
+    resources :microposts, path: :feed, except: [:show, :edit]
     resources :gifts
     resources :users, except: [:create, :new]
     resource :organization,
               only: [:edit, :update],
               controller: :organization
+    resource  :profile,
+              only: [:edit, :update],
+              controller: :profile
     resources :organization_gifts, path: :rewards, only: [:index, :show]
+    resources :invites, except: %i[edit update]
     resources :notifications, only: :index
     post '/rewards/user_reward', to: 'user_rewards#receive'
   end

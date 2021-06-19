@@ -10,6 +10,7 @@ import "@fortawesome/fontawesome-free/js/all";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "bootstrap";
 import "../stylesheets/application";
+import "controllers";
 
 global.toastr = require("toastr")
 

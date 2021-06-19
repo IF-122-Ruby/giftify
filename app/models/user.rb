@@ -70,4 +70,10 @@ class User < ApplicationRecord
                              notificationable: organization,
                              notification_type: Notification::USER_NEW)
   end
+
+  def purchase_gift(gift)
+    return false if (balance - gift.price).negative?
+
+    Transaction.create(sender: self, receiver: gift, amount: gift.price)
+  end
 end

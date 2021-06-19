@@ -14,7 +14,7 @@
               | points
           .card-body
             = link_to 'Details', account_organization_gift_path(gift), class:"button btn btn-outline-secondary nav-btn posts__card-button"
-            = link_to 'Get', account_rewards_get_reward_path(gift: gift), class:"button btn btn-outline-success nav-btn posts__card-button", method: :post
+            = button_to 'Get', account_rewards_user_reward_path(gift: gift), class:"button btn btn-outline-success nav-btn posts__card-button", remote: true
 
   .digg_pagination.pagination-position
       = will_paginate @gifts, container: false

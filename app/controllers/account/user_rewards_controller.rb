@@ -1,12 +1,13 @@
 class Account::UserRewardsController < Account::AccountsController
   def receive
     gift = current_organization.gifts.find(params[:gift])
-    if current_user.balance - gift.price >= 0
-      Transaction.create(sender: current_user, receiver: gift, amount: gift.price)
-      flash[:success] = 'Reward successfully added'
-    else
-      flash[:unsuccess] = 'There are not enough points on your balance'
+    respond_to do |format|
+      if @result = current_user.purchase_gift(gift)
+        format.html { redirect_back fallback_location: root_path, flash: { notice: 'Gift added' } }
+      else
+        format.html { redirect_back fallback_location: root_path,  flash: { notice: 'Gift not added' } }
+      end
+      format.js { @result }
     end
-    redirect_back(fallback_location: root_path)
   end
 end

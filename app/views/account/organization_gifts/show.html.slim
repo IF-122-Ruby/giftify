@@ -12,5 +12,6 @@
       p.fs-5.mb-4.lead.p-3
         = @gift.description
       = link_to 'Back', account_organization_gifts_path, class:"button btn btn-outline-secondary nav-btn posts__card-button"
-      = link_to 'Get', account_rewards_get_reward_path(gift: gift), class:"button btn btn-outline-success nav-btn posts__card-button", method: :post
+      = button_to 'Get', account_rewards_user_reward_path(gift: @gift), class:"button btn btn-outline-success nav-btn posts__card-button", method: :post, remote: true
+
 

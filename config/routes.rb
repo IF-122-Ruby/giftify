@@ -19,7 +19,7 @@ Rails.application.routes.draw do
               controller: :organization
     resources :organization_gifts, path: :rewards, only: [:index, :show]
     resources :notifications, only: :index
-    post '/rewards/get_reward', to: 'get_rewards#reward'
+    post '/rewards/user_reward', to: 'user_rewards#receive'
   end
 
   resources :posts

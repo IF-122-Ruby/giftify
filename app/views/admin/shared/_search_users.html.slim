@@ -1,8 +1,5 @@
-- @results.each do |user|
-  - if user.class.to_s == "User"
-      span = user.first_name
-      span = user.last_name
-      span user
-      hr
-  - else 
-    
+- if user.class.to_s == "User"
+    span = user.first_name
+    span = user.last_name
+    hr
+- else

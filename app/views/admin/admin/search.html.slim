@@ -2,7 +2,6 @@
   .row.mt-3.p-0
     - @results.each do |search|
       - if search.class.to_s == "User"
-        = render partial: "admin/shared/search_users"
+        = render partial: "admin/shared/search_users", locals: {:user: search}
       - else search.class.to_s == "Gift"
-        = render partial: "admin/shared/search_gifts"
-             
+        = render partial: "admin/shared/search_gifts", locals: {gift: search}

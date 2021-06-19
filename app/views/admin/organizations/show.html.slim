@@ -1,6 +1,6 @@
 .shadow-sm.p-0
   .container
-    .col-12.d-flex.p-2.align-items-center.justify-conten-around
+    .row.d-flex.p-2.align-items-center.justify-conten-around
       .col-2.d-none.d-sm-block
         = image_tag @organization.logo, class: "img-fluid"
       .col-5
@@ -10,12 +10,12 @@
         .col.d-none.d-sm-block
           span Users count: 
           = @organization.users.count
-        .col
+        .col.d-none.d-sm-block
           span Created: 
           = l(@organization.created_at, format: :short_date)
       .col-4
         span Administrators:
-        - @organization.users.where.not(roles: {role: :simple}).each do |u|
+        - @organization.users.where(roles: {role: :admin}).each do |u|
           p.m-0 = u.full_name 
-      .col
+      .col-1
         = link_to "Back", admin_organizations_url, class: "btn btn-secondary"

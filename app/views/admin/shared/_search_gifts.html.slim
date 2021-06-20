@@ -1,5 +1,12 @@
 - if gift.class.to_s == "Gift"
-    span = gift.name
-    span = gift.price
-    hr
+  = link_to account_gift_path(id: gift.id), class: "text-reset m-0 p-0 text-decoration-none"
+    .border.p-2.rounded.mt-1
+      .row
+        .d-flex.justify-content-around.align-items-center
+          .col-3
+            span = image_tag gift.image.url, class: "img-fluid img-height img-thumbnail rounded-circle"
+          .col
+            span = gift.name
+          .col
+            span.mx-2 = l(gift.created_at.to_date, format: :long)
 - else

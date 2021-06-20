@@ -1,4 +1,4 @@
-.btn-group aria-label=("Reactions") role="group" 
+.btn-group aria-label=("reactions") data-order="#{micropost.id}" role="group" 
   - Reaction.reactions.values.each do |reaction|
-    = micropost.reactions.where(reaction: reaction).count
+    = micropost.reactions.where(reaction: reaction).count if micropost.reactions.where(reaction: reaction).count > 0
     = button_to reaction, account_reaction_path(reaction: reaction, micropost: micropost), remote: true

@@ -1,2 +1,2 @@
-const reaction = document.querySelector('.reaction_container');
-reaction.innerHTML = <%= j render('account/reactions/reaction', micropost: @micropost) %>
+reaction = document.querySelector(`[data-order="${<%= @micropost.id %>}"]`);
+reaction.innerHTML = "<%= j render('account/reactions/reaction', micropost: @micropost) %>";

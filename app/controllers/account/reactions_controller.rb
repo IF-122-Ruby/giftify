@@ -4,6 +4,10 @@ class Account::ReactionsController < Account::AccountsController
     @reaction = current_user.reactions.find_by(reactionable: @micropost, reaction: params[:reaction])
     if @reaction
       @reaction.destroy
+      respond_to do |format|
+        format.html { redirect_back fallback_location: root_path, flash: { notice: 'reaction destr' } }
+        format.js { @micropost }
+      end
     else
       @reaction = current_user.reactions.build(reactionable: @micropost, reaction: params[:reaction])
       respond_to do |format|
@@ -16,6 +20,5 @@ class Account::ReactionsController < Account::AccountsController
         end
       end
     end
-    redirect_back(fallback_location: root_path)
   end
 end

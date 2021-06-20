@@ -5,8 +5,12 @@ class Account::MicropostsController < Account::AccountsController
     respond_to do |format|
       format.html
       format.json {
-        render json: { entries: render_to_string(partial: "microposts", formats: [:html], locals: { microposts: @microposts}),
-                       pagination: render_to_string(partial: "paginate", formats: [:html], locals: { microposts: @microposts }) }
+        render json: { entries: render_to_string(partial: "microposts", 
+                                                 formats: [:html],
+                                                 locals: { microposts: @microposts }),
+                       pagination: render_to_string(partial: "paginate",
+                                                    formats: [:html],
+                                                    locals: { microposts: @microposts }) }
       }
     end
   end

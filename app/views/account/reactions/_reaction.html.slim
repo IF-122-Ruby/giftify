@@ -1,0 +1,4 @@
+.btn-group aria-label=("Reactions") role="group" 
+  - Reaction.reactions.values.each do |reaction|
+    = micropost.reactions.where(reaction: reaction).count
+    = button_to reaction, account_reaction_path(reaction: reaction, micropost: micropost), remote: true

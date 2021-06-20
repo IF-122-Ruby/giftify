@@ -1,0 +1,2 @@
+const reaction = document.querySelector('.reaction_container');
+reaction.innerHTML = <%= j render('account/reactions/reaction', micropost: @micropost) %>

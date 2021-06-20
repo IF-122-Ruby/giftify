@@ -1,5 +1,8 @@
 .container
   .row.mt-3.p-0
+    .d-flex.justify-content-center.mt-2
+              h6.text-uppercase
+                | found results
     - @results.each do |search|
       - if search.class.to_s == "User"
         = render partial: "account/shared/search_users", locals: {user: search}

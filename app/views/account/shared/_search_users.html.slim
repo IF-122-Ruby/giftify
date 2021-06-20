@@ -1,13 +1,14 @@
 - if user.class.to_s == "User"
   = link_to account_user_path(id: user.id), class: "text-reset m-0 p-0 text-decoration-none"
     .border.p-2.rounded.mt-1
-      .row
-        .d-flex.justify-content-around.align-items-center
-          .col-3
-            span = image_tag user.avatar, class: "img-fluid img-height img-thumbnail rounded-circle"
-          .col
-            span.mx-1 = user.first_name
-            span = user.last_name
-          .col
-            span = l(user.created_at.to_date, format: :long)
+      .row.d-flex.align-items-center
+        .col-3
+          span = image_tag user.avatar, class: "img-fluid img-height img-thumbnail rounded-circle"
+        .col-1
+          span User
+        .col.mx-1
+          span.mx-1 = user.first_name
+          span = user.last_name
+        .col
+          span = l(user.created_at.to_date, format: :long)
 - else

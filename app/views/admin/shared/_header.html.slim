@@ -7,7 +7,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-white.shadow-sm.p-3.bg-white.rounded
       .navbar-nav.me-auto.mb-2.mb-lg-0
         = link_to "Home page", root_url, class: "text-decoration-none text-dark text-bold"
       .d-flex.justify-content-center
-        = form_tag search_admin_users_path, method: :get
+        = form_tag account_search_path, method: :get
           .input-group.my-1
             = search_field_tag :search, params[:search], placeholder: "Пошук", class: "form-control bg-light"
             = button_tag "search", class: 'btn btn-secondary'

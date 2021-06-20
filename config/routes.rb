@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     resources :organization_gifts, path: :rewards, only: [:index, :show]
 
     resources :notifications, only: :index
+    
+    get '/search', to: 'search#search', as: 'search'
   end
 
   resources :posts
@@ -29,10 +31,5 @@ Rails.application.routes.draw do
     root to: 'admin#index'
 
     resources :feedbacks, only: [:index, :show]
-    resources :users do
-      collection do
-        get 'admin/search', to: 'admin#search', as: 'search'
-      end
-    end
   end
 end

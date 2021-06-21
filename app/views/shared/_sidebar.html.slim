@@ -11,7 +11,7 @@
 
     .py-3.change-bg-color
       = link_to "BLOG", posts_path, class: "text-decoration-none text-reset btn-toggle collapsed"
-      = post_menu
+      = render partial: "posts/categories"
 
 
 

@@ -1,3 +1,3 @@
-document.querySelectorAll("#gift_<%= @gift.id %>").forEach((heart) => {
-  heart.querySelector('.fa-heart').parentElement.outerHTML = "<%= escape_javascript(toggle_favorite_link(@gift)) %>";
-});
+(function () {
+  document.querySelector("#gift_<%= @gift.id %>").querySelector('.fa-heart').parentElement.outerHTML = "<%= escape_javascript(toggle_favorite_link(@gift)) %>";
+})()

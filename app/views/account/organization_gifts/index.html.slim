@@ -1,4 +1,10 @@
-= render partial: 'gifts', locals: {page_name: "Gifts", current_list_of_gifts: @gifts}
+.main.m-4
+  .container-fluid
+    h1.fw-bolder.mb-5.mt-5.text-center Gifts
+    - @gifts.each do |gift|
+      .col-lg-4.col-md-12.mb-4.text-center.btn
+        .card.shadow.p-3.mb-5.bg-white.border-0.gifts-card
+          = render partial: 'account/organization_gifts/gifts', locals: { gift: gift }
 
-.digg_pagination.pagination-position
-    = will_paginate @gifts, container: false
+  .digg_pagination.pagination-position
+      = will_paginate @gifts, container: false

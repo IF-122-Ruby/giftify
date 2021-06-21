@@ -36,4 +36,20 @@ class Micropost < ApplicationRecord
   def add_author_organization
     self.organization = self.author.organization
   end
+
+  def add_and_remove_reaction(user, reaction)
+    micropost_reaction = reactions.find_by(user: user, reaction: reaction)
+
+    if micropost_reaction
+      micropost_reaction.destroy
+      false
+    else
+      reactions.create(user: user, reaction: reaction)
+      true
+    end
+  end
+
+  def reactions_count(reaction)
+    reactions.where(reaction: reaction).count
+  end
 end

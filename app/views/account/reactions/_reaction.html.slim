@@ -1,4 +1,9 @@
 .btn-group aria-label=("reactions") data-order="#{micropost.id}" role="group" 
   - Reaction.reactions.values.each do |reaction|
-    = micropost.reactions.where(reaction: reaction).count if micropost.reactions.where(reaction: reaction).count > 0
-    = button_to reaction, account_reaction_path(reaction: reaction, micropost: micropost), remote: true
+    .reaction_group
+      .d-flex.justify-content-between
+        = link_to reaction, account_reaction_path(reaction: reaction, micropost: micropost), 
+                            method: :post, 
+                            remote: true,
+                            class: 'text-decoration-none pe-1'
+        span.ps-1 = micropost.reactions_count(reaction) if micropost.reactions_count(reaction) > 0

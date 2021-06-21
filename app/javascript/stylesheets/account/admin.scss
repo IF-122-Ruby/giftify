@@ -21,3 +21,15 @@ body {
     }
   }
 }
+
+.reaction_group {
+  display: block;
+  width: 40px;
+  margin: 8px;
+  border-radius: 40%;
+  background-color: rgb(228, 228, 228);
+  &_liked {
+    color:#5369f8;
+    background-color: rgb(206, 211, 233);
+  }
+}

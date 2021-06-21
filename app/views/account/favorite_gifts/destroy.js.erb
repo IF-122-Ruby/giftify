@@ -1,3 +1,1 @@
-(function () {
-  document.getElementById("gift_<%= @gift.id %>").querySelector('.fa-heart').parentElement.outerHTML = "<%= escape_javascript(toggle_favorite_link(@gift)) %>";
-})()
+document.getElementById("gift_<%= @gift.id %>").querySelector('.fa-heart').outerHTML = "<%= escape_javascript(toggle_favorite_link(@gift)) %>";

@@ -1,4 +1,4 @@
-- if gift.class.to_s == "Gift"
+- if gift.class.to_s == "Gift" && gift.organization == current_organization
   = link_to account_gift_path(id: gift.id), class: "text-reset m-0 p-0 text-decoration-none"
     .border.p-2.rounded.mt-1
       .row.d-flex.align-items-center

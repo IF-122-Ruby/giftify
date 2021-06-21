@@ -1,6 +1,6 @@
-- if user.class.to_s == "User" && user.organization == current_organization
+- if user.class.to_s == "User" && user.organization.id == current_organization.id
   = link_to account_user_path(id: user.id), class: "text-reset m-0 p-0 text-decoration-none"
-    .border.p-2.rounded.mt-1
+    .border.p-2.rounded.mt-1.bg-white
       .row.d-flex.align-items-center
         .col-3
           span = image_tag user.avatar, class: "img-fluid img-height img-thumbnail rounded-circle"

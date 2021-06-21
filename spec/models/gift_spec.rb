@@ -23,7 +23,6 @@ RSpec.describe Gift, type: :model do
 
   describe 'relations' do
     it { should belong_to(:organization) }
-    it { should belong_to(:user).class_name('Favorite') }
   end
 
   describe 'validation' do

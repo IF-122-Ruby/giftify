@@ -1,29 +1,26 @@
 class Account::FavoriteGiftsController < Account::AccountsController
-  before_action :set_gift, only: [:create, :destroy]
 
   def index
-    @gifts = current_user.favorites
+    @favorites = collection
   end
-  
+
   def create
-    Favorite.create(gift_id: @gift.id, user_id: current_user.id)
+    @gift = resource
+    collection << @gift
   end
 
   def destroy
-    Favorite.where(gift_id: @gift.id, user_id: current_user.id).first.destroy
+    @gift = resource
+    collection.delete(@gift)
   end
 
   private
 
-    def set_gift
-      @gift = resource
-    end
-
     def collection
-      current_organization.gifts
+      current_user.favorite_gifts
     end
 
     def resource
-      collection.find(params[:id])
+      current_organization.gifts.find(params[:id])
     end
 end

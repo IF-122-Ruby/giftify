@@ -1,3 +1,19 @@
-.gifts-card {
-  width: 27rem;
+.like {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 5%!important;
+  height: 5%!important;
+}
+
+.gift-link {
+  text-decoration: none;
+  color: black;
+}
+
+.back-arrow {
+  width: 7%!important;
+  height: 7%!important;
+  position: absolute;
+  display: inline-block;
 }

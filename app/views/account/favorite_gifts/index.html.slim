@@ -1,18 +1,19 @@
-h1. My favorites
+.main.m-4
+ .container-fluid
+   h1.fw-bolder.mb-5.mt-5.text-center My favorites
+   - @favorites.each do |gift|
+     .col-lg-4.col-md-12.mb-4.text-center.btn
+       .card.shadow.p-3.mb-5.bg-white.border-0.gifts-card
+         .display
+           div id="#{dom_id(gift)}"
+             = toggle_favorite_link(gift)
+         = link_to account_organization_gift_path(gift), class: "gift-link" do
+           = image_tag gift.image.url(:small), class: 'img-fluid'
 
-- @gifts.each do |gift|
-   .col-lg-4.col-md-12.mb-4.text-center.btn
-     .card.shadow.p-3.mb-5.bg-white.border-0.gifts-card
-       = image_tag gift.image.url(:small), class: 'img-fluid'
-
-       .card-body
-         h5.card-title = gift.name
-         p.card-text
-           strong
-             = gift.price
-           | points
-       .card-body
-         = link_to 'Details', account_organization_gift_path(gift), class:"button btn btn-outline-secondary nav-btn posts__card-button"
-
-         article id="#{dom_id(gift)}"
-           = toggle_favorite(gift)
+           .card-body
+             h5.card-title = gift.name
+             p.card-text
+               strong
+                 = gift.price
+               | points
+           .card-body

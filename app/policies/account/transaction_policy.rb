@@ -3,4 +3,3 @@ class Account::TransactionPolicy < Struct.new(:user, :admin)
     user
   end
 end
-  

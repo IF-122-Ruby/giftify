@@ -27,7 +27,7 @@ class Transaction < ApplicationRecord
 
   def balance_cannot_be_less_than_amount
     if sender.balance < amount
-     errors.add(:amount, "can't be greater than the balance")
+      errors.add(:amount, "can't be greater than the balance")
     end
   end
 end

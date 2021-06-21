@@ -1,7 +1,7 @@
 class Account::TransactionController < Account::AccountsController
   def create
     @transaction = current_user.sender_transactions.build(amount: transaction_params[:amount])
-    @transaction.receiver = User.find(transaction_params[:receiver_id])
+    @transaction.receiver = current_organization.users.find(transaction_params[:receiver_id])
     authorize [:account, :transaction]
 
     respond_to do |format|

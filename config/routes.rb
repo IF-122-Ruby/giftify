@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   }
 
   namespace :account do
+    resources :microposts, path: :feed, except: [:show, :edit]
     resources :gifts
     resources :users, except: [:create, :new]
     resource :organization,
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
               only: [:edit, :update],
               controller: :profile
     resources :organization_gifts, path: :rewards, only: [:index, :show]
-
+    resources :invites, except: %i[edit update]
     resources :notifications, only: :index
 
     resource :transaction, only: [:create, :new], controller: :transaction

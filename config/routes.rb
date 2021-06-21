@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
     resources :notifications, only: :index
 
-    resource :transaction, only: [:create], controller: :transaction
+    resource :transaction, only: [:create, :new], controller: :transaction
   end
 
   resources :posts

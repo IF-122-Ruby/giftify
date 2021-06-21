@@ -1,0 +1,14 @@
+#exampleModal.modal.fade.show aria-modal='true' aria-labelledby="exampleModalLabel" style="display: block" role='dialog'
+  .modal-dialog.modal-dialog-centered
+    .modal-content
+      = simple_form_for @transaction, url: account_transaction_path, html: { class: 'form-inline', id: 'transaction_form' }, remote: true do |f|
+        .modal-header
+          h5#exampleModalLabel.modal-title Make a gift
+          button#close-transaction-modal.btn-close aria-label="Close" data-bs-dismiss="modal" type="button"
+        .modal-body
+          = f.input :receiver_id, collection: user_collection_of_current_organization, prompt: 'Select User', required: true
+          = f.input :amount, as: :integer, required: true, include_hidden: false
+        .modal-footer
+          = f.submit 'Sent points', class: "btn btn-primary"
+
+#backdrop.modal-backdrop.fade.show

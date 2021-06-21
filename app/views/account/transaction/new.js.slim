@@ -1,0 +1,9 @@
+| document.getElementById('new_modal_transaction').innerHTML = ("#{j render partial: 'modal_new_transaction', transaction: @transaction}");
+| modal_elements = document.querySelectorAll('#close-transaction-modal, #backdrop');
+| modal_elements.forEach(function(modal_element) {
+|   modal_element.addEventListener("click", function(element) {
+|     document.getElementById('backdrop').style.display = "none";
+|     document.getElementById('exampleModal').style.display = "none";
+|     document.getElementById('exampleModal').classList.remove("show");
+|   });   
+| });

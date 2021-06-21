@@ -23,4 +23,11 @@ class Transaction < ApplicationRecord
   validates :amount, presence: true, numericality: { greater_than: 0 }
   validates :sender, presence: true
   validates :receiver, presence: true
+  validate :balance_cannot_be_less_than_amount, on: :user_to_user
+
+  def balance_cannot_be_less_than_amount
+    if sender.balance < amount
+     errors.add(:amount, "can't be greater than the balance")
+    end
+  end
 end

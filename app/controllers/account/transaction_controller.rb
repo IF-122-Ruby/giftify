@@ -1,20 +1,25 @@
 class Account::TransactionController < Account::AccountsController
   def create
-    @transaction = current_user.sender_transactions.build(transaction_params) 
+    @transaction = current_user.sender_transactions.build(amount: transaction_params[:amount])
+    @transaction.receiver = User.find(transaction_params[:receiver_id])
     authorize [:account, :transaction]
 
-    if @transaction.save
-      flash[:notice] = 'You successfully sent points!'
-      redirect_to account_users_path
-    else
-      render json: { errors: @transaction.errors.full_messages }, status: 422
+    respond_to do |format|
+      if @transaction.save(context: :user_to_user)
+        format.js
+      else
+        format.js { render :new }
+      end
     end
+  end
+
+  def new
+    @transaction = Transaction.new
   end
 
   private
 
   def transaction_params
-    params.require(:transaction).permit(:receiver_id, :receiver_type, :amount)
+    params.require(:transaction).permit(:receiver_id, :amount)
   end
 end
-  

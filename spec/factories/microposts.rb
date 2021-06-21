@@ -25,10 +25,11 @@ FactoryBot.define do
   factory :micropost do
     title { Faker::IndustrySegments.industry }
     description { Faker::Marketing.buzzwords }
-    association :author, factory: :user
+    association :author, factory: [:user, :admin, :with_organization]
     association :organization
+
     trait :with_image do
-      image { Rack::Test::UploadedFile.new(Rails.root + "spec/files/#{rand(1..10)}.jpg", 'image/jpeg') }
+      image { Rack::Test::UploadedFile.new(Rails.root + "spec/files/microposts/#{rand(1..10)}.jpg", 'image/jpeg') }
     end
   end
 end

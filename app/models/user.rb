@@ -62,6 +62,10 @@ class User < ApplicationRecord
     }
   end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+  
   def balance
     receiver_transactions.sum(:amount) - sender_transactions.sum(:amount)
   end

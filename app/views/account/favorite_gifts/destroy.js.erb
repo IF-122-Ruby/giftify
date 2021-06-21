@@ -1,1 +1,1 @@
-document.getElementById("gift_<%= @gift.id %>").querySelector('.fa-heart').outerHTML = "<%= escape_javascript(toggle_favorite_link(@gift)) %>";
+document.getElementById("gift_<%= @gift.id %>").querySelector('.fa-heart').outerHTML = "<%= j(toggle_favorite_link(@gift)) %>";

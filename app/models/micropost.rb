@@ -26,6 +26,7 @@ class Micropost < ApplicationRecord
 
   belongs_to :author, class_name: "User"
   belongs_to :organization
+  has_many :comments, as: :commentable
 
   before_validation :add_author_organization, on: :create
 

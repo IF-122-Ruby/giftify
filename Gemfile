@@ -29,6 +29,7 @@ gem 'sentry-sidekiq'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
 gem 'activerecord-import'
+gem 'ransack'
 
 group :development, :test do
   gem 'annotate'

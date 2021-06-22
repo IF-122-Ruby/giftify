@@ -8,12 +8,12 @@
       .col-1.text-center        
         .h6 Logo
       .col-1.text-center
-          .h6 Users
+        .h6 Users
       .col-3.text-center.text-decoration-none
         = sort_link @q, :name, remote: true
           .h6 Organization Name        
       .col-3.text-center
-          .h6 Monthly points
+        .h6 Monthly points
       .col-3.text-center
         = sort_link @q, :created_at, remote: :true
           .h6 Created

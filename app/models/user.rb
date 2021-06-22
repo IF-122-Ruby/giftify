@@ -31,12 +31,15 @@ class User < ApplicationRecord
   has_one :owned_organization, class_name: 'Organization'
   has_one :organization, through: :role
   has_many :posts, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_gifts, through: :favorites, dependent: :destroy, source: :gift
   has_many :colleagues, ->(user) { where.not(id: user.id) }, through: :organization, source: :users, class_name: 'User'
   has_many :invites, foreign_key: 'user_id'
   has_many :sender_transactions, as: :sender, class_name: "Transaction"
   has_many :receiver_transactions, as: :receiver, class_name: "Transaction"
   has_many :own_notifications, class_name: 'Notification', dependent: :destroy
   has_many :microposts, class_name: "Micropost", foreign_key: "author_id"
+  has_many :comments, dependent: :destroy
 
   delegate :superadmin?, :admin?, :manager?, :simple?, to: :role
 
@@ -59,6 +62,10 @@ class User < ApplicationRecord
     }
   end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+  
   def balance
     receiver_transactions.sum(:amount) - sender_transactions.sum(:amount)
   end

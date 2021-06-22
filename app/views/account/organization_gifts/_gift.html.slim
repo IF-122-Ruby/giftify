@@ -1,0 +1,12 @@
+
+div id="#{dom_id(gift)}"
+  = toggle_favorite_link(gift)
+= link_to account_organization_gift_path(gift), class: "gift-link" do
+  = image_tag gift.image.url(:small), class: 'img-fluid'
+
+  .card-body
+    h5.card-title = gift.name
+    p.card-text
+      strong
+        = gift.price
+      | points

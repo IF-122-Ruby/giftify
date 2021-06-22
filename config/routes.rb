@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     resources :invites, except: %i[edit update]
     resources :notifications, only: :index
     post '/rewards/user_reward', to: 'user_rewards#receive'
+    resources :favorite_gifts, only: [:index, :create, :destroy]
   end
 
   resources :posts

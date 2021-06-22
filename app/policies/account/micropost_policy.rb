@@ -12,7 +12,7 @@ class Account::MicropostPolicy < ApplicationPolicy
   end
   
   def update?
-    edit?
+    user.admin?
   end
 
   def destroy?

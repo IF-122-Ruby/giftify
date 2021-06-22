@@ -46,7 +46,7 @@ class Account::UsersController < Account::AccountsController
   end
 
   def collection
-    current_user.colleagues
+    current_organization.users
   end
 
   def resource

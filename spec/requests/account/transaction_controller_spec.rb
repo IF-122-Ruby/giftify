@@ -14,13 +14,25 @@ RSpec.describe Account::TransactionController, type: :request do
   end
 
   describe 'POST #create' do
-    let(:receiver) { create(:user, :simple) }
+    let(:receiver) { create(:user, :simple, organization: user.organization) }
     let(:transaction_params) { { transaction: { receiver_id: receiver.id, amount: 100 } } }
 
-    it "returns http success" do
-      post account_transaction_path, params: transaction_params, xhr: true
+    context 'with empty balance' do
+      it "returns http success" do
+        post account_transaction_path, params: transaction_params, xhr: true
 
-      expect(response).to be_successful
+        expect(response).to be_successful
+      end
+    end
+
+    context 'with not empty balance' do
+      before { allow(user).to receive(:balance).and_return(1000) }
+
+      it "returns http success" do
+        post account_transaction_path, params: transaction_params, xhr: true
+
+        expect(response).to be_successful
+      end
     end
   end
 end

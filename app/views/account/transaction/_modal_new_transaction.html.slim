@@ -1,4 +1,4 @@
-#exampleModal.modal.fade.show aria-modal='true' aria-labelledby="exampleModalLabel" style="display: block" role='dialog'
+#exampleModal.modal.fade aria-hidden='true' aria-labelledby="exampleModalLabel" role='dialog' data-backdrop="false" tabindex='-1'
   .modal-dialog.modal-dialog-centered
     .modal-content
       = simple_form_for @transaction, url: account_transaction_path, html: { class: 'form-inline', id: 'transaction_form' }, remote: true do |f|
@@ -9,6 +9,4 @@
           = f.input :receiver_id, collection: user_collection_of_current_organization, prompt: 'Select User', required: true
           = f.input :amount, as: :integer, required: true, include_hidden: false
         .modal-footer
-          = f.submit 'Sent points', class: "btn btn-primary"
-
-#backdrop.modal-backdrop.fade.show
+          = f.submit 'Sent points', class: "btn btn-primary", html_options: { 'data-dismiss': 'modal', 'data-toggle': "modal"}

@@ -27,7 +27,7 @@ RSpec.describe Account::UsersController, type: :request do
     it 'renders edit template' do
       get edit_account_user_path(admin)
 
-      expect(response).to be_successful 
+      expect(response).to be_successful
     end
   end
 
@@ -36,7 +36,7 @@ RSpec.describe Account::UsersController, type: :request do
     let(:edited_user_first_name) { user_update_params[:first_name] }
 
     it 'shound update user (in this case admin)' do
-      patch account_user_path(admin), params: { user: user_update_params }
+      patch account_user_path(admin || manager), params: { user: user_update_params }
 
       admin.reload
       expect(admin.first_name).to eq edited_user_first_name

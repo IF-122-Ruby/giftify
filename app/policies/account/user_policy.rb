@@ -8,7 +8,7 @@ class Account::UserPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin? || user.manager? 
+    user.admin? || user.manager?
   end
 
   def destroy?

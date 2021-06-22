@@ -18,20 +18,20 @@ RSpec.describe Account::TransactionController, type: :request do
     let(:transaction_params) { { transaction: { receiver_id: receiver.id, amount: 10 } } }
 
     context 'with empty balance' do
-      it "returns http success" do
-        post account_transaction_path, params: transaction_params, xhr: true
-
-        expect(response).to be_successful
+      it 'changes balance on 0 points' do
+        expect do
+          post account_transaction_path, params: transaction_params, xhr: true
+        end.to change(receiver, :balance).by(0).and change(user, :balance).by(0)
       end
     end
 
     context 'with not empty balance' do
       let!(:transaction) { create(:transaction, receiver: user, sender: user.organization, amount: 1000) }
 
-      it "returns http success" do
-        post account_transaction_path, params: transaction_params, xhr: true
-
-        expect(response).to be_successful
+      it 'changes balances in current user and receiver user' do
+        expect do
+          post account_transaction_path, params: transaction_params, xhr: true
+        end.to change(user, :balance).by(-10).and change(receiver, :balance).by(10)
       end
     end
   end

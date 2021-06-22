@@ -6,23 +6,3 @@
     box-shadow: 0 0 0 1px rgb(13 110 253 / 25%);
   }
 }
-
-//search input
-input[type=search] {
-  outline: none;
-  box-sizing: content-box;
-
-  border: solid 2px grey;
-  border-radius: 10em;
-
-  padding: 9px 10px;
-  width: 4.14em;
-
-  transition: all .4s;
-
-  &:focus {
-    width: 15em;
-    background-color: white;
-    border-color: $info;
-  }
- }

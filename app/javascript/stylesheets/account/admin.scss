@@ -34,15 +34,9 @@ body {
   }
 }
 
-.reaction-group {
-  display: block;
-  min-width: 40px;
-  height: 30px;
-  margin: 8px;
+.reaction__button{
   border-radius: 20px;
-  background-color: rgb(228, 228, 228);
-  &_reacted {
-    color:#1a6cb9;
-    background-color: rgb(158, 193, 238);
+  &_added{
+    border: 1px solid $focus-text-color-menu;
   }
 }

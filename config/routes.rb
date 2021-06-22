@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :notifications, only: :index
     resources :reactions, only: [:create, :destroy]
     resources :favorite_gifts, only: [:index, :create, :destroy]
+    resource :transaction, only: [:create, :new], controller: :transaction
   end
 
   resources :posts

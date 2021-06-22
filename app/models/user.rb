@@ -26,6 +26,7 @@ class User < ApplicationRecord
   scope :managers, -> { joins(:role).where(roles: { role: Role::MANAGER }) }
   scope :users, -> { joins(:role).where(roles: { role: Role::USER }) }
   scope :superadmins, -> { joins(:role).where(roles: { role: Role::SUPERADMIN }) }
+  scope :ordered_by_first_name, -> { order(:first_name) }
 
   has_one :role, dependent: :destroy
   has_one :owned_organization, class_name: 'Organization'

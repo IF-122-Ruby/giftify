@@ -1,7 +1,7 @@
-- Reaction.reactions.values.each do |reaction|
+- Reaction.reactions.keys.each do |reaction|
   - if micropost.reactions.exists?(user: current_user, reactionable: micropost, reaction: reaction) 
     .d-flex.justify-content-center
-      = button_to reaction + " #{micropost.reactions_count(reaction)}", account_reaction_path(reaction: reaction, micropost: micropost, id: micropost.id), method: :delete, remote: true, class: 'btn mx-1 reaction__button reaction__button_added'
+      = button_to Reaction.reactions[reaction] + " #{micropost.reactions.group(:reaction).count[reaction]}", account_reaction_path(reaction: reaction, micropost: micropost, id: micropost.id), method: :delete, remote: true, class: 'btn mx-1 reaction__button reaction__button_added'
   - else
     .d-flex.justify-content-center
-      = button_to reaction + " #{micropost.reactions_count(reaction)}", account_reactions_path(reaction: reaction, micropost: micropost), method: :post, remote: true, class: 'btn mx-1 reaction__button'
+      = button_to Reaction.reactions[reaction] + " #{micropost.reactions.group(:reaction).count[reaction]}", account_reactions_path(reaction: reaction, micropost: micropost), method: :post, remote: true, class: 'btn mx-1 reaction__button'

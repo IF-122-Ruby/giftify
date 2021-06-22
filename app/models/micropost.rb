@@ -37,8 +37,4 @@ class Micropost < ApplicationRecord
   def add_author_organization
     self.organization = self.author.organization
   end
-
-  def reactions_count(reaction)
-    reactions.where(reaction: reaction).count
-  end
 end

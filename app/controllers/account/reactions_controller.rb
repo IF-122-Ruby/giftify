@@ -14,8 +14,7 @@ class Account::ReactionsController < Account::AccountsController
 
   def destroy
     @micropost = micropost_resource
-    @reaction = @micropost.reactions.find_by(user: current_user, reaction: params[:reaction])
-    @reaction.destroy
+    @reaction = @micropost.reactions.find_by(user: current_user, reaction: params[:reaction]).delete
     respond_to do |format|
       format.html { redirect_back fallback_location: root_path, flash: { notice: 'reaction removed' } }
       format.js { render :toggle }

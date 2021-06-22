@@ -35,5 +35,6 @@
             .p-2.px-3
               .d-flex.justify-content-between.flex-row
                 p.text-justify = micropost.description
-                = render 'account/reactions/reaction', micropost: micropost
+                .btn-group aria-label=("reactions") data-reaction="#{micropost.id}" role="group"
+                  = render 'account/reactions/reaction', micropost: micropost
               hr/

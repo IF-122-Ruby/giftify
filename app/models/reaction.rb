@@ -17,14 +17,15 @@
 #
 class Reaction < ApplicationRecord
   LIKE = '👍'.freeze
-  DISLIKE = '👎'.freeze
+  CONGRATULATION = '🎉'.freeze
   LAUGH = '😂'.freeze
-  REACTIONS = [LIKE, DISLIKE, LAUGH].freeze
+  REACTIONS = [LIKE, CONGRATULATION, LAUGH].freeze
 
-  enum reaction: { like: LIKE, dislike: DISLIKE, laugh: LAUGH }
+  enum reaction: { like: LIKE, congratulation: CONGRATULATION, laugh: LAUGH }
 
   belongs_to :user
   belongs_to :reactionable, polymorphic: true
 
   validates :reaction, inclusion: { in: reactions.keys }
+  validates :reaction, uniqueness: { scope: [:user_id, :reactionable_id, :reactionable_type] }
 end

@@ -1,9 +1,10 @@
-.btn-group aria-label=("reactions") data-order="#{micropost.id}" role="group" 
-  - Reaction.reactions.values.each do |reaction|
-    .reaction_group
-      .d-flex.justify-content-between
-        = link_to reaction, account_reaction_path(reaction: reaction, micropost: micropost), 
-                            method: :post, 
-                            remote: true,
-                            class: 'text-decoration-none pe-1'
-        span.ps-1 = micropost.reactions_count(reaction) if micropost.reactions_count(reaction) > 0
+- Reaction.reactions.values.each do |reaction|
+  - reactions_count = micropost.reactions_count(reaction)
+  - if micropost.reactions.exists?(user: current_user, reactionable: micropost, reaction: reaction) 
+    .reaction_group.reaction_group_reacted.d-flex.justify-content-center
+      = link_to reaction, account_reaction_path(reaction: reaction, micropost: micropost, id: micropost.id), method: :delete, remote: true, class: 'text-decoration-none pe-1'
+      = reactions_count
+  - else
+    .reaction_group.d-flex.justify-content-center
+      = link_to reaction, account_reactions_path(reaction: reaction, micropost: micropost), method: :post, remote: true, class: 'text-decoration-none pe-1'
+      = reactions_count

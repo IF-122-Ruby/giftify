@@ -1,2 +1,2 @@
-reaction = document.querySelector(`[data-order="${<%= @micropost.id %>}"]`);
+reaction = document.querySelector(`[data-reaction="${<%= @micropost.id %>}"]`);
 reaction.innerHTML = "<%= j render('account/reactions/reaction', micropost: @micropost) %>";

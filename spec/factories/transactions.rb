@@ -19,7 +19,7 @@
 FactoryBot.define do
   factory :transaction do
     amount { 10 }
-    association :sender, factory: :user
-    association :receiver, factory: :user
+    association :sender
+    association :receiver
   end
 end

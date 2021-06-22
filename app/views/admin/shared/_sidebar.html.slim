@@ -3,7 +3,7 @@
     .d-flex.justify-content-around
       = image_tag("serhii.png",class: 'img-fluid rounded-circle z-depth-1 shadow bg-body rounded w-25')
       .d-flex.flex-column.justify-content-center.px-3
-        span Org name
+        span = current_organization.name
         span.text-black-50 administrator
     span.mt-2
       hr
@@ -41,4 +41,11 @@
           span
             i.fas.fa-user-plus
             span.px-3 Invites
+          i.fas.fa-chevron-right
+    .py-3.change-bg-color
+      = link_to account_organization_gifts_path, class: "text-decoration-none text-reset" do
+        .change-color.d-flex.justify-content-between.m-1
+          span
+            i.fas.fa-gift
+            span.px-3 Gifts
           i.fas.fa-chevron-right

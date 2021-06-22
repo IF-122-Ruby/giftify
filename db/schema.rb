@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 2021_06_19_125956) do
     t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "gift_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["gift_id"], name: "index_favorites_on_gift_id"
+    t.index ["user_id", "gift_id"], name: "index_favorites_on_user_id_and_gift_id", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
   create_table "feedbacks", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", limit: 255, null: false

@@ -1,8 +1,13 @@
-.main.m-4
-  .container-fluid
+.main
+  = link_to account_organization_gifts_path do
+    .fas.fa-long-arrow-alt-left.back-arrow
+  .container-fluid.text-center
     h1.fw-bolder.mb-5.mt-5.text-center = @gift.name
-    figure.mb-4.text-center
-      = image_tag @gift.image.url(:preview), class: 'img-thumbnail rounded'
+    .col-md-3.text-center.btn
+      .card.p-3.bg-white.border-0.gifts-card
+        div id="#{dom_id(@gift)}"
+          = toggle_favorite_link(@gift)
+        = image_tag @gift.image.url(:small), class: 'img-fluid'
 
     section.mb-5.post-item
       p.fs-5.mb-4.lead.p-3
@@ -11,4 +16,3 @@
         | points
       p.fs-5.mb-4.lead.p-3
         = @gift.description
-      = link_to 'Back', account_organization_gifts_path, class:"button btn btn-outline-secondary nav-btn posts__card-button"

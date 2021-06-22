@@ -18,5 +18,18 @@
 require 'rails_helper'
 
 RSpec.describe Reaction, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'associations' do
+    it { is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:reactionable) }
+  end
+
+  describe 'validation' do
+    it { is_expected.to define_enum_for(:reaction).with_values(Reaction.reactions).backed_by_column_of_type(:string) }
+
+    context "when valid Factory reaction" do
+      it "has a valid Reaction" do
+        expect(build(:reaction)).to be_valid
+      end
+    end
+  end
 end

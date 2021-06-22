@@ -5,6 +5,9 @@
       .col-lg-4.col-md-12.mb-4.text-center.btn
         .card.shadow.p-3.mb-5.bg-white.border-0.gifts-card
           = render partial: 'account/organization_gifts/gift', locals: { gift: gift }
+          .d-flex.justify-content-start
+            = button_to 'Get', account_rewards_user_reward_path(gift: @gift), class:"button btn btn-outline-success nav-btn posts__card-button me-1 w-100", method: :post, remote: true
+
 
   .digg_pagination.pagination-position
       = will_paginate @gifts, container: false

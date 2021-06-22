@@ -16,6 +16,7 @@
         | points
       p.fs-5.mb-4.lead.p-3
         = @gift.description
-      = link_to 'Back', account_organization_gifts_path, class:"button btn btn-outline-secondary nav-btn posts__card-button"
-      = button_to 'Get', account_rewards_user_reward_path(gift: @gift), class:"button btn btn-outline-success nav-btn posts__card-button", method: :post, remote: true
+      .d-flex.flex-row.justify-content-center
+        = link_to 'Back', account_organization_gifts_path, class:"button btn btn-outline-secondary nav-btn posts__card-button me-1"
+        = button_to 'Get', account_rewards_user_reward_path(gift: @gift), class:"button btn btn-outline-success nav-btn posts__card-button ms-1", method: :post, remote: true
 

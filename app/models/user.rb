@@ -40,6 +40,7 @@ class User < ApplicationRecord
   has_many :own_notifications, class_name: 'Notification', dependent: :destroy
   has_many :microposts, class_name: "Micropost", foreign_key: "author_id"
   has_many :reactions, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   delegate :superadmin?, :admin?, :manager?, :simple?, to: :role
 

@@ -1,0 +1,18 @@
+input[type=search] {
+  outline: none;
+  box-sizing: content-box;
+
+  border: solid 2px grey;
+  border-radius: 10em;
+
+  padding: 9px 10px;
+  width: 4.14em;
+
+  transition: all .4s;
+
+  &:focus {
+    width: 15em;
+    background-color: white;
+    border-color: $info;
+  }
+ }

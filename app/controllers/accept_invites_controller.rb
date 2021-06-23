@@ -10,16 +10,16 @@ class AcceptInvitesController < ApplicationController
     @user = User.new(acception_params)
 
     invite = Invite.find_by!(invite_token: @token)
-  
+
     @user.organization = invite.organization
     @user.email = invite.recipient_email
-
+    
     if @user.save
       flash[:success] = 'Successfully signed up'
-      redirect_to account_profile_path
+      redirect_to account_users_path
     else
       flash[:danger] = 'Something went wrong'
-      render action: :new, params: { token: @token }
+      render action: :new
     end
   end
 

@@ -40,6 +40,7 @@ class User < ApplicationRecord
   has_many :receiver_transactions, as: :receiver, class_name: "Transaction"
   has_many :own_notifications, class_name: 'Notification', dependent: :destroy
   has_many :microposts, class_name: "Micropost", foreign_key: "author_id"
+  has_many :reactions, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :my_gifts, through: :sender_transactions, source: :receiver, source_type: 'Gift'
 

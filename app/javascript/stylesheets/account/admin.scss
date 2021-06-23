@@ -15,7 +15,6 @@
 @import "stylesheets/header";
 @import "stylesheets/organization_gifts";
 
-
 body {
   background-color: $background-color;
 }
@@ -33,5 +32,13 @@ body {
     &:hover {
       background-color: #f3f4f7;
     }
+  }
+}
+
+.reaction__button {
+  border-radius: 20px;
+  
+  &_added {
+    border: 1px solid $focus-text-color-menu;
   }
 }

@@ -1,0 +1,9 @@
+- users_reactions = micropost.reactions.group(:reaction).count
+- user_reactions = micropost.reactions.where(user: current_user).pluck(:reaction)
+- Reaction.reactions.keys.each do |reaction|
+  - if user_reactions.include?(reaction)
+    .d-flex.justify-content-center
+      = button_to Reaction.reactions[reaction] + " #{users_reactions[reaction]}", account_reaction_path(reaction: reaction, micropost: micropost, id: micropost.id), method: :delete, remote: true, class: 'btn mx-1 reaction__button reaction__button_added'
+  - else
+    .d-flex.justify-content-center
+      = button_to Reaction.reactions[reaction] + " #{users_reactions[reaction]}", account_reactions_path(reaction: reaction, micropost: micropost), remote: true, class: 'btn mx-1 reaction__button'

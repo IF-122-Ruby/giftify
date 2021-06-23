@@ -19,6 +19,10 @@ FactoryBot.define do
       role { build(:role, role: :admin) }
     end
 
+    trait :manager do
+      role { build(:role, role: :manager) }
+    end
+
     trait :simple do
       role
     end

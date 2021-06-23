@@ -28,6 +28,8 @@ class Micropost < ApplicationRecord
   belongs_to :organization
   has_many :comments, as: :commentable
 
+  has_many :reactions, as: :reactionable
+
   before_validation :add_author_organization, on: :create
 
   validates :title, :description, presence: true

@@ -1,13 +1,12 @@
-.main
-  = link_to account_organization_gifts_path do
-    .fas.fa-long-arrow-alt-left.back-arrow
-  .container-fluid.text-center
-    h1.fw-bolder.mb-5.mt-5.text-center = @gift.name
-    .col-md-3.text-center.btn
-      .card.p-3.bg-white.border-0.gifts-card
-        div id="#{dom_id(@gift)}"
-          = toggle_favorite_link(@gift)
-        = image_tag @gift.image.url(:small), class: 'img-fluid'
+= link_to account_organization_gifts_path do
+  .fas.fa-long-arrow-alt-left.back-arrow
+.container-fluid.text-center
+  h1.fw-bolder.mb-5.mt-5.text-center = @gift.name
+  .col-md-3.text-center.btn
+    .card.p-3.bg-white.border-0.gifts-card
+      div id="#{dom_id(@gift)}"
+        = toggle_favorite_link(@gift)
+      = image_tag @gift.image.url(:small), class: 'img-fluid'
 
     section.mb-5.post-item
       p.fs-5.mb-4.lead.p-3
@@ -17,6 +16,4 @@
       p.fs-5.mb-4.lead.p-3
         = @gift.description
       .d-flex.flex-row.justify-content-center
-        = link_to 'Back', account_organization_gifts_path, class:"button btn btn-outline-secondary nav-btn posts__card-button me-1"
-        = button_to 'Get', account_rewards_user_reward_path(gift: @gift), class:"button btn btn-outline-success nav-btn posts__card-button ms-1", method: :post, remote: true
-
+        = button_to 'Get', account_rewards_user_reward_path(gift: @gift), class:"button btn btn-outline-success nav-btn posts__card-button ms-1", remote: true

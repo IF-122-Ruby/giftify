@@ -26,6 +26,7 @@ class User < ApplicationRecord
   scope :managers, -> { joins(:role).where(roles: { role: Role::MANAGER }) }
   scope :users, -> { joins(:role).where(roles: { role: Role::USER }) }
   scope :superadmins, -> { joins(:role).where(roles: { role: Role::SUPERADMIN }) }
+  scope :ordered_by_first_name, -> { order(:first_name) }
 
   has_one :role, dependent: :destroy
   has_one :owned_organization, class_name: 'Organization'
@@ -39,7 +40,9 @@ class User < ApplicationRecord
   has_many :receiver_transactions, as: :receiver, class_name: "Transaction"
   has_many :own_notifications, class_name: 'Notification', dependent: :destroy
   has_many :microposts, class_name: "Micropost", foreign_key: "author_id"
+  has_many :reactions, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :my_gifts, through: :sender_transactions, source: :receiver, source_type: 'Gift'
 
   delegate :superadmin?, :admin?, :manager?, :simple?, to: :role
 

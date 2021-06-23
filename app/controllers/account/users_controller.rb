@@ -1,5 +1,4 @@
 class Account::UsersController < Account::AccountsController
-  
   def index
     @users = collection
     authorize([:account, @users])
@@ -28,7 +27,7 @@ class Account::UsersController < Account::AccountsController
       end
     end
   end
-  
+
   def destroy
     @user = resource
     authorize([:account, @user])

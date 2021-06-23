@@ -4,7 +4,7 @@ class Account::UserPolicy < ApplicationPolicy
   end
 
   def show?
-    user.admin?
+    user.admin? || user.manager?
   end
 
   def update?
@@ -12,7 +12,7 @@ class Account::UserPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.admin?
+    user.admin? || user.manager?
   end
 
   class Scope < Scope

@@ -28,3 +28,4 @@ RSpec.describe AcceptInvitesController, type: :request do
     end
   end
 end
+ 

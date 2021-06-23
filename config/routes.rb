@@ -14,9 +14,10 @@ Rails.application.routes.draw do
   resources :accept_invites, only: %i[new create]
 
   namespace :account do
+    resources :microposts, path: :feed, except: [:show, :edit]
     resources :gifts
     resources :users, except: [:create, :new]
-    resource :organization,
+    resource  :organization,
               only: [:edit, :update],
               controller: :organization
     resource  :profile,
@@ -25,15 +26,16 @@ Rails.application.routes.draw do
     resources :organization_gifts, path: :rewards, only: [:index, :show]
     resources :invites, except: %i[edit update]
     resources :notifications, only: :index
+    resources :reactions, only: [:create, :destroy]
+    resources :favorite_gifts, only: [:index, :create, :destroy]
+    resource :transaction, only: [:create, :new], controller: :transaction
   end
 
   resources :posts
 
   namespace :admin do
-    resources :organizations, only: [:index, :show]
     root to: 'admin#index'
-
+    resources :organizations, only: [:index, :show]
     resources :feedbacks, only: [:index, :show]
-
   end
 end

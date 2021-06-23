@@ -10,7 +10,7 @@ class Account::MyGiftsController < Account::AccountsController
   private
 
   def collection
-    Gift.my_gifts(current_user.id)
+    current_user.my_gifts.ordered
   end
 
   def resource

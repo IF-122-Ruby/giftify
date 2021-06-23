@@ -6,7 +6,7 @@
         .card.shadow.p-3.mb-5.bg-white.border-0.gifts-card
           .bg-image
           = link_to account_my_gift_path(my_gift) do
-            = image_tag my_gift.image.url, width: '250', height: '150', class: 'img-fluid'
+            = image_tag my_gift.image.url(:small),  class: 'img-fluid'
             .card-body
               h5.card-title = my_gift.name
               p.card-text

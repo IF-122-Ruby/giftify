@@ -31,7 +31,7 @@ class Gift < ApplicationRecord
   has_many   :transactions, as: :receiver
   has_many   :favorites, dependent: :destroy
 
-  scope :my_gifts, ->(user_id) { includes(:transactions).where(transactions: { sender_id: user_id }) }
+  scope :ordered, -> { includes(:transactions).order('created_at desc') }
 
   validates :name, :description, presence: true
   validates :gift_type, inclusion: { in: gift_types.values }

@@ -5,7 +5,6 @@ RSpec.describe 'Account::MyGifts', type: :request do
   let!(:user) { create(:user, organization: organization) }
   let!(:my_gift) { create(:gift, :with_image, organization: organization, name: 'Jones, Osinski and Murphy', price: 59) }
   
-  
   before do
     sign_in user
   end
@@ -13,15 +12,8 @@ RSpec.describe 'Account::MyGifts', type: :request do
   describe 'GET /my_gifts' do
     it 'returns http success' do
       get account_my_gifts_path
-      expect(response).to have_http_status(:success)
-    end
 
-    it 'displays the gift name' do
-      expect(my_gift.name).to eq('Jones, Osinski and Murphy')
-    end
-
-    it 'displays the gift price' do
-      expect(my_gift.price).to eq(59)
+      expect(response).to render_template :index
     end
   end
   
@@ -30,7 +22,8 @@ RSpec.describe 'Account::MyGifts', type: :request do
 
     it 'returns http success' do
       get account_my_gift_path(my_gift)
-      expect(response).to have_http_status(:success)
+
+      expect(response.body).to include my_gift.name
     end
   end
 end

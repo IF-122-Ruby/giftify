@@ -1,9 +1,8 @@
-.main
-  .container-fluid.text-center
-    h1.fw-bolder.mb-5.mt-5.text-center = @my_gift.name
-    .col-md-3.text-center.btn
-      .card.p-3.bg-white.border-0.gifts-card
-        = image_tag @my_gift.image.url(:preview), class: 'img-fluid'
-    section.mb-5.post-item
-      p.fs-5.mb-4.lead.p-3
-        = @my_gift.description
+.container-fluid.text-center
+  h1.fw-bolder.mb-5.mt-5.text-center = @my_gift.name
+  .col-md-3.text-center.btn
+    .card.p-3.bg-white.border-0.gifts-card
+      = image_tag @my_gift.image.url(:preview), class: 'img-fluid'
+  section.mb-5.post-item
+    p.fs-5.mb-4.lead.p-3
+      = @my_gift.description

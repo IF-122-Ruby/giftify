@@ -34,3 +34,4 @@ class AcceptInvitesController < ApplicationController
     )   
   end
 end
+

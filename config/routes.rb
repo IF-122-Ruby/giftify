@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
+  resources :accept_invites, only: %i[new create]
+
   namespace :account do
     resources :gifts
     resources :users, except: [:create, :new]

@@ -1,8 +1,6 @@
 - title 'Invites'
 
-= link_to "Invites list", account_invites_path, class: "btn btn-secondary ms-5 mt-3"
-
-.card.col-md-10.p-3.ms-5
+.card.col-md-10.p-3.ms-5.border.rounded-end
   .card-header
     h4.card-title
       | Invite User
@@ -11,4 +9,5 @@
       = simple_form_for @invite , url: account_invites_path do |f|
         label.fs-6.text-secondary.mb-0 Recipient e-mail:
         = f.input :recipient_email, label: false
-        = f.submit 'Send', class: 'btn btn-primary mt-2'
+        .nav-group.d-flex.flex-row
+          = f.submit 'Send', class: 'btn btn-primary mt-2'

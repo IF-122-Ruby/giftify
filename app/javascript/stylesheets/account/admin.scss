@@ -43,3 +43,22 @@ body {
     border: 1px solid $focus-text-color-menu;
   }
 }
+
+.custom__dropdown-menu {
+  max-width: 300px;
+  max-height: 500px;
+  overflow-y: auto;
+  transform: translate(35%, 0);
+
+  .notification_span {
+    max-width: 200px;    
+  }
+
+  @media (max-width: 62em){
+    & {
+      right: auto;
+      left: 50%;
+      transform: translate(55%, 0);
+    }
+  }
+}

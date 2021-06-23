@@ -22,8 +22,10 @@ class Notification < ApplicationRecord
   ORGANIZATION_CREATED = 'ORGANIZATION_CREATED'.freeze
   NOTIFICATION_TYPES = [USER_NEW, ORGANIZATION_CREATED].freeze
 
-  validates :message, presence: true
-
   belongs_to :notificationable, polymorphic: true
   belongs_to :user
+
+  scope :recent, -> { order(created_at: :desc).limit(10) }
+
+  validates :message, presence: true
 end

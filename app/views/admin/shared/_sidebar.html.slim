@@ -3,7 +3,7 @@
     .d-flex.justify-content-around
       = image_tag("serhii.png",class: 'img-fluid rounded-circle z-depth-1 shadow bg-body rounded w-25')
       .d-flex.flex-column.justify-content-center.px-3
-        span = current_organization.name
+        span = current_user.organization.name
         span.text-black-50 administrator
     span.mt-2
       hr

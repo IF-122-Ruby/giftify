@@ -31,7 +31,10 @@
               i.fas.fa-bullhorn.mx-2
               = micropost.title
             hr/
-            = image_tag  micropost.image.url, class: "img-fluid" if micropost.image?
+            = image_tag  micropost.image.url, class: "img-fluid px-1" if micropost.image?
             .p-2.px-3
-              p.text-justify = micropost.description
+              .d-flex.justify-content-between.flex-row
+                p.text-justify = micropost.description
+                .btn-group aria-label=("reactions") data-reaction="#{micropost.id}" role="group"
+                  = render 'account/reactions/reaction', micropost: micropost
               hr/

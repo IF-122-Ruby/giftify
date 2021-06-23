@@ -1,6 +1,6 @@
 .p-0
   h4.bold Comments
-.d-flex.flex-row.p-1.mb-3
+.d-flex.flex-row.p-1.mb-3.comment-form
   = image_tag  current_user.avatar, class: "rounded-circle", size: 50
   = simple_form_for Comment.new, url: account_comments_path(micropost: commentable), remote: true do |f|     
     = f.input :body, label: false, as: :text, input_html: { rows: 2, cols: 45, class: 'mx-2 form-group', placeholder: "Enter your comment..."}

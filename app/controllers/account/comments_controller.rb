@@ -1,6 +1,6 @@
 class Account::CommentsController < Account::AccountsController
   def create
-    @micropost = micropost_resource
+    @micropost = resource
     @comment = @micropost.comments.build(comment_params.merge!(user: current_user))
     respond_to do |format|
       if @comment.save
@@ -13,8 +13,8 @@ class Account::CommentsController < Account::AccountsController
   end
 
   private
-  
-    def micropost_resource
+
+    def resource
       current_organization.microposts.find(params[:micropost])
     end
 

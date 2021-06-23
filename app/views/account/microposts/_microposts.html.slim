@@ -36,8 +36,5 @@
               .d-flex.justify-content-between.flex-row
                 p.text-justify = micropost.description
                 .btn-group aria-label=("reactions") data-reaction="#{micropost.id}" role="group"
-                  = render partial: 'account/reactions/reaction', \
-                           locals: { micropost: micropost, 
-                                     users_reactions: micropost.reactions.group(:reaction).count,
-                                     user_reactions: micropost.reactions.where(user: current_user).pluck(:reaction) }
+                  = render 'account/reactions/reaction', micropost: micropost
               hr/

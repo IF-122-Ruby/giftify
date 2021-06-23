@@ -1,2 +1,2 @@
 | reaction = document.querySelector(`[data-reaction="${ #{@micropost.id} }"]`);
-| reaction.innerHTML = "#{j render( partial: 'account/reactions/reaction', locals: { micropost: @micropost, users_reactions: @micropost.reactions.group(:reaction).count, user_reactions: @micropost.reactions.where(user: current_user).pluck(:reaction)})}";
+| reaction.innerHTML = "#{j render('account/reactions/reaction', micropost: @micropost)}";

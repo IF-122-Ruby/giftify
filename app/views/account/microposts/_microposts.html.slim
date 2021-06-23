@@ -38,3 +38,5 @@
                 .btn-group aria-label=("reactions") data-reaction="#{micropost.id}" role="group"
                   = render 'account/reactions/reaction', micropost: micropost
               hr/
+              .comment-container
+                = render 'account/comments/comments', commentable: micropost

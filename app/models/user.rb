@@ -23,8 +23,8 @@
 require 'elasticsearch/model'
 
 class User < ApplicationRecord
-  include Searchable
 
+  include Elasticsearch::Model
   scope :admins, -> { joins(:role).where(roles: { role: Role::ADMIN }) }
   scope :managers, -> { joins(:role).where(roles: { role: Role::MANAGER }) }
   scope :users, -> { joins(:role).where(roles: { role: Role::USER }) }

@@ -18,7 +18,11 @@
 #
 #  fk_rails_...  (user_id => users.id)
 #
+require 'elasticsearch/model'
+
 class Organization < ApplicationRecord
+  include Elasticsearch::Model
+  
   has_many :roles
   belongs_to :user
   has_many :users, through: :roles

@@ -20,7 +20,7 @@
 require 'elasticsearch/model'
 
 class Gift < ApplicationRecord
-  include Searchable
+  include Elasticsearch::Model
   
   mount_uploader :image, ImageUploader
 

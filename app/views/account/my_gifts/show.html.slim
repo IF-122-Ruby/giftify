@@ -1,11 +1,15 @@
-.contrainer
-  = link_to account_organization_gifts_path do
-    .fas.fa-long-arrow-alt-left.back-arrow
-  .container-fluid.text-center
-    h1.fw-bolder.mb-5.mt-5.text-center = @my_gift.name
-    .col-md-3.text-center.btn
-      .card.p-3.bg-white.border-0.gifts-card
-        = image_tag @my_gift.image.url(:preview), class: 'img-fluid'
-    section.mb-5.post-item
-      p.fs-5.mb-4.lead.p-3
-        = @my_gift.description
+.d-flex.align-content-center.mt-5.text-center
+  .col-10.offset-1
+    .card.card-body.p-4.mb-2.gift-card.bg-white
+      .d-flex.flex-direction-row
+        .card-body.gift-card__description
+          h1.card-title.text-center = @my_gift.name
+          .btn
+            .card.p-3.border-0
+              = image_tag @my_gift.image.url(:preview), class: 'img-fluid'
+          section.mb-5.post-item
+            p.fs-5.mb-4.lead.p-3
+              = @my_gift.description
+      .card-body.text-start
+        = link_to 'Back', account_my_gifts_path, class: 'btn btn-primary gift-card__button'
+        

@@ -2,16 +2,17 @@
   h1.fw-bolder.mb-5.mt-5.text-center My gifts
   - @my_gifts.each do |my_gift|
     .col-lg-4.col-md-12.mb-4.text-center.btn
-      .card.shadow.p-3.mb-5.bg-white.border-0.gifts-card
-        .bg-image
-        = link_to account_my_gift_path(my_gift) do
+      .card.shadow.p-3.mb-5.bg-white.border-0
+        = link_to account_my_gift_path(my_gift), class: "gift-link" do
           = image_tag my_gift.image.url(:small),  class: 'img-fluid'
+
           .card-body
-            h5.card-title = my_gift.name
+            h5.card-title
+              = my_gift.name
             p.card-text
               strong
                 = my_gift.price
-                | points
+                |  points
       
 .digg_pagination.pagination-position
     = will_paginate @my_gifts, container: false

@@ -11,7 +11,7 @@ module GiftsHelper
     if gift.amount.nil?
       "Unlimited reward amount"
     elsif gift.amount.positive?
-      "Reward amount #{gift.amount}"
+      "Reward amount - #{gift.amount}"
     else
       "The gifts are over"
     end

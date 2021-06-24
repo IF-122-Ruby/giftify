@@ -16,6 +16,8 @@
                 = @gift.price
               | points
             p.fs-5.lead
+              strong = rewards_amount(@gift)
+            p.fs-5.lead
               = @gift.description
       .card-body.text-start
         = link_to 'Back', account_organization_gifts_path, class: 'btn btn-primary gift-card__button'

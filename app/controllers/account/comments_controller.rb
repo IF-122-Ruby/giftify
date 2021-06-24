@@ -8,7 +8,6 @@ class Account::CommentsController < Account::AccountsController
         format.html { redirect_back fallback_location: root_path, flash: { notice: 'comment added' } }
       else
         format.js { render :comment_error }
-        # { redirect_back fallback_location: root_path, flash: { notice: 'comment not added' } }
       end
     end
   end

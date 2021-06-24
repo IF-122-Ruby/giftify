@@ -22,6 +22,8 @@
 #
 
 class User < ApplicationRecord
+  mount_uploader :avatar, AvatarUploader
+  
   scope :admins, -> { joins(:role).where(roles: { role: Role::ADMIN }) }
   scope :managers, -> { joins(:role).where(roles: { role: Role::MANAGER }) }
   scope :users, -> { joins(:role).where(roles: { role: Role::USER }) }

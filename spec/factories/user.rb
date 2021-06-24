@@ -3,7 +3,7 @@ FactoryBot.define do
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
     birthday { Faker::Date.birthday(min_age: 18, max_age: 65)}
-    avatar { Faker::Avatar.image }
+    avatar { File.open(Rails.root + "spec/files/user_avatars/#{rand(1..10)}.jpg") }
     email { Faker::Internet.email }
     password { Faker::Lorem.characters(number: 10) }
 

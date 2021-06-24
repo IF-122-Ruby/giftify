@@ -8,12 +8,9 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-white.shadow-sm.p-3.bg-white.rounded
         = link_to "Home page", root_url, class: "text-decoration-none text-dark text-bold"
       .d-flex.justify-content-center
         = form_tag account_search_path, method: :get
-          .input-group.my-1
-            = search_field_tag :search, params[:search], placeholder: "Пошук", class: "form-control bg-light"
+          .input-group.m-1
+            = search_field_tag :search, params[:search], placeholder: "Пошук", class: "bg-light py-0"
             = button_tag "search", class: 'btn btn-secondary'
-        button.btn.btn-secondary.m-1
-          = link_to account_notifications_path,class: "text-white" do
-            i.fas.fa-bell
         = link_to account_notifications_path, class: "btn btn-secondary m-1" do
           i.fas.fa-bell
         = link_to account_favorite_gifts_path, class: "btn btn-secondary m-1" do

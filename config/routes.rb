@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :invites, except: %i[edit update]
     resources :notifications, only: :index
     resources :reactions, only: [:create, :destroy]
+    resources :comments, only: [:create]
     resources :favorite_gifts, only: [:index, :create, :destroy]
     resources :my_gifts, only: [:index, :show] do
       member do

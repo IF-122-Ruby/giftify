@@ -33,8 +33,9 @@ RSpec.describe Account::InvitesController, type: :request do
 
   describe "DELETE #destroy" do
     it 'deletes invite' do
-      delete account_invite_path(invite)
-        expect(response).to redirect_to account_invites_path 
+      expect do
+        delete account_invite_path(invite)
+      end.to change(Invite, :count).by(-1)  
     end
   end
 end

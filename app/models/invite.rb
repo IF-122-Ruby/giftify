@@ -23,7 +23,7 @@ class Invite < ApplicationRecord
   validates :invite_token, uniqueness: true, presence: true
   validates :recipient_email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 
-  before_validation :generate_token
+  before_validation :generate_token, on: :create
   after_commit :send_invite_email, on: :create
 
   scope :by_created_at, -> { order(created_at: :desc)}

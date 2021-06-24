@@ -28,8 +28,7 @@ RSpec.describe 'Account::Profile', type: :request do
       patch account_profile_path, params: {
         user: {
           first_name: ''
-        }, 
-        id: user.id 
+        }
       }
       expect(user.first_name).not_to eq('')
       expect(response).to redirect_to(edit_account_profile_path)

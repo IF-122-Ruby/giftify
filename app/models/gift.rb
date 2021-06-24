@@ -35,4 +35,5 @@ class Gift < ApplicationRecord
 
   validates :name, :description, presence: true
   validates :gift_type, inclusion: { in: gift_types.values }
+  validates :amount, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
 end

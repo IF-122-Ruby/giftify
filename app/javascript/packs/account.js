@@ -5,6 +5,7 @@ import "@fortawesome/fontawesome-free/js/all";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "../stylesheets/account/admin";
 import "controllers";
+import toastr from './toastr_settings';
 
 window.bootstrap = require("bootstrap");
 

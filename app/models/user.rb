@@ -83,9 +83,9 @@ class User < ApplicationRecord
 
   def purchase_gift(gift)
     if (balance - gift.price).negative?
-      return "There are not enough points on your balance"
+      return :not_enough_points
     elsif gift.amount == 0
-      return "The gifts are over"
+      return :no_more_gifts
     elsif gift.amount.nil?
       Transaction.create(sender: self, receiver: gift, amount: gift.price)
     else
@@ -94,6 +94,6 @@ class User < ApplicationRecord
         gift.update!(amount: gift.amount - 1)
       end
     end
-    "Gift successfully added"
+    :success
   end
 end

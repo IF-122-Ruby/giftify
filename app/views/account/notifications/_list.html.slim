@@ -5,8 +5,7 @@
   - notifications.each do |notification|
     li.card.mb-1
       .card-body
-        .dropdown-item
-          span.d-inline-block.text-truncate.notification_span = notification.message
-          - unless notification.read?
-            span.d-inline-block.ms-1 x
-        small.mr-2.text-muted.d-inline-block.text-wrap = time_ago_in_words(notification.created_at) + " ago"
+        span.d-inline-block.text-truncate.notification_span = notification.message
+        - unless notification.read?
+          span.d-inline-block.ms-1 x
+      small.mr-2.text-muted.d-inline-block.text-wrap = time_ago_in_words(notification.created_at) + " ago"

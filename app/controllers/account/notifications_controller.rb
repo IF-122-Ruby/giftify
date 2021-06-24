@@ -3,6 +3,12 @@ class Account::NotificationsController < Account::AccountsController
     @notifications = collection
   end
 
+  def mark_all_as_read
+    collection.update!(read: true)
+
+    redirect_back fallback_location: root_path
+  end
+
   private
 
   def collection

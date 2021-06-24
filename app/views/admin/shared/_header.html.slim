@@ -13,10 +13,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-white.shadow-sm.p-3.bg-white.rounded
           ul.dropdown-menu.dropdown-menu-end.shadow-sm.p-3.mb-5.bg-white.rounded.custom__dropdown-menu.dropdown-menu-center aria-labelledby="notificationDropdown" 
             li.noti-title.border-bottom
               h5.m-0.font-size-16
-                span.float-right
-                  a.text-dark href=""
-                    small Clear All
-                | Notification
+                
             = render 'account/notifications/list', notifications: current_user.own_notifications.recent
         = link_to account_favorite_gifts_path, class: "btn btn-secondary m-1" do
           i.fas.fa-heart

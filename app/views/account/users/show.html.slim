@@ -1,3 +1,6 @@
+= link_to account_users_path
+  .fas.fa-long-arrow-alt-left.back-arrow
+
 .d-flex.align-content-center
   .col.offset-md-2.text-center
     .card.card-body.p-4.mb-2.gift-card.user-show
@@ -9,6 +12,16 @@
           = image_tag @user.avatar, class: 'img-fluid'
 
           p.card-text.mt-2
+            = l(@user.created_at, format: :short_date)
+
+          p.card-text.mt-2
+            p
+              strong Email:
+            = @user.email
+
+          p.card-text.mt-2
+            p
+              strong Birthday:
             = @user.birthday
           .card-body
           = link_to 'Edit', edit_account_user_path(@user), class: 'btn btn-primary gift-card__button'

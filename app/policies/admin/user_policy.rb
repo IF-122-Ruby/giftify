@@ -1,22 +1,22 @@
-class Admin::UserPolicy < Admin::BasePolicy
+class Admin::UserPolicy < ApplicationPolicy
   def index?
     true
   end
 
   def show?
-    require_superadmin?
+    user.superadmin?
   end
 
   def edit?
-    require_superadmin?
+    user.superadmin?
   end
 
   def update?
-    require_superadmin?
+    user.superadmin?
   end
 
   def destroy?
-    require_superadmin?
+    user.superadmin?
   end
 
 end

@@ -1,6 +1,6 @@
 class Account::UsersController < Account::AccountsController
   def index
-    @users = collection
+    @users = collection.paginate(page: params[:page], per_page: 10)
     authorize([:account, @users])
   end
 
@@ -59,6 +59,6 @@ class Account::UsersController < Account::AccountsController
                                   :birthday,
                                   :password,
                                   :password_confirmation,
-                                  role_attributes: %i[id role]) 
+                                  role_attributes: %i[id role])
   end
 end

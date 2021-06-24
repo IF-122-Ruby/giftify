@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::BaseController
   def index
-    @users = collection
+    @users = collection.paginate(page: params[:page], per_page: 10)
     authorize([:admin, @users])
   end
 

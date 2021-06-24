@@ -42,6 +42,7 @@ class User < ApplicationRecord
   has_many :microposts, class_name: "Micropost", foreign_key: "author_id"
   has_many :reactions, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :my_gifts, through: :sender_transactions, source: :receiver, source_type: 'Gift'
 
   delegate :superadmin?, :admin?, :manager?, :simple?, to: :role
 

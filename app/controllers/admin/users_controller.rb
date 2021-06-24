@@ -1,27 +1,27 @@
-class Account::UsersController < Account::AccountsController
+class Admin::UsersController < Admin::BaseController
   def index
     @users = collection.paginate(page: params[:page], per_page: 10)
-    authorize([:account, @users])
+    authorize([:admin, @users])
   end
 
   def show
     @user = resource
-    authorize([:account, @user])
+    authorize([:admin, @user])
   end
 
   def edit
     @user = resource
-    authorize([:account, @user])
+    authorize([:admin, @user])
   end
 
   def update
     @user = resource
-    authorize([:account, @user])
+    authorize([:admin, @user])
     @user.assign_attributes(user_update_params)
 
     respond_to do |format|
       if @user.save(context: user_role_context)
-        format.html { redirect_to account_user_path, notice: 'User was successfully updated.' }
+        format.html { redirect_to admin_user_path, notice: 'User was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -30,22 +30,22 @@ class Account::UsersController < Account::AccountsController
 
   def destroy
     @user = resource
-    authorize([:account, @user])
+    authorize([:admin, @user])
 
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to account_users_path, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to admin_users_path, notice: 'User was successfully destroyed.' }
     end
   end
 
   private
 
   def user_role_context
-    current_user.role.admin? ? :admin_context : :manager_context
+    current_user.role.superadmin?
   end
 
   def collection
-    current_organization.users
+    User.all
   end
 
   def resource

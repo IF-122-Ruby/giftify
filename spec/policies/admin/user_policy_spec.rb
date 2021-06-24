@@ -1,9 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Account::UserPolicy, type: :policy do
+RSpec.describe Admin::UserPolicy, type: :policy do
   let(:user) { create(:user, :simple) }
-  let(:admin) { create(:user, :admin) }
-  let(:manager) { create(:user, :manager) }
+  let(:superadmin) { create(:user, :superadmin) }
 
   subject { described_class }
 
@@ -14,12 +13,8 @@ RSpec.describe Account::UserPolicy, type: :policy do
   end
 
   permissions :show? do
-    it 'grant access for admin' do
-      expect(subject).to permit(admin)
-    end
-
-    it 'grant access for manager' do
-      expect(subject).to permit(manager)
+    it 'grant access for superadmin' do
+      expect(subject).to permit(superadmin)
     end
 
     it 'denied access' do

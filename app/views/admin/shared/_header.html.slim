@@ -10,8 +10,8 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-white.shadow-sm.p-3.bg-white.rounded
         .dropdown
           button#notificationDropdown.btn.btn-secondary.m-1 aria-expanded="false" data-bs-toggle="dropdown" type="button" 
             i.fas.fa-bell
-          ul.dropdown-menu.dropdown-menu-end.shadow-sm.p-3.mb-5.bg-white.rounded.custom__dropdown-menu.dropdown-menu-center aria-labelledby="notificationDropdown" 
-            li.noti-title.border-bottom
+          ul.dropdown-menu.dropdown-menu-end.custom__dropdown-menu aria-labelledby="notificationDropdown" 
+            li.dropdown-item.noti-title.border-bottom
               h5.m-0.font-size-16
                 
             = render 'account/notifications/list', notifications: current_user.own_notifications.recent

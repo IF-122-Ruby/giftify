@@ -1,0 +1,71 @@
+.notification-list {
+  margin-left: 0;
+
+  .noti-title {
+      background-color: transparent;
+      padding: 7px 20px 15px;
+  }
+
+  .noti-icon {
+      font-size: 21px;
+      vertical-align: middle;
+  }
+
+  .notify-item {
+      padding: 12px 20px;
+
+      .notify-details {
+          margin-bottom: 5px;
+          overflow: hidden;
+          margin-left: 45px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          color: #4b4b5a;
+          line-height: 1.5;
+          
+          b {
+              font-weight: 500;
+          }
+          small {
+              display: block;
+          }
+          span {
+              display: block;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              font-size: 13px;
+          }
+      }
+      
+      .user-msg {
+          margin-left: 45px;
+          white-space: normal;
+          line-height: 16px;
+      }
+  }
+  .profile-dropdown-items {
+      .notify-item {
+          padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+      }
+  }
+}
+
+.custom__dropdown-menu {
+  max-width: 300px;
+  max-height: 500px;
+  overflow-y: auto;
+  transform: translate(35%, 0);
+
+  .notification_span {
+    max-width: 200px;    
+  }
+
+  @media (max-width: 62em){
+    & {
+      right: auto;
+      left: 50%;
+      transform: translate(55%, 0);
+    }
+  }
+}

@@ -73,10 +73,8 @@ RSpec.describe Account::GiftsController, type: :request do
   describe "DELETE #destroy" do
     it "deletes gift" do
       expect do
-        delete :destroy, params: {
-          id: gift.id
-        }
-      end 
+        delete account_gift_path(gift)
+      end.to change(Gift, :count).by(-1) 
     end
   end
 end

@@ -4,11 +4,11 @@ RSpec.describe 'Account::MyGifts', type: :request do
   let!(:organization) { create(:organization) }
   let!(:user) { create(:user, organization: organization) }
   let!(:my_gift) { create(:gift, :with_image, organization: organization, name: 'Jones, Osinski and Murphy', price: 59) }
-  
+
   before do
     sign_in user
   end
- 
+
   describe 'GET /my_gifts' do
     it 'returns http success' do
       get account_my_gifts_path

@@ -3,8 +3,8 @@
     .d-flex.justify-content-center.mt-2
       h6.text-uppercase
         | found results
-    - @results.each do |search|
-      - if search.class.to_s == "User" 
-        = render partial: "account/search/search_users", locals: {user: search}
-      - else search.class.to_s == "Gift"
-        = render partial: "account/search/search_gifts", locals: {gift: search}
+    - @results.each do |results|
+      - if results.class.to_s == "User" 
+        = render partial: "account/search/search_users", locals: {user: results}
+      - else results.class.to_s == "Gift"
+        = render partial: "account/search/search_gifts", locals: {gift: results}

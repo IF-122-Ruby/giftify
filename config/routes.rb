@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
+  resources :accept_invites, only: %i[new create]
+
   namespace :account do
     resources :microposts, path: :feed, except: [:show, :edit]
     resources :gifts
@@ -27,6 +29,8 @@ Rails.application.routes.draw do
     resources :reactions, only: [:create, :destroy]
     resources :comments, only: [:create]
     resources :favorite_gifts, only: [:index, :create, :destroy]
+    resources :my_gifts, only: [:index, :show]
+
     resource :transaction, only: [:create, :new], controller: :transaction
   end
 
@@ -36,5 +40,6 @@ Rails.application.routes.draw do
     root to: 'admin#index'
     resources :organizations, only: [:index, :show]
     resources :feedbacks, only: [:index, :show]
+    resources :users
   end
 end

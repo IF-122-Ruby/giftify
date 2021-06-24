@@ -21,7 +21,7 @@ require 'elasticsearch/model'
 
 class Gift < ApplicationRecord
   include Elasticsearch::Model
-  
+
   mount_uploader :image, ImageUploader
 
   MERCH = 'merch'.freeze

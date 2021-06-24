@@ -49,8 +49,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :first_name, :last_name, presence: true
   validate :birthday_cannot_be_in_the_future
+  validates :first_name, :last_name, presence: true, length: { maximum: 40 }
 
   accepts_nested_attributes_for :owned_organization
   accepts_nested_attributes_for :role, reject_if: :all_blank

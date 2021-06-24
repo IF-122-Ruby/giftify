@@ -1,11 +1,8 @@
 .p-0
   h4.bold Comments
-.d-flex.flex-row.p-1.mb-3.comment-form
-  = image_tag  current_user.avatar, class: "rounded-circle", size: 50
-  = simple_form_for Comment.new, url: account_comments_path(micropost: commentable), remote: true do |f|     
-    = f.input :body, label: false, as: :text, input_html: { rows: 2, cols: 45, class: 'mx-2 form-group', placeholder: "Enter your comment..."}
-    .d-flex.flex-row-reverse.mt-2
-      = f.submit "Send", class: "btn btn-outline-info" 
+.comment-form 
+  .d-flex.flex-row.p-1.mb-3 id="form_for_#{commentable.id}"
+    = render 'account/comments/form', commentable: commentable, comment: Comment.new
 div.mt-0 id="comments_for_#{commentable.id}"
   - commentable.comments.each do |comment|
     = render 'account/comments/comment', comment: comment

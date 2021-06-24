@@ -1,5 +1,5 @@
 .d-flex.flex-row.p-1.mb-3
-  = image_tag  current_user.avatar.url, class: "rounded-circle", size: 50
+  = image_tag  current_user.avatar.thumb.url, class: "rounded-circle", size: 60
   = simple_form_for comment , url: account_comments_path(micropost: commentable), remote: true do |f|
     = f.input :body, label: false, required: false,  as: :text, input_html: { rows: 2, cols: 45, class: 'mx-2 form-group', placeholder: "Enter your comment..."}
     .d-flex.flex-row-reverse.mt-2

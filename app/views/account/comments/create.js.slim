@@ -1,7 +1,3 @@
 | comment = document.querySelector(`#comments_for_${ #{@micropost.id} }`);
 | comment.insertAdjacentHTML('afterbegin', "#{j render('account/comments/comment', comment: @comment)}", 'text/html');
-| comment_text = document.querySelector(`#form_for_${#{@micropost.id}}`).querySelector(`#comment_body`);
-|if (comment_text.classList.contains("is-invalid")) {
-|  comment_text.classList.remove("is-invalid");
-|  comment_text.value = "";
-|}
+| document.querySelector(`#form_for_${#{@micropost.id}}`).innerHTML = "#{j render('account/comments/form', commentable: @micropost, comment: Comment.new) }";

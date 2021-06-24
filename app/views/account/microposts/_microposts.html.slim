@@ -6,7 +6,7 @@
             .d-flex.justify-content-between.p-2.px-3
               .d-flex.flex-row.align-items-center
                 .d-flex.flex-column
-                  = image_tag  micropost.author.avatar.url, class: "rounded-circle", size: 60
+                  = image_tag  micropost.author.avatar.thumb.url, class: "rounded-circle img-fluid rouded", size: 50
                 .d-flex.flex-column.ml-2.p-2
                   strong.font-weight-bold = micropost.author.first_name
                   small.text-muted Administration

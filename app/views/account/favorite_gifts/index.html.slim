@@ -1,7 +1,6 @@
-.main.m-4
-  .container-fluid
-    h1.fw-bolder.mb-5.mt-5.text-center My favorites
-    - @favorites.each do |gift|
-      .col-lg-4.col-md-12.mb-4.text-center.btn
-        .card.shadow.p-3.mb-5.bg-white.border-0.gifts-card
-          = render partial: 'account/organization_gifts/gift', locals: { gift: gift }
+.container-fluid
+  h1.fw-bolder.mb-5.mt-5.text-center My favorites
+  - @favorites.each do |gift|
+    .col-lg-4.col-md-12.mb-4.text-center.btn
+      .card.shadow.p-3.mb-5.bg-white.border-0.gifts-card
+        = render partial: 'account/organization_gifts/gift', locals: { gift: gift }

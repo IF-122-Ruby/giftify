@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :accept_invites, only: %i[new create]
 
   namespace :account do
+    get '/search', to: 'search#search', as: 'search'
     resources :microposts, path: :feed, except: [:show, :edit]
     resources :gifts
     resources :users, except: [:create, :new]
@@ -26,9 +27,6 @@ Rails.application.routes.draw do
     resources :organization_gifts, path: :rewards, only: [:index, :show]
     resources :invites, except: %i[edit update]
     resources :notifications, only: :index
-    
-    get '/search', to: 'search#search', as: 'search'
-
     resources :reactions, only: [:create, :destroy]
     resources :favorite_gifts, only: [:index, :create, :destroy]
     resources :my_gifts, only: [:index, :show]

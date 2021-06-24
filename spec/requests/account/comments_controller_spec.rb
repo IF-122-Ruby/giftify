@@ -18,7 +18,7 @@ RSpec.describe "Account::Comments", type: :request do
     it 'invalid comment didn`t save' do
       expect(Comment.count).to eq(0)
       post account_comments_path(micropost: micropost), params: invalid_params, xhr: true
-      expect(Comment.count).to eq()
+      expect(Comment.count).to eq(0)
     end
 
     it 'valid comment save in db' do

@@ -28,7 +28,6 @@
 
         .col-8
           .col
-            = user.first_name
-            = user.last_name
+            = user.full_name
         .col-2
           = link_to "Show", account_user_path(id: user.id)

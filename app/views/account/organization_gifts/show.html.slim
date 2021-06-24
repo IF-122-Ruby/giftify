@@ -16,4 +16,4 @@
       p.fs-5.mb-4.lead.p-3
         = @gift.description
       .d-flex.flex-row.justify-content-center
-        = button_to 'Get', account_rewards_user_reward_path(gift: @gift), class:"button btn btn-outline-success nav-btn posts__card-button ms-1", remote: true
+        = button_to 'Get', receive_account_my_gift_path(id: @gift.id), class:"button btn btn-outline-success nav-btn posts__card-button ms-1", remote: true

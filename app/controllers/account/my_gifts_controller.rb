@@ -7,6 +7,18 @@ class Account::MyGiftsController < Account::AccountsController
     @my_gift = resource
   end
 
+  def receive
+    @gift = current_organization.gifts.find(params[:id])
+    respond_to do |format|
+      if @result = current_user.purchase_gift(@gift)
+        format.html { redirect_back fallback_location: root_path, flash: { notice: 'Gift successfully added' } }
+      else
+        format.html { redirect_back fallback_location: root_path, flash: { notice: 'There are not enough points on your balance' } }
+      end
+      format.js
+    end
+  end
+
   private
 
   def collection

@@ -49,6 +49,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validate :birthday_cannot_be_in_the_future
   validates :first_name, :last_name, presence: true, length: { maximum: 40 }
 
   accepts_nested_attributes_for :owned_organization
@@ -68,7 +69,13 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
-  
+
+  def birthday_cannot_be_in_the_future
+    if birthday.present? && birthday > Date.today
+      errors.add(:birthday, "can't be in the future")
+    end
+  end
+
   def balance
     receiver_transactions.sum(:amount) - sender_transactions.sum(:amount)
   end

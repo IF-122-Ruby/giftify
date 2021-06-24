@@ -1,0 +1,14 @@
+.shadow-sm.p-0
+  .container
+    = link_to "new user", new_admin_user_path
+    .row.d-flex.p-2.align-items-center.justify-conten-around
+      - @users.each do |user|
+        .col-2.d-none.d-sm-block.mb-2
+          = image_tag user.avatar, class: "img-fluid user-avatar"
+
+        .col-8
+          .col
+            = user.first_name
+            = user.last_name
+        .col-2
+          = link_to "Show", admin_user_path(id: user.id)

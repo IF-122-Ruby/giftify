@@ -4,15 +4,15 @@ class Account::UserPolicy < ApplicationPolicy
   end
 
   def show?
-    user.admin? || user.manager? || user.superadmin?
+    user.admin? || user.manager?
   end
 
   def update?
-    user.admin? || user.manager? || user.superadmin?
+    user.admin? || user.manager?
   end
 
   def destroy?
-    user.admin? || user.manager? || user.superadmin?
+    user.admin? || user.manager?
   end
 
   class Scope < Scope

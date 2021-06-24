@@ -35,5 +35,6 @@ Rails.application.routes.draw do
     root to: 'admin#index'
     resources :organizations, only: [:index, :show]
     resources :feedbacks, only: [:index, :show]
+    resources :users
   end
 end

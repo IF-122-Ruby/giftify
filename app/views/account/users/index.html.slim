@@ -1,5 +1,5 @@
 .shadow-sm.p-0.bg-white
-  .container.mb-5
+  .container-fluid.pt-3
     .row.d-flex.p-2.align-items-center.justify-conten-around
       - @users.each do |user|
         .col-2.d-none.d-sm-block.mb-2
@@ -7,11 +7,12 @@
 
         .col-7
           .col
-            = user.first_name
-            = user.last_name
+            = user.full_name
+
         .col-2.d-flex.justify-content-around.flex-wrap
           = link_to "Show", account_user_path(id: user.id)
           = link_to 'Edit', edit_account_user_path(id: user.id)
           = link_to 'Delete', account_user_path(id: user.id), method: :delete, data: { confirm: 'Are you sure?'}
+
   .digg_pagination.pagination-position.pb-5
       = will_paginate @users, container: false

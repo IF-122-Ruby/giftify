@@ -1,29 +1,30 @@
-.container
-  = link_to admin_users_path
-    .fas.fa-long-arrow-alt-left.back-arrow
-
-.d-flex.align-content-center
-  .col.offset-md-2.text-center
-    .card.card-body.p-4.mb-2.gift-card.user-show
+.d-flex.align-content-center.mt-5
+  .col.offset-md-2
+    .card.card-body.p-4.mb-2.gift-card.user-show.bg-white
       .d-flex.flex-direction-row
         .card-body.gift-card__description
-          h5.card-title
-            = @user.first_name
-            = @user.last_name
-          = image_tag @user.avatar, class: 'img-fluid'
+          h5.card-title.text-center
+            = @user.full_name
+          .row.mt-5.mb-3.text-center
+            .col-6
+              = image_tag @user.avatar, class: 'img-fluid'
 
-          p.card-text.mt-2
-            = l(@user.created_at, format: :short_date)
+            .col-6
 
-          p.card-text.mt-2
-            p
-              strong Email:
-            = @user.email
+              p.card-text.mt-2
+                = l(@user.created_at, format: :short_date)
 
-          p.card-text.mt-2
-            p
-              strong Birthday:
-            = @user.birthday
-          .card-body
-          = link_to 'Edit', edit_account_user_path(@user), class: 'btn btn-primary gift-card__button'
-          = link_to 'Delete', [:account, @user], class: 'btn btn-light gift-card__button', method: :delete, data: { confirm: 'Are you sure?'}
+              p.card-text.mt-2
+                p
+                  strong Email:
+                = @user.email
+
+              p.card-text.mt-2
+                p
+                  strong Birthday:
+                = @user.birthday
+          .card-body.text-center
+            = link_to 'Edit', edit_account_user_path(@user), class: 'btn btn-primary gift-card__button'
+            = link_to 'Delete', [:account, @user], class: 'btn btn-light gift-card__button', method: :delete, data: { confirm: 'Are you sure?'}
+          .card-body.text-end
+            = link_to 'Back', admin_users_path, class: 'btn btn-primary gift-card__button'

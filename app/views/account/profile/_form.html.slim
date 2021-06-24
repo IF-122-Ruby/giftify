@@ -1,7 +1,9 @@
+| Current user avatar: 
+= current_user.avatar
+
 .user_profile_avatar.text-center.my-3
   = image_tag "#{current_user.avatar}", class: "rounded-circle shadow", style: "width: 200px;"
   .btn_upload
-    |crp
 
 .col-md-8.offset-md-4
   = simple_form_for user, url: account_profile_path(user) do |f|
@@ -14,12 +16,7 @@
           = f.input :last_name, label: "Last name:", input_html: { class: 'form__input' }
         .mb-3.col-sm-5
           = f.input :email, label: "Email:", input_html: { class: 'form__input' }
-<<<<<<< HEAD
-        .action
-          = f.submit "Send"
-=======
         .mb-3.col-sm-5
           = f.input :birthday, label: "Birthday:", input_html: { class: 'form__input' }
         .action.mb-5
           = f.submit "Save profile"
->>>>>>> main

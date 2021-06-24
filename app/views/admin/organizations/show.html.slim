@@ -3,19 +3,30 @@
     .row.d-flex.p-2.align-items-center.justify-conten-around
       .col-2.d-none.d-sm-block
         = image_tag @organization.logo, class: "img-fluid"
+
       .col-5
-        .col
-          span Organization name: 
-          = @organization.name
+        span Organization name:
+        = @organization.name
         .col.d-none.d-sm-block
-          span Users count: 
+          span Users count:
           = @organization.users.count
         .col.d-none.d-sm-block
-          span Created: 
+          span Created:
           = l(@organization.created_at, format: :short_date)
       .col-4
         span Administrators:
         - @organization.users.where(roles: {role: :admin}).each do |u|
-          p.m-0 = u.full_name 
+          p.m-0 = u.full_name
       .col-1
         = link_to "Back", admin_organizations_url, class: "btn btn-secondary"
+
+    .row.d-flex.p-2.align-items-center.justify-conten-around
+      - current_organization.users.each do |user|
+        .col-2.d-none.d-sm-block.mb-2
+          = image_tag user.avatar, class: "img-fluid user-avatar"
+
+        .col-8
+          .col
+            = user.full_name
+        .col-2
+          = link_to "Show", account_user_path(id: user.id)

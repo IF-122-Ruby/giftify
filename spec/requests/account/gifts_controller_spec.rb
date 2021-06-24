@@ -69,4 +69,14 @@ RSpec.describe Account::GiftsController, type: :request do
       expect(response).to have_http_status(:redirect)
     end
   end
+
+  describe "DELETE #destroy" do
+    it "deletes gift" do
+      expect do
+        delete :destroy, params: {
+          id: gift.id
+        }
+      end 
+    end
+  end
 end

@@ -1,4 +1,1 @@
-- if @result 
-  | toastr['success']("Gift successfully added"); 
-- else 
-  | toastr['error']("There are not enough points on your balance");
+| toastr['#{@status}']('#{@result}');  

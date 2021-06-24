@@ -82,8 +82,18 @@ class User < ApplicationRecord
   end
 
   def purchase_gift(gift)
-    return false if (balance - gift.price).negative?
-
-    Transaction.create(sender: self, receiver: gift, amount: gift.price)
+    if (balance - gift.price).negative?
+      return "There are not enough points on your balance"
+    elsif gift.amount == 0
+      return "The gifts are over"
+    elsif gift.amount.nil?
+      Transaction.create(sender: self, receiver: gift, amount: gift.price)
+    else
+      ActiveRecord::Base.transaction do
+        Transaction.create(sender: self, receiver: gift, amount: gift.price)
+        gift.update!(amount: gift.amount - 1)
+      end
+    end
+    "Gift successfully added"
   end
 end

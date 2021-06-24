@@ -38,7 +38,7 @@ RSpec.describe 'Account::MyGifts', type: :request do
       expect(response.body).to include gift.name
     end
 
-    it 'failed to add gift' do
+    it 'failed to add gift if balance is zero' do
       allow(user).to receive(:balance).and_return(0)
       post receive_account_my_gift_path(id: gift.id), xhr: true
 
@@ -46,6 +46,15 @@ RSpec.describe 'Account::MyGifts', type: :request do
 
       get account_my_gifts_path
       expect(response.body).not_to include gift.name
+    end
+
+    it 'failed to add gift if gift`s amount is equal zero' do
+      allow(user).to receive(:balance).and_return(100)
+      gift.update!(amount: 0)
+
+      post receive_account_my_gift_path(id: gift.id), xhr: true
+
+      expect(response.body).to include "The gifts are over"
     end
   end
 end

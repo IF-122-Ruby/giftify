@@ -8,13 +8,12 @@
               = image_tag user.avatar, class: "img-fluid user-avatar"
 
             .col-6
-              .col
-                = user.full_name
+              = user.full_name
 
             .col-3.d-flex.justify-content-around.flex-wrap
-              = link_to "Show", account_user_path(id: user.id)
-              = link_to 'Edit', edit_account_user_path(id: user.id)
-              = link_to 'Delete', account_user_path(id: user.id), method: :delete, data: { confirm: 'Are you sure?'}
+              = link_to "Show", account_user_path(user)
+              = link_to 'Edit', edit_account_user_path(user)
+              = link_to 'Delete', account_user_path(user), method: :delete, data: { confirm: 'Are you sure?'}
 
         .digg_pagination.pagination-position.p-3
             = will_paginate @users, container: false

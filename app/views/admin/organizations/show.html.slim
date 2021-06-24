@@ -5,9 +5,8 @@
         = image_tag @organization.logo, class: "img-fluid"
 
       .col-5
-        .col
-          span Organization name:
-          = @organization.name
+        span Organization name:
+        = @organization.name
         .col.d-none.d-sm-block
           span Users count:
           = @organization.users.count

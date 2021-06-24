@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Account::Notifications", type: :request do
-  let!(:user) { create(:user) }
+  let!(:organization) { create(:organization) }
+  let!(:user) { create(:user, organization: organization) }
   let!(:notification) { create(:notification, user: user)}
 
   before { sign_in user }

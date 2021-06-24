@@ -30,7 +30,11 @@ Rails.application.routes.draw do
     end
     resources :reactions, only: [:create, :destroy]
     resources :favorite_gifts, only: [:index, :create, :destroy]
-    resources :my_gifts, only: [:index, :show]
+    resources :my_gifts, only: [:index, :show] do
+      member do
+        post 'receive'
+      end
+    end
 
     resource :transaction, only: [:create, :new], controller: :transaction
   end

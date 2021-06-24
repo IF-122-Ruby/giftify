@@ -6,4 +6,14 @@ module GiftsHelper
       link_to raw("<i class='far fa-heart like'></i>"), account_favorite_gifts_path(id: gift.id), remote: true, method: :post
     end
   end
+  
+  def rewards_amount(gift)
+    if gift.amount.nil?
+      "Unlimited reward amount"
+    elsif gift.amount.positive?
+      "Reward amount - #{gift.amount}"
+    else
+      "The gifts are over"
+    end
+  end
 end

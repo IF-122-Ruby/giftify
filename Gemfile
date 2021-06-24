@@ -23,9 +23,13 @@ gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
 gem 'will_paginate'
+gem 'sentry-ruby'
+gem 'sentry-rails'
+gem 'sentry-sidekiq'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
 gem 'activerecord-import'
+gem 'ransack'
 
 group :development, :test do
   gem 'annotate'
@@ -39,6 +43,7 @@ group :test do
   gem 'capybara'
   gem 'shoulda-matchers', '~> 4.0'
   gem 'simplecov', require: false
+  gem 'rails-controller-testing'
 end
 
 group :development do

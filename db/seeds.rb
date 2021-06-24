@@ -1,8 +1,7 @@
 FactoryBot.create_list(:user, 2, :with_organization)
 
 User.all.each do |user|
-  FactoryBot.create(:organization, user: user)
-  FactoryBot.create_list(:micropost, 10, author: user)
+  FactoryBot.create_list(:micropost, 10, :with_image, author: user)
 end
 
 Organization.all.each do |organization|

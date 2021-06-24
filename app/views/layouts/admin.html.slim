@@ -1,6 +1,7 @@
 doctype html
 html
   head
+    = display_meta_tags site: 'Giftify'
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
     title Giftify
     meta content="width=device-width,initial-scale=1" name="viewport" /
@@ -17,5 +18,5 @@ html
         = render partial: 'admin/shared/sidebar'
       .col.p-0.m-0
         = yield
-    = render partial: 'shared/footer'
+    #modal
     = any_login_here if defined?(AnyLogin)

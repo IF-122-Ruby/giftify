@@ -29,6 +29,11 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of :last_name }
   end
 
+  describe 'Birth date validations' do
+    it { should allow_value(100.years.ago).for(:birthday) }
+    it { should_not allow_value(100.days.from_now).for(:birthday) }
+  end
+
   describe "notification" do
     let(:user) { create(:user, :with_organization) }
 

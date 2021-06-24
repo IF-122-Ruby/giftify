@@ -14,13 +14,20 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-white.shadow-sm.p-3.bg-white.rounded
         button.btn.btn-secondary.m-1
           = link_to account_notifications_path,class: "text-white" do
             i.fas.fa-bell
+        = link_to account_notifications_path, class: "btn btn-secondary m-1" do
+          i.fas.fa-bell
+        = link_to account_favorite_gifts_path, class: "btn btn-secondary m-1" do
+          i.fas.fa-heart
+        = link_to account_my_gifts_path, class: "btn btn-secondary m-1" do
+          i.fas.fa-gift
+
         .btn-group
           button.btn.btn-secondary.dropdown-toggle.m-1 aria-expanded="false" data-bs-toggle="dropdown" type="button"
             i.fas.fa-cog
           ul.dropdown-menu.dropdown-menu-end.shadow-sm.p-3.mb-5.bg-white.rounded
             .d-flex.align-items-center.change-color
               i.fas.fa-user-circle.m-1
-              = link_to "My account", root_url, class: "text-decoration-none text-reset"
+              = link_to "My account", edit_account_profile_path, class: "text-decoration-none text-reset"
             hr/
             .d-flex.align-items-center.change-color
               i.fas.fa-cog.m-1

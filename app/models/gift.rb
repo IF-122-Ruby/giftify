@@ -31,7 +31,11 @@ class Gift < ApplicationRecord
   enum gift_type: { merch: MERCH, coupon: COUPON }
 
   belongs_to :organization
+
   has_many   :transactions, as: :receiver
+  has_many   :favorites, dependent: :destroy
+
+  scope :ordered, -> { includes(:transactions).order('created_at desc') }
 
   validates :name, :description, presence: true
   validates :gift_type, inclusion: { in: gift_types.values }

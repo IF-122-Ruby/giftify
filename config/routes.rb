@@ -11,11 +11,13 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
+  resources :accept_invites, only: %i[new create]
+
   namespace :account do
     resources :microposts, path: :feed, except: [:show, :edit]
     resources :gifts
     resources :users, except: [:create, :new]
-    resource :organization,
+    resource  :organization,
               only: [:edit, :update],
               controller: :organization
     resource  :profile,
@@ -26,14 +28,21 @@ Rails.application.routes.draw do
     resources :notifications, only: :index
     
     get '/search', to: 'search#search', as: 'search'
+
+    resources :reactions, only: [:create, :destroy]
+    resources :favorite_gifts, only: [:index, :create, :destroy]
+    resources :my_gifts, only: [:index, :show]
+
+    resource :transaction, only: [:create, :new], controller: :transaction
+
   end
 
   resources :posts
 
   namespace :admin do
-    resources :organizations, only: [:index, :show]
     root to: 'admin#index'
-
+    resources :organizations, only: [:index, :show]
     resources :feedbacks, only: [:index, :show]
+    resources :users
   end
 end

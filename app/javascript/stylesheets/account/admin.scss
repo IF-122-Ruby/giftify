@@ -47,17 +47,19 @@ body {
 }
 
 .notification-menu {
-  max-width: 320px;
+  max-width: 400px;
   max-height: 500px;
   overflow-y: auto;
   transform: translate(35%, 0);
 
   &__span {
-    max-width: 200px;    
+    max-width: 300px;    
   }
 
   @media (max-width: 62em){
     & {
+      max-width: 300px;
+      max-height: 270px;
       right: auto;
       left: 50%;
       transform: translate(55%, 0);

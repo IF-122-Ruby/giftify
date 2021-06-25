@@ -12,12 +12,11 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-white.shadow-sm.p-3.bg-white.rounded
             i.fas.fa-bell
           ul.dropdown-menu.dropdown-menu-end.notification-menu aria-labelledby="notificationDropdown" 
             li.dropdown-item.border-bottom
-              h5.m-0
-                span.float-left Notification
-                small = link_to 'Mark all as read', mark_all_as_read_account_notification_path(current_user), method: :post
-            .slimscroll.noti-scroll
+              .d-flex.justify-content-between.flex-nowrap
+                h5.mt-2.float-left Notification
+                .btn.btn-primary = link_to 'Mark all as read', mark_all_as_read_account_notification_path(current_user), method: :post, class: 'text-decoration-none link-light'
             = render 'account/notifications/list', notifications: current_user.own_notifications.recent
-            = link_to 'Views all', account_notifications_path, class: 'dropdown-item text-center text-primary notify-item notify-all border-top'
+            = link_to 'View all', account_notifications_path, class: 'dropdown-item text-center text-primary border-top position-fixed'
         = link_to account_favorite_gifts_path, class: "btn btn-secondary m-1" do
           i.fas.fa-heart
         = link_to account_my_gifts_path, class: "btn btn-secondary m-1" do

@@ -4,7 +4,7 @@ class Account::NotificationsController < Account::AccountsController
   end
 
   def mark_all_as_read
-    collection.update!(read: true)
+    collection.update_all(read: true)
 
     redirect_back fallback_location: root_path
   end

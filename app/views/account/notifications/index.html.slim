@@ -1,7 +1,7 @@
-.mx-auto
-  h3.d-inline-block.text-dark.align-middle.mt-3.ms-3 Notifications
-.col
-  .col-8.offset-md-2
+.container
+  .mx-auto
+    h3.d-inline-block.text-dark.align-middle.mt-3.ms-3 Notifications
+  .col-10.offset-md-1
     .d-flex.justify-content-center.flex-column
       - unless @notifications.any?
         h3 There are no notifications
@@ -10,6 +10,6 @@
             .card
               .card-body
                 small = notification.message
-              small = time_ago_in_words(notification.created_at) + " ago"
-      .digg_pagination.pagination-position
-          = will_paginate @notification, container: false
+              small.px-3.pb-2 = time_ago_in_words(notification.created_at) + " ago"
+    .digg_pagination.pagination-position.m-2
+        = will_paginate @notification, container: false

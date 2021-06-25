@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       post 'mark_all_as_read', on: :member
     end
     resources :reactions, only: [:create, :destroy]
+    resources :comments, only: [:create]
     resources :favorite_gifts, only: [:index, :create, :destroy]
     resources :my_gifts, only: [:index, :show] do
       member do

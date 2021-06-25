@@ -1,0 +1,8 @@
+.p-0
+  h4.bold Comments
+.comment-form 
+  .d-flex.flex-row.p-1.mb-3 id="form_for_#{commentable.id}"
+    = render 'account/comments/form', commentable: commentable, comment: Comment.new
+div.mt-0 id="comments_for_#{commentable.id}"
+  - commentable.comments.each do |comment|
+    = render 'account/comments/comment', comment: comment

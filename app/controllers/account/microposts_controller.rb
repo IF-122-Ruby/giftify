@@ -1,6 +1,6 @@
 class Account::MicropostsController < Account::AccountsController
   def index
-    @microposts = collection.includes(:author).order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+    @microposts = collection.includes(:author, :comments).order(created_at: :desc).paginate(page: params[:page], per_page: 5)
     authorize([:account, @microposts])
     respond_to do |format|
       format.html

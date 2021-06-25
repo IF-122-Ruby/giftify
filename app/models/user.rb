@@ -22,6 +22,8 @@
 #
 
 class User < ApplicationRecord
+  mount_uploader :avatar, AvatarUploader
+  
   scope :admins, -> { joins(:role).where(roles: { role: Role::ADMIN }) }
   scope :managers, -> { joins(:role).where(roles: { role: Role::MANAGER }) }
   scope :users, -> { joins(:role).where(roles: { role: Role::USER }) }
@@ -86,5 +88,21 @@ class User < ApplicationRecord
     own_notifications.create(message: "Welcome to organization #{organization.name}",
                              notificationable: organization,
                              notification_type: Notification::USER_NEW)
+  end
+
+  def purchase_gift(gift)
+    if (balance - gift.price).negative?
+      return :not_enough_points
+    elsif gift.amount == 0
+      return :no_more_gifts
+    elsif gift.amount.nil?
+      Transaction.create(sender: self, receiver: gift, amount: gift.price)
+    else
+      ActiveRecord::Base.transaction do
+        Transaction.create(sender: self, receiver: gift, amount: gift.price)
+        gift.update!(amount: gift.amount - 1)
+      end
+    end
+    :success
   end
 end

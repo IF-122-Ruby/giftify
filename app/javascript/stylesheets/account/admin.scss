@@ -1,6 +1,7 @@
 @import "bootstrap";
 @import "users";
 @import "stylesheets/pagination";
+@import "toastr/toastr";
 @import "stylesheets/colors";
 @import "stylesheets/search";
 @import "stylesheets/fonts";
@@ -15,6 +16,7 @@
 @import "stylesheets/sidebar";
 @import "stylesheets/header";
 @import "stylesheets/organization_gifts";
+@import "stylesheets/comments";
 
 body {
   background-color: $background-color;

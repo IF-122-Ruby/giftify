@@ -4,3 +4,4 @@
     .col-lg-4.col-md-12.mb-4.text-center.btn
       .card.shadow.p-3.mb-5.bg-white.border-0
         = render partial: 'account/organization_gifts/gift', locals: { gift: gift }
+        = button_to 'Get', receive_account_my_gift_path(id: gift.id), class:"button btn btn-outline-success nav-btn posts__card-button me-1 w-100", remote: true

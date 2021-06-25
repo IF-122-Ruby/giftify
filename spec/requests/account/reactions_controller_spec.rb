@@ -16,8 +16,7 @@ RSpec.describe "Account::Reactions", type: :request do
 
       delete account_reaction_path(reaction_attribute), xhr: true
       get account_microposts_path
-
-      expect(response.body).to include("#{Reaction::LAUGH} 0")
+      expect(response.body).to include(Reaction::LAUGH)
     end
   end
 end

@@ -1,6 +1,6 @@
 class Account::NotificationsController < Account::AccountsController
   def index
-    @notifications = collection
+    @notifications = collection.paginate(page: params[:page], per_page: 10)
   end
 
   def mark_all_as_read
@@ -12,6 +12,6 @@ class Account::NotificationsController < Account::AccountsController
   private
 
   def collection
-    current_user.own_notifications
+    current_user.own_notifications.order(created_at: :desc)
   end
 end

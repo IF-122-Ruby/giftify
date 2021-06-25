@@ -10,11 +10,14 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-white.shadow-sm.p-3.bg-white.rounded
         .dropdown
           button#notificationDropdown.btn.btn-secondary.m-1 aria-expanded="false" data-bs-toggle="dropdown" type="button" 
             i.fas.fa-bell
-          ul.dropdown-menu.dropdown-menu-end.custom__dropdown-menu aria-labelledby="notificationDropdown" 
-            li.dropdown-item.noti-title.border-bottom
-              h5.m-0.font-size-16
-                
+          ul.dropdown-menu.dropdown-menu-end.notification-menu aria-labelledby="notificationDropdown" 
+            li.dropdown-item.border-bottom
+              h5.m-0
+                span.float-left Notification
+                small = link_to 'Mark all as read', mark_all_as_read_account_notification_path(current_user), method: :post
+            .slimscroll.noti-scroll
             = render 'account/notifications/list', notifications: current_user.own_notifications.recent
+            = link_to 'Views all', account_notifications_path, class: 'dropdown-item text-center text-primary notify-item notify-all border-top'
         = link_to account_favorite_gifts_path, class: "btn btn-secondary m-1" do
           i.fas.fa-heart
         = link_to account_my_gifts_path, class: "btn btn-secondary m-1" do

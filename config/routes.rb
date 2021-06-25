@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     resources :organization_gifts, path: :rewards, only: [:index, :show]
     resources :invites, except: %i[edit update]
     resources :notifications, only: :index do
-      post '/mark_all_as_read', on: :member
+      post 'mark_all_as_read', on: :member
     end
     resources :reactions, only: [:create, :destroy]
     resources :favorite_gifts, only: [:index, :create, :destroy]

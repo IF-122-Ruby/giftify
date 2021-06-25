@@ -9,7 +9,10 @@
           - @notifications.each do |notification|
             .card
               .card-body
-                small = notification.message
+                .d-flex.justify-content-between
+                  small = notification.message
+                  - unless notification.read?
+                    i.fas.fa-circle
               small.px-3.pb-2 = time_ago_in_words(notification.created_at) + " ago"
     .digg_pagination.pagination-position.m-2
         = will_paginate @notification, container: false

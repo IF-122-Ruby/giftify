@@ -1,5 +1,5 @@
 .d-flex.align-content-center.mt-5
-  .col.offset-md-2
+  .col.offset-md-1
     .card.card-body.p-4.mb-2.gift-card.user-show.bg-white
       .d-flex.flex-direction-row
         .card-body.gift-card__description
@@ -27,4 +27,4 @@
             = link_to 'Edit', edit_account_user_path(@user), class: 'btn btn-primary gift-card__button'
             = link_to 'Delete', [:account, @user], class: 'btn btn-light gift-card__button', method: :delete, data: { confirm: 'Are you sure?'}
           .card-body.text-end
-            = link_to 'Back', admin_users_path, class: 'btn btn-primary gift-card__button'
+            = link_to 'Back', account_users_path, class: 'btn btn-primary gift-card__button'

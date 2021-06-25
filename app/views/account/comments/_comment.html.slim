@@ -1,6 +1,6 @@
 .d-flex.flex-row.p-1
   .d-flex
-    = image_tag  comment.user.avatar.thumb.url, class: "rounded-circle", size: 50
+    = image_tag  comment.user.avatar.thumb.url, class: "rounded-circle", size: 50 if comment.user.avatar?
   .w-100.mx-2.alert.alert-secondary
     .d-flex.justify-content-between.align-items-center
       .d-flex.flex-row.align-items-center

@@ -5,7 +5,7 @@
         .row.d-flex.p-2.align-items-center.justify-conten-around
           - @users.each do |user|
             .col-3.d-none.d-sm-block.mb-2
-              = image_tag user.avatar.small.url, class: "img-fluid user-avatar"
+              = image_tag user.avatar.small.url, class: "img-fluid user-avatar" if user.avatar?
 
             .col-6
               = user.full_name

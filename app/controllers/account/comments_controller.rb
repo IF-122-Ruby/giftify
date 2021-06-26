@@ -1,7 +1,7 @@
 class Account::CommentsController < Account::AccountsController
   def create
     @micropost = resource
-    @comment = @micropost.comments.build(comment_params.merge!(user: current_user))
+    @comment = @micropost.comments.build(comment_params.merge(user: current_user))
     respond_to do |format|
       if @comment.save
         format.js

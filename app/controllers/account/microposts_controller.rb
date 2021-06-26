@@ -21,7 +21,7 @@ class Account::MicropostsController < Account::AccountsController
   end
 
   def create
-    @micropost = collection.new(micropost_params.merge!(author: current_user))
+    @micropost = collection.new(micropost_params.merge(author: current_user))
     authorize([:account, @micropost])
     if @micropost.save
       flash[:notice] = 'Micropost create succesfully!'

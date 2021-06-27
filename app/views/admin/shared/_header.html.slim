@@ -7,15 +7,18 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-white.shadow-sm.p-3.bg-white.rounded
       .navbar-nav.me-auto.mb-2.mb-lg-0
         = link_to "Home page", root_url, class: "text-decoration-none text-dark text-bold"
       .d-flex.justify-content-center
-        .dropdown
-          button#notificationDropdown.btn.btn-secondary.m-1 aria-expanded="false" data-bs-toggle="dropdown" type="button" 
+        .nav-item.dropdown.dropdown-large
+          button.btn.btn-secondary.m-1 aria-expanded="false" data-bs-toggle="dropdown" href="#" role="button" 
             i.fas.fa-bell
-          ul.dropdown-menu.dropdown-menu-end.notification-menu aria-labelledby="notificationDropdown" 
-            .d-flex.justify-content-between.border-bottom
-              h5.ms-2.mt-2 Notification 
-              .btn.btn-primary = link_to 'Mark all as read', mark_all_as_read_account_notification_path(current_user), method: :post, class: 'text-decoration-none link-light'
-            = render 'account/notifications/list', notifications: current_user.own_notifications.recent
-            = link_to 'View all', account_notifications_path, class: 'dropdown-item text-center text-primary border-top position-fixed'
+          .dropdown-menu.dropdown-menu-end.rounded
+            .dropdown-header
+              .d-flex.flex-row.justify-content-between
+                p.text-light Notifications
+                = link_to "Marks all as read", mark_all_as_read_account_notification_path(current_user), class: "ms-auto text-secondary text-light"
+            .header-notifications-list.ps.notifications__scroll.scrollbar-primary
+              = render 'account/notifications/list', notifications: current_user.own_notifications.recent
+            = link_to account_notifications_path
+              .text-center.msg-footer.py-2 View All Notifications
         = link_to account_favorite_gifts_path, class: "btn btn-secondary m-1" do
           i.fas.fa-heart
         = link_to account_my_gifts_path, class: "btn btn-secondary m-1" do

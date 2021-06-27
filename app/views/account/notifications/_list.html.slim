@@ -1,12 +1,12 @@
 - unless notifications.any?
-  li
+  li.dropdown-item
     h3 There are no notifications here
 - else
   - notifications.each do |notification|
-    li.border-bottom.mb-1
-      - if notification.read?
-        .bg-info
-          i.fas.fa-circle
-      .card-body
-        span.d-inline-block.text-truncate.notification-menu__span = notification.message
-      small.ms-2.mb-2.text-muted.d-inline-block.text-wrap = time_ago_in_words(notification.created_at) + " ago"
+    .dropdown-item
+      .d-flex.align-items-center
+        .flex-grow-1
+          h6.msg-name.text-truncate.col-sm-4.[class="#{notification.read ? '' : 'bg-primary'}"]
+            = notification.message
+          small.text-muted
+            = time_ago_in_words(notification.created_at) + " ago"

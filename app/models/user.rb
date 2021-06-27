@@ -20,6 +20,7 @@
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
+require 'csv'
 
 class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
@@ -104,5 +105,17 @@ class User < ApplicationRecord
       end
     end
     :success
+  end
+
+  def self.organization_statistic_csv
+    attributes = ['id', 'full_name', 'balance']
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |user|
+        csv << attributes.map { |attr| user.send(attr) }
+      end
+    end
   end
 end

@@ -27,4 +27,9 @@ class Admin::UserPolicy < ApplicationPolicy
     user.superadmin?
   end
 
+  class Scope < Scope
+    def resolve
+      scope.all
+    end
+  end
 end

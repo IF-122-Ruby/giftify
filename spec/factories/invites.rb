@@ -20,6 +20,7 @@
 FactoryBot.define do
   factory :invite, class: Invite do
     recipient_email { Faker::Internet.email }
+    recipient_role { :role }
     organization
     association :sender, factory: :user
   end

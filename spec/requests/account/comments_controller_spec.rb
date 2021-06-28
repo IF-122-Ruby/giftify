@@ -12,7 +12,7 @@ RSpec.describe "Account::Comments", type: :request do
     it 'add comment to micropost' do
       post account_comments_path(micropost: micropost), params: comment_params, xhr: true
       get account_microposts_path
-      expect(response.body).to include('Hello')
+      expect(response.body).to match /<p class=\"text-right comment-text mb-0\">Hello/
     end
 
     it 'invalid comment didn`t save' do
@@ -31,11 +31,13 @@ RSpec.describe "Account::Comments", type: :request do
     it 'remove comment from micropost' do
       post account_comments_path(micropost: micropost), params: comment_params, xhr: true
       get account_microposts_path
-      expect(response.body).to include('Hello')
+      expect(response.body).to match /<p class=\"text-right comment-text mb-0\">Hello/
 
       delete account_comment_path(micropost.comments.first), xhr: true
+      expect(response.body).to include("Comment successfully deleted")
+
       get account_microposts_path
-      expect(response.body).not_to include('Hello')
+      expect(response.body).not_to match /<p class=\"text-right comment-text mb-0\">Hello/
     end
   end
 end

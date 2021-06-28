@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   namespace :account do
     resources :microposts, path: :feed, except: [:show, :edit]
     resources :gifts
-    resources :users, except: [:create, :new]
+    resources :users, except: [:create, :new] do
+      get 'export', on: :collection, defaults: { format: 'csv' }
+    end
     resource  :organization,
               only: [:edit, :update],
               controller: :organization

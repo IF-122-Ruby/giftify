@@ -38,6 +38,14 @@ class Account::UsersController < Account::AccountsController
     end
   end
 
+  def export
+    @users = collection
+    authorize [:account, @users]
+    respond_to do |format|
+      format.csv { send_data @users.organization_statistic_csv, filename: "users-#{Date.today}.csv" }
+    end
+  end
+
   private
 
   def user_role_context

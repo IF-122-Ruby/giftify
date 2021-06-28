@@ -15,6 +15,10 @@ class Account::UserPolicy < ApplicationPolicy
     user.admin? || user.manager?
   end
 
+  def export?
+    user.admin?
+  end
+
   class Scope < Scope
     def resolve
       scope.all

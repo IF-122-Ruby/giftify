@@ -8,5 +8,8 @@
         .modal-body
           = f.input :receiver_id, collection: user_collection_of_current_organization, prompt: 'Select User', required: true
           = f.input :amount, as: :integer, required: true, include_hidden: false
+          small.text-right.mt-1
+            | Your balance:
+            = current_user.balance
         .modal-footer
           = f.submit 'Send points', class: "btn btn-primary", data: { disable_with: "Sending points" }

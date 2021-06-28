@@ -5,6 +5,7 @@
 #  id              :bigint           not null, primary key
 #  invite_token    :string
 #  recipient_email :string
+#  recipient_role  :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  organization_id :bigint
@@ -22,6 +23,7 @@ class Invite < ApplicationRecord
 
   validates :invite_token, uniqueness: true, presence: true
   validates :recipient_email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validate :recipient_role
 
   before_validation :generate_token, on: :create
   after_commit :send_invite_email, on: :create

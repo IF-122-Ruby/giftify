@@ -1,4 +1,4 @@
-= simple_form_for :user do |f|
+= simple_form_for [:admin, @user] do |f|
   = f.fields_for :role do |role|
     = role.input :role, collection: Role::roles.except(:superadmin), include_blank: false
   = f.fields_for :organizations do |organization|

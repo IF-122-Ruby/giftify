@@ -5,6 +5,7 @@
 #  id              :bigint           not null, primary key
 #  invite_token    :string
 #  recipient_email :string
+#  recipient_role  :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  organization_id :bigint

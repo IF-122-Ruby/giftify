@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :accept_invites, only: %i[new create]
 
   namespace :account do
-    resources :microposts, path: :feed, except: [:show, :edit]
+    resources :microposts, path: :feed, except: [:show]
     resources :gifts
     resources :users, except: [:create, :new]
     resource  :organization,

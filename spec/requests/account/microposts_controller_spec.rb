@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Account::MicropostsController, type: :request do
-  let!(:micropost) { create(:micropost) }
+  let(:micropost) { create(:micropost) }
   before do
     sign_in micropost.author
   end
@@ -15,34 +15,39 @@ RSpec.describe Account::MicropostsController, type: :request do
 
   describe "GET #new" do
     it "returns http success if signed in as admin" do
-      get new_account_micropost_path
-      expect(response).to have_http_status(:success)
+      get new_account_micropost_path, xhr: true
+
+      expect(response).to be_successful
     end
   end
 
   describe "POST #create" do
-    let(:micropost_params) { attributes_for(:micropost) }
-
+    let!(:micropost_params) { attributes_for(:micropost) }
     it 'creates micropost with valid params' do
-      post account_microposts_path, params: { micropost: micropost_params }
-
-      expect(response).to redirect_to(account_microposts_path)
+      expect(Micropost.count).to eq(1)     
+      expect do        
+        post account_microposts_path, params: { micropost: micropost_params }, xhr: true
+      end.to change(Micropost, :count).by(1)
     end
 
-    it 'does not create unit with invalid params' do
+    it 'does not create micropost with invalid params' do
       micropost_params[:title] = ''
-      post account_microposts_path, params: { micropost: micropost_params }
-
-      expect(response.body).to match /Wrong input data. Micropost wasn`t created/
+      expect(Micropost.count).to eq(1)     
+      expect do        
+        post account_microposts_path, params: { micropost: micropost_params }, xhr: true
+      end.to change(Micropost, :count).by(0)
     end
   end
 
-  describe "PATCH #update" do
-    let(:micropost_params) { attributes_for(:micropost) }
+  describe 'PATCH #update' do
+    let(:micropost_update_params)     { attributes_for :micropost }
+    let(:edited_micropost_title) { micropost_update_params[:title] }
 
-    it "returns http success if signed in as admin" do
-      patch account_micropost_path(micropost), params: { micropost: micropost_params }
-      expect(response).to have_http_status(:redirect)
+    it 'shound update micropost' do
+      patch account_micropost_path(micropost), params: { micropost: micropost_update_params }, xhr: true
+
+      micropost.reload
+      expect(micropost.title).to eq edited_micropost_title
     end
   end
 

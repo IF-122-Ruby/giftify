@@ -1,0 +1,41 @@
+.container.mt-5.mb-5
+  .row.d-flex.align-items-center.justify-content-center
+    .col-md-6
+      .card.bg-light.bg-gradient
+          .d-flex.justify-content-between.p-2.px-3
+            .d-flex.flex-row.align-items-center
+              .d-flex.flex-column
+                = image_tag  micropost.author.avatar.thumb.url, class: "rounded-circle img-fluid", size: 50
+              .d-flex.flex-column.ml-2.p-2
+                strong.font-weight-bold = micropost.author.first_name
+                small.text-muted Administration
+            .d-flex.flex-column.align-items-end
+              - if current_user.admin?
+                a.text-reset.dropdown aria-expanded="false" data-bs-toggle="dropdown" type="button" 
+                  i.fa.fa-ellipsis-h 
+                ul.dropdown-menu.dropdown-menu-start.shadow-sm.p-3.mb-5.bg-white.rounded
+                  .d-flex.align-items-center.change-color
+                    i.fas.fa-pen-square.m-1
+                    = link_to "Edit", edit_account_micropost_path(micropost), class: "text-decoration-none text-reset", remote: :true
+                  hr/
+                  .d-flex.align-items-center.change-color
+                    i.fas.fa-trash-alt.m-1
+                    = link_to "Delete", account_micropost_path(micropost), remote: :true, method: :delete,
+                                                                            class: "text-decoration-none text-reset", 
+                                                                            data: { confirm: "Are you sure?"}
+              small.mr-2.text-muted =  time_ago_in_words(micropost.created_at) + " ago"
+
+          hr/
+          .col.px-3.
+            i.fas.fa-bullhorn.mx-2
+            = micropost.title
+          hr/
+          = image_tag  micropost.image.preview.url, class: "img-fluid px-1" if micropost.image?
+          .p-2.px-3
+            .d-flex.justify-content-between.flex-row
+              p.text-justify = micropost.description
+              .btn-group aria-label=("reactions") data-reaction="#{micropost.id}" role="group"
+                = render 'account/reactions/reaction', micropost: micropost
+            hr/
+            .comment-container
+              = render 'account/comments/comments', commentable: micropost

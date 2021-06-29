@@ -5,8 +5,7 @@ class Account::CommentPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.joins("INNER JOIN microposts ON microposts.id = comments.commentable_id") \
-           .where(microposts: { organization_id: user.organization.id }, commentable_type: 'Micropost')
+      user.organization.micropost_comments
     end
   end
 end

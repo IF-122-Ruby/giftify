@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe AcceptInvitesController, type: :request do
   let!(:user) { create(:user) }
-  let!(:invite) { create(:invite) }
+  let!(:invite) { create(:invite, recipient_role: :manager) }
 
     describe "GET #new" do
       it 'returns success status' do

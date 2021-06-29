@@ -1,10 +1,10 @@
 class AcceptInvitesController < ApplicationController
   layout 'devise'
   def new
-    @token = params[:token] 
-    @user = User.new  
+    @token = params[:token]
+    @user = User.new
   end
-  
+
   def create
     @token = params[:user][:token]
     @user = User.new(acception_params)
@@ -13,7 +13,8 @@ class AcceptInvitesController < ApplicationController
 
     @user.organization = invite.organization
     @user.email = invite.recipient_email
-    
+    @user.role[:role] = invite.recipient_role
+
     if @user.save
       flash[:success] = 'Successfully signed up'
       redirect_to root_path
@@ -31,7 +32,6 @@ class AcceptInvitesController < ApplicationController
       :last_name,
       :password,
       :password_confirmation,
-    )   
+    )
   end
 end
-

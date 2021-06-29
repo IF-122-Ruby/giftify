@@ -32,9 +32,11 @@ RSpec.describe "Account::Comments", type: :request do
       post account_comments_path(micropost: micropost), params: comment_params, xhr: true
       get account_microposts_path
       expect(response.body).to match /<p class=\"text-right comment-text mb-0\">Hello/
+      expect(Comment.count).to eq(1)
 
       delete account_comment_path(micropost.comments.first), xhr: true
       expect(response.body).to include("Comment successfully deleted")
+      expect(Comment.count).to eq(0)
 
       get account_microposts_path
       expect(response.body).not_to match /<p class=\"text-right comment-text mb-0\">Hello/

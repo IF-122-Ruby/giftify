@@ -6,24 +6,6 @@
       h4 Create new account
     = f.hidden_field :token, value: token
     .mb-3.mt-2
-      p
-        span.fs-6.text-secondary.mb-0 Organization name:
-        span.p-2.rounded-0.border-top-0.border-start-0.border-end-0
-          = current_user.organization.name
-      p
-        span.fs-6.text-secondary.mb-0 Email:
-        span.p-2.rounded-0.border-top-0.border-start-0.border-end-0
-          = current_user.email
-      p
-        span.fs-6.text-secondary.mb-0 Role:
-        span.p-2.rounded-0.border-top-0.border-start-0.border-end-0
-          - if current_user.role.admin?
-            = :admin
-          - elsif current_user.role.manager?
-            = :manager
-          - else
-            = :simple
-
       label.fs-6.text-secondary.mb-0 First name
       = f.input :first_name, label: false, required: true, input_html: {class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0'}
       label.fs-6.text-secondary.mb-0 Last name

@@ -13,8 +13,8 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-white.shadow-sm.p-3.bg-white.rounded
           .dropdown-menu.dropdown-menu-end.rounded
             .dropdown-header
               .d-flex.flex-row.justify-content-between
-                p.text-light Notifications
-                = link_to "Marks all as read", mark_all_as_read_account_notification_path(current_user), class: "ms-auto text-secondary text-light"
+                p.text-light.fs-6 Notifications
+                = link_to "Marks all as read", mark_all_as_read_account_notification_path(current_user), class: "ms-auto text-secondary text-light fs-6"
             .header-notifications-list.ps.notifications__scroll.scrollbar-primary
               = render 'account/notifications/list', notifications: current_user.own_notifications.recent
             = link_to account_notifications_path

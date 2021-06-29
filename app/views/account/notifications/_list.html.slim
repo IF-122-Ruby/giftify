@@ -1,12 +1,11 @@
 - unless notifications.any?
-  li.dropdown-item
+  li.dropdown-item.header-notifications-list__text
     h3 There are no notifications here
 - else
   - notifications.each do |notification|
-    .dropdown-item
-      .d-flex.align-items-center
-        .flex-grow-1
-          h6.msg-name.text-truncate.col-sm-4.[class="#{notification.read ? '' : 'bg-primary'}"]
-            = notification.message
-          small.text-muted
-            = time_ago_in_words(notification.created_at) + " ago"
+    .dropdown-item.header-notifications-list__text
+      .d-flex.justify-content-between
+        small.w-50.[class="#{notification.read ? '' : 'bg-primary'}"]
+          = notification.message
+        small.text-muted
+          = time_ago_in_words(notification.created_at) + " ago"

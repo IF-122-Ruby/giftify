@@ -30,6 +30,8 @@ gem 'sidekiq'
 gem 'sidekiq-scheduler'
 gem 'activerecord-import'
 gem 'ransack'
+gem "chartkick"
+gem 'groupdate'
 
 group :development, :test do
   gem 'annotate'

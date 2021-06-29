@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     end
 
     resource :transaction, only: [:create, :new], controller: :transaction
+    resources :charts, only: [:index]
   end
 
   resources :posts

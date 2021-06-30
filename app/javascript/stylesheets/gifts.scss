@@ -9,3 +9,12 @@
     width: 20rem;
   }
 }
+
+.overflow-scroll__hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

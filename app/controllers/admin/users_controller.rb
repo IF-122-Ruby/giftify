@@ -1,23 +1,30 @@
 class Admin::UsersController < Admin::BaseController
+  before_action :add_index_breadcrumb, only: [:show, :edit]
+
   def index
     @users = collection.paginate(page: params[:page], per_page: 10)
     authorize([:admin, @users])
+    add_breadcrumb('Users')
   end
 
   def show
     @user = resource
     authorize([:admin, @user])
+    add_breadcrumb(@user.full_name)
   end
 
   def edit
     @user = resource
     authorize([:admin, @user])
+    add_breadcrumb(@user.full_name, admin_user_path(@user))
+    add_breadcrumb("Edit")
   end
 
   def update
     @user = resource
     authorize([:admin, @user])
     @user.assign_attributes(user_update_params)
+    add_breadcrumb("Update")
 
     respond_to do |format|
       if @user.save(context: user_role_context)
@@ -39,6 +46,10 @@ class Admin::UsersController < Admin::BaseController
   end
 
   private
+
+  def add_index_breadcrumb
+    add_breadcrumb('Users', admin_users_path)
+  end
 
   def user_role_context
     current_user.role.superadmin?

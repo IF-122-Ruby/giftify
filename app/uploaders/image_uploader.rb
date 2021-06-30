@@ -18,8 +18,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [500, 500]
   end
 
-
   def extension_allowlist
-    %w(jpg jpeg gif png)
+    %w[jpg jpeg gif png]
   end
 end

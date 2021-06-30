@@ -1,0 +1,11 @@
+nav aria-label="breadcrumb" 
+  ol.breadcrumb
+    li.breadcrumb-item
+      a href="/account/charts"  Home
+    - @breadcrumbs.each do |breadcrumb|
+      - if breadcrumb[:path].nil? 
+        li.breadcrumb-item.active aria-current="page"
+          = breadcrumb[:label]
+      - else
+        li.breadcrumb-item
+          = link_to breadcrumb[:label], breadcrumb[:path]

@@ -7,7 +7,7 @@
             .gift-card__description
               h5.card-title
                 = @gift.name
-              = image_tag @gift.image.url(:preview), class: 'img-fluid'
+              = image_tag @gift.image.preview.url, class: 'img-fluid'
               p.card-text
                 = @gift.description
             ul.list-group.w-75

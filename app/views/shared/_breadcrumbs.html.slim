@@ -1,7 +1,7 @@
 nav aria-label="breadcrumb" 
   ol.breadcrumb
     li.breadcrumb-item
-      a href="/account/charts"  Home
+      = link_to "Home", current_user.superadmin? ? admin_root_path : root_path
     - @breadcrumbs.each do |breadcrumb|
       - if breadcrumb[:path].nil? 
         li.breadcrumb-item.active aria-current="page"

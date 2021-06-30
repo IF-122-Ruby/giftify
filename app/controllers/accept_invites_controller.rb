@@ -14,7 +14,7 @@ class AcceptInvitesController < ApplicationController
 
     @user.organization = invite.organization
     @user.email = invite.recipient_email
-    @user.role[:role] = invite.recipient_role
+    @user.role.role = invite.recipient_role
 
     if @user.save
       flash[:success] = 'Successfully signed up'

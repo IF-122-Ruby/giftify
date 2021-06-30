@@ -35,7 +35,7 @@ class Invite < ApplicationRecord
   end
 
   def role_must_be_valid
-    unless self.recipient_role == "admin" || self.recipient_role == "manager" || self.recipient_role == "user"
+    unless ["admin", "manager", "user"].any? { |role| self.recipient_role.include?(role) }
       errors.add(:recipient_role, "must be valid")
     end
   end

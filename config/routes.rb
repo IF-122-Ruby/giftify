@@ -14,9 +14,11 @@ Rails.application.routes.draw do
   resources :accept_invites, only: %i[new create]
 
   namespace :account do
-    resources :microposts, path: :feed, except: [:show, :edit]
+    resources :microposts, path: :feed, except: [:show]
     resources :gifts
-    resources :users, except: [:create, :new]
+    resources :users, except: [:create, :new] do
+      get 'export', on: :collection, defaults: { format: 'csv' }
+    end
     resource  :organization,
               only: [:edit, :update],
               controller: :organization
@@ -29,7 +31,7 @@ Rails.application.routes.draw do
       post 'mark_all_as_read', on: :member
     end
     resources :reactions, only: [:create, :destroy]
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :destroy]
     resources :favorite_gifts, only: [:index, :create, :destroy]
     resources :my_gifts, only: [:index, :show] do
       member do
@@ -38,6 +40,7 @@ Rails.application.routes.draw do
     end
 
     resource :transaction, only: [:create, :new], controller: :transaction
+    resources :charts, only: [:index]
   end
 
   resources :posts

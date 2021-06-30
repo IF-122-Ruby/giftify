@@ -26,4 +26,18 @@ RSpec.describe Account::UserPolicy, type: :policy do
       expect(subject).not_to permit(user)
     end
   end
+
+  permissions :export? do
+    it 'grant access for admin' do
+      expect(subject).to permit(admin)
+    end
+
+    it 'denied access for manager' do
+      expect(subject).not_to permit(manager)
+    end
+
+    it 'denied access for user' do
+      expect(subject).not_to permit(user)
+    end
+  end
 end

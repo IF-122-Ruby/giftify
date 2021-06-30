@@ -1,6 +1,0 @@
-= simple_form_for micropost, url: [:account, micropost], html: { autocomplete: 'off', class: 'form' } do |f|
-  = f.input :title, label: "Title", input_html: { class: 'form-control form__input' }
-  = f.input :description, label: "Description", as: :text, input_html: { cols: 5, rows: 5, class: 'form-control form__input'}
-  .d-flex.justify-content-between
-    = link_to 'Back', account_microposts_path, class: 'btn btn-outline-secondary'
-    = f.submit "Send", class: "btn btn-light"

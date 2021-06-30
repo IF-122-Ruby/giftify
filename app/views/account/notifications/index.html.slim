@@ -1,18 +1,23 @@
 .container
-  .mx-auto
+  .d-flex.justify-content-around
     h3.d-inline-block.text-dark.align-middle.mt-3.ms-3 Notifications
-  .col-10.offset-md-1
-    .d-flex.justify-content-center.flex-column
-      - unless @notifications.any?
-        h3 There are no notifications
-      - else
-          - @notifications.each do |notification|
-            .card
-              .card-body
-                .d-flex.justify-content-between
-                  small = notification.message
-                  - unless notification.read?
-                    i.fas.fa-circle
-              small.px-3.pb-2 = time_ago_in_words(notification.created_at) + " ago"
-    .digg_pagination.pagination-position.m-2
-        = will_paginate @notification, container: false
+    = button_to "Marks all as read", mark_all_as_read_account_notification_path(current_user), class: "btn btn-primary mt-2"
+  .row
+    .col-8.offset-2
+      .d-flex.justify-content-center.flex-column
+        #notifications
+
+      /   - unless @notifications.any?
+      /     h3 There are no notifications
+      /   - else
+      /       - @notifications.each do |notification|
+      /         .card
+      /           .card-body
+      /             .d-flex.justify-content-between
+      /               small = notification.message
+      /               - unless notification.read?
+      /                 .text-primary style='font-size: 10px;'
+      /                   i.fas.fa-circle
+      /           small.px-3.pb-2 = time_ago_in_words(notification.created_at) + " ago"
+      .digg_pagination.pagination-position.m-2
+          = will_paginate @notification, container: false

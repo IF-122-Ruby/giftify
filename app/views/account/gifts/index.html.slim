@@ -1,28 +1,36 @@
-.col
-  .col-8.offset-md-2
-    .card-body.shadow-lg.p-4.mb-2.bg-white.rounded
-      h2 = current_organization.name
-      = link_to 'New gift', new_account_gift_path, class: 'd-flex flex-row-reverse link-info'
-      table.table
-        thead
-          tr
-            th.text-center scope="col" Name
-            th.text-center scope="col" Image
-            th.text-center scope="col" Description
-            th.text-center scope="col" Amount
-            th.text-center scope="col" Price
-            th.text-center scope="col" Type
-            th.text-center
-        tbody
-          - @gifts.each do |gift|
-            tr
-              td = gift.name
-              td = image_tag gift.image.url(:small), class: 'img-fluid'
-              td = gift.description
-              td = gift.amount
-              td = gift.price
-              td = gift.gift_type
-              td.d-flex.justify-content-around.flex-wrap
-                = link_to 'Show', account_gift_path(gift), class: 'link-secondary'
-                = link_to 'Edit', edit_account_gift_path(gift), class: 'link-secondary'
-                = link_to 'Delete', account_gift_path(gift), method: :delete, class: 'link-secondary'
+.card.m-4.p-2
+  .card-body
+    .row
+      .col-12
+        h2 = current_organization.name
+        = link_to 'New gift', new_account_gift_path, class: 'd-flex flex-row-reverse link-info'
+        .overflow-scroll.overflow-scroll__hide
+          table.table
+            thead
+              tr
+                th.text-center.col-sm-2 scope="col" Name
+                th.text-center.col-sm-1 scope="col" Image
+                th.text-center.col-sm-4 scope="col" Description
+                th.text-center.col-sm-1 scope="col" Amount
+                th.text-center.col-sm-1 scope="col" Price
+                th.text-center.col-sm-1 scope="col" Type
+                th.text-center.col-sm-2
+            tbody
+              - @gifts.each do |gift|
+                tr
+                  td.col-sm-2 = gift.name
+                  td.col-sm-1 = image_tag gift.image.thumb.url, class: "img-fluid" if gift.image?
+                  td.col-sm-4 = gift.description
+                  td.col-sm-1 = gift.amount
+                  td.col-sm-1 = gift.price
+                  td.col-sm-1 = gift.gift_type
+                  td.col-sm-2
+                    .btn-group
+                      .btn = link_to account_gift_path(gift), class: 'link-secondary' do 
+                        i.far.fa-eye
+                      .btn = link_to edit_account_gift_path(gift), class: 'link-secondary' do 
+                        i.fas.fa-edit
+                      .btn = link_to account_gift_path(gift), method: :delete, class: 'link-secondary' do 
+                        i.far.fa-trash-alt
+    .digg_pagination.pagination-position.p-3
+      = will_paginate @gifts, container: false

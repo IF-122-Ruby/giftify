@@ -18,7 +18,8 @@ html
         = render partial: 'admin/shared/sidebar'
       .col.p-0.m-0
         .row.mx-2.pt-2
-          = render partial: "shared/breadcrumbs"
+          .col
+            = render partial: "shared/breadcrumbs"
         = yield
     #modal
     = any_login_here if defined?(AnyLogin)

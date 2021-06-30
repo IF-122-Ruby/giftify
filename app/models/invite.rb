@@ -23,7 +23,7 @@ class Invite < ApplicationRecord
 
   validates :invite_token, uniqueness: true, presence: true
   validates :recipient_email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validate :role_must_be_valid
+  validates :recipient_role, inclusion: { in: Role::roles.values.excluding('superadmin') }
 
   before_validation :generate_token, on: :create
   after_commit :send_invite_email, on: :create
@@ -32,12 +32,6 @@ class Invite < ApplicationRecord
 
   def send_invite_email
     InviteMailer.new_user_invite(self).deliver_now
-  end
-
-  def role_must_be_valid
-    unless ["admin", "manager", "user"].include? self.recipient_role
-      errors.add(:recipient_role, "must be valid")
-    end
   end
 
   private

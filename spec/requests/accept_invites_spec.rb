@@ -29,7 +29,7 @@ RSpec.describe AcceptInvitesController, type: :request do
     end
 
     it 'set valid role for invited user' do
-      expect(user.role[:role]).to eq("manager")
+      expect(user.role.role).to eq("manager")
     end
   end
 end

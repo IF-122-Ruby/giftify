@@ -16,7 +16,7 @@ RSpec.describe Account::MicropostsController, type: :request do
   describe "GET #new" do
     it "returns http success if signed in as admin" do
       get new_account_micropost_path, xhr: true
-
+      expect(response).to render_template(:new)
       expect(response).to be_successful
     end
   end
@@ -27,6 +27,7 @@ RSpec.describe Account::MicropostsController, type: :request do
       expect(Micropost.count).to eq(1)     
       expect do        
         post account_microposts_path, params: { micropost: micropost_params }, xhr: true
+        expect(response).to render_template(:create)
       end.to change(Micropost, :count).by(1)
     end
 
@@ -35,6 +36,7 @@ RSpec.describe Account::MicropostsController, type: :request do
       expect(Micropost.count).to eq(1)     
       expect do        
         post account_microposts_path, params: { micropost: micropost_params }, xhr: true
+        expect(response).to render_template(:micropost_error)
       end.to change(Micropost, :count).by(0)
     end
   end
@@ -45,7 +47,7 @@ RSpec.describe Account::MicropostsController, type: :request do
 
     it 'shound update micropost' do
       patch account_micropost_path(micropost), params: { micropost: micropost_update_params }, xhr: true
-
+      expect(response).to render_template(:update)
       micropost.reload
       expect(micropost.title).to eq edited_micropost_title
     end

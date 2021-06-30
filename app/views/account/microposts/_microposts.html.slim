@@ -1,4 +1,3 @@
 div id="microposts" 
   - microposts.each do |micropost|
-    div id="micropost_#{micropost.id}"
-      = render 'account/microposts/micropost', micropost: micropost
+    = render 'account/microposts/micropost', micropost: micropost

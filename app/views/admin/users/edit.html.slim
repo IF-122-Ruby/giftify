@@ -1,4 +1,5 @@
-h2
-  | Edit user
-= render 'admin/users/form'
-= button_to "delete",  [:account, @user] , method: :delete , data: { confirm: 'Are you sure?'}
+.row
+  .col-8.offset-md-2
+    .card-body.shadow-sm.p-3.mb-5.bg-white.rounded
+      h4.header-title.mt-0 Edit User
+      = render 'admin/users/form'

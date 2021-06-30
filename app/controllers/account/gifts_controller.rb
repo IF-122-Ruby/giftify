@@ -1,6 +1,6 @@
 class Account::GiftsController < Account::AccountsController
   def index
-    @gifts = collection
+    @gifts = collection.paginate(page: params[:page], per_page: 10)
     authorize([:account, @gifts])
   end
 

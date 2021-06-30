@@ -1,7 +1,7 @@
 #MicropostModal.modal.fade aria-hidden='true' aria-labelledby="MicropostModalLabel" role='dialog' data-backdrop="false" tabindex='-1'
   .modal-dialog.modal-dialog-centered
     .modal-content
-      = simple_form_for @micropost, url: (@micropost.new_record? ? account_microposts_path : account_micropost_path) , remote: true, html: { autocomplete: 'off', class: 'form' } do |f|
+      = simple_form_for [:account, @micropost], remote: true, html: { autocomplete: 'off', class: 'form' } do |f|
         .modal-header
           h5#MicropostModalLabel.modal-title Micropost:
           button#close-micropost-modal.btn-close aria-label="Close" data-bs-dismiss="modal" type="button"

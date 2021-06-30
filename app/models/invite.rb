@@ -5,7 +5,7 @@
 #  id              :bigint           not null, primary key
 #  invite_token    :string
 #  recipient_email :string
-#  recipient_role  :string
+#  recipient_role  :string           default("user"), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  organization_id :bigint
@@ -23,7 +23,7 @@ class Invite < ApplicationRecord
 
   validates :invite_token, uniqueness: true, presence: true
   validates :recipient_email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validate :recipient_role
+  validate :role_must_be_valid
 
   before_validation :generate_token, on: :create
   after_commit :send_invite_email, on: :create
@@ -32,6 +32,12 @@ class Invite < ApplicationRecord
 
   def send_invite_email
     InviteMailer.new_user_invite(self).deliver_now
+  end
+
+  def role_must_be_valid
+    unless self.recipient_role == "admin" || self.recipient_role == "manager" || self.recipient_role == "user"
+      errors.add(:recipient_role, "must be valid")
+    end
   end
 
   private

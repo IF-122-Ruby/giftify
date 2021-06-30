@@ -1,4 +1,4 @@
 h2
   | Edit user
 = render 'admin/users/form'
-= button_to "delete",  [:account, @user] , method: :delete , data: { confirm: 'Are you sure?'}
+= button_to "delete",  [:admin, @user] , method: :delete , data: { confirm: 'Are you sure?'}

@@ -12,13 +12,13 @@ RSpec.describe AcceptInvitesController, type: :request do
     end
 
     describe "POST #create" do
+      let!(:user) { create(:user, invite.recipient_role ) }
       it 'changes user count by 1 if given params valid' do
         expect do
           post accept_invites_path, params: {
             user: {
               token: invite.invite_token,
               email: invite.recipient_email,
-              role: invite.recipient_role,
               first_name: 'Han',
               last_name: 'Solo',
               password: 'Sesam123',
@@ -26,6 +26,10 @@ RSpec.describe AcceptInvitesController, type: :request do
             }
           }
       end.to change(User, :count).by(1)
+    end
+
+    it 'set valid role for invited user' do
+      expect(user.role[:role]).to eq("manager")
     end
   end
 end

@@ -1,5 +1,6 @@
 class AcceptInvitesController < ApplicationController
   layout 'devise'
+
   def new
     @token = params[:token]
     @user = User.new

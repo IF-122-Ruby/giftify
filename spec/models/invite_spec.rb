@@ -5,7 +5,7 @@
 #  id              :bigint           not null, primary key
 #  invite_token    :string
 #  recipient_email :string
-#  recipient_role  :string
+#  recipient_role  :string           default("user"), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  organization_id :bigint
@@ -29,6 +29,18 @@ RSpec.describe Invite, type: :model do
 
   it 'has a valid Factory' do
     expect(invite).to be_valid
+  end
+
+  describe "Role validation" do
+    it 'has valid role' do
+      invite.recipient_role = "manager"
+      expect(invite).to be_valid
+    end
+
+    it 'has invalid role' do
+      invite.recipient_role = "guest"
+      expect(invite).to_not be_valid
+    end
   end
 
 end

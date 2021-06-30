@@ -1,13 +1,11 @@
-= simple_form_for :user do |f|
+= simple_form_for :user, html: { autocomplete: 'off', class: 'form' , multipart: true} do |f|
   = f.fields_for :role do |role|
-    = role.input :role, collection: Role::roles.except(:superadmin), include_blank: false
+    = role.input :role, collection: Role::roles.except(:superadmin), include_blank: false, input_html: { class: 'form-control form__input' }
   = f.fields_for :organizations do |organization|
-    = organization.input :organizations, collection: Organization.all
-  .field
-    = f.input :first_name, autocomplete: "first name"
-  .field
-    = f.input :last_name, autocomplete: "last name"
-  .field
+    = organization.input :organizations, collection: Organization.all , input_html: { class: 'form-control form__input' }
+    = f.input :first_name, autocomplete: "first name" , input_html: { class: 'form-control form__input' }
+    = f.input :last_name, autocomplete: "last name", input_html: { class: 'form-control form__input' }
     = f.input :birthday, label: "Birthday", start_year: 1970, end_year: Time.now.year, order: [:day, :month, :year], required: true, prompt: true, default: nil
-  .actions
-    = f.submit
+    .mt-2.d-flex.justify-content-between
+        = f.submit 'Update',  class: 'btn btn-outline-primary'
+        = link_to "Delete",  [:account, @user] , method: :delete , data: { confirm: 'Are you sure?'}, class: 'btn btn-outline-danger'

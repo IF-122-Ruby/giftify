@@ -34,6 +34,28 @@ RSpec.describe User, type: :model do
     it { should_not allow_value(100.days.from_now).for(:birthday) }
   end
 
+  describe 'Used point' do
+
+    let(:frozen_time) { (Time.current).freeze }
+    before { Timecop.travel(frozen_time) }
+    after { Timecop.return }
+
+    let(:organization) { create(:organization) }
+    let(:user) { create(:user, organization: organization) }
+    let(:receiver) { create(:user, :simple, organization: user.organization) }
+    let!(:transaction_previous_month) { create(:transaction, receiver: receiver, sender: user, amount: 5, created_at: 1.month.ago ) }
+    let!(:transaction_start_of_this_month) { create(:transaction, receiver: receiver, sender: user, amount: 4, created_at: frozen_time.beginning_of_month.beginning_of_day) }
+    let!(:transaction_end_of_this_month) { create(:transaction, receiver: receiver, sender: user, amount: 6, created_at: frozen_time.end_of_month.end_of_day) }
+
+    it 'return used points for month' do
+      expect(user.used_points_for_month).to eq(10)
+    end
+
+    it 'return used points' do
+      expect(user.used_points).to eq(15)
+    end
+  end
+
   describe "notification" do
     let(:user) { create(:user, :with_organization) }
 

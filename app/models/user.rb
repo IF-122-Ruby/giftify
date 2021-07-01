@@ -24,7 +24,7 @@ require 'csv'
 
 class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
-  
+
   scope :admins, -> { joins(:role).where(roles: { role: Role::ADMIN }) }
   scope :managers, -> { joins(:role).where(roles: { role: Role::MANAGER }) }
   scope :users, -> { joins(:role).where(roles: { role: Role::USER }) }
@@ -83,6 +83,14 @@ class User < ApplicationRecord
     receiver_transactions.sum(:amount) - sender_transactions.sum(:amount)
   end
 
+  def used_points_for_month
+   sender_transactions.where(created_at >= Date.today.beginning_of_month).sum(:amount)
+ end
+
+ def used_points
+   sender_transactions.sum(:amount)
+ end
+
   def new_user_notification
     return if organization.nil?
 
@@ -108,7 +116,7 @@ class User < ApplicationRecord
   end
 
   def self.organization_statistic_csv
-    attributes = ['id', 'full_name', 'balance']
+    attributes = ['id', 'full_name', 'balance', 'used_points_for_month', 'used_points']
 
     CSV.generate(headers: true) do |csv|
       csv << attributes

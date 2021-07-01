@@ -7,6 +7,7 @@ import "../stylesheets/account/admin";
 import "controllers";
 import toastr from './toastr_settings';
 import "chartkick/chart.js";
+import './endless_scroll';
 
 window.bootstrap = require("bootstrap");
 

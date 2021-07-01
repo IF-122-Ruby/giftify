@@ -7,7 +7,7 @@
             = @user.full_name
           .row.mt-5.mb-3.text-center
             .col-6
-              = image_tag @user.avatar.small.url, class: 'img-fluid' if @user.avatar?
+              = image_tag @user.avatar.preview.url, class: 'img-fluid' if @user.avatar?
 
             .col-6
 

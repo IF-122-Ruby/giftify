@@ -5,10 +5,10 @@
         .card-body.gift-card__description
           h1.card-title.text-center = @gift.name
           .btn
-            .card.p-3.bg-white.border-0 
+            .card.p-3.bg-white.border-0
               div id="#{dom_id(@gift)}"
                 = toggle_favorite_link(@gift)
-              = image_tag @gift.image.url(:preview), class: 'img-fluid'
+              = image_tag @gift.image.preview.url, class: 'img-fluid'
 
           section.post-item
             p.fs-5.lead
@@ -16,6 +16,9 @@
                 = @gift.price
               | points
             p.fs-5.lead
+              strong = rewards_amount(@gift)
+            p.fs-5.lead
               = @gift.description
       .card-body.text-start
         = link_to 'Back', account_organization_gifts_path, class: 'btn btn-primary gift-card__button'
+        = button_to 'Get', receive_account_my_gift_path(@gift), class:"button btn btn-outline-success nav-btn posts__card-button ms-1", remote: true

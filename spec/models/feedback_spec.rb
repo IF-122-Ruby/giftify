@@ -15,6 +15,8 @@
 require 'rails_helper'
 
 RSpec.describe Feedback, type: :model do
+  let!(:feedback) { create(:feedback) }
+
   context "when valid Factory feedback" do
     it "has a valid feedback" do
       expect(build(:feedback)).to be_valid
@@ -30,5 +32,12 @@ RSpec.describe Feedback, type: :model do
     it { is_expected.to validate_presence_of :subject }
     it { is_expected.to validate_length_of(:subject).is_at_most(15) }
     it { is_expected.to validate_inclusion_of(:reason).in_array(Feedback::REASONS) }
-  end 
+  end
+
+  describe "methods" do
+    it "mark feedback as viewed" do
+      feedback.mark_as_viewed!
+      expect(feedback.viewed).to be_truthy
+    end
+  end
 end

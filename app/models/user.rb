@@ -20,11 +20,11 @@
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
-require 'elasticsearch/model'
-
 class User < ApplicationRecord
-
+  mount_uploader :avatar, AvatarUploader
   include Elasticsearch::Model
+  require 'csv'
+  
   scope :admins, -> { joins(:role).where(roles: { role: Role::ADMIN }) }
   scope :managers, -> { joins(:role).where(roles: { role: Role::MANAGER }) }
   scope :users, -> { joins(:role).where(roles: { role: Role::USER }) }
@@ -89,5 +89,33 @@ class User < ApplicationRecord
     own_notifications.create(message: "Welcome to organization #{organization.name}",
                              notificationable: organization,
                              notification_type: Notification::USER_NEW)
+  end
+
+  def purchase_gift(gift)
+    if (balance - gift.price).negative?
+      return :not_enough_points
+    elsif gift.amount == 0
+      return :no_more_gifts
+    elsif gift.amount.nil?
+      Transaction.create(sender: self, receiver: gift, amount: gift.price)
+    else
+      ActiveRecord::Base.transaction do
+        Transaction.create(sender: self, receiver: gift, amount: gift.price)
+        gift.update!(amount: gift.amount - 1)
+      end
+    end
+    :success
+  end
+
+  def self.organization_statistic_csv
+    attributes = ['id', 'full_name', 'balance']
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |user|
+        csv << attributes.map { |attr| user.send(attr) }
+      end
+    end
   end
 end

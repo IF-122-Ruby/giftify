@@ -1,11 +1,15 @@
 .shadow-sm.p-0
   .container-fluid.pt-5
     .row
+      - if policy([:account, @users]).export?
+        .col-8.bg-white.offset-2 = link_to export_account_users_path, class: 'float-end d-block text-decoration-none export__link py-1' do
+            | Export users info  
+            i.fas.fa-file-export 
       .col-8.offset-2.bg-white
         .row.d-flex.p-2.align-items-center.justify-conten-around
           - @users.each do |user|
             .col-3.d-none.d-sm-block.mb-2
-              = image_tag user.avatar, class: "img-fluid user-avatar"
+              = image_tag user.avatar.small.url, class: "img-fluid user-avatar" if user.avatar?
 
             .col-6
               = user.full_name

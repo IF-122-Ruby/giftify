@@ -15,9 +15,11 @@ Rails.application.routes.draw do
 
   namespace :account do
     get '/search', to: 'search#search', as: 'search'
-    resources :microposts, path: :feed, except: [:show, :edit]
+    resources :microposts, path: :feed, except: [:show]
     resources :gifts
-    resources :users, except: [:create, :new]
+    resources :users, except: [:create, :new] do
+      get 'export', on: :collection, defaults: { format: 'csv' }
+    end
     resource  :organization,
               only: [:edit, :update],
               controller: :organization
@@ -28,11 +30,16 @@ Rails.application.routes.draw do
     resources :invites, except: %i[edit update]
     resources :notifications, only: :index
     resources :reactions, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
     resources :favorite_gifts, only: [:index, :create, :destroy]
-    resources :my_gifts, only: [:index, :show]
+    resources :my_gifts, only: [:index, :show] do
+      member do
+        post 'receive'
+      end
+    end
 
     resource :transaction, only: [:create, :new], controller: :transaction
-
+    resources :charts, only: [:index]
   end
 
   resources :posts

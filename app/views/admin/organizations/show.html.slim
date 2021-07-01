@@ -23,10 +23,10 @@
     .row.d-flex.p-2.align-items-center.justify-conten-around
       - current_organization.users.each do |user|
         .col-2.d-none.d-sm-block.mb-2
-          = image_tag user.avatar, class: "img-fluid user-avatar"
+          = image_tag user.avatar.small.url, class: "img-fluid user-avatar" if user.avatar?
 
         .col-8
           .col
             = user.full_name
         .col-2
-          = link_to "Show", account_user_path(id: user.id)
+          = link_to "Show", admin_user_path(id: user.id)

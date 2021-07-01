@@ -21,10 +21,10 @@ RSpec.describe 'Account::Profile', type: :request do
       expect(user.first_name).to eq('Bob')
       expect(response).to redirect_to(edit_account_profile_path)
     end
-  end  
+  end
 
   describe 'PATCH #update' do
-    it 'user can not be renamed to invalid value' do 
+    it 'user can not be renamed to invalid value' do
       patch account_profile_path, params: {
         user: {
           first_name: ''

@@ -9,7 +9,8 @@
       = simple_form_for @invite , url: account_invites_path do |f|
         label.fs-6.text-secondary.mb-0 Recipient e-mail:
         = f.input :recipient_email, label: false
+        = f.input :recipient_role, collection: Role::roles.except(:superadmin), include_blank: false
+
         .nav-group.d-flex.flex-row
           = f.submit 'Send', class: 'btn btn-primary mt-2'
           = link_to 'back...', account_invites_path, class: 'btn btn-link mt-2'
-

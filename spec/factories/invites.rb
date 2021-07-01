@@ -5,6 +5,7 @@
 #  id              :bigint           not null, primary key
 #  invite_token    :string
 #  recipient_email :string
+#  recipient_role  :string           default("user"), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  organization_id :bigint
@@ -19,6 +20,7 @@
 FactoryBot.define do
   factory :invite, class: Invite do
     recipient_email { Faker::Internet.email }
+    recipient_role { Role::USER }
     organization
     association :sender, factory: :user
   end

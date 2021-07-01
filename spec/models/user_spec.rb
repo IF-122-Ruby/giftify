@@ -42,6 +42,11 @@ RSpec.describe User, type: :model do
     let!(:transaction_start_of_this_month) { create(:transaction, receiver: receiver, sender: user, amount: 4, created_at: '1 July 2021') }
     let!(:transaction_end_of_this_month) { create(:transaction, receiver: receiver, sender: user, amount: 6, created_at: '31 July 2021') }
 
+    before do
+      new_time = Time.local(2021, 7, 1, 17, 32, 45)
+      Timecop.freeze(new_time)
+    end
+
     it 'return used points for month' do
       expect(user.used_points_for_month).to eq(10)
     end

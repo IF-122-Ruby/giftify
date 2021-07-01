@@ -13,11 +13,28 @@ class Admin::UsersController < Admin::BaseController
     add_breadcrumb(@user.full_name)
   end
 
+  def new
+    @user = collection.new
+    authorize([:admin, @user])
+  end
+
   def edit
     @user = resource
     authorize([:admin, @user])
     add_breadcrumb(@user.full_name, admin_user_path(@user))
     add_breadcrumb("Edit")
+  end
+
+  def create
+    @user = collection.new(user_update_params)
+    authorize([:admin, @user])
+    if @user.save
+      flash[:notice] = 'User create succesfully!'
+      redirect_to admin_user_path
+    else
+      flash.now[:warning] = 'Wrong input data. User wasn`t created'
+      render :new
+    end
   end
 
   def update

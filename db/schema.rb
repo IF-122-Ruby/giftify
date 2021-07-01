@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2021_06_30_183649) do
     t.string "invite_token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "recipient_role", default: "user", null: false
     t.index ["invite_token"], name: "index_invites_on_invite_token", unique: true
     t.index ["organization_id"], name: "index_invites_on_organization_id"
     t.index ["user_id"], name: "index_invites_on_user_id"

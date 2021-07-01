@@ -12,6 +12,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  token                  :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -59,6 +60,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :role, reject_if: :all_blank
 
   after_create_commit :new_user_notification
+  before_create       :generate_token
 
   def self.grouped_collection_by_role
     {
@@ -124,6 +126,13 @@ class User < ApplicationRecord
       all.each do |user|
         csv << attributes.map { |attr| user.send(attr) }
       end
+    end
+  end
+  
+  def generate_token
+    self.token = loop do
+      random_token = SecureRandom.urlsafe_base64(nil, false)
+      break random_token unless User.exists?(token: random_token)
     end
   end
 end

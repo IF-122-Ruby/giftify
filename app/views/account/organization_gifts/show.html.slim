@@ -5,10 +5,10 @@
         .card-body.gift-card__description
           h1.card-title.text-center = @gift.name
           .btn
-            .card.p-3.bg-white.border-0 
+            .card.p-3.bg-white.border-0
               div id="#{dom_id(@gift)}"
                 = toggle_favorite_link(@gift)
-              = image_tag @gift.image.url(:preview), class: 'img-fluid'
+              = image_tag @gift.image.preview.url, class: 'img-fluid'
 
           section.post-item
             p.fs-5.lead

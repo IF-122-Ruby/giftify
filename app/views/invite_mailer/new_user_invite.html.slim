@@ -1,8 +1,7 @@
 h1
   = 'Invitation to Giftify organization'
 p
-  = "Hello, you've been invited to #{@invite.organization.name}!"
+  = "Hello, you've been invited to #{@invite.organization.name} as #{@invite.recipient_role}!"
   = link_to ' Accept Invitation', new_accept_invite_url(token: @invite.invite_token)
 p
   = "If you think this is a mistake, just ignore this message"
-  

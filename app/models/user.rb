@@ -84,7 +84,7 @@ class User < ApplicationRecord
   end
 
   def used_points_for_month
-   sender_transactions.where(["created_at > ? and created_at < ?", Date.today.beginning_of_month, Date.today.end_of_month]).sum(:amount)
+   sender_transactions.where(["created_at >= ? and created_at <= ?", Date.today.beginning_of_month.beginning_of_day, Date.today.end_of_month.end_of_day]).sum(:amount)
  end
 
  def used_points

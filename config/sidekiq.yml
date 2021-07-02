@@ -3,3 +3,7 @@ schedule:
     cron: '0 1 * * *'   # Runs once per day (1:00)
     class: MonthlyPointsWorker
    
+  monthly_balance_mail:
+    cron: '30 10 1 0 *' # Runs every 1st day of month at 10:30
+    class: MonthlyBalanceMailWorker
+    queue: default

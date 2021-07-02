@@ -1,0 +1,21 @@
+.shadow-sm.p-0
+  .container-fluid.pt-3
+    .row
+      .col-8.offset-2.bg-white
+        .text-end.mt-2
+          = link_to "new user", new_admin_user_path, class: 'btn btn-primary gift-card__button'
+        .row.d-flex.p-2.align-items-center.justify-conten-around.mb-5.mt-3
+          - @users.each do |user|
+            .col-3.d-none.d-sm-block.mb-2
+              = image_tag user.avatar.small.url, class: "img-fluid user-avatar" if user.avatar?
+
+            .col-6
+              = user.full_name
+
+            .col-3.d-flex.justify-content-around.flex-wrap
+              = link_to "Show", admin_user_path(user)
+              = link_to 'Edit', edit_admin_user_path(user)
+              = link_to 'Delete', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?'}
+
+        .digg_pagination.pagination-position.pb-5
+            = will_paginate @users, container: false

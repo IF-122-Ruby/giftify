@@ -1,0 +1,22 @@
+.comment-form {
+  .form-color {
+    background-color: whitesmoke;
+  }
+  
+  .form-control {
+    border-radius: 20px;
+
+    &:focus {
+      color: grey;
+      background-color: white;
+      border-color: $info;
+      outline: 0;
+      box-shadow: none;
+      text-indent: 10px;
+    }
+  }
+}
+
+.comment-text {
+  font-size: 0.920em;
+}

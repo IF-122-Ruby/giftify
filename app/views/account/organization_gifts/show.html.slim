@@ -1,17 +1,24 @@
-= link_to account_organization_gifts_path do
-  .fas.fa-long-arrow-alt-left.back-arrow
-.container-fluid.text-center
-  h1.fw-bolder.mb-5.mt-5.text-center = @gift.name
-  .col-md-3.text-center.btn
-    .card.p-3.bg-white.border-0.gifts-card
-      div id="#{dom_id(@gift)}"
-        = toggle_favorite_link(@gift)
-      = image_tag @gift.image.url(:small), class: 'img-fluid'
+.d-flex.align-content-center.mt-5.text-center
+  .col-10.offset-1
+    .card.card-body.p-4.mb-2.gift-card.user-show.bg-white
+      .d-flex.flex-direction-row
+        .card-body.gift-card__description
+          h1.card-title.text-center = @gift.name
+          .btn
+            .card.p-3.bg-white.border-0
+              div id="#{dom_id(@gift)}"
+                = toggle_favorite_link(@gift)
+              = image_tag @gift.image.preview.url, class: 'img-fluid'
 
-  section.mb-5.post-item
-    p.fs-5.mb-4.lead.p-3
-      strong
-        = @gift.price
-      | points
-    p.fs-5.mb-4.lead.p-3
-      = @gift.description
+          section.post-item
+            p.fs-5.lead
+              strong
+                = @gift.price
+              | points
+            p.fs-5.lead
+              strong = rewards_amount(@gift)
+            p.fs-5.lead
+              = @gift.description
+      .card-body.text-start
+        = link_to 'Back', account_organization_gifts_path, class: 'btn btn-primary gift-card__button'
+        = button_to 'Get', receive_account_my_gift_path(@gift), class:"button btn btn-outline-success nav-btn posts__card-button ms-1", remote: true

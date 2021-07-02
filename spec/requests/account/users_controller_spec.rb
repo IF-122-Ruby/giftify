@@ -56,6 +56,15 @@ RSpec.describe Account::UsersController, type: :request do
         end.to change(User, :count).by(-1)
       end
     end
+
+    describe "GET /users/export" do
+      it 'return csv file' do
+        get export_account_users_path
+
+        expect(response.header['Content-Type']).to include 'text/csv'
+        expect(response.body).to include(admin.full_name)
+      end
+    end
   end
 
   context 'signed in as manager' do

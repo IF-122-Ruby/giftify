@@ -1,7 +1,6 @@
 class Account::UsersController < Account::AccountsController
-  
   def index
-    @users = collection
+    @users = collection.paginate(page: params[:page], per_page: 10)
     authorize([:account, @users])
   end
 
@@ -28,7 +27,7 @@ class Account::UsersController < Account::AccountsController
       end
     end
   end
-  
+
   def destroy
     @user = resource
     authorize([:account, @user])
@@ -36,6 +35,14 @@ class Account::UsersController < Account::AccountsController
     @user.destroy
     respond_to do |format|
       format.html { redirect_to account_users_path, notice: 'User was successfully destroyed.' }
+    end
+  end
+
+  def export
+    @users = collection
+    authorize [:account, @users]
+    respond_to do |format|
+      format.csv { send_data @users.organization_statistic_csv, filename: "users-#{Date.today}.csv" }
     end
   end
 
@@ -60,6 +67,6 @@ class Account::UsersController < Account::AccountsController
                                   :birthday,
                                   :password,
                                   :password_confirmation,
-                                  role_attributes: %i[id role]) 
+                                  role_attributes: %i[id role])
   end
 end

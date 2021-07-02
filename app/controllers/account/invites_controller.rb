@@ -44,7 +44,7 @@ class Account::InvitesController < Account::AccountsController
   private
 
   def invite_params
-    params.require(:invite).permit(:recipient_email)
+    params.require(:invite).permit(:recipient_email, :recipient_role)
   end
 
   def collection

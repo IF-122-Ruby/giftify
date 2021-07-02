@@ -12,6 +12,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  token                  :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -20,8 +21,11 @@
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
+require 'csv'
 
 class User < ApplicationRecord
+  mount_uploader :avatar, AvatarUploader
+
   scope :admins, -> { joins(:role).where(roles: { role: Role::ADMIN }) }
   scope :managers, -> { joins(:role).where(roles: { role: Role::MANAGER }) }
   scope :users, -> { joins(:role).where(roles: { role: Role::USER }) }
@@ -49,12 +53,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validate :birthday_cannot_be_in_the_future
   validates :first_name, :last_name, presence: true, length: { maximum: 40 }
 
   accepts_nested_attributes_for :owned_organization
   accepts_nested_attributes_for :role, reject_if: :all_blank
 
   after_create_commit :new_user_notification
+  before_create       :generate_token
 
   def self.grouped_collection_by_role
     {
@@ -68,10 +74,24 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
-  
+
+  def birthday_cannot_be_in_the_future
+    if birthday.present? && birthday > Date.today
+      errors.add(:birthday, "can't be in the future")
+    end
+  end
+
   def balance
     receiver_transactions.sum(:amount) - sender_transactions.sum(:amount)
   end
+
+  def used_points_for_month
+   sender_transactions.where(["created_at >= ? and created_at <= ?", Date.today.beginning_of_month.beginning_of_day, Date.today.end_of_month.end_of_day]).sum(:amount)
+ end
+
+ def used_points
+   sender_transactions.sum(:amount)
+ end
 
   def new_user_notification
     return if organization.nil?
@@ -79,5 +99,40 @@ class User < ApplicationRecord
     own_notifications.create(message: "Welcome to organization #{organization.name}",
                              notificationable: organization,
                              notification_type: Notification::USER_NEW)
+  end
+
+  def purchase_gift(gift)
+    if (balance - gift.price).negative?
+      return :not_enough_points
+    elsif gift.amount == 0
+      return :no_more_gifts
+    elsif gift.amount.nil?
+      Transaction.create(sender: self, receiver: gift, amount: gift.price)
+    else
+      ActiveRecord::Base.transaction do
+        Transaction.create(sender: self, receiver: gift, amount: gift.price)
+        gift.update!(amount: gift.amount - 1)
+      end
+    end
+    :success
+  end
+
+  def self.organization_statistic_csv
+    attributes = ['id', 'full_name', 'balance', 'used_points_for_month', 'used_points']
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |user|
+        csv << attributes.map { |attr| user.send(attr) }
+      end
+    end
+  end
+  
+  def generate_token
+    self.token = loop do
+      random_token = SecureRandom.urlsafe_base64(nil, false)
+      break random_token unless User.exists?(token: random_token)
+    end
   end
 end

@@ -1,6 +1,6 @@
 class Account::MicropostsController < Account::AccountsController
   def index
-    @microposts = collection.includes(:author).order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+    @microposts = collection.includes(:author, :comments).order(created_at: :desc).paginate(page: params[:page], per_page: 5)
     authorize([:account, @microposts])
     respond_to do |format|
       format.html
@@ -21,26 +21,31 @@ class Account::MicropostsController < Account::AccountsController
   end
 
   def create
-    @micropost = collection.new(micropost_params.merge!(author: current_user))
+    @micropost = collection.build(micropost_params.merge(author: current_user))
     authorize([:account, @micropost])
-    if @micropost.save
-      flash[:notice] = 'Micropost create succesfully!'
-      redirect_to account_microposts_path
-    else
-      flash.now[:warning] = 'Wrong input data. Micropost wasn`t created'
-      render :new
+    
+    respond_to do |format|    
+      if @micropost.save
+        format.js
+      else
+        format.js { render :micropost_error }
+      end
     end
   end
-  
+
+  def edit
+    @micropost = resource
+  end
+
   def update
     @micropost = resource
     authorize([:account, @micropost])
-    if @micropost.update(micropost_params)
-      flash[:notice] = 'Micropost update succesfully!'
-      redirect_to account_microposts_path
-    else
-      flash.now[:warning] = 'Wrong input data. Micropost wasn`t updated'
-      render :edit
+    respond_to do |format|
+      if @micropost.update(micropost_params)
+        format.js
+      else
+        format.js { render :micropost_error }
+      end
     end
   end
 

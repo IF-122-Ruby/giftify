@@ -14,9 +14,11 @@ Rails.application.routes.draw do
   resources :accept_invites, only: %i[new create]
 
   namespace :account do
-    resources :microposts, path: :feed, except: [:show, :edit]
+    resources :microposts, path: :feed, except: [:show]
     resources :gifts
-    resources :users, except: [:create, :new]
+    resources :users, except: [:create, :new] do
+      get 'export', on: :collection, defaults: { format: 'csv' }
+    end
     resource  :organization,
               only: [:edit, :update],
               controller: :organization
@@ -27,10 +29,16 @@ Rails.application.routes.draw do
     resources :invites, except: %i[edit update]
     resources :notifications, only: :index
     resources :reactions, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
     resources :favorite_gifts, only: [:index, :create, :destroy]
-    resources :my_gifts, only: [:index, :show]
+    resources :my_gifts, only: [:index, :show] do
+      member do
+        post 'receive'
+      end
+    end
 
     resource :transaction, only: [:create, :new], controller: :transaction
+    resources :charts, only: [:index]
   end
 
   resources :posts
@@ -39,5 +47,12 @@ Rails.application.routes.draw do
     root to: 'admin#index'
     resources :organizations, only: [:index, :show]
     resources :feedbacks, only: [:index, :show]
+    resources :users
+  end
+
+  namespace :api do
+    namespace :v1 do
+      resource :user, only: [:show]
+    end
   end
 end

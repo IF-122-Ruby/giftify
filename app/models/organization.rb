@@ -18,13 +18,9 @@
 #
 #  fk_rails_...  (user_id => users.id)
 #
-require 'elasticsearch/model'
-
 class Organization < ApplicationRecord
-  include Elasticsearch::Model
-  
   has_many :roles
-  belongs_to :user
+  belongs_to :owner, class_name: 'User', foreign_key: 'user_id'
   has_many :users, through: :roles
   has_many :gifts
   has_many :invites
@@ -37,7 +33,13 @@ class Organization < ApplicationRecord
 
   after_commit :add_role
 
-  after_create_commit :new_organization_notification_to_superadmins, :new_company_created_notification
+  after_create_commit :new_organization_notification_to_superadmins, :new_company_created_notification, :update_admin_organization
+
+  private
+
+  def add_role
+    roles.create(role: :admin, user_id: user_id)
+  end
 
   def new_organization_notification_to_superadmins
     SuperadminMailer.send_mail_when_new_organization_created(self).deliver_now
@@ -49,9 +51,16 @@ class Organization < ApplicationRecord
                                   notification_type: Notification::ORGANIZATION_CREATED)
   end
 
-  private
-
-  def add_role
-    roles.create(role: :admin, user_id: user_id)
+  def update_admin_organization
+    definition = update { doc { name "asd" } }
+    client = Faraday.new(url: 'localhost:9200')
+    response = JSON.parse(
+                client.post(
+                  "/users/_update/#{owner}",
+                  JSON.dump(definition.to_hash),
+                  { 'Accept' => 'application/json', 'Content-Type' => 'application/json' }
+                ).body
+    )
   end
+
 end

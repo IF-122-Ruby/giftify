@@ -6,5 +6,5 @@
     - @results.each do |results|
       - if results.class.to_s == "User" 
         = render partial: "account/search/search_users", locals: {user: results}
-      - else results.class.to_s == "Gift"
+      - else
         = render partial: "account/search/search_gifts", locals: {gift: results}

@@ -20,11 +20,13 @@
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
+require 'csv'
+
 class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   include Elasticsearch::Model
-  require 'csv'
-  
+  include Elasticsearch::Model::Callbacks
+
   scope :admins, -> { joins(:role).where(roles: { role: Role::ADMIN }) }
   scope :managers, -> { joins(:role).where(roles: { role: Role::MANAGER }) }
   scope :users, -> { joins(:role).where(roles: { role: Role::USER }) }
@@ -117,5 +119,16 @@ class User < ApplicationRecord
         csv << attributes.map { |attr| user.send(attr) }
       end
     end
+  end
+
+  def as_indexed_json(options = {})
+    options.merge({ id: id,
+                    first_name: first_name,
+                    last_name: last_name,
+                    birthday: birthday,
+                    email: email,
+                    created_at: created_at,
+                    updated_at: updated_at,
+                    organization_id: organization.nil? ? nil : organization.id })
   end
 end

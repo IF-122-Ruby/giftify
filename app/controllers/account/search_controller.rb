@@ -2,7 +2,7 @@ class Account::SearchController < Account::AccountsController
   def search
     if params[:search].blank?
       redirect_to(account_gifts_path, notice: "Write search request")
-    else 
+    else
       @results = Elasticsearch::Model.search({
         "query": {
           "bool": {
@@ -13,7 +13,7 @@ class Account::SearchController < Account::AccountsController
               }
             },
             "filter":
-              { "term": { "id": current_user.organization.id}}
+              { "term": { "organization_id": current_user.organization.id}}
           }
         }
       }, [User, Gift]).records.to_a

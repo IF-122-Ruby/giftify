@@ -12,6 +12,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  token                  :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -24,8 +25,11 @@ require 'csv'
 
 class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
+<<<<<<< HEAD
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
+=======
+>>>>>>> 23954005912d38d2ebef1fc5cefb4b3467cae804
 
   scope :admins, -> { joins(:role).where(roles: { role: Role::ADMIN }) }
   scope :managers, -> { joins(:role).where(roles: { role: Role::MANAGER }) }
@@ -61,6 +65,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :role, reject_if: :all_blank
 
   after_create_commit :new_user_notification
+  before_create       :generate_token
 
   def self.grouped_collection_by_role
     {
@@ -84,6 +89,14 @@ class User < ApplicationRecord
   def balance
     receiver_transactions.sum(:amount) - sender_transactions.sum(:amount)
   end
+
+  def used_points_for_month
+   sender_transactions.where(["created_at >= ? and created_at <= ?", Date.today.beginning_of_month.beginning_of_day, Date.today.end_of_month.end_of_day]).sum(:amount)
+ end
+
+ def used_points
+   sender_transactions.sum(:amount)
+ end
 
   def new_user_notification
     return if organization.nil?
@@ -110,7 +123,7 @@ class User < ApplicationRecord
   end
 
   def self.organization_statistic_csv
-    attributes = ['id', 'full_name', 'balance']
+    attributes = ['id', 'full_name', 'balance', 'used_points_for_month', 'used_points']
 
     CSV.generate(headers: true) do |csv|
       csv << attributes
@@ -130,5 +143,12 @@ class User < ApplicationRecord
                     created_at: created_at,
                     updated_at: updated_at,
                     organization_id: organization.nil? ? nil : organization.id })
+  end
+  
+  def generate_token
+    self.token = loop do
+      random_token = SecureRandom.urlsafe_base64(nil, false)
+      break random_token unless User.exists?(token: random_token)
+    end
   end
 end

@@ -52,15 +52,6 @@ class Organization < ApplicationRecord
   end
 
   def update_admin_organization
-    definition = update { doc { name "asd" } }
-    client = Faraday.new(url: 'localhost:9200')
-    response = JSON.parse(
-                client.post(
-                  "/users/_update/#{owner}",
-                  JSON.dump(definition.to_hash),
-                  { 'Accept' => 'application/json', 'Content-Type' => 'application/json' }
-                ).body
-    )
+    User.__elasticsearch__.client.update(index: 'users', id: owner, body: { doc: { organization_id: id} })
   end
-
 end

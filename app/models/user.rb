@@ -54,7 +54,7 @@ class User < ApplicationRecord
   delegate :superadmin?, :admin?, :manager?, :simple?, to: :role
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable
+         :recoverable, :rememberable, :validatable
 
   validate :birthday_cannot_be_in_the_future
   validates :first_name, :last_name, presence: true, length: { maximum: 40 }

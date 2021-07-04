@@ -6,7 +6,8 @@ RSpec.describe SuperadminMailer, type: :mailer do
 
 
     describe 'superadmins exists' do
-      let!(:superadmins) { create_list(:user, 10, :superadmin) }
+      let!(:organization) { create(:organization)}
+      let!(:superadmins) { create_list(:user, 10, :superadmin, organization: organization) }
 
       it "renders the headers" do
         expect(mail.subject).to eq("Someone wrote new feedback!")
@@ -24,7 +25,8 @@ RSpec.describe SuperadminMailer, type: :mailer do
     let(:mail) { SuperadminMailer.send_mail_when_new_organization_created(create(:organization)) }
 
     describe 'superadmins exists' do
-      let!(:superadmins) { create_list(:user, 10, :superadmin) }
+      let!(:organization) { create(:organization)}
+      let!(:superadmins) { create_list(:user, 10, :superadmin, organization: organization) }
 
       it "renders the headers" do
         expect(mail.subject).to eq("Someone create new organization!")

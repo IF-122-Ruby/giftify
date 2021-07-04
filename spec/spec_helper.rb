@@ -32,7 +32,11 @@ RSpec.configure do |config|
   config.before :all do
     ActiveRecord::Base.descendants.each do |model|
       if model.respond_to?(:__elasticsearch__)
-        model.__elasticsearch__.create_index! index: model.index_name
+        begin
+          model.__elasticsearch__.create_index!(index: model.index_name, force: true)
+        rescue Elasticsearch::Transport::Transport::Errors::NotFound => e
+          $stdout.puts "There was an error creating the elasticsearch index for #{model.name}: #{e.inspect}"
+        end
       end
     end
   end
@@ -40,7 +44,11 @@ RSpec.configure do |config|
   config.after :all do
     ActiveRecord::Base.descendants.each do |model|
       if model.respond_to?(:__elasticsearch__)
-        model.__elasticsearch__.client.indices.delete index: model.index_name
+        begin
+          model.__elasticsearch__.client.indices.delete index: model.index_name
+        rescue Elasticsearch::Transport::Transport::Errors::NotFound => e
+          $stdout.puts "There was an error removing the elasticsearch index for #{model.name}: #{e.inspect}"
+        end
       end
     end
   end

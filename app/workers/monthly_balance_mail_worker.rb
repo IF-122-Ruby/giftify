@@ -1,5 +1,3 @@
-require 'sidekiq-scheduler'
-
 class MonthlyBalanceMailWorker
   include Sidekiq::Worker
 

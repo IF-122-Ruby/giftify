@@ -7,4 +7,4 @@ class MonthlyBalanceMailWorker
     end
   end
 
-end  
+end

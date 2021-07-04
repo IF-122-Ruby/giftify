@@ -2,9 +2,11 @@
   .row.mt-3.p-0
     .d-flex.justify-content-center.mt-2
       h6.text-uppercase
-        | found results
-    - @results.each do |results|
-      - if results.class.to_s == "User" 
-        = render partial: "account/search/search_users", locals: {user: results}
-      - else
-        = render partial: "account/search/search_gifts", locals: {gift: results}
+    - if @results.nil?
+      | Page empty...
+    - else
+      - @results.each do |results|
+        - if results.class.to_s == "User" 
+          = render partial: "account/search/search_users", locals: {user: results}
+        - else
+          = render partial: "account/search/search_gifts", locals: {gift: results}

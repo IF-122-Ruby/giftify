@@ -1,12 +1,11 @@
-- if gift.class.to_s == "Gift"
-  = link_to account_gift_path(gift), class: "text-reset m-0 p-0 text-decoration-none"
-    .border.p-2.rounded.mt-1.bg-white
-      .row.d-flex.align-items-center
-        .col-3
-          span = image_tag gift.image.thumb.url, class: "img-fluid list-icon img-thumbnail rounded-circle"
-        .col-1
-          span Gift
-        .col.mx-1
-          span = gift.name.truncate(13)
-        .col
-          span = l(gift.created_at.to_date, format: :long)
+= link_to account_gift_path(gift), class: "text-reset m-0 p-0 text-decoration-none"
+  .border.p-2.rounded.mt-1.bg-white
+    .row.d-flex.align-items-center
+      .col-3
+        span = image_tag gift.image.thumb.url, class: "img-fluid list-icon img-thumbnail rounded-circle"
+      .col-1
+        span Gift
+      .col.mx-1
+        span = gift.name.truncate(13)
+      .col
+        span = l(gift.created_at.to_date, format: :long)

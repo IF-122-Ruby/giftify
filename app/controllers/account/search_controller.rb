@@ -1,7 +1,7 @@
 class Account::SearchController < Account::AccountsController
   def search
     if params[:search].blank?
-      redirect_to(account_gifts_path, notice: "Write search request")
+      redirect_back(fallback_location: account_organization_gifts_path, notice: "Write search request")
     else
       @results = Elasticsearch::Model.search({
         "query": {
@@ -18,7 +18,7 @@ class Account::SearchController < Account::AccountsController
         }
       }, [User, Gift]).records.to_a
       if @results.blank?
-        redirect_to(account_gifts_path, notice: "Records not found")
+        redirect_back(fallback_location: account_organization_gifts_path, notice: "Records not found")
       end
     end
   end

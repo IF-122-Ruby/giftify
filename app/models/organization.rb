@@ -20,7 +20,7 @@
 #
 class Organization < ApplicationRecord
   has_many :roles
-  belongs_to :owner, class_name: 'User', foreign_key: 'user_id'
+  belongs_to :user
   has_many :users, through: :roles
   has_many :gifts
   has_many :invites
@@ -52,6 +52,8 @@ class Organization < ApplicationRecord
   end
 
   def update_admin_organization
-    User.__elasticsearch__.client.update(index: 'users', id: owner, body: { doc: { organization_id: id} })
+    # return if Rails.env.test?
+
+    User.__elasticsearch__.client.update(index: User.index_name, id: user.id, body: { doc: { organization_id: id} })
   end
 end

@@ -27,6 +27,7 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
+  index_name [Rails.env, model_name.collection.gsub(/\//, '-')].join('_')
 
   scope :admins, -> { joins(:role).where(roles: { role: Role::ADMIN }) }
   scope :managers, -> { joins(:role).where(roles: { role: Role::MANAGER }) }
@@ -88,12 +89,12 @@ class User < ApplicationRecord
   end
 
   def used_points_for_month
-   sender_transactions.where(["created_at >= ? and created_at <= ?", Date.today.beginning_of_month.beginning_of_day, Date.today.end_of_month.end_of_day]).sum(:amount)
- end
+    sender_transactions.where(["created_at >= ? and created_at <= ?", Date.today.beginning_of_month.beginning_of_day, Date.today.end_of_month.end_of_day]).sum(:amount)
+  end
 
- def used_points
-   sender_transactions.sum(:amount)
- end
+  def used_points
+    sender_transactions.sum(:amount)
+  end
 
   def new_user_notification
     return if organization.nil?

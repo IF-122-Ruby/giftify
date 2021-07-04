@@ -135,7 +135,6 @@ GEM
       elasticsearch-transport (= 7.13.1)
     elasticsearch-api (7.13.1)
       multi_json
-    elasticsearch-dsl (0.1.9)
     elasticsearch-model (7.1.1)
       activesupport (> 3)
       elasticsearch (> 1)
@@ -421,7 +420,6 @@ DEPENDENCIES
   devise
   dotenv-rails
   elasticsearch (~> 7.13, >= 7.13.1)
-  elasticsearch-dsl
   elasticsearch-model
   factory_bot_rails
   faker

@@ -50,7 +50,7 @@ class Account::GiftsController < Account::AccountsController
     flash[:notice] = 'Gift succesfully deleted!'
     redirect_to account_gifts_path
   end
-  
+
   private
 
   def gift_params

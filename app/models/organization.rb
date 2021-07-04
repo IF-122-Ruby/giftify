@@ -52,8 +52,6 @@ class Organization < ApplicationRecord
   end
 
   def update_admin_organization
-    # return if Rails.env.test?
-
     User.__elasticsearch__.client.update(index: User.index_name, id: user.id, body: { doc: { organization_id: id} })
   end
 end

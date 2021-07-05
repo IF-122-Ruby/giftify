@@ -6,8 +6,8 @@
     - else
       - @results.to_a.each do |result|
         - if result.class.to_s == "User" 
-          = render partial: "account/search/search_users", locals: {user: result}
+          = render partial: "account/search/user", locals: {user: result}
         - else
-          = render partial: "account/search/search_gifts", locals: {gift: result}
+          = render partial: "account/search/gift", locals: {gift: result}
       .digg_pagination.pagination-position.p-3
         = will_paginate @results

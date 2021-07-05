@@ -28,14 +28,12 @@ RSpec.describe Account::SearchController, type: :request do
 
     it 'doesn`t find anything' do
       get account_search_path(search: 'random name')
-      follow_redirect!
-      expect(response.body).to include('Records not found')
+      expect(response.body).to include('There are no results')
     end
 
     it 'doesn`t search blank query' do
       get account_search_path(search: '')
-      follow_redirect!
-      expect(response.body).to include('Write search request')
+      expect(response.body).to include('There are no results')
     end
 
     it 'return multiple results' do

@@ -63,7 +63,6 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :role, reject_if: :all_blank
 
   before_create       :generate_token
-
   after_create_commit :new_user_notification
 
   index_name [Rails.env, model_name.collection.gsub(/\//, '-')].join('_')

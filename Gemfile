@@ -9,6 +9,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'devise'
+gem 'will_paginate'
+gem 'elasticsearch', '~> 7.13', '>= 7.13.1'
+gem 'elasticsearch-model'
 gem 'factory_bot_rails'
 gem 'faker'
 gem 'jbuilder', '~> 2.7'
@@ -22,7 +25,6 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
-gem 'will_paginate'
 gem 'sentry-ruby'
 gem 'sentry-rails'
 gem 'sentry-sidekiq'
@@ -46,6 +48,7 @@ group :test do
   gem 'shoulda-matchers', '~> 4.0'
   gem 'simplecov', require: false
   gem 'rails-controller-testing'
+  gem "timecop"
 end
 
 group :development do

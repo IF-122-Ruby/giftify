@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :accept_invites, only: %i[new create]
 
   namespace :account do
+    get '/search', to: 'search#search', as: 'search'
     resources :microposts, path: :feed, except: [:show]
     resources :gifts
     resources :users, except: [:create, :new] do
@@ -50,5 +51,11 @@ Rails.application.routes.draw do
     resources :organizations, only: [:index, :show]
     resources :feedbacks, only: [:index, :show]
     resources :users
+  end
+
+  namespace :api do
+    namespace :v1 do
+      resource :user, only: [:show]
+    end
   end
 end

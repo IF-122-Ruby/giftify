@@ -62,8 +62,9 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :owned_organization
   accepts_nested_attributes_for :role, reject_if: :all_blank
 
-  after_create_commit :new_user_notification
   before_create       :generate_token
+
+  after_create_commit :new_user_notification
 
   index_name [Rails.env, model_name.collection.gsub(/\//, '-')].join('_')
 
@@ -142,9 +143,9 @@ class User < ApplicationRecord
                     email: email,
                     created_at: created_at,
                     updated_at: updated_at,
-                    organization_id: organization.nil? ? nil : organization.id })
+                    organization_id: organization&.id })
   end
-  
+
   def generate_token
     self.token = loop do
       random_token = SecureRandom.urlsafe_base64(nil, false)

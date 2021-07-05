@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Admin::UsersController, type: :request do
-  let!(:superadmin) { create(:user, :superadmin) }
+  let!(:superadmin) { create(:user, :with_organization, :superadmin) }
 
   before do
     sign_in superadmin

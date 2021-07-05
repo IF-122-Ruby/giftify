@@ -20,12 +20,12 @@
 class Gift < ApplicationRecord
   mount_uploader :image, ImageUploader
 
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
-
   MERCH = 'merch'.freeze
   COUPON = 'coupon'.freeze
   GIFT_TYPES = [MERCH, COUPON].freeze
+
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
 
   enum gift_type: { merch: MERCH, coupon: COUPON }
 

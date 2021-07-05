@@ -25,9 +25,9 @@ require 'csv'
 
 class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
+
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
-  index_name [Rails.env, model_name.collection.gsub(/\//, '-')].join('_')
 
   scope :admins, -> { joins(:role).where(roles: { role: Role::ADMIN }) }
   scope :managers, -> { joins(:role).where(roles: { role: Role::MANAGER }) }
@@ -64,6 +64,8 @@ class User < ApplicationRecord
 
   after_create_commit :new_user_notification
   before_create       :generate_token
+
+  index_name [Rails.env, model_name.collection.gsub(/\//, '-')].join('_')
 
   def self.grouped_collection_by_role
     {

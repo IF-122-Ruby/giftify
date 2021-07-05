@@ -18,11 +18,10 @@
 #  index_gifts_on_organization_id  (organization_id)
 #
 class Gift < ApplicationRecord
+  mount_uploader :image, ImageUploader
+
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
-  index_name [Rails.env, model_name.collection.gsub(/\//, '-')].join('_')
-  
-  mount_uploader :image, ImageUploader
 
   MERCH = 'merch'.freeze
   COUPON = 'coupon'.freeze
@@ -40,4 +39,6 @@ class Gift < ApplicationRecord
   validates :name, :description, presence: true
   validates :gift_type, inclusion: { in: gift_types.values }
   validates :amount, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
+
+  index_name [Rails.env, model_name.collection.gsub(/\//, '-')].join('_')
 end

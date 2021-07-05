@@ -33,7 +33,9 @@ class Organization < ApplicationRecord
 
   after_commit :add_role
 
-  after_create_commit :new_organization_notification_to_superadmins, :new_company_created_notification, :update_admin_organization
+  after_create_commit :new_organization_notification_to_superadmins,
+                      :new_company_created_notification,
+                      :update_admin_organization
 
   private
 

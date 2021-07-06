@@ -26,6 +26,6 @@ class Notification < ApplicationRecord
   belongs_to :user
 
   scope :recent, -> { order(created_at: :desc).limit(10) }
-  scope :unread, -> { where(read: false) }
+
   validates :message, presence: true
 end

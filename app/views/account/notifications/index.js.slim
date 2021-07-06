@@ -1,0 +1,5 @@
+| document.querySelector('#notifications').insertAdjacentHTML('beforeend', '#{j render("account/notifications/notifications", notifications: @notifications)}');
+- if @notifications.next_page
+  | document.querySelector('.digg_pagination').innerHTML = '#{j will_paginate(@notifications)}';
+- else
+  | document.querySelector('.digg_pagination').innerHTML = '';

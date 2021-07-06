@@ -8,11 +8,22 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-white.shadow-sm.p-3.bg-white.rounded
         = link_to "Home page", root_url, class: "text-decoration-none text-dark text-bold"
       .d-flex.justify-content-center
         = form_tag account_search_path, method: :get
-          .input-group.m-1
+          .input-group.me-1.mt-1.mb-1.flex-nowrap
             = search_field_tag :search, params[:search], placeholder: "Search...", class: "bg-light py-0"
-            = button_tag "search", class: 'btn btn-secondary'
-        = link_to account_notifications_path, class: "btn btn-secondary m-1" do
-          i.fas.fa-bell
+            = button_tag class: 'btn btn-secondary' do 
+              i.fas.fa-search
+        .nav-item.dropdown.notifications-dropdown
+          button.btn.btn-secondary.m-1 aria-expanded="false" data-bs-toggle="dropdown" href="#" role="button" 
+            i.fas.fa-bell
+          .dropdown-menu.dropdown-menu-end.rounded
+            .dropdown-header
+              .d-flex.flex-row.justify-content-between.align-items-center
+                label.text-light.fs-6 Notifications
+                = link_to "Marks all as read", mark_all_as_read_account_notification_path(current_user), class: "ms-auto text-secondary text-light fs-6"
+            .notifications-dropdown__list.notifications-dropdown__scroll
+              = render 'account/notifications/list', notifications: current_user.own_notifications.recent
+            = link_to account_notifications_path
+              .text-center.msg-footer.py-2 View All Notifications
         = link_to account_favorite_gifts_path, class: "btn btn-secondary m-1" do
           i.fas.fa-heart
         = link_to account_my_gifts_path, class: "btn btn-secondary m-1" do

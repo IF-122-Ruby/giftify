@@ -17,10 +17,12 @@
 @import "stylesheets/header";
 @import "stylesheets/organization_gifts";
 @import "stylesheets/comments";
+@import "notification";
 
 body {
   background-color: $background-color;
 }
+
 .sidebar,.dropdown-menu {
     .change-color {
       transition: .2s;

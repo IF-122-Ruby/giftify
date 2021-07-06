@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :accept_invites, only: %i[new create]
 
   namespace :account do
+    get '/search', to: 'search#search', as: 'search'
     resources :articles
     resources :microposts, path: :feed, except: [:show]
     resources :gifts

@@ -1,0 +1,12 @@
+= link_to account_user_path(user), class: "text-reset m-0 p-0 text-decoration-none"
+  .border.p-2.rounded.mt-1.bg-white
+    .row.d-flex.align-items-center
+      .col-3
+        span = image_tag user.avatar.thumb.url class: "img-fluid search__image img-thumbnail rounded-circle" if user.avatar?
+      .col-1
+        span User
+      .col.mx-1
+        span.mx-1 = user.first_name
+        span = user.last_name.truncate(10)
+      .col
+        span = l(user.created_at.to_date, format: :long)

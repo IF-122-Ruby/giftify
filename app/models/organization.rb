@@ -20,7 +20,7 @@
 #
 class Organization < ApplicationRecord
   has_many :roles
-  belongs_to :user
+  belongs_to :user, touch: true
   has_many :users, through: :roles
   has_many :gifts
   has_many :invites
@@ -33,7 +33,15 @@ class Organization < ApplicationRecord
 
   after_commit :add_role
 
-  after_create_commit :new_organization_notification_to_superadmins, :new_company_created_notification
+  after_create_commit :new_organization_notification_to_superadmins,
+                      :new_company_created_notification,
+                      :update_admin_organization
+
+  private
+
+  def add_role
+    roles.create(role: :admin, user_id: user_id)
+  end
 
   def new_organization_notification_to_superadmins
     SuperadminMailer.send_mail_when_new_organization_created(self).deliver_now
@@ -45,9 +53,7 @@ class Organization < ApplicationRecord
                                   notification_type: Notification::ORGANIZATION_CREATED)
   end
 
-  private
-
-  def add_role
-    roles.create(role: :admin, user_id: user_id)
+  def update_admin_organization
+    user.touch
   end
 end

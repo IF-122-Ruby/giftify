@@ -22,6 +22,7 @@ export default class extends Controller {
 
     if(window.pageYOffset >= height - window.innerHeight - 500) {
       if (this.loading) return;
+      
       this.loadMore(url)
     }
   }

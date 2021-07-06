@@ -1,7 +1,7 @@
 import Rails from "@rails/ujs"
 
-document.addEventListener('DOMContentLoaded', () => {
-  if (!!document.querySelector("#notifications") && document.querySelector('.digg_pagination').childElementCount == 8) {
+document.addEventListener('turbolinks:load', () => {
+  if (!!document.querySelector("#notifications") && !!document.querySelector('.digg_pagination')) {
     window.addEventListener('scroll', () => {
       let url;
       if (!!document.querySelector('.digg_pagination .next_page')) {

@@ -8,9 +8,10 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-white.shadow-sm.p-3.bg-white.rounded
         = link_to "Home page", root_url, class: "text-decoration-none text-dark text-bold"
       .d-flex.justify-content-center
         = form_tag account_search_path, method: :get
-          .input-group.m-1
+          .input-group.me-1.mt-1.mb-1.flex-nowrap
             = search_field_tag :search, params[:search], placeholder: "Search...", class: "bg-light py-0"
-            = button_tag "search", class: 'btn btn-secondary'
+            = button_tag class: 'btn btn-secondary' do 
+              i.fas.fa-search
         .nav-item.dropdown.notifications-dropdown
           button.btn.btn-secondary.m-1 aria-expanded="false" data-bs-toggle="dropdown" href="#" role="button" 
             i.fas.fa-bell

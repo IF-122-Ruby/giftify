@@ -1,0 +1,8 @@
+= simple_form_for [:account, article] do |f|
+  .form-inputs
+    = f.input :title, input_html: { class: 'form__input' }
+    = f.input :category, collection: Article::CATEGORIES, input_html: { class: 'form__input' }
+    = f.input :body, as: :ckeditor, input_html: { class: 'form__input', ckeditor: { language: 'usa', toolbar: 'Full', height: 350 }}
+  .form-actions.d-flex.justify-content-between.pt-2
+    = f.button :submit, class: "btn btn-outline-info"
+    = link_to 'Back', account_articles_path, class: "btn btn-outline-danger"

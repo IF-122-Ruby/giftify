@@ -8,6 +8,7 @@ gem 'any_login'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'ckeditor'
 gem 'devise'
 gem 'factory_bot_rails'
 gem 'faker'

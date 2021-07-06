@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   root to: 'static_pages#home'
   get '/sitemaps', to: 'sitemaps#index', format: 'xml'
   get 'about', to: 'static_pages#about'
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
   resources :accept_invites, only: %i[new create]
 
   namespace :account do
+    resources :articles
     resources :microposts, path: :feed, except: [:show]
     resources :gifts
     resources :users, except: [:create, :new] do

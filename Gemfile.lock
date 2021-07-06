@@ -113,6 +113,8 @@ GEM
       mini_mime (>= 0.1.3)
       ssrf_filter (~> 1.0)
     chartkick (4.0.4)
+    ckeditor (5.1.0)
+      orm_adapter (~> 0.5.0)
     coderay (1.1.3)
     concurrent-ruby (1.1.9)
     connection_pool (2.2.5)
@@ -403,6 +405,7 @@ DEPENDENCIES
   capybara
   carrierwave
   chartkick
+  ckeditor
   devise
   dotenv-rails
   factory_bot_rails

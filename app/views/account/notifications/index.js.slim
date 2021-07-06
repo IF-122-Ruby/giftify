@@ -1,6 +1,5 @@
-| parser = new DOMParser();
-| document.querySelector('#notifications').append(parser.parseFromString('#{j render("account/notifications/notifications", notifications: @notifications)}', 'text/html'));
+| document.querySelector('#notifications').insertAdjacentHTML('beforeend', '#{j render("account/notifications/notifications", notifications: @notifications)}');
 - if @notifications.next_page
-  | document.querySelector('.digg_pagination').replaceWith('#{j will_paginate(@notifications)}');
+  | document.querySelector('.digg_pagination').innerHTML = '#{j will_paginate(@notifications)}';
 - else
-  | document.querySelector('.digg_pagination').remove();
+  | document.querySelector('.digg_pagination').innerHTML = '';

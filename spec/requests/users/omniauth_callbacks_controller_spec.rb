@@ -26,6 +26,8 @@ RSpec.describe Users::OmniauthCallbacksController, type: :request do
           post user_google_oauth2_omniauth_callback_path
 
           expect(response).to redirect_to(new_user_registration_path)
+          follow_redirect!
+          expect(response.body).to include('Create new account')
         end
       end
 
@@ -36,6 +38,8 @@ RSpec.describe Users::OmniauthCallbacksController, type: :request do
           post user_google_oauth2_omniauth_callback_path
   
           expect(response).to redirect_to(root_path)
+          follow_redirect!
+          expect(response.body).to include('Giftify')
         end
       end
     end

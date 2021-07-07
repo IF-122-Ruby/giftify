@@ -19,7 +19,7 @@ RSpec.describe Users::RegistrationsController, type: :request do
       it "render registration form with prefilled user data" do
         post user_registration_path, params: valid_attributes_organization
 
-        expect(response).to render_template :new
+        expect(response.body).to include('Organization name')
       end
     end
 
@@ -53,7 +53,7 @@ RSpec.describe Users::RegistrationsController, type: :request do
     it 'render new' do
       get new_user_registration_path
 
-      expect(response).to render_template :new
+      expect(response.body).to include('Organization name')
     end
   end
 end

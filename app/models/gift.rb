@@ -31,6 +31,8 @@ class Gift < ApplicationRecord
   has_many   :transactions, as: :receiver
   has_many   :favorites, dependent: :destroy
 
+  has_many :comments, -> { order(created_at: :desc) }, as: :commentable
+
   scope :ordered, -> { includes(:transactions).order('created_at desc') }
 
   validates :name, :description, presence: true

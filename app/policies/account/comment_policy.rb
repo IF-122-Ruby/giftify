@@ -4,8 +4,11 @@ class Account::CommentPolicy < ApplicationPolicy
   end
 
   class Scope < Scope
-    def resolve
+    def micropost_resolve
       user.organization.micropost_comments
+    end
+    def gift_resolve
+      user.organization.gift_comments
     end
   end
 end

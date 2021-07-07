@@ -15,6 +15,10 @@ Rails.application.routes.draw do
 
   namespace :account do
     resources :microposts, path: :feed, except: [:show]
+    resources :microposts, path: :feed, only: [:show] do
+      resources :comments, only: [:create, :destroy]
+    end
+    resources :comments, only: :destroy
     resources :gifts
     resources :users, except: [:create, :new] do
       get 'export', on: :collection, defaults: { format: 'csv' }
@@ -26,10 +30,12 @@ Rails.application.routes.draw do
               only: [:edit, :update],
               controller: :profile
     resources :organization_gifts, path: :rewards, only: [:index, :show]
+    resources :gifts, path: :rewards, only: [:show] do
+      resources :comments, only: [:create, :destroy]
+    end
     resources :invites, except: %i[edit update]
     resources :notifications, only: :index
     resources :reactions, only: [:create, :destroy]
-    resources :comments, only: [:create, :destroy]
     resources :favorite_gifts, only: [:index, :create, :destroy]
     resources :my_gifts, only: [:index, :show] do
       member do

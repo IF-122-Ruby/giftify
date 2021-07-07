@@ -19,6 +19,8 @@
               strong = rewards_amount(@gift)
             p.fs-5.lead
               = @gift.description
+          .comment-container
+            = render 'account/comments/comments', commentable: @gift
       .card-body.text-start
         = link_to 'Back', account_organization_gifts_path, class: 'btn btn-primary gift-card__button'
         = button_to 'Get', receive_account_my_gift_path(@gift), class:"button btn btn-outline-success nav-btn posts__card-button ms-1", remote: true

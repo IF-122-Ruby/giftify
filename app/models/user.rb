@@ -165,7 +165,6 @@ class User < ApplicationRecord
         user.last_name = session.dig('devise.google_data', 'info', 'last_name') if user.last_name.blank?
         user.email = session.dig('devise.google_data', 'info', 'email') if user.email.blank?
       end
-      
     end
   end
 

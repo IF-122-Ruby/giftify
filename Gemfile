@@ -34,6 +34,7 @@ gem 'activerecord-import'
 gem 'ransack'
 gem "chartkick"
 gem 'groupdate'
+gem 'telegram-bot'
 
 group :development, :test do
   gem 'annotate'

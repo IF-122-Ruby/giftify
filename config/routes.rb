@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :accept_invites, only: %i[new create]
 
   namespace :account do
+    get '/search', to: 'search#search', as: 'search'
     resources :microposts, path: :feed, except: [:show]
     resources :microposts, path: :feed, only: [:show] do
       resources :comments, only: [:create, :destroy]
@@ -34,7 +35,9 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
     resources :invites, except: %i[edit update]
-    resources :notifications, only: :index
+    resources :notifications, only: :index do
+      post 'mark_all_as_read', on: :member
+    end
     resources :reactions, only: [:create, :destroy]
     resources :favorite_gifts, only: [:index, :create, :destroy]
     resources :my_gifts, only: [:index, :show] do

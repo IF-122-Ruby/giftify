@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe TransactionHelper do
-  let!(:user) { create(:user, :simple, first_name: 'John') }
+  let!(:user) { create(:user, :simple, :with_organization, first_name: 'John') }
 
   before { sign_in user }
 

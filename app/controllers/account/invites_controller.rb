@@ -31,6 +31,16 @@ class Account::InvitesController < Account::AccountsController
     redirect_to account_invites_path
   end
 
+  def show
+    @invite = resource
+    if @invite.delete
+      flash[:success] = 'Invitation successfully deleted.'
+    else
+      flash[:danger] = 'Failed to delete invitation.'
+    end
+    redirect_to account_invites_path
+  end
+
   private
 
   def invite_params

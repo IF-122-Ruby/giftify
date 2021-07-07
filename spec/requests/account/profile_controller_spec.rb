@@ -30,8 +30,8 @@ RSpec.describe 'Account::Profile', type: :request do
           first_name: ''
         }
       }
-      expect(user.first_name).not_to eq('')
-      expect(response).to redirect_to(edit_account_profile_path)
+      expect(user.reload.first_name).not_to eq('')
+      expect(response.body).to include('Wrong input data. Profile wasn`t updated')
     end
   end
 end

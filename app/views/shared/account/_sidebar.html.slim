@@ -1,10 +1,10 @@
 .container.p-0.sidebar
   .row.h-100.shadow-sm.pt-3.mb-2.bg-white.order-first.pl-1
-    .d-flex.justify-content-around
-      = image_tag("serhii.png",class: 'img-fluid rounded-circle z-depth-1 shadow bg-body rounded w-25')
-      .d-flex.flex-column.justify-content-center.px-3
-        span = current_organization.name
-        span.text-black-50 administrator
+    .d-flex.justify-content-between
+      = image_tag current_user.avatar.small.url, class: 'img-fluid rounded-circle z-depth-1 shadow bg-body rounded w-25 ms-3' if current_user.avatar
+      .d-flex.flex-column.justify-content-center.px-3.me-3
+        span = current_user.full_name
+        span.text-black-50 = current_user.role.role
     span.mt-2
       hr
     .py-3.change-bg-color

@@ -1,17 +1,20 @@
 .d-flex.flex-row.p-1 id="comment_#{comment.id}"
   .d-flex
-    = image_tag  comment.user.avatar.thumb.url, class: "rounded-circle", size: 50 if comment.user.avatar?
-  .w-60.mx-2.alert.alert-secondary 
+    = image_tag  comment.user.avatar.thumb.url, class: "rounded-circle" if comment.user.avatar?
+  .w-50.mx-2
     .d-flex.justify-content-between
-      span.mr-2
-        = comment.user.full_name
+      .d-flex
+        span.me-2
+          = comment.user.full_name
+        .small.text-secondary.mt-1.pl-2
+          = time_ago_in_words(comment.created_at) + " ago"
+
       a aria-expanded="false" data-bs-toggle="dropdown" type="button" class='text-secondary'
         i.fas.fa-ellipsis-h
       - if policy([:account, comment]).destroy?
         .dropdown-menu.dropdown-menu-end
           = link_to 'Delete', account_comment_path(comment.id), class: "dropdown-item text-decoration-none", method: :delete, remote: true
-    .d-flex.flex-row.justify-content-between
-      p.text-right.comment-text.mb-0
+
+    .d-flex.flex-row.justify-content-start
+      span.text-right.comment-text.mb-0
         = comment.body
-    small.d-inline-block.mt-3
-      = time_ago_in_words(comment.created_at) + " ago"

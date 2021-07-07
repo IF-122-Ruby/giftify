@@ -32,9 +32,8 @@ gem 'activerecord-import'
 gem 'ransack'
 gem "chartkick"
 gem 'groupdate'
-gem 'omniauth'
 gem 'omniauth-google-oauth2'
-gem 'activerecord-session_store'
+gem 'omniauth-rails_csrf_protection'
 
 group :development, :test do
   gem 'annotate'

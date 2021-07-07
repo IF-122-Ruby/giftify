@@ -5,7 +5,7 @@
       .card.shadow.p-3.mb-5.bg-white.border-0
         = render partial: 'account/organization_gifts/gift', locals: { gift: gift }
         .d-flex.justify-content-between
-          = button_to 'Get', receive_account_my_gift_path(gift), class:"button btn btn-outline-success nav-btn posts__card-button me-1 w-100", remote: true
+          = button_to 'Get', receive_account_my_gift_path(gift), class:"button btn btn-outline-success ms-1", remote: true
           span = rewards_amount(gift)
 .digg_pagination.pagination-position
     = will_paginate @gifts, container: false

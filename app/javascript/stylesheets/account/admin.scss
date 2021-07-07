@@ -35,6 +35,13 @@ body {
     &:hover {
       background-color: #f3f4f7;
     }
+
+    &.active {
+      background-color: $primary;
+      color: white;
+      border-radius: 2px;
+      transition: .2 ease;
+    }
   }
 }
 

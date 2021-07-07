@@ -28,6 +28,9 @@ require 'csv'
 class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+  
   attr_accessor :skip_password_validation
 
   scope :admins, -> { joins(:role).where(roles: { role: Role::ADMIN }) }
@@ -63,8 +66,10 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :owned_organization
   accepts_nested_attributes_for :role, reject_if: :all_blank
 
-  after_create_commit :new_user_notification
   before_create       :generate_token
+  after_create_commit :new_user_notification
+
+  index_name [Rails.env, model_name.collection.gsub(/\//, '-')].join('_')
 
   def self.grouped_collection_by_role
     {
@@ -90,12 +95,12 @@ class User < ApplicationRecord
   end
 
   def used_points_for_month
-   sender_transactions.where(["created_at >= ? and created_at <= ?", Date.today.beginning_of_month.beginning_of_day, Date.today.end_of_month.end_of_day]).sum(:amount)
- end
+    sender_transactions.where(["created_at >= ? and created_at <= ?", Date.today.beginning_of_month.beginning_of_day, Date.today.end_of_month.end_of_day]).sum(:amount)
+  end
 
- def used_points
-   sender_transactions.sum(:amount)
- end
+  def used_points
+    sender_transactions.sum(:amount)
+  end
 
   def new_user_notification
     return if organization.nil?
@@ -132,7 +137,18 @@ class User < ApplicationRecord
       end
     end
   end
-  
+
+  def as_indexed_json(options = {})
+    options.merge({ id: id,
+                    first_name: first_name,
+                    last_name: last_name,
+                    birthday: birthday,
+                    email: email,
+                    created_at: created_at,
+                    updated_at: updated_at,
+                    organization_id: organization&.id })
+  end
+
   def generate_token
     self.token = loop do
       random_token = SecureRandom.urlsafe_base64(nil, false)

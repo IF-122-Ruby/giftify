@@ -28,6 +28,30 @@ RSpec.configure do |config|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 
+
+  config.before :all do
+    ActiveRecord::Base.descendants.each do |model|
+      if model.respond_to?(:__elasticsearch__)
+        begin
+          model.__elasticsearch__.create_index!(index: model.index_name, force: true)
+        rescue Elasticsearch::Transport::Transport::Errors::NotFound => e
+          $stdout.puts "There was an error creating the elasticsearch index for #{model.name}: #{e.inspect}"
+        end
+      end
+    end
+  end
+
+  config.after :all do
+    ActiveRecord::Base.descendants.each do |model|
+      if model.respond_to?(:__elasticsearch__)
+        begin
+          model.__elasticsearch__.client.indices.delete index: model.index_name
+        rescue Elasticsearch::Transport::Transport::Errors::NotFound => e
+          $stdout.puts "There was an error removing the elasticsearch index for #{model.name}: #{e.inspect}"
+        end
+      end
+    end
+  end
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
   config.mock_with :rspec do |mocks|

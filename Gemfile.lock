@@ -130,6 +130,18 @@ GEM
       dotenv (= 2.7.6)
       railties (>= 3.2)
     e2mmap (0.1.0)
+    elasticsearch (7.13.1)
+      elasticsearch-api (= 7.13.1)
+      elasticsearch-transport (= 7.13.1)
+    elasticsearch-api (7.13.1)
+      multi_json
+    elasticsearch-model (7.1.1)
+      activesupport (> 3)
+      elasticsearch (> 1)
+      hashie
+    elasticsearch-transport (7.13.1)
+      faraday (~> 1)
+      multi_json
     erubi (1.10.0)
     et-orbi (1.2.4)
       tzinfo
@@ -432,6 +444,8 @@ DEPENDENCIES
   chartkick
   devise
   dotenv-rails
+  elasticsearch (~> 7.13, >= 7.13.1)
+  elasticsearch-model
   factory_bot_rails
   faker
   groupdate

@@ -1,0 +1,13 @@
+.container
+  .row.mt-3.p-0
+    .d-flex.justify-content-center.mt-2
+    - if @results.empty?
+      h5.text-center There are no results...
+    - else
+      - @results.to_a.each do |result|
+        - if result.class.to_s == "User" 
+          = render partial: "account/search/user", locals: {user: result}
+        - else
+          = render partial: "account/search/gift", locals: {gift: result}
+      .digg_pagination.pagination-position.p-3
+        = will_paginate @results

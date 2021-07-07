@@ -1,5 +1,4 @@
 class Account::FavoriteGiftsController < Account::AccountsController
-
   def index
     @favorites = collection
   end
@@ -16,11 +15,11 @@ class Account::FavoriteGiftsController < Account::AccountsController
 
   private
 
-    def collection
-      current_user.favorite_gifts
-    end
+  def collection
+    current_user.favorite_gifts
+  end
 
-    def resource
-      current_organization.gifts.find(params[:id])
-    end
+  def resource
+    current_organization.gifts.find(params[:id])
+  end
 end

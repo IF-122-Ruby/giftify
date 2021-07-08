@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 class Article < ApplicationRecord
-  validates :title, uniqueness: true
+  validates :title, presence: true, uniqueness: true
   validates :body, presence: true
   validates :page_name, presence: true, uniqueness: true
 

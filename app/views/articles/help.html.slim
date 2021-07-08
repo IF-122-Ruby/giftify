@@ -7,4 +7,8 @@
                     = link_to edit_article_path(@article), class: "text-reset" do 
                       i.fas.fa-edit
     .d.flex
+      h4.text-center
+        strong
+          =@article.title
+      hr
       = @article.body.html_safe

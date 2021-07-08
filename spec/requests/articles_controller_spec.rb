@@ -9,9 +9,9 @@ RSpec.describe "Articles", type: :request do
   end
 
   describe "GET #help" do
-    it "returns http success" do
+    it "correct page" do
       get help_path
-      expect(response).to have_http_status(:success)
+      expect(response.body).to match /<CENTER> Hello/
     end
   end
 
@@ -23,11 +23,11 @@ RSpec.describe "Articles", type: :request do
   end
 
   describe "PATCH #update" do
-    let(:article_params) { attributes_for(:article) }
-
-    it "returns http success if signed in as admin" do
+    let(:article_params) { attributes_for(:article, page_name: 'help') }
+    it "article page_name was changed" do
       patch article_path(article), params: { article: article_params }
-      expect(response).to have_http_status(:redirect)
+      expect(article.page_name).to eq('help')
+      expect(response).to redirect_to(help_path)
     end
   end
 end

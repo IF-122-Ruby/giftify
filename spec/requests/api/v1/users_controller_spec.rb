@@ -7,16 +7,16 @@ RSpec.describe Api::V1::UsersController, type: :request do
 
   describe 'GET #show' do
     it 'return user by token' do
-      get api_v1_user_path, headers: { 'token': user.token }
+      get api_v1_user_path, headers: { 'Authorization': "Bearer #{user.token}"  }
       response_json = JSON.parse(response.body)
       
       expect(response_json['balance']).to eq(user.balance)
     end
 
     it 'return :not_found by invalid token' do
-      get api_v1_user_path, headers: { 'token': user.token + 'balance'}
+      get api_v1_user_path, headers: { 'Authorization': "Bearer #{user.token} balance"}
 
-      expect(response).to have_http_status(404)
+      expect(response).to have_http_status(401)
     end
   end
 end

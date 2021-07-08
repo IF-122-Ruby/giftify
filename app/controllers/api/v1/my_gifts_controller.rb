@@ -1,4 +1,5 @@
 class Api::V1::MyGiftsController < Api::V1::ApiController
+  
   def index
     @my_gifts = collection
     
@@ -14,7 +15,7 @@ class Api::V1::MyGiftsController < Api::V1::ApiController
   private
 
   def collection
-    User.find_by!(token: request.headers[:token]).my_gifts
+    User.find_by!(token: bearer_token).my_gifts
   end
   
   def resource

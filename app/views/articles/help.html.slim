@@ -1,0 +1,12 @@
+.list-group-item.list-group-item-action.d-flex.flex-column
+    .d-inline-flex.justify-content-end
+              - if current_user && current_user.superadmin?
+                .d-flex
+                  .px-2
+                    = link_to edit_article_path(@article), class: "text-reset" do 
+                      i.fas.fa-edit
+                  .px-2
+                    = link_to article_path(@article), class: "text-reset", method: :delete, data: { confirm: "Are you sure?" } do
+                      i.fas.fa-trash-alt
+    .d.flex
+      = @article.body.html_safe

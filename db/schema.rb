@@ -18,11 +18,9 @@ ActiveRecord::Schema.define(version: 2021_07_05_092152) do
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.string "body", null: false
-    t.string "category", null: false
-    t.bigint "organization_id"
+    t.string "page_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["organization_id"], name: "index_articles_on_organization_id"
   end
 
   create_table "categories", force: :cascade do |t|

@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   get '/sitemaps', to: 'sitemaps#index', format: 'xml'
   get 'about', to: 'static_pages#about'
   get 'pricing', to: 'static_pages#pricing'
+  get 'help', to: 'articles#help'
 
   resource :feedback, path: :contact_us, only: [:create, :new]
-
+  resources :articles, path: :help, only: [:update, :edit]
+ 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
@@ -16,7 +18,6 @@ Rails.application.routes.draw do
 
   namespace :account do
     get '/search', to: 'search#search', as: 'search'
-    resources :articles
     resources :microposts, path: :feed, except: [:show]
     resources :gifts
     resources :users, except: [:create, :new] do

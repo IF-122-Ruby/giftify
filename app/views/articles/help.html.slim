@@ -5,8 +5,5 @@
                   .px-2
                     = link_to edit_article_path(@article), class: "text-reset" do 
                       i.fas.fa-edit
-                  .px-2
-                    = link_to article_path(@article), class: "text-reset", method: :delete, data: { confirm: "Are you sure?" } do
-                      i.fas.fa-trash-alt
     .d.flex
       = @article.body.html_safe

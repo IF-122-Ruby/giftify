@@ -7,7 +7,7 @@ import "../stylesheets/account/admin";
 import "controllers";
 import toastr from './toastr_settings';
 import "chartkick/chart.js";
-import "../packs/hide_comments";
+import "../controllers/hide_comments.js";
 
 window.bootstrap = require("bootstrap");
 

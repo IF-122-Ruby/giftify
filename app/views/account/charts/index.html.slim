@@ -1,8 +1,11 @@
 .d-flex.align-content-center.mt-5.text-center
   .col-10.offset-1
+    .col-8.bg-white.offset-2 = link_to export_account_users_path(format: :xls), class: 'float-end d-block text-decoration-none export__link py-1' do
+      | Export users info
+      i.fas.fa-file-export
     .card.card-body.p-4.mb-2.gift-card.bg-white
       h4.card-title.text-center Points spent by users
       = column_chart @sender_user_transactions.group_by_day('transactions.created_at', range: 6.days.ago...Time.now, format: "%a").sum(:amount)
     .card.card-body.p-4.mb-2.gift-card.bg-white
-      h4.card-title.text-center Purchased gifts by users 
+      h4.card-title.text-center Purchased gifts by users
       = column_chart @gifted_users.group_by_day('transactions.created_at', range: 6.days.ago...Time.now, format: "%a").count

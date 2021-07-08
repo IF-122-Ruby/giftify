@@ -33,6 +33,10 @@ gem 'ransack'
 gem "chartkick"
 gem 'groupdate'
 
+# gem 'rubyzip', '= 1.0.0'
+# gem 'caxlsx'
+# gem 'caxlsx_rails'
+
 group :development, :test do
   gem 'annotate'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

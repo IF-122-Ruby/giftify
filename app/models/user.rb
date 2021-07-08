@@ -128,7 +128,7 @@ class User < ApplicationRecord
       end
     end
   end
-  
+
   def generate_token
     self.token = loop do
       random_token = SecureRandom.urlsafe_base64(nil, false)

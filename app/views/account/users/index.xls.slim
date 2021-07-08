@@ -1,0 +1,8 @@
+table
+  tr
+    th ID
+    th Name
+  - @users.each do |user|
+    tr
+      td = user.id
+      td = user.full_name

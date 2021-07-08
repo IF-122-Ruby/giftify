@@ -17,10 +17,12 @@
 @import "stylesheets/header";
 @import "stylesheets/organization_gifts";
 @import "stylesheets/comments";
+@import "notification";
 
 body {
   background-color: $background-color;
 }
+
 .sidebar,.dropdown-menu {
     .change-color {
       transition: .2s;
@@ -35,7 +37,19 @@ body {
     &:hover {
       background-color: #f3f4f7;
     }
+
+    &.active {
+      background-color: $primary;
+      color: white;
+      border-radius: 2px;
+      transition: .2 ease;
+    }
   }
+}
+
+.search__image {
+  height: 60px;
+  width: 60px;
 }
 
 .reaction__button {

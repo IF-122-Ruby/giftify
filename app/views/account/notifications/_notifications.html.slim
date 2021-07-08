@@ -1,0 +1,9 @@
+- notifications.each do |notification|
+  .card
+    .card-body
+      .d-flex.justify-content-between
+        small = notification.message
+        - unless notification.read?
+          .text-primary.notifications__mark
+            i.fas.fa-circle
+    small.px-3.pb-2 = time_ago_in_words(notification.created_at) + " ago"

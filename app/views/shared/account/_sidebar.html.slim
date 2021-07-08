@@ -5,6 +5,10 @@
       .d-flex.flex-column.justify-content-center.px-3
         span = current_user.full_name
         span.text-black-50 = current_organization.name
+        p.card-text
+          | Your balance:
+          strong
+            = pluralize(current_user.balance, "point")
     span.mt-2
       hr
     .py-3.change-bg-color

@@ -12,5 +12,5 @@ div.mt-0 id="comments_for_#{commentable.id}"
       button.btn.btn-secondary onclick="hideComments(#{commentable.id})"
         | All comments
   .hiddenComments id="#{commentable.id}"
-    - commentable.comments.drop(2).each do |comment|
+    - commentable.comments.offset(2).each do |comment|
       = render 'account/comments/comment', comment: comment

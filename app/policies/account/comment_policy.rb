@@ -4,7 +4,7 @@ class Account::CommentPolicy < ApplicationPolicy
   end
 
   class Scope < Scope
-    def micropost_resolve
+    def resolve
       scope.all
     end
   end

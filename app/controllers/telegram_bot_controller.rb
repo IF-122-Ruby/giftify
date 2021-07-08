@@ -2,7 +2,7 @@ class TelegramBotController < Telegram::Bot::UpdatesController
   include Telegram::Bot::UpdatesController::MessageContext
 
   def start!(*)
-    respond_with :message, text: 'Hi. Entry your /email example@mail.com and then /password example'
+    respond_with :message, text: 'Hi. Enter /email example@mail.com and then /password example'
   end
 
   def email!(email)
@@ -13,7 +13,7 @@ class TelegramBotController < Telegram::Bot::UpdatesController
   def password!(password)
     if telegram_user?(password)
       session['user_id'] = User.find_by(email: session['email']).id
-      respond_with :message, text: 'Success. Entry /balance to see your balance of points'
+      respond_with :message, text: 'Success. Enter /balance to see your balance of points'
     else
       respond_with :message, text: 'Not found'
     end

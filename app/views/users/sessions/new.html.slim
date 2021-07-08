@@ -19,5 +19,6 @@
       = f.input :remember_me, as: :boolean, label: "Remember me", label_html: {class: 'form-check-label'}
     .mb-3.text-center
       = f.submit "Log in", class: "btn btn-primary btn-block w-75"
+      = link_to 'Login with Google', user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn btn-primary btn-block w-75 mt-2"
     p.mt-3
       = render "users/shared/links"

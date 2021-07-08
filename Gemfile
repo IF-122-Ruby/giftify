@@ -8,6 +8,7 @@ gem 'any_login'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'ckeditor'
 gem 'devise'
 gem 'will_paginate'
 gem 'elasticsearch', '~> 7.13', '>= 7.13.1'
@@ -34,6 +35,8 @@ gem 'activerecord-import'
 gem 'ransack'
 gem "chartkick"
 gem 'groupdate'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 
 group :development, :test do
   gem 'annotate'

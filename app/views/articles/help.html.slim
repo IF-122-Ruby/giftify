@@ -1,14 +1,14 @@
 - if @article
   .d-flex.flex-column
     .d-inline-flex.justify-content-end
-              - if current_user && current_user.superadmin?
-                .d-flex
-                  .px-2
-                    = link_to edit_admin_article_path(@article), class: "text-reset" do 
-                      i.fas.fa-edit
+      - if current_user && current_user.superadmin?
+        .d-flex
+          .px-2
+            = link_to edit_admin_article_path(@article), class: "text-reset" do 
+              i.fas.fa-edit
     .d.flex
       h4.text-center
         strong
-          =@article.title
+          = @article.title
       hr
       = @article.body.html_safe

@@ -5,7 +5,7 @@ class Account::CommentPolicy < ApplicationPolicy
 
   class Scope < Scope
     def micropost_resolve
-      user.organization.comments if gift or micropost
+      scope.all
     end
   end
 end

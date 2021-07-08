@@ -1,7 +1,9 @@
 class Account::CommentsController < Account::AccountsController
   def create
-    @micropost = resource
-    @comment = @micropost.comments.build(comment_params.merge(user: current_user))
+    @commentable = resource
+    @comment = @commentable.comments.new(comment_params)
+    @comment.user = current_user
+
     respond_to do |format|
       if @comment.save
         format.js
@@ -23,12 +25,15 @@ class Account::CommentsController < Account::AccountsController
   end
 
   private
+    def comment_params
+      params.require(:comment).permit(:body, :commentable_id, :commentable_type)
+    end
 
-  def resource
-    current_organization.microposts.find(params[:micropost])
-  end
-
-  def comment_params
-    params.require(:comment).permit(:body)
-  end
+    def resource
+      if params[:gift_id]
+        current_organization.gifts.find(params[:gift_id])
+      elsif params[:micropost_id]
+        current_organization.microposts.find(params[:micropost_id])
+      end
+    end
 end

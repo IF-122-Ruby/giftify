@@ -5,7 +5,7 @@ class Account::CommentPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      user.organization.micropost_comments
+      user.organization.micropost_comments || user.organization.gift_comments
     end
   end
 end

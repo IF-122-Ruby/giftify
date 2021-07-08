@@ -1,1 +1,1 @@
-| document.querySelector(`#form_for_${#{@micropost.id}}`).innerHTML = "#{j render('account/comments/form', commentable: @micropost, comment: @comment) }";
+| document.querySelector(`#form_for_${#{@commentable.id}}`).innerHTML = "#{j render('account/comments/form', commentable: @commentable, comment: @comment) }";

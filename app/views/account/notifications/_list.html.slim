@@ -1,0 +1,11 @@
+- unless notifications.any?
+  li.dropdown-item
+    h4 There are no notifications here
+- else
+  - notifications.each do |notification|
+    .dropdown-item
+      .d-flex.flex-column
+        small.text-truncate.[class="#{notification.read ? '' : 'fw-bolder'}"]
+          = notification.message
+        small.text-muted
+          = time_ago_in_words(notification.created_at) + " ago"

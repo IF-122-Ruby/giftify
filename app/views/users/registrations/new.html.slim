@@ -5,7 +5,7 @@
     .text-center
       h4 Create new account
     .mb-3.mt-4
-      = f.fields_for :owned_organization, resource.build_owned_organization do |organization|
+      = f.fields_for :owned_organization, resource.owned_organization do |organization|
         label.fs-6.text-secondary.mb-0 Organization name
         = organization.input :name, label: false, input_html: {class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0'}
     .mb-3.mt-2
@@ -13,17 +13,20 @@
       = f.input :first_name, label: false, required: true, input_html: {class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0'}
       label.fs-6.text-secondary.mb-0 Last name
       = f.input :last_name, label: false, required: true, input_html: { class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0' }
-    .mb-3.mt-2
-      p.fs-6.text-secondary.mb-0 E-mail
+    - if session["devise.google_data"].nil?
+      .mb-3.mt-2
+        p.fs-6.text-secondary.mb-0 E-mail
       = f.input :email, label: false, required: true, input_html: {class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0'}
-    .mb-3.mt-2
-      p.fs-6.text-secondary.mb-0 Password
-      = f.input :password, label: false, required: true, input_html: {class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0'}
-    .mb-3.mt-2
-      p.fs-6.text-secondary.mb-0 Retype password
-      = f.input :password_confirmation, label: false, required: true, input_html: {class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0'}
+      .mb-3.mt-2
+        p.fs-6.text-secondary.mb-0 Password
+        = f.input :password, label: false, required: true, input_html: {class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0'}
+      .mb-3.mt-2
+        p.fs-6.text-secondary.mb-0 Retype password
+        = f.input :password_confirmation, label: false, required: true, input_html: {class: 'form-control rounded-0 border-top-0 border-start-0 border-end-0'}
     .text-center
       = f.submit "Sign up", class: "btn btn-primary btn-block w-75 mt-2"
+      - if session["devise.google_data"].nil?
+        = link_to 'Create with Google', user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn btn-primary btn-block w-75 mt-2"
       p.mt-3 
         | Already have an account? 
         = render "users/shared/links"

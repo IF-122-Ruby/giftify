@@ -2,9 +2,9 @@
   .form-color {
     background-color: whitesmoke;
   }
-  
+
   .form-control {
-    border-radius: 20px;
+    border-radius: 10px;
 
     &:focus {
       color: grey;
@@ -23,4 +23,8 @@
 
 .hidden-comments {
   display: none;
+}
+
+.small {
+  font-size: 0.768em;
 }

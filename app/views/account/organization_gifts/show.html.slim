@@ -19,6 +19,9 @@
               strong = rewards_amount(@gift)
             p.fs-5.lead
               = @gift.description
-            .nav-group.d-flex.flex-row
-              = button_to 'Get', receive_account_my_gift_path(@gift), class:"button btn btn-outline-success ms-1", remote: true
-              = link_to 'back...', account_organization_gifts_path, class: 'btn btn-link'
+          .comment-container.mt-5
+            hr
+            = render 'account/comments/comments', commentable: @gift
+          .nav-group.d-flex.flex-row
+            = button_to 'Get', receive_account_my_gift_path(@gift), class:"button btn btn-outline-success ms-1", remote: true
+            = link_to 'back...', account_organization_gifts_path, class: 'btn btn-link'

@@ -9,10 +9,12 @@
 #  encrypted_password     :string           default(""), not null
 #  first_name             :string
 #  last_name              :string
+#  provider               :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
 #  token                  :string
+#  uid                    :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -28,6 +30,8 @@ class User < ApplicationRecord
 
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
+  
+  attr_accessor :skip_password_validation
 
   scope :admins, -> { joins(:role).where(roles: { role: Role::ADMIN }) }
   scope :managers, -> { joins(:role).where(roles: { role: Role::MANAGER }) }
@@ -54,7 +58,7 @@ class User < ApplicationRecord
   delegate :superadmin?, :admin?, :manager?, :simple?, to: :role
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :rememberable, :validatable, :recoverable, :omniauthable, omniauth_providers: [:google_oauth2]
 
   validate :birthday_cannot_be_in_the_future
   validates :first_name, :last_name, presence: true, length: { maximum: 40 }
@@ -150,5 +154,40 @@ class User < ApplicationRecord
       random_token = SecureRandom.urlsafe_base64(nil, false)
       break random_token unless User.exists?(token: random_token)
     end
+  end
+
+  def self.from_omniauth(auth)
+    google_user = User.find_or_initialize_by(email: auth.info.email).tap do |user|
+      if user.new_record?
+        user.assign_attributes(
+          provider: auth[:provider],
+          uid: auth[:uid],
+          first_name: auth.info.first_name,
+          last_name: auth.info.last_name,
+          email: auth.info.email
+        )
+        user.save
+      end
+    end
+    google_user
+  end 
+  
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if session["devise.google_data"].present?
+        user.provider = session.dig('devise.google_data', 'provider') if user.provider.blank?
+        user.uid = session.dig('devise.google_data', 'uid') if user.uid.blank?
+        user.first_name = session.dig('devise.google_data', 'info', 'first_name') if user.first_name.blank?
+        user.last_name = session.dig('devise.google_data', 'info', 'last_name') if user.last_name.blank?
+        user.email = session.dig('devise.google_data', 'info', 'email') if user.email.blank?
+      end
+    end
+  end
+
+  private
+
+  def password_required?
+    return false if skip_password_validation
+    super
   end
 end

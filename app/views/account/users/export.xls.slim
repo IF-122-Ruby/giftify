@@ -2,7 +2,12 @@ table
   tr
     th ID
     th Name
+    th Gifts
   - @users.each do |user|
     tr
       td = user.id
       td = user.full_name
+      td
+        ul
+          - user.my_gifts.each do |gift|
+            li = gift.name

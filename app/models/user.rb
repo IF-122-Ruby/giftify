@@ -117,10 +117,10 @@ class User < ApplicationRecord
     :success
   end
 
-  def self.organization_statistic_csv
+  def self.organization_statistic_csv(options)
     attributes = ['id', 'full_name', 'balance', 'used_points_for_month', 'used_points']
 
-    CSV.generate(headers: true) do |csv|
+    CSV.generate(options, headers: true) do |csv|
       csv << attributes
 
       all.each do |user|

@@ -26,10 +26,6 @@ body {
 .sidebar,.dropdown-menu {
     .change-color {
       transition: .2s;
-
-    &:hover {
-      color: $primary;
-    }
   }
     .change-bg-color {
       background-color: transparent;

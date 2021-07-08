@@ -1,8 +1,8 @@
 .p-0
-  h4.bold Comments
+
 .comment-form
-  .m-3 id="comments_for_#{commentable.id}"
+  .mt-3.mb-3 id="comments_for_#{commentable.id}"
     - commentable.comments.each do |comment|
       = render 'account/comments/comment', comment: comment
-  .d-flex.flex-row.p-1.mt-3 id="form_for_#{commentable.id}"
+  .d-flex.flex-row.p-1.ps-0.mt-5.justify-content-center id="form_for_#{commentable.id}"
     = render 'account/comments/form', commentable: commentable, comment: Comment.new

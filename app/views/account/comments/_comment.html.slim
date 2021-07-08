@@ -1,7 +1,7 @@
-.d-flex.flex-row.p-1 id="comment_#{comment.id}"
+.d-flex.flex-row.p-1.justify-content-center id="comment_#{comment.id}"
   .d-flex
     = image_tag  comment.user.avatar.thumb.url, class: "rounded-circle" if comment.user.avatar?
-  .w-50.mx-2
+  .w-55.mx-2
     .d-flex.justify-content-between
       .d-flex
         span.me-2

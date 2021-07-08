@@ -1,6 +1,6 @@
 class Account::ReactionsController < Account::AccountsController
   def create
-    @micropost = micropost_resource
+    @micropost = resource
     @reaction = @micropost.reactions.build(user: current_user, reaction: params[:reaction])
     respond_to do |format|
       if @reaction.save
@@ -13,7 +13,7 @@ class Account::ReactionsController < Account::AccountsController
   end
 
   def destroy
-    @micropost = micropost_resource
+    @micropost = resource
     @reaction = @micropost.reactions.find_by(user: current_user, reaction: params[:reaction]).delete
     respond_to do |format|
       format.html { redirect_back fallback_location: root_path, flash: { notice: 'reaction removed' } }
@@ -23,7 +23,7 @@ class Account::ReactionsController < Account::AccountsController
 
   private
 
-  def micropost_resource
+  def resource
     current_organization.microposts.find(params[:micropost])
   end
 end

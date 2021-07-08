@@ -1,0 +1,33 @@
+.notifications-dropdown {
+  .notifications-dropdown__list {
+    position: relative;
+    height: 360px;
+  }
+  
+  .dropdown-header {
+    background-color: rgb(62, 103, 179);
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .dropdown-menu {
+    width: 360px;
+    border: 0;
+    padding: 0;
+    border-radius: 10px;
+    box-shadow: 0 0.5rem 1rem #00000026;
+    transform: translate(45%, 0);
+  }
+  
+  .notifications-dropdown__scroll {
+    overflow-y: scroll;
+    scrollbar-width: none;
+  }
+  
+  .notifications-dropdown__scroll::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.notifications__mark {
+  font-size: 10px;
+}

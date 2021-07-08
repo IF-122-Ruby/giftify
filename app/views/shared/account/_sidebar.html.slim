@@ -1,14 +1,16 @@
 .container.p-0.sidebar
   .row.h-100.shadow-sm.pt-3.mb-2.bg-white.order-first.pl-1
-    .d-flex.justify-content-around
-      = image_tag  current_user.avatar.thumb.url, class: "rounded-circle" if current_user.avatar?
-      .d-flex.flex-column.justify-content-center.px-3
-        span = current_user.full_name
-        span.text-black-50 = current_organization.name
-        p.card-text
-          | Your balance:
-          strong
-            = pluralize(current_user.balance, "point")
+    .d-flex.justify-content-start.mt-2
+      .col-2.justify-content-center.ps-1.pt-1
+        = image_tag  current_user.avatar.thumb.url, class: "rounded-circle", size: 65 if current_user.avatar?
+      .col-8.offset-1
+        .d-flex.flex-column
+          span = current_user.full_name
+          span.text-black-50 = current_organization.name
+          p.card-text
+            | Your balance: &nbsp;
+            strong
+              = pluralize(current_user.balance, "point")
     span.mt-2
       hr
     .py-3.change-bg-color
@@ -47,6 +49,13 @@
           span
             i.fas.fa-user-plus
             span.px-3 Invites
+          i.fas.fa-chevron-right
+    .py-3.change-bg-color
+      = link_to account_microposts_path, class: "text-decoration-none text-reset" do
+        .change-color.d-flex.justify-content-between.m-1
+          span
+            i.fas.fa-newspaper
+            span.px-3 Posts
           i.fas.fa-chevron-right
     .py-3.change-bg-color
       = link_to account_organization_gifts_path, class: "text-decoration-none text-reset" do

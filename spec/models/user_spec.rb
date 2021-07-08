@@ -9,10 +9,12 @@
 #  encrypted_password     :string           default(""), not null
 #  first_name             :string
 #  last_name              :string
+#  provider               :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
 #  token                  :string
+#  uid                    :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -62,6 +64,55 @@ RSpec.describe User, type: :model do
 
     it "create new notification" do
       expect(user.own_notifications.first.message).to eq("Welcome to organization #{user.organization.name}")
+    end
+  end
+ 
+  describe 'from_omniauth' do
+    context 'with new user' do
+      let(:auth) { OmniAuth::AuthHash.new(
+        provider: 'google_oauth2',
+        uid: '107474126175461691576',
+        info: {
+          email: 'giftify@gmail.com',
+          first_name: 'Steve',
+          last_name: 'Jobs'
+        }
+      )}
+
+      it 'create new user with google' do
+        expect(User.from_omniauth(auth)).to be_new_record 
+        expect(User.from_omniauth(auth).provider).to eq('google_oauth2')
+        expect(User.from_omniauth(auth).uid).to eq('107474126175461691576')
+        expect(User.from_omniauth(auth).email).to eq('giftify@gmail.com')
+        expect(User.from_omniauth(auth).first_name).to eq('Steve')
+        expect(User.from_omniauth(auth).last_name).to eq('Jobs')
+      end
+    end
+
+    context 'with existing user' do
+      let!(:organization) { create(:organization) }
+      let!(:user) { create(:user, organization: organization) }
+      let!(:google_user) { create(:user, provider: 'google_oauth2',
+        uid: '107474126175461691576', first_name: 'Steve',
+        last_name: 'Jobs', email:'giftify@gmail.com') }
+      let(:auth) { OmniAuth::AuthHash.new(
+        provider: google_user.provider,
+        uid: google_user.uid,
+        info: {
+          email: google_user.email,
+          first_name: google_user.first_name,
+          last_name: google_user.last_name
+        }
+      )}
+
+      it 'return user with google' do
+        expect(User.from_omniauth(auth)).to be_persisted
+        expect(User.from_omniauth(auth).provider).to eq('google_oauth2')
+        expect(User.from_omniauth(auth).uid).to eq('107474126175461691576')
+        expect(User.from_omniauth(auth).email).to eq('giftify@gmail.com')
+        expect(User.from_omniauth(auth).first_name).to eq('Steve')
+        expect(User.from_omniauth(auth).last_name).to eq('Jobs')
+      end
     end
   end
 end

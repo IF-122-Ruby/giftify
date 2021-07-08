@@ -1,4 +1,4 @@
-.d-flex.flex-row.p-1.mb-3.w-60
+.d-flex.flex-row.p-1.mb-3.w-100
   = image_tag  current_user.avatar.thumb.url, class: "rounded-circle", size: 60 if current_user.avatar?
   = simple_form_for comment, url: [:account, commentable, comment], html: { class: 'w-100' }, remote: true do |f|
     = f.input :body, label: false, required: false,  as: :text, input_html: { rows: 2, cols: 45, class: 'mx-2 form-group', placeholder: "Enter your comment..."}

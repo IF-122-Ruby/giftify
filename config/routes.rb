@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   root to: 'static_pages#home'
   get '/sitemaps', to: 'sitemaps#index', format: 'xml'
   get 'about', to: 'static_pages#about'
   get 'pricing', to: 'static_pages#pricing'
+  get 'help', to: 'articles#help'
 
   resource :feedback, path: :contact_us, only: [:create, :new]
-
+ 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks',
@@ -55,6 +57,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'admin#index'
+    resources :articles, only: [:update, :edit]
     resources :organizations, only: [:index, :show]
     resources :feedbacks, only: [:index, :show]
     resources :users

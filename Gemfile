@@ -8,6 +8,7 @@ gem 'any_login'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'ckeditor'
 gem 'devise'
 gem 'will_paginate'
 gem 'elasticsearch', '~> 7.13', '>= 7.13.1'

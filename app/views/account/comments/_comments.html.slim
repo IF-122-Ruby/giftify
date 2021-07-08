@@ -11,6 +11,6 @@ div.mt-0 id="comments_for_#{commentable.id}"
     .d-flex.justify-content-center
       button.btn.btn-secondary onclick="hideComments(#{commentable.id})"
         | All comments
-  .hidden-comments id="#{commentable.id}"
-    - commentable.comments.drop(2).each do |comment|
+  .hiddenComments id="#{commentable.id}"
+    - commentable.comments.offset(2).each do |comment|
       = render 'account/comments/comment', comment: comment

@@ -37,5 +37,8 @@ module Giftify
       g.template_engine :slim
     end
 
+    config.telegram_updates_controller.session_store = :file_store,
+                                                       Rails.root.join('tmp', 'session_store'),
+                                                       { expires_in: 1.month }
   end
 end

@@ -15,10 +15,11 @@ RSpec.describe Article, type: :model do
   describe 'validation' do
     it { is_expected.to validate_presence_of :body }
     it { is_expected.to validate_presence_of :page_name }
+    it { is_expected.to define_enum_for(:page_name).with_values(Article.page_names).backed_by_column_of_type(:string) }
 
     context "when valid Factory article" do
       it "has a valid article" do
-        expect(build(:article)).to be_valid
+        expect(build(:article, :help_page)).to be_valid
       end
     end
   end

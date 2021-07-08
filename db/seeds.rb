@@ -17,8 +17,8 @@ FactoryBot.create_list(:category, 8)
 
 team_superadmin = FactoryBot.create(:user, :superadmin, email: "team.giftify@gmail.com", password: "123giftify456")
 
-FactoryBot.create(:article)
-
 Category.all.each do |category|
   FactoryBot.create_list(:post, 5, :with_image, category: category, user: team_superadmin)
 end
+
+FactoryBot.create(:article, :help_page)

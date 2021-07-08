@@ -4,7 +4,7 @@
               - if current_user && current_user.superadmin?
                 .d-flex
                   .px-2
-                    = link_to edit_article_path(@article), class: "text-reset" do 
+                    = link_to edit_admin_article_path(@article), class: "text-reset" do 
                       i.fas.fa-edit
     .d.flex
       h4.text-center

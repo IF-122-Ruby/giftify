@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get 'help', to: 'articles#help'
 
   resource :feedback, path: :contact_us, only: [:create, :new]
-  resources :articles, path: :help, only: [:update, :edit]
  
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -51,6 +50,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'admin#index'
+    resources :articles, only: [:update, :edit]
     resources :organizations, only: [:index, :show]
     resources :feedbacks, only: [:index, :show]
     resources :users

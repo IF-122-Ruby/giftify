@@ -18,7 +18,8 @@ RSpec.describe "Articles", type: :request do
   describe "GET #edit" do
     it "returns http success if signed in as admin" do
       get edit_article_path(article)
-      expect(response).to have_http_status(:success)
+      expect(response).to render_template(:edit)
+      expect(response.body).to include("Update page")
     end
   end
 
@@ -28,6 +29,8 @@ RSpec.describe "Articles", type: :request do
       patch article_path(article), params: { article: article_params }
       expect(article.page_name).to eq('help')
       expect(response).to redirect_to(help_path)
+      follow_redirect!
+      expect(response.body).to include("<div class=\"alert alert-info\">Article was successfully updated.</div>")
     end
   end
 end

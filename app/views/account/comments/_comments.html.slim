@@ -1,16 +1,15 @@
 .p-0
-  h4.bold Comments
+
 .comment-form
-  .d-flex.flex-row.p-1.mb-3 id="form_for_#{commentable.id}"
-    = render 'account/comments/form', commentable: commentable, comment: Comment.new
-div.mt-0 id="comments_for_#{commentable.id}"
-  - commentable.comments.limit(2).each do |comment|
-    = render 'account/comments/comment', comment: comment
-  - if commentable.comments.count < 2
-  - else
-    .d-flex.justify-content-center
-      button.btn.btn-secondary onclick="hideComments(#{commentable.id})"
-        | All comments
-  .hidden-сomments id="#{commentable.id}"
-    - commentable.comments.offset(2).each do |comment|
+  .mt-3.mb-3.col-10.offset-1 id="comments_for_#{commentable.id}"
+    - commentable.comments.limit(2).each do |comment|
       = render 'account/comments/comment', comment: comment
+    - unless commentable.comments.count < 2
+      .d-flex.justify-content-center
+        button.bg-transparent.border-0.text-secondary onclick="hideComments(#{commentable.id})"
+          | All comments
+    .hidden-comments id="#{commentable.id}"
+      - commentable.comments.offset(2).each do |comment|
+        = render 'account/comments/comment', comment: comment
+  .d-flex.flex-row.p-1.ps-0.mt-1.col-10.offset-1 id="form_for_#{commentable.id}"
+    = render 'account/comments/form', commentable: commentable, comment: Comment.new

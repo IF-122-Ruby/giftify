@@ -1,27 +1,30 @@
-.container.p-0
-  .shadow-sm.mb-4
-  
-    .d-flex.flex-row.m-3
-      .col-9
-        = render "admin/organizations/search_form"
-    .d-flex.justify-content-around.border-bottom.py-3.sort_links
-      .col-1.text-center        
-        .h6 Logo
-      .col-1.text-center
-        .h6 Users
-      .col-3.text-center.text-decoration-none
-        = sort_link @q, :name, remote: true
-          .h6 Organization Name        
-      .col-3.text-center
-        .h6 Monthly points
-      .col-3.text-center
-        = sort_link @q, :created_at, remote: :true
-          .h6 Created
+- title 'Organizations'
 
-    - @organizations.each do |organization|
-      #organizations
-        = render "admin/organizations/organization", organization: organization
+.card.col-md-10.p-3.ms-5.mt-2
+  .card-header
+    .row
+      .col.d-flex.justify-content-between
+        .row
+          h4.card-title Organizations
+        .row
+          = render "admin/organizations/search_form"
+
+  .card-content
+    .card-body
+      table.table.table-hover
+        thead
+          tr
+            th Logo
+            th Users
+            th.text-decoration-none = sort_link @q, :name, remote: true
+              | Organization Name
+            th Monthly points
+            th.text-decoration-none = sort_link @q, :created_at, remote: :true
+              | Created
+        tbody
+          - @organizations.each do |organization|
+            #organizations
+              = render "admin/organizations/organization", organization: organization
 
   .digg_pagination.d-flex.justify-content-center.mb-3
     = will_paginate @organization_paginate
-

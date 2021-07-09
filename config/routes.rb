@@ -39,6 +39,7 @@ Rails.application.routes.draw do
         post 'receive'
       end
     end
+    resources :telegram_accounts, only: [:create, :destroy]
 
     resource :transaction, only: [:create, :new], controller: :transaction
     resources :charts, only: [:index]

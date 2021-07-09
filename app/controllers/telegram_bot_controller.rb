@@ -2,38 +2,21 @@ class TelegramBotController < Telegram::Bot::UpdatesController
   include Telegram::Bot::UpdatesController::MessageContext
 
   def start!(*)
-    respond_with :message, text: 'Hi. Enter /email example@mail.com and then /password example'
+    save_context :create_telegram_account
+    respond_with :message, text: 'Hello! Click on the button below to connect to your Giftify account', reply_markup: { inline_keyboard: [[{ text: "Connect", url: '/connect' }]] }
   end
 
-  def email!(email)
-    respond_with :message, text: 'Success'
-    session['email'] = email
+  def connect!(*)
+    
   end
 
-  def password!(password)
-    if telegram_user?(password)
-      session['user_id'] = User.find_by(email: session['email']).id
-      respond_with :message, text: 'Success. Enter /balance to see your balance of points'
-    else
-      respond_with :message, text: 'Not found'
-    end
+  def create_telegram_account
+    @telegram_account = TelegramAccount.create(chat_id: update['message']['from']['id'])
+    @telegram_account.update(connection_token: @telegram_account.generate_token)
+    session['connection_token'] = @telegram_account.connection_token
   end
 
-  def balance!(*)
-    if telegram_user
-      respond_with :message, text: "Your current balance on site #{telegram_user.balance}"
-    else
-      respond_with :message, text: 'You are not athorized to perform this action'
-    end
-  end
-
-  private
-
-  def telegram_user?(password)
-    User.find_by(email: session['email'])&.valid_password?(password)
-  end
-
-  def telegram_user
-    User.find(session['user_id'])
+  def message(*)
+    respond_with :message, text: "There are no action for #{update['message']['text']}"
   end
 end

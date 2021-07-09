@@ -27,7 +27,8 @@ class Organization < ApplicationRecord
   has_many :transactions, as: :sender
   has_many :microposts
   has_many :micropost_comments, -> { where(commentable_type: 'Micropost') }, through: :users, source: :comments
-  
+  has_many :gift_comments, -> { where(commentable_type: 'Gift') }, through: :users, source: :comments
+
   validates :name, presence: true
   validates :monthly_point, numericality: { only_integer: true }
 

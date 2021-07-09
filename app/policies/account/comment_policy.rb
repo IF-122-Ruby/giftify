@@ -5,7 +5,7 @@ class Account::CommentPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.all
+      [user.organization.micropost_comments, user.organization.gift_comments].inject(:union)
     end
   end
 end

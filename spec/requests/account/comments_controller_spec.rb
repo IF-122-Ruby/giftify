@@ -27,7 +27,7 @@ RSpec.describe "Account::Comments", type: :request do
     it 'invalid comment didn`t save' do
       expect(Comment.count).to eq(0)
       post account_micropost_comments_path(micropost.id), params: invalid_params, xhr: true
-      post account_gift_comments_path(gift_id: gift.id), params: invalid_params, xhr: true
+      post account_gift_comments_path(gift.id), params: invalid_params, xhr: true
       expect(Comment.count).to eq(0)
     end
 
@@ -35,7 +35,7 @@ RSpec.describe "Account::Comments", type: :request do
       expect(Comment.count).to eq(0)
       expect do
         post account_micropost_comments_path(micropost.id), params: comment_params, xhr: true
-        post account_gift_comments_path(gift_id: gift.id), params: comment_params, xhr: true
+        post account_gift_comments_path(gift.id), params: comment_params, xhr: true
       end.to change(Comment, :count).by(2)
     end
 

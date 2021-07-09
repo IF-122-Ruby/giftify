@@ -14,13 +14,13 @@ RSpec.describe "Account::Comments", type: :request do
       it 'to micropost' do
         post account_micropost_comments_path(micropost.id), params: comment_params, xhr: true
         get account_microposts_path
-        expect(response.body).to match /<p class=\"text-right comment-text mb-0\">Hello/
+        expect(response.body).to match /<span class=\"text-right comment-text mb-0\">Hello/
       end
 
       it 'to gift' do
         post account_gift_comments_path(gift.id), params: comment_params, xhr: true
         get account_organization_gift_path(gift)
-        expect(response.body).to match /<p class=\"text-right comment-text mb-0\">Hello/
+        expect(response.body).to match /<span class=\"text-right comment-text mb-0\">Hello/
       end
     end
 
@@ -42,7 +42,7 @@ RSpec.describe "Account::Comments", type: :request do
     it 'remove comment from micropost' do
       post account_micropost_comments_path(micropost.id), params: comment_params, xhr: true
       get account_microposts_path
-      expect(response.body).to match /<p class=\"text-right comment-text mb-0\">Hello/
+      expect(response.body).to match /<span class=\"text-right comment-text mb-0\">Hello/
       expect(Comment.count).to eq(1)
 
       delete account_comment_path(micropost.comments.first), xhr: true
@@ -50,13 +50,13 @@ RSpec.describe "Account::Comments", type: :request do
       expect(Comment.count).to eq(0)
 
       get account_microposts_path
-      expect(response.body).not_to match /<p class=\"text-right comment-text mb-0\">Hello/
+      expect(response.body).not_to match /<span class=\"text-right comment-text mb-0\">Hello/
     end
 
     it 'remove comment from gift' do
       post account_gift_comments_path(gift.id), params: comment_params, xhr: true
       get account_organization_gift_path(gift)
-      expect(response.body).to match /<p class=\"text-right comment-text mb-0\">Hello/
+      expect(response.body).to match /<span class=\"text-right comment-text mb-0\">Hello/
       expect(Comment.count).to eq(1)
 
       delete account_comment_path(gift.comments.first), xhr: true
@@ -64,7 +64,7 @@ RSpec.describe "Account::Comments", type: :request do
       expect(Comment.count).to eq(0)
 
       get account_organization_gift_path(gift)
-      expect(response.body).not_to match /<p class=\"text-right comment-text mb-0\">Hello/
+      expect(response.body).not_to match /<span class=\"text-right comment-text mb-0\">Hello/
     end
   end
 end

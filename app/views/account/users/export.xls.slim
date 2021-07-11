@@ -6,12 +6,9 @@ table
     th Price
   - @users.each do |user|
     tr
-      td = user.id
-      td = user.full_name
+      td rowspan="#{user.my_gifts.count}" = user.id
+      td rowspan="#{user.my_gifts.count}" = user.full_name
       td
-        table
-          - user.my_gifts.each do |gift|
-            td = gift.name
-            td = gift.price
-            th Total
-            td = user.amount_points_of_gifts_for_month
+        - user.my_gifts.each do |gift|
+           = gift.name
+      td rowspan="#{user.my_gifts.count}" = user.amount_points_of_gifts_for_month

@@ -64,6 +64,13 @@ RSpec.describe Account::UsersController, type: :request do
         expect(response.header['Content-Type']).to include 'text/csv'
         expect(response.body).to include(admin.full_name)
       end
+
+      it 'return xls file' do
+        get export_account_users_path(format: :xls)
+
+        expect(response.header['Content-Type']).to include 'application/xls'
+        expect(response.body).to include(admin.full_name)
+      end
     end
   end
 

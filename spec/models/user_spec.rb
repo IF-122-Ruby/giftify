@@ -66,7 +66,7 @@ RSpec.describe User, type: :model do
       expect(user.own_notifications.first.message).to eq("Welcome to organization #{user.organization.name}")
     end
   end
- 
+
   describe 'from_omniauth' do
     context 'with new user' do
       let(:auth) { OmniAuth::AuthHash.new(
@@ -113,6 +113,25 @@ RSpec.describe User, type: :model do
         expect(User.from_omniauth(auth).first_name).to eq('Steve')
         expect(User.from_omniauth(auth).last_name).to eq('Jobs')
       end
+    end
+  end
+
+  describe 'used points for gifts' do
+    let(:frozen_time) { (Time.current).freeze }
+    before { Timecop.travel(frozen_time) }
+    after { Timecop.return }
+
+    let(:organization) { create(:organization) }
+    let(:user) { create(:user, organization: organization) }
+    let!(:my_gift_1) { create(:gift, organization: user.organization, name: 'Toy and Sons', price: 10) }
+    let!(:my_gift_2) { create(:gift, organization: user.organization, name: 'T-shirt', price: 5) }
+    let!(:my_gift_3) { create(:gift, organization: user.organization, name: 'Cup', price: 6) }
+    let!(:transaction_previous_month_for_gift) { create(:transaction, receiver: my_gift_1, sender: user, amount: 10, created_at: 1.month.ago ) }
+    let!(:transaction_start_of_this_month) { create(:transaction, receiver: my_gift_2, sender: user, amount: 5, created_at: frozen_time.beginning_of_month.beginning_of_day) }
+    let!(:transaction_end_of_this_month) { create(:transaction, receiver: my_gift_3, sender: user, amount: 6, created_at: frozen_time.end_of_month.end_of_day) }
+
+    it 'return amount points of gifts for month' do
+      expect(user.amount_points_of_gifts_for_month).to eq(11)
     end
   end
 end

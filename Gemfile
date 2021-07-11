@@ -39,10 +39,6 @@ gem 'groupdate'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 
-# gem 'rubyzip', '= 1.0.0'
-# gem 'caxlsx'
-# gem 'caxlsx_rails'
-
 group :development, :test do
   gem 'annotate'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

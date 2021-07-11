@@ -1,5 +1,5 @@
 .d-flex.align-content-center.mt-5.text-center
-  .col-10.offset-1
+  .col-8.offset-1
     .card.card-body.p-4.mb-2.gift-card.user-show.bg-white
       .d-flex.flex-direction-row
         .card-body.gift-card__description
@@ -19,6 +19,9 @@
               strong = rewards_amount(@gift)
             p.fs-5.lead
               = @gift.description
-      .card-body.text-start
-        = link_to 'Back', account_organization_gifts_path, class: 'btn btn-primary gift-card__button'
-        = button_to 'Get', receive_account_my_gift_path(@gift), class:"button btn btn-outline-success nav-btn posts__card-button ms-1", remote: true
+          .comment-container.mt-5
+            hr
+            = render 'account/comments/comments', commentable: @gift
+          .nav-group.d-flex.flex-row
+            = button_to 'Get', receive_account_my_gift_path(@gift), class:"button btn btn-outline-success ms-1", remote: true
+            = link_to 'back...', account_organization_gifts_path, class: 'btn btn-link'

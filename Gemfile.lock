@@ -39,6 +39,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_record_union (1.3.0)
+      activerecord (>= 4.0)
     activejob (6.1.4)
       activesupport (= 6.1.4)
       globalid (>= 0.3.6)
@@ -62,7 +64,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
@@ -113,6 +115,8 @@ GEM
       mini_mime (>= 0.1.3)
       ssrf_filter (~> 1.0)
     chartkick (4.0.4)
+    ckeditor (5.1.0)
+      orm_adapter (~> 0.5.0)
     coderay (1.1.3)
     concurrent-ruby (1.1.9)
     connection_pool (2.2.5)
@@ -183,6 +187,7 @@ GEM
       ruby-vips (>= 2.0.17, < 3)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
+    jwt (2.2.3)
     libv8-node (15.14.0.1)
     libv8-node (15.14.0.1-x86_64-linux)
     listen (3.5.1)
@@ -205,6 +210,7 @@ GEM
     minitest (5.14.4)
     msgpack (1.4.2)
     multi_json (1.15.0)
+    multi_xml (0.6.0)
     multipart-post (2.1.1)
     net-scp (3.0.0)
       net-ssh (>= 2.6.5, < 7.0.0)
@@ -215,6 +221,27 @@ GEM
       racc (~> 1.4)
     nokogiri (1.11.7-x86_64-linux)
       racc (~> 1.4)
+    oauth2 (1.4.7)
+      faraday (>= 0.8, < 2.0)
+      jwt (>= 1.0, < 3.0)
+      multi_json (~> 1.3)
+      multi_xml (~> 0.5)
+      rack (>= 1.2, < 3)
+    omniauth (2.0.4)
+      hashie (>= 3.4.6)
+      rack (>= 1.6.2, < 3)
+      rack-protection
+    omniauth-google-oauth2 (1.0.0)
+      jwt (>= 2.0)
+      oauth2 (~> 1.1)
+      omniauth (~> 2.0)
+      omniauth-oauth2 (~> 1.7.1)
+    omniauth-oauth2 (1.7.1)
+      oauth2 (~> 1.4)
+      omniauth (>= 1.9, < 3)
+    omniauth-rails_csrf_protection (1.0.0)
+      actionpack (>= 4.2)
+      omniauth (~> 2.0)
     orm_adapter (0.5.0)
     pg (1.2.3)
     pry (0.14.1)
@@ -228,6 +255,8 @@ GEM
     raabro (1.4.0)
     racc (1.5.2)
     rack (2.2.3)
+    rack-protection (2.1.0)
+      rack
     rack-proxy (0.7.0)
       rack
     rack-test (1.1.0)
@@ -425,6 +454,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  active_record_union
   activerecord-import
   annotate
   any_login
@@ -438,6 +468,7 @@ DEPENDENCIES
   capybara
   carrierwave
   chartkick
+  ckeditor
   devise
   dotenv-rails
   elasticsearch (~> 7.13, >= 7.13.1)
@@ -450,6 +481,8 @@ DEPENDENCIES
   meta-tags
   mini_magick
   mini_racer
+  omniauth-google-oauth2
+  omniauth-rails_csrf_protection
   pg (~> 1.1)
   pry
   puma (~> 5.0)

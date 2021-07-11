@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_08_212319) do
+ActiveRecord::Schema.define(version: 2021_07_10_132811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -149,15 +149,15 @@ ActiveRecord::Schema.define(version: 2021_07_08_212319) do
     t.index ["user_id", "organization_id"], name: "index_roles_on_user_id_and_organization_id", unique: true
   end
 
-  create_table "telegram_accounts", force: :cascade do |t|
+  create_table "telegram_profiles", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "chat_id"
+    t.string "telegram_id"
     t.string "connection_token"
-    t.datetime "connected_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["connection_token"], name: "index_telegram_accounts_on_connection_token", unique: true
-    t.index ["user_id"], name: "index_telegram_accounts_on_user_id"
+    t.index ["connection_token"], name: "index_telegram_profiles_on_connection_token", unique: true
+    t.index ["telegram_id"], name: "index_telegram_profiles_on_telegram_id", unique: true
+    t.index ["user_id"], name: "index_telegram_profiles_on_user_id"
   end
 
   create_table "transactions", force: :cascade do |t|

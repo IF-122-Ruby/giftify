@@ -1,0 +1,16 @@
+.container
+  .card
+    .card-body
+      .row
+        .col-md-6
+          = image_tag current_user.avatar.small.url
+        .col-md-6
+          ul.text-left
+            li = current_user.full_name
+            li = current_organization.name
+            li = current_user.balance
+            li = current_user.role.role
+            li = current_user.email
+            = unless current_user.telegram_profile.nil?
+              li = 'Connected to telegram'
+          = link_to 'Edit', edit_account_profile_path, class: 'btn btn-outline-success'

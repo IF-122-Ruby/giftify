@@ -24,7 +24,7 @@ Rails.application.routes.draw do
               only: [:edit, :update],
               controller: :organization
     resource  :profile,
-              only: [:edit, :update],
+              only: [:show, :edit, :update],
               controller: :profile
     resources :organization_gifts, path: :rewards, only: [:index, :show]
     resources :invites, except: %i[edit update]
@@ -39,7 +39,7 @@ Rails.application.routes.draw do
         post 'receive'
       end
     end
-    resources :telegram_accounts, only: [:create, :destroy]
+    get '/telegram_connect', to: 'telegram_profiles#create'
 
     resource :transaction, only: [:create, :new], controller: :transaction
     resources :charts, only: [:index]

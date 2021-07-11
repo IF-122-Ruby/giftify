@@ -35,6 +35,7 @@ gem 'ransack'
 gem "chartkick"
 gem 'groupdate'
 gem 'telegram-bot'
+gem 'redis-rails'
 
 group :development, :test do
   gem 'annotate'

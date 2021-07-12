@@ -36,6 +36,8 @@ gem 'activerecord-import'
 gem 'ransack'
 gem "chartkick"
 gem 'groupdate'
+gem 'telegram-bot'
+gem 'redis-rails'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 

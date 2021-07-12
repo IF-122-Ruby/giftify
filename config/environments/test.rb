@@ -58,4 +58,9 @@ Rails.application.configure do
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
   config.action_mailer.default_url_options = { host: "localhost:3000" }
+  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+
+  config.telegram_updates_controller.session_store = :memory_store
+  Telegram.reset_bots
+  Telegram::Bot::ClientStub.stub_all!
 end

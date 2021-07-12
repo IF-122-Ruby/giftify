@@ -42,6 +42,7 @@ class User < ApplicationRecord
   has_one :role, dependent: :destroy
   has_one :owned_organization, class_name: 'Organization'
   has_one :organization, through: :role
+  has_one :telegram_profile
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_gifts, through: :favorites, dependent: :destroy, source: :gift

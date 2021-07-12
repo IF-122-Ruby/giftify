@@ -41,6 +41,9 @@ gem 'redis-rails'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 
+gem 'caxlsx'
+gem 'caxlsx_rails'
+
 group :development, :test do
   gem 'annotate'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

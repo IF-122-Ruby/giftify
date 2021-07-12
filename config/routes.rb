@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'about', to: 'static_pages#about'
   get 'pricing', to: 'static_pages#pricing'
   get 'help', to: 'articles#help'
+  mount ActionCable.server, at: '/cable'
 
   resource :feedback, path: :contact_us, only: [:create, :new]
  

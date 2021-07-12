@@ -5,10 +5,14 @@ class FeedbacksController < ApplicationController
 
   def create
     @feedback = Feedback.create(feedback_params)
-    if @feedback.save
-      redirect_to root_path, notice: "#{@feedback.name}, thank you for your feedback. The administration will contact you shourtly."
-    else
-      render :new
+
+    respond_to do |format|
+      if @feedback.save
+        format.html { redirect_to root_path, notice: "#{@feedback.name}, thank you for your feedback. The administration will contact you shourtly." }
+        ActionCable.server.broadcast 'feedbacks', message: "New feedback created!"
+      else
+        render :new
+      end
     end
   end
 

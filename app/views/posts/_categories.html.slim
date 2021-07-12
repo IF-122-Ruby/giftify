@@ -1,5 +1,5 @@
 
-- if current_page?(controller: 'posts', action: 'index')
+/- if current_page?(controller: 'posts', action: 'index')
   h3.mb-3= link_to 'Categories', posts_path, class: 'list-group-item list-group-item-action  border-0'
   .list-group.posts-сategories-list
     - Category.ordered_by_name.each do |category|

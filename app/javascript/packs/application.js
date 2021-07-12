@@ -11,6 +11,7 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import "bootstrap";
 import "../stylesheets/application";
 import "controllers";
+import "react";
 
 Rails.start()
 Turbolinks.start()

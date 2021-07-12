@@ -4,6 +4,9 @@
 #
 #  id               :bigint           not null, primary key
 #  connection_token :string
+#  first_name       :string
+#  last_name        :string
+#  username         :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  telegram_id      :string

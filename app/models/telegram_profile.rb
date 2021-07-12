@@ -4,6 +4,9 @@
 #
 #  id               :bigint           not null, primary key
 #  connection_token :string
+#  first_name       :string
+#  last_name        :string
+#  username         :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  telegram_id      :string
@@ -21,6 +24,10 @@ class TelegramProfile < ApplicationRecord
   before_create :generate_token
 
   validates :telegram_id, uniqueness: true
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 
   private
 

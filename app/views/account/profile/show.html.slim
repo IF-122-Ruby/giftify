@@ -1,16 +1,34 @@
 .container
-  .card
-    .card-body
-      .row
-        .col-md-6
-          = image_tag current_user.avatar.small.url
-        .col-md-6
-          ul.text-left
-            li = current_user.full_name
-            li = current_organization.name
-            li = current_user.balance
-            li = current_user.role.role
-            li = current_user.email
-            = unless current_user.telegram_profile.nil?
-              li = 'Connected to telegram'
-          = link_to 'Edit', edit_account_profile_path, class: 'btn btn-outline-success'
+  .card.card-body
+    .row style='margin: -20px;'
+      .col-md-4 style='padding: 20px;'
+        .text-center = image_tag current_user.avatar.small.url
+      .col-md-8 style='padding: 20px;'
+        table.table.table-borderless.mb-0.text-muted.position-relative
+          tbody
+            tr
+              th scope='row'
+                | Name 
+              td = current_user.full_name
+            tr
+              th scope='row'
+                | Organization
+              td = current_organization.name
+            tr
+              th scope='row'
+                | Balance
+              td = current_user.balance
+            tr
+              th scope='row'
+                | Role
+              td = current_user.role.role
+            tr 
+              th scope='row'
+                | Email
+              td = current_user.email
+            tr
+              - if current_user.telegram_profile.present?
+                th = 'Connected to telegram'
+                td = render 'account/telegram_profiles/telegram_profile', 
+                            telegram_profile: current_user.telegram_profile
+        = link_to 'Edit', edit_account_profile_path, class: 'btn btn-outline-success'

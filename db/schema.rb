@@ -170,6 +170,9 @@ ActiveRecord::Schema.define(version: 2021_07_10_132811) do
   create_table "telegram_profiles", force: :cascade do |t|
     t.bigint "user_id"
     t.string "telegram_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "username"
     t.string "connection_token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -3,6 +3,9 @@ class CreateTelegramProfiles < ActiveRecord::Migration[6.1]
     create_table :telegram_profiles do |t|
       t.references :user
       t.string :telegram_id
+      t.string :first_name
+      t.string :last_name
+      t.string :username
       t.string :connection_token
 
       t.timestamps

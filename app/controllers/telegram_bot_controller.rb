@@ -8,7 +8,10 @@ class TelegramBotController < Telegram::Bot::UpdatesController
     if session['user_id']
       respond_with :message, text: 'You are connected, let`s do some action'
     else
-      telegram_profile = TelegramProfile.create(telegram_id: from['id'])
+      telegram_profile = TelegramProfile.create(telegram_id: from['id'],
+                                                first_name: from['first_name'],
+                                                last_name: from['last_name'],
+                                                username: from['username'])
       respond_with :message, text: 'Click on the button below to connect to your Giftify account',
                              reply_markup: { inline_keyboard: [
                                             [
@@ -22,7 +25,7 @@ class TelegramBotController < Telegram::Bot::UpdatesController
 
   def disconnect!
     if session['user_id']
-      resource.destroy
+      resource&.destroy
       session['user_id'] = nil
     end
     respond_with :message, text: 'You are disconnected from your giftify account'

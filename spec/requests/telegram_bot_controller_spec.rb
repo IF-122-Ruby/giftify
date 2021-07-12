@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe TelegramBotController, telegram_bot: :rails, type: :request do
+RSpec.describe TelegramBotController, telegram_bot: :rails do
   let!(:user) { create :user }
 
   before { sign_in user }

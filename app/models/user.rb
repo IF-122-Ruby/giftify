@@ -128,7 +128,10 @@ class User < ApplicationRecord
   end
 
   def amount_points_of_gifts_for_month
-    sender_transactions.where(["created_at >= ? and created_at <= ? and receiver_type = ?", Date.today.beginning_of_month.beginning_of_day, Date.today.end_of_month.end_of_day, 'Gift']).sum(:amount)
+    sender_transactions.where(["created_at >= ? and created_at <= ? and receiver_type = ?",
+                              Date.today.beginning_of_month.beginning_of_day,
+                              Date.today.end_of_month.end_of_day,
+                              'Gift']).sum(:amount)
   end
 
   def self.organization_statistic_csv

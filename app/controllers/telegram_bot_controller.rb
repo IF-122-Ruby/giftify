@@ -11,12 +11,12 @@ class TelegramBotController < Telegram::Bot::UpdatesController
       telegram_profile = TelegramProfile.create(telegram_id: from['id'])
       respond_with :message, text: 'Click on the button below to connect to your Giftify account',
                              reply_markup: { inline_keyboard: [
-                                          [
-                                            { text: "Connect",
-                                              url: "http://www.localhost:3000/account/telegram_profile/connect?connection_token=#{telegram_profile.connection_token}" }
+                                            [
+                                              { text: "Connect",
+                                                url: "http://www.#{Rails.application.routes.default_url_options[:host]}/account/telegram_profile/connect?connection_token=#{telegram_profile.connection_token}" }
+                                            ]
                                           ]
-                                        ]
-                                      }
+                                        }
     end
   end
 
@@ -25,7 +25,7 @@ class TelegramBotController < Telegram::Bot::UpdatesController
       resource.destroy
       session['user_id'] = nil
     end
-    respond_with :message, text: 'You are disconnected to your giftify account'
+    respond_with :message, text: 'You are disconnected from your giftify account'
   end
 
   def balance!

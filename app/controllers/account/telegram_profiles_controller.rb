@@ -1,7 +1,6 @@
 class Account::TelegramProfilesController < Account::AccountsController
   def create
     @telegram_profile = TelegramProfile.find_by(connection_token: params[:connection_token])
-
     if @telegram_profile&.update(user: current_user)
       flash[:success] = 'You`re connected to telegram'
       Telegram.bot.send_message(chat_id: @telegram_profile.telegram_id,

@@ -8,7 +8,7 @@ class TelegramBotController < Telegram::Bot::UpdatesController
     if session['user_id']
       respond_with :message, text: 'You are connected, let`s do some action'
     else
-      telegram_profile = TelegramProfile.create(telegram_id: from['id'],
+      telegram_profile = TelegramProfile.find_or_create_by(telegram_id: from['id'],
                                                 first_name: from['first_name'],
                                                 last_name: from['last_name'],
                                                 username: from['username'])

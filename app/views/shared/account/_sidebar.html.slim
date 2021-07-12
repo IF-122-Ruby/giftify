@@ -13,61 +13,64 @@
               = pluralize(current_user.balance, "point")
     span.mt-2
       hr
-    .py-3.change-bg-color
-      = link_to account_charts_path, class: "text-decoration-none text-reset" do
-        .change-color.d-flex.justify-content-between.m-1
-          span
-            i.fas.fa-tachometer-alt
-            span.px-3 Dashbord
-          i.fas.fa-chevron-right
-    - if current_user.superadmin?
-      .py-3.change-bg-color
-        = link_to admin_organizations_path, class: "text-decoration-none text-reset" do
-          .change-color.d-flex.justify-content-between.m-1
-            span
-              i.fas.fa-sitemap
-              span.px-3 Organizations
-            i.fas.fa-chevron-right
-    .py-3.change-bg-color
-      = link_to user_links, class: "text-decoration-none text-reset" do
-        .change-color.d-flex.justify-content-between.m-1
-          span
-            i.fas.fa-users
-            span.px-3 Users
-          i.fas.fa-chevron-right
-    - if current_user.superadmin?
-      .py-3.change-bg-color
-        = link_to admin_feedbacks_path, class: "text-decoration-none text-reset" do
-          .change-color.d-flex.justify-content-between.m-1
-            span
-              i.fas.fa-comment-dots
-              span.px-3 Feedbacks
-            i.fas.fa-chevron-right
-    .py-3.change-bg-color
-      = link_to account_invites_path, class: "text-decoration-none text-reset" do
-        .change-color.d-flex.justify-content-between.m-1
-          span
-            i.fas.fa-user-plus
-            span.px-3 Invites
-          i.fas.fa-chevron-right
-    .py-3.change-bg-color
-      = link_to account_microposts_path, class: "text-decoration-none text-reset" do
-        .change-color.d-flex.justify-content-between.m-1
-          span
-            i.fas.fa-newspaper
-            span.px-3 Posts
-          i.fas.fa-chevron-right
-    .py-3.change-bg-color
-      = link_to account_organization_gifts_path, class: "text-decoration-none text-reset" do
-        .change-color.d-flex.justify-content-between.m-1
-          span
-            i.fas.fa-gift
-            span.px-3 Gifts
-          i.fas.fa-chevron-right
-    .py-3.change-bg-color
-      = link_to new_account_transaction_path, class: "text-decoration-none text-reset", remote: true do
-        .change-color.d-flex.justify-content-between.m-1
-          span
-            i.fas.fa-gifts
-            span.px-3 Make a gift
-          i.fas.fa-chevron-right
+    #sidebar.pb-3
+      table.w-100
+        tr.d-flex.flex-column     
+          td class="py-3 px-2 change-bg-color #{active_link(account_charts_url)}"
+            = link_to account_charts_path, class: "text-decoration-none text-reset" do
+              .change-color.d-flex.justify-content-between.m-1
+                span
+                  i.fas.fa-tachometer-alt
+                  span.px-3 Dashbord
+                i.fas.fa-chevron-right
+          - if current_user.superadmin?        
+            td class="py-3 px-2 change-bg-color #{active_link(admin_organizations_url)}"
+              = link_to admin_organizations_path, class: "text-decoration-none text-reset " do
+                .change-color.d-flex.justify-content-between.m-1
+                  span
+                    i.fas.fa-sitemap
+                    span.px-3 Organizations
+                  i.fas.fa-chevron-right
+          td class="py-3 px-2 change-bg-color #{active_link(user_links)}"
+            = link_to user_links, class: "text-decoration-none text-reset #{active_link(user_links)}" do
+              .change-color.d-flex.justify-content-between.m-1
+                span
+                  i.fas.fa-users
+                  span.px-3 Users
+                i.fas.fa-chevron-right
+          - if current_user.superadmin?        
+            td class="py-3 px-2 change-bg-color #{active_link(admin_feedbacks_url)}"
+              = link_to admin_feedbacks_path, class: "text-decoration-none text-reset #{active_link(admin_feedbacks_url)}" do
+                .change-color.d-flex.justify-content-between.m-1
+                  span
+                    i.fas.fa-comment-dots
+                    span.px-3 Feedbacks
+                  i#feedbacks-icon.fas.fa-chevron-right
+          td class="py-3 px-2 change-bg-color #{active_link(account_invites_url)}"
+            = link_to account_invites_path, class: "text-decoration-none text-reset #{active_link(account_invites_url)}" do
+              .change-color.d-flex.justify-content-between.m-1
+                span
+                  i.fas.fa-user-plus
+                  span.px-3 Invites
+                i.fas.fa-chevron-right
+          td class="py-3 px-2 change-bg-color #{active_link(account_organization_gifts_url)}"
+            = link_to account_microposts_path, class: "text-decoration-none text-reset #{active_link(account_organization_gifts_url)}" do
+              .change-color.d-flex.justify-content-between.m-1
+                span
+                  i.fas.fa-gift
+                  span.px-3 Gifts
+                i.fas.fa-chevron-right      
+          td class="py-3 px-2 change-bg-color #{active_link(account_organization_gifts_url)}"
+            = link_to account_organization_gifts_path, class: "text-decoration-none text-reset #{active_link(account_organization_gifts_url)}" do
+              .change-color.d-flex.justify-content-between.m-1
+                span
+                  i.fas.fa-gift
+                  span.px-3 Gifts
+                i.fas.fa-chevron-right
+          td class="py-3 px-2 change-bg-color #{active_link(new_account_transaction_url)}"
+            = link_to new_account_transaction_path, class: "text-decoration-none text-reset #{active_link(new_account_transaction_url)}", remote: true do
+              .change-color.d-flex.justify-content-between.m-1
+                span
+                  i.fas.fa-gifts
+                  span.px-3 Make a gift
+                i.fas.fa-chevron-right

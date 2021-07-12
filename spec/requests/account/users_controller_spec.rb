@@ -68,7 +68,7 @@ RSpec.describe Account::UsersController, type: :request do
       it 'return xls file' do
         get export_account_users_path(format: :xlsx)
 
-        expect(response.header['Content-Type']).to include 'application/xlsx'
+        expect(response.header['Content-Type']).to include 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
       end
     end
   end

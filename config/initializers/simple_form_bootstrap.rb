@@ -45,7 +45,7 @@ SimpleForm.setup do |config|
   config.input_field_error_class = 'is-invalid'
   config.input_field_valid_class = 'is-valid'
 
-  config.browser_validations = true
+  config.browser_validations = false
 
   # vertical forms
   #

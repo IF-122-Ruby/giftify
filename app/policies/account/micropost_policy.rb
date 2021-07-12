@@ -4,7 +4,7 @@ class Account::MicropostPolicy < ApplicationPolicy
   end
 
   def new?
-    user.admin?
+    user.admin? || user.superadmin?
   end
 
   def create?
@@ -12,11 +12,11 @@ class Account::MicropostPolicy < ApplicationPolicy
   end
   
   def update?
-    user.admin?
+    user.admin? || user.superadmin?
   end
 
   def destroy?
-    user.admin?
+    user.admin? || user.superadmin?
   end
 
   class Scope < Scope

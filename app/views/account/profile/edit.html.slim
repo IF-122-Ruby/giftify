@@ -1,1 +1,8 @@
-= render  "account/profile/form", user: current_user
+.container-fluid
+  .row.align-content-center.mt-5
+    .col-12.col-md-10.offset-md-1
+      .card.card-body.p-4.bg-white
+        .row
+          .col-md-8.offset-md-2.col-12
+            h4.header-title.mt-0.text-center Edit your profile
+            = render  "account/profile/form", user: current_user

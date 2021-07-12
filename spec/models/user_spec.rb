@@ -9,10 +9,12 @@
 #  encrypted_password     :string           default(""), not null
 #  first_name             :string
 #  last_name              :string
+#  provider               :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
 #  token                  :string
+#  uid                    :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -62,6 +64,69 @@ RSpec.describe User, type: :model do
 
     it "create new notification" do
       expect(user.own_notifications.first.message).to eq("Welcome to organization #{user.organization.name}")
+    end
+  end
+
+  describe 'from_omniauth' do
+    context 'with new user' do
+      let(:auth) { OmniAuth::AuthHash.new(
+        provider: 'google_oauth2',
+        uid: '107474126175461691576',
+        info: {
+          email: 'giftify@gmail.com',
+          first_name: 'Steve',
+          last_name: 'Jobs'
+        }
+      )}
+
+      it 'create new user with google' do
+        expect(User.from_omniauth(auth)).to be_new_record 
+        expect(User.from_omniauth(auth).provider).to eq('google_oauth2')
+        expect(User.from_omniauth(auth).uid).to eq('107474126175461691576')
+        expect(User.from_omniauth(auth).email).to eq('giftify@gmail.com')
+        expect(User.from_omniauth(auth).first_name).to eq('Steve')
+        expect(User.from_omniauth(auth).last_name).to eq('Jobs')
+      end
+    end
+
+    context 'with existing user' do
+      let!(:organization) { create(:organization) }
+      let!(:user) { create(:user, organization: organization) }
+      let!(:google_user) { create(:user, provider: 'google_oauth2',
+        uid: '107474126175461691576', first_name: 'Steve',
+        last_name: 'Jobs', email:'giftify@gmail.com') }
+      let(:auth) { OmniAuth::AuthHash.new(
+        provider: google_user.provider,
+        uid: google_user.uid,
+        info: {
+          email: google_user.email,
+          first_name: google_user.first_name,
+          last_name: google_user.last_name
+        }
+      )}
+
+      it 'return user with google' do
+        expect(User.from_omniauth(auth)).to be_persisted
+        expect(User.from_omniauth(auth).provider).to eq('google_oauth2')
+        expect(User.from_omniauth(auth).uid).to eq('107474126175461691576')
+        expect(User.from_omniauth(auth).email).to eq('giftify@gmail.com')
+        expect(User.from_omniauth(auth).first_name).to eq('Steve')
+        expect(User.from_omniauth(auth).last_name).to eq('Jobs')
+      end
+    end
+  end
+
+  describe 'used points for gifts' do
+    let(:organization) { create(:organization) }
+    let(:user) { create(:user, organization: organization) }
+    let!(:my_gifts) { create_list(:gift, 3, organization: user.organization) }
+
+    let!(:transaction_previous_month_for_gift) { create(:transaction, receiver: my_gifts[0], sender: user, amount: 10, created_at: 1.month.ago ) }
+    let!(:transaction_start_of_this_month) { create(:transaction, receiver: my_gifts[1], sender: user, amount: 5, created_at: Date.today.beginning_of_month) }
+    let!(:transaction_end_of_this_month) { create(:transaction, receiver: my_gifts[2], sender: user, amount: 6, created_at:  Date.today.end_of_month) }
+
+    it 'return amount points of gifts for month' do
+      expect(user.amount_points_of_gifts_for_month).to eq(11)
     end
   end
 end

@@ -1,3 +1,3 @@
-| comment = document.querySelector(`#comments_for_${ #{@micropost.id} }`);
+| comment = document.querySelector(`#comments_for_${ #{@commentable.id} }`);
 | comment.insertAdjacentHTML('afterbegin', "#{j render('account/comments/comment', comment: @comment)}", 'text/html');
-| document.querySelector(`#form_for_${#{@micropost.id}}`).innerHTML = "#{j render('account/comments/form', commentable: @micropost, comment: Comment.new) }";
+| document.querySelector(`#form_for_${#{@commentable.id}}`).innerHTML = "#{j render('account/comments/form', commentable: @commentable, comment: Comment.new) }";

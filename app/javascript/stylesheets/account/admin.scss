@@ -26,16 +26,19 @@ body {
 .sidebar,.dropdown-menu {
     .change-color {
       transition: .2s;
-
-    &:hover {
-      color: $primary;
-    }
   }
     .change-bg-color {
       background-color: transparent;
 
     &:hover {
       background-color: #f3f4f7;
+    }
+
+    &.active {
+      background-color: $primary;
+      color: white;
+      border-radius: 2px;
+      transition: .2 ease;
     }
   }
 }

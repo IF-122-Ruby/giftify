@@ -2,24 +2,18 @@ class TelegramBotController < Telegram::Bot::UpdatesController
   include Telegram::Bot::UpdatesController::MessageContext
   include ActionView::Helpers::TextHelper
 
-  def start!(*)
-    if session[:user_id]
-      respond_with :message, text: 'You are connected, try do some action'
-    else
-      respond_with :message, text: 'Hi. Send /connect to get a link to join giftify account'
-    end
-  end
+  before_action :connected_user
 
-  def connect!
-    if session[:user_id]
-      respond_with :message
+  def start!(*)
+    if session['user_id']
+      respond_with :message, text: 'You are connected, let`s do some action'
     else
-      telegram_profile
+      telegram_profile = TelegramProfile.create(telegram_id: from['id'])
       respond_with :message, text: 'Click on the button below to connect to your Giftify account',
-                           reply_markup: { inline_keyboard: [
+                             reply_markup: { inline_keyboard: [
                                           [
                                             { text: "Connect",
-                                              url: "http://www.localhost:3000/account/telegram_connect?connection_token=#{@telegram_profile.connection_token}" }
+                                              url: "http://www.localhost:3000/account/telegram_profile/connect?connection_token=#{telegram_profile.connection_token}" }
                                           ]
                                         ]
                                       }
@@ -27,13 +21,15 @@ class TelegramBotController < Telegram::Bot::UpdatesController
   end
 
   def disconnect!
-    TelegramProfile.find_by(telegram_id: update['message']['from']['id']).destroy
-    session['user_id'] = nil
+    if session['user_id']
+      resource.destroy
+      session['user_id'] = nil
+    end
     respond_with :message, text: 'You are disconnected to your giftify account'
   end
 
   def balance!
-    if current_user || session[:user_id]
+    if session[:user_id]
       respond_with :message, text: "Your balance - #{pluralize(current_user.balance, 'point')}"
     else
       respond_with :message, text: "You couldn`t watch your balance unless you are not authorized"
@@ -43,23 +39,22 @@ class TelegramBotController < Telegram::Bot::UpdatesController
   def message(*)
     if update['message']['text'] == 'Balance'
       balance!
-    elsif update['message']['text'] == 'balance'
-      session.clear
+    else
       respond_with :message, text: "There are no action for #{update['message']['text']}"
     end
   end
 
   private
 
-  def current_user
-    @current_user = TelegramProfile.find_by(telegram_id: update['message']['from']['id'])&.user
+  def connected_user
+    session[:user_id] = current_user.id if current_user
   end
 
-  def telegram_profile
-    if current_user
-      session[:user_id] = current_user.id
-    else
-      @telegram_profile = TelegramProfile.create(telegram_id: update['message']['from']['id'])
-    end
+  def resource
+    TelegramProfile.find_by(telegram_id: update['message']['from']['id'])
+  end
+
+  def current_user
+    resource&.user
   end
 end

@@ -15,19 +15,10 @@
 #  index_telegram_profiles_on_telegram_id       (telegram_id) UNIQUE
 #  index_telegram_profiles_on_user_id           (user_id)
 #
-class TelegramProfile < ApplicationRecord
-  belongs_to :user, optional: true
-
-  before_create :generate_token
-
-  validates :chat_id, uniqueness: true
-
-  private
-
-  def generate_token
-    self.connection_token = loop do
-      random_token = SecureRandom.urlsafe_base64(nil, false)
-      break random_token unless User.exists?(token: random_token)
-    end
+FactoryBot.define do
+  factory :telegram_profile do
+    user
+    telegram_id { Faker::Number.number(digits: 10) }
+    connection_token { Faker::Internet.base64 }
   end
 end

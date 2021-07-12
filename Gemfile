@@ -36,13 +36,10 @@ gem 'activerecord-import'
 gem 'ransack'
 gem "chartkick"
 gem 'groupdate'
-<<<<<<< HEAD
 gem 'telegram-bot'
 gem 'redis-rails'
-=======
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
->>>>>>> 96995552171ce1e47327470cd1bd915c5678a83d
 
 group :development, :test do
   gem 'annotate'

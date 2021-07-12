@@ -48,7 +48,7 @@ Rails.application.routes.draw do
         post 'receive'
       end
     end
-    get '/telegram_connect', to: 'telegram_profiles#create'
+    get '/telegram_profile/connect', to: 'telegram_profiles#create'
 
     resource :transaction, only: [:create, :new], controller: :transaction
     resources :charts, only: [:index]

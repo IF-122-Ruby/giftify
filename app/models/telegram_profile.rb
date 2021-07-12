@@ -20,7 +20,7 @@ class TelegramProfile < ApplicationRecord
 
   before_create :generate_token
 
-  validates :chat_id, uniqueness: true
+  validates :telegram_id, uniqueness: true
 
   private
 

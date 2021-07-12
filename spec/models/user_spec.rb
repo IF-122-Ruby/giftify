@@ -117,17 +117,13 @@ RSpec.describe User, type: :model do
   end
 
   describe 'used points for gifts' do
-    let(:frozen_time) { (Time.current).freeze }
-    before { Timecop.travel(frozen_time) }
-    after { Timecop.return }
-
     let(:organization) { create(:organization) }
     let(:user) { create(:user, organization: organization) }
     let!(:my_gifts) { create_list(:gift, 3, organization: user.organization) }
 
     let!(:transaction_previous_month_for_gift) { create(:transaction, receiver: my_gifts[0], sender: user, amount: 10, created_at: 1.month.ago ) }
-    let!(:transaction_start_of_this_month) { create(:transaction, receiver: my_gifts[1], sender: user, amount: 5, created_at: frozen_time.beginning_of_month.beginning_of_day) }
-    let!(:transaction_end_of_this_month) { create(:transaction, receiver: my_gifts[2], sender: user, amount: 6, created_at: frozen_time.end_of_month.end_of_day) }
+    let!(:transaction_start_of_this_month) { create(:transaction, receiver: my_gifts[1], sender: user, amount: 5, created_at: Date.today.beginning_of_month) }
+    let!(:transaction_end_of_this_month) { create(:transaction, receiver: my_gifts[2], sender: user, amount: 6, created_at:  Date.today.end_of_month) }
 
     it 'return amount points of gifts for month' do
       expect(user.amount_points_of_gifts_for_month).to eq(11)

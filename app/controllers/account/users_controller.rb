@@ -43,7 +43,7 @@ class Account::UsersController < Account::AccountsController
     authorize [:account, @users]
     respond_to do |format|
       format.csv { send_data @users.organization_statistic_csv, filename: "users-#{Date.today}.csv" }
-      format.xls { headers["Content-Disposition"] = "attachment; filename= users-#{Date.today}.xls" }
+      format.xlsx { headers["Content-Disposition"] = "attachment; filename= users-#{Date.today}.xlsx" }
     end
   end
 

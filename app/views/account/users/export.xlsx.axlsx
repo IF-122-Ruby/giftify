@@ -1,0 +1,22 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Users") do |sheet|
+s = wb.styles
+t_label    = s.add_style b: true
+  sheet.add_row ["ID", "Name", "Gifts", "Price"]
+
+  last_user_name = ''
+
+  @users.each do |user|
+    user.my_gifts.each do |gift|
+      if last_user_name != user.full_name
+        sheet.add_row [user.id, user.full_name, gift.name, gift.price]
+      else
+        sheet.add_row ['', '', gift.name,  gift.price]
+      end
+      last_user_name = user.full_name
+    end
+    if user.my_gifts.length > 0
+      sheet.add_row ['', '', "Total gift price", user.amount_points_of_gifts_for_month], style: t_label
+    end
+  end
+end

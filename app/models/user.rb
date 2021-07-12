@@ -61,7 +61,6 @@ class User < ApplicationRecord
          :rememberable, :validatable, :recoverable, :omniauthable, omniauth_providers: [:google_oauth2]
 
   validate :birthday_cannot_be_in_the_future
-  validate :amount_points_of_gifts_for_month
   validates :first_name, :last_name, presence: true, length: { maximum: 40 }
 
   accepts_nested_attributes_for :owned_organization
@@ -128,10 +127,7 @@ class User < ApplicationRecord
   end
 
   def amount_points_of_gifts_for_month
-    sender_transactions.where(["created_at >= ? and created_at <= ? and receiver_type = ?",
-                              Date.today.beginning_of_month.beginning_of_day,
-                              Date.today.end_of_month.end_of_day,
-                              'Gift']).sum(:amount)
+    sender_transactions.where(created_at: Date.today.beginning_of_month..Date.today.end_of_month, receiver_type: 'Gift').sum(:amount)
   end
 
   def self.organization_statistic_csv

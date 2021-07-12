@@ -16,7 +16,8 @@ class TelegramBotController < Telegram::Bot::UpdatesController
                              reply_markup: { inline_keyboard: [
                                             [
                                               { text: "Connect",
-                                                url: "http://www.#{Rails.application.routes.default_url_options[:host]}/account/telegram_profile/connect?connection_token=#{telegram_profile.connection_token}" }
+                                                url: "http://www.#{Rails.application.routes.default_url_options[:host]}/" +
+                                                     "account/telegram_profile/connect?connection_token=#{telegram_profile.connection_token}" }
                                             ]
                                           ]
                                         }

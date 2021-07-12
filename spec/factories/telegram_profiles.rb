@@ -21,6 +21,9 @@
 FactoryBot.define do
   factory :telegram_profile do
     user
+    first_name { Faker::Name.first_name }
+    last_name { Faker::Name.last_name }
+    username { Faker::Internet.username }
     telegram_id { Faker::Number.number(digits: 10) }
     connection_token { Faker::Internet.base64 }
   end

@@ -1,11 +1,20 @@
 .container
-  h1.fw-bolder.mb-5.mt-5.text-center Gifts
-  - @gifts.each do |gift|
-    .col-lg-4.col-md-12.mb-4.text-center.btn
-      .card.shadow.p-3.mb-5.bg-white.border-0
-        = render partial: 'account/organization_gifts/gift', locals: { gift: gift }
-        .d-flex.justify-content-between
-          = button_to 'Get', receive_account_my_gift_path(gift), class:"button btn btn-outline-success ms-1", remote: true
-          span = rewards_amount(gift)
-.digg_pagination.pagination-position
-    = will_paginate @gifts, container: false
+  .row
+    .col-md-3
+        = render 'account/organization_gifts/search_form'
+    .col-md-6
+      h1.fw-bolder.text-center Gifts
+    .col-md-3
+      .d-flex.justify-content-end
+        - if policy([:account, @gifts]).index?
+          = link_to 'Manage gifts', account_gifts_path, class: 'btn btn-primary'
+  .row
+    - @gifts.each do |gift|
+      .col-lg-4.col-md-12.mb-4.text-center.btn
+        .card.shadow.p-3.mb-5.bg-white.border-0
+          = render partial: 'account/organization_gifts/gift', locals: { gift: gift }
+          .d-flex.justify-content-between
+            = button_to 'Get', receive_account_my_gift_path(gift), class:"button btn btn-outline-success nav-btn posts__card-button me-1 w-100", remote: true
+            span = rewards_amount(gift)
+    .digg_pagination.pagination-position
+        = will_paginate @gifts, container: false

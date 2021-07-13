@@ -1,6 +1,6 @@
 class Account::CommentPolicy < ApplicationPolicy
   def destroy?
-    user.admin?
+    user.admin? || user.superadmin?
   end
 
   class Scope < Scope

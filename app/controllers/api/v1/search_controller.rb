@@ -1,8 +1,5 @@
-class Account::SearchController < Account::AccountsController
+class Api::V1::SearchController < Api::V1::ApiController
   def index
-  end
-
-  def search
     @results = Elasticsearch::Model.search({
       "query": {
         "bool": {
@@ -11,12 +8,13 @@ class Account::SearchController < Account::AccountsController
               "query": params[:search].to_s,
               "fields": [ "first_name", "last_name", "description", "name" ]
             }
-          },
-          "filter":
-            { "term": { "organization_id": current_user.organization.id} }
+          }
+          # ,
+          # "filter":
+          #   { "term": { "organization_id": current_user.organization.id} }
         }
       }
-    }, [User, Gift]).per_page(10).page(params[:page]).records
-    add_breadcrumb('Search')
+    }, [User, Gift]).records
+    render json: { results: @results}
   end
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'hello_world', to: 'hello_world#index'
   mount Ckeditor::Engine => '/ckeditor'
   root to: 'static_pages#home'
   get '/sitemaps', to: 'sitemaps#index', format: 'xml'
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
 
   namespace :account do
     get '/search', to: 'search#search', as: 'search'
+    get '/search_misha', to: 'search#index'
     resources :microposts, path: :feed, except: [:show]
     resources :microposts, path: :feed, only: [:show] do
       resources :comments, only: [:create, :destroy]
@@ -68,6 +70,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resource :user, only: [:show]
       resources :my_gifts, only: [:index, :show]
+      resources :search, only: [:index]
     end
   end
 

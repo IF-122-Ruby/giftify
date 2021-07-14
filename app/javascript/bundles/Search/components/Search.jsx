@@ -4,26 +4,24 @@ import Select from "react-select";
 
 export default class Search extends Component {  
   state = {
-    options: [{value: 'l', label: 'asd'}], 
+    options: [{value: '', label: ''}], 
     value: '',
   }
 
   getCompleteResults(text) {
-    axios.get('/api/v1/search', {
+    axios.get('/api/v1/search.json', {
       params: {
         search: text
       }
-    }
-    ).then(response => {
-      const res_data = response.data;
-
-      const options = res_data.result.map(() => ({
-        value: item.id,
-        label: item.name || `${item.first_name} ${item.last_name}`
-      }));
+    }).then(response => {
+      const options = response.data.results.map((item) => ({
+        value: item.result.id,
+        label: item.result.name || `${item.result.first_name} ${item.result.last_name}`,
+        url: item.result.url
+      }))
 
       this.setState({options});
-    })
+    }).catch(response => console.log(response));
   }
 
   onChangeValue = (text) => {
@@ -32,16 +30,12 @@ export default class Search extends Component {
   }
 
   onSelect = (option) => {
-    const id = option.value;
-    const link = document.querySelector('#link');
-    link.href = option.link + option.value;
-    link.click();
+    window.open(`${option.url}/${option.value}`, '_self');
   }
 
   render() {
     return(
       <div>
-        <a id='link'></a>
         <form onSubmit={()=>submit()}>
           <Select
             inputValue={this.state.value}
@@ -58,4 +52,5 @@ export default class Search extends Component {
     );
   }
 }
+
 

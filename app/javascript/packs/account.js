@@ -8,6 +8,7 @@ import "controllers";
 import toastr from './toastr_settings';
 import "chartkick/chart.js";
 import './notifications/infinite_scroll';
+import './dima-search-bundle';
 
 window.bootstrap = require("bootstrap");
 

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   namespace :account do
     get '/search', to: 'search#search', as: 'search'
+    get 'dima_search', to: 'dima_search#index'
     resources :microposts, path: :feed, except: [:show]
     resources :microposts, path: :feed, only: [:show] do
       resources :comments, only: [:create, :destroy]
@@ -67,8 +68,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resource :user, only: [:show]
+      resource  :user, only: [:show]
       resources :my_gifts, only: [:index, :show]
+      resources :dima_search, only: [:index]
     end
   end
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function DimaSearch() {
+const DimaSearch = () => {
 
   const [searchObject, setSearchObject] = useState("")
   

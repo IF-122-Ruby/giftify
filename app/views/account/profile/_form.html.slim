@@ -5,5 +5,7 @@
     = f.input :last_name, label: "Last name:", input_html: { class: 'form__input' }
   .m-4
     = f.input :email, label: "Email:", input_html: { class: 'form__input' }
+  .m-4 
+    = f.input :avatar, as: :file, label: "Avatar", input_html: { class: 'form__input form-control'}
   .d-flex.justify-content-end
     = f.submit 'Update', class: 'btn btn-primary gift-card__button'

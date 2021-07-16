@@ -2,7 +2,8 @@
   .border-bottom.
     .d-flex.justify-content-around.align-items-center.p-1
       .col-1.text-center
-        = image_tag organization.logo, class: "img-fluid"
+        - if organization.logo.present?
+          = image_tag organization.logo, class: "img-fluid"
       .col-1.text-center
         = organization.users.count
       .col-3.text-center

@@ -63,9 +63,11 @@ Rails.application.routes.draw do
     resources :users
   end
 
+  get '/react', to: 'api/v1/roman_search#search'
+
   namespace :api do
     namespace :v1 do
-      get '/react/react-roman', to: 'roman_search#search', as: 'search'
+      get '/search', to: 'roman_search#index'
       resource :user, only: [:show]
       resources :my_gifts, only: [:index, :show]
     end

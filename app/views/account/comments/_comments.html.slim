@@ -2,7 +2,14 @@
 
 .comment-form
   .mt-3.mb-3.col-10.offset-1 id="comments_for_#{commentable.id}"
-    - commentable.comments.each do |comment|
+    - commentable.comments.limit(2).each do |comment|
       = render 'account/comments/comment', comment: comment
-  .d-flex.flex-row.p-1.ps-0.mt-5.col-10.offset-1 id="form_for_#{commentable.id}"
+    - if commentable.comments.count > 2
+      .d-flex.justify-content-center
+        button.bg-transparent.border-0.text-secondary onclick="hideComments(#{commentable.id})"
+          | All comments
+    div.d-none id="#{commentable.id}"
+      - commentable.comments.offset(2).each do |comment|
+        = render 'account/comments/comment', comment: comment
+  .d-flex.flex-row.p-1.ps-0.mt-1.col-10.offset-1 id="form_for_#{commentable.id}"
     = render 'account/comments/form', commentable: commentable, comment: Comment.new

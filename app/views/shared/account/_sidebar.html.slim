@@ -1,14 +1,16 @@
-.container.p-0.sidebar
+.container.p-0.sidebar.hide-sidebar-menu
   .row.h-100.shadow-sm.pt-3.mb-2.bg-white.order-first.pl-1
-    .d-flex.justify-content-around
-      = image_tag("serhii.png",class: 'img-fluid rounded-circle z-depth-1 shadow bg-body rounded w-25')
-      .d-flex.flex-column.justify-content-center.px-3
-        span = current_organization.name
-        span.text-black-50 administrator
-        p.card-text
-          | Your balance:  
-          strong
-            = pluralize(current_user.balance, "point")
+    .d-flex.justify-content-start.mt-2
+      .col-2.justify-content-center.ps-1.pt-1
+        = image_tag  current_user.avatar.thumb.url, class: "rounded-circle", size: 65 if current_user.avatar?
+      .col-8.offset-1
+        .d-flex.flex-column
+          span = current_user.full_name
+          span.text-black-50 = current_organization.name
+          p.card-text
+            | Your balance: &nbsp;
+            strong
+              = pluralize(current_user.balance, "point")
     span.mt-2
       hr
     #sidebar.pb-3
@@ -21,13 +23,14 @@
                   i.fas.fa-tachometer-alt
                   span.px-3 Dashbord
                 i.fas.fa-chevron-right
-          td class="py-3 px-2 change-bg-color #{active_link(admin_organizations_url)}"
-            = link_to admin_organizations_path, class: "text-decoration-none text-reset " do
-              .change-color.d-flex.justify-content-between.m-1
-                span
-                  i.fas.fa-sitemap
-                  span.px-3 Organizations
-                i.fas.fa-chevron-right
+          - if current_user.superadmin?        
+            td class="py-3 px-2 change-bg-color #{active_link(admin_organizations_url)}"
+              = link_to admin_organizations_path, class: "text-decoration-none text-reset " do
+                .change-color.d-flex.justify-content-between.m-1
+                  span
+                    i.fas.fa-sitemap
+                    span.px-3 Organizations
+                  i.fas.fa-chevron-right
           td class="py-3 px-2 change-bg-color #{active_link(user_links)}"
             = link_to user_links, class: "text-decoration-none text-reset #{active_link(user_links)}" do
               .change-color.d-flex.justify-content-between.m-1
@@ -35,13 +38,14 @@
                   i.fas.fa-users
                   span.px-3 Users
                 i.fas.fa-chevron-right
-          td class="py-3 px-2 change-bg-color #{active_link(admin_feedbacks_url)}"
-            = link_to admin_feedbacks_path, class: "text-decoration-none text-reset #{active_link(admin_feedbacks_url)}" do
-              .change-color.d-flex.justify-content-between.m-1
-                span
-                  i.fas.fa-comment-dots
-                  span.px-3 Feedbacks
-                i.fas.fa-chevron-right
+          - if current_user.superadmin?        
+            td class="py-3 px-2 change-bg-color #{active_link(admin_feedbacks_url)}"
+              = link_to admin_feedbacks_path, class: "text-decoration-none text-reset #{active_link(admin_feedbacks_url)}" do
+                .change-color.d-flex.justify-content-between.m-1
+                  span
+                    i.fas.fa-comment-dots
+                    span.px-3 Feedbacks
+                  i#feedbacks-icon.fas.fa-chevron-right
           td class="py-3 px-2 change-bg-color #{active_link(account_invites_url)}"
             = link_to account_invites_path, class: "text-decoration-none text-reset #{active_link(account_invites_url)}" do
               .change-color.d-flex.justify-content-between.m-1
@@ -49,6 +53,13 @@
                   i.fas.fa-user-plus
                   span.px-3 Invites
                 i.fas.fa-chevron-right
+          td class="py-3 px-2 change-bg-color #{active_link(account_microposts_path)}"
+            = link_to account_microposts_path, class: "text-decoration-none text-reset #{active_link(account_microposts_path)}" do
+              .change-color.d-flex.justify-content-between.m-1
+                span
+                  i.fas.fa-newspaper
+                  span.px-3 Microposts
+                i.fas.fa-chevron-right      
           td class="py-3 px-2 change-bg-color #{active_link(account_organization_gifts_url)}"
             = link_to account_organization_gifts_path, class: "text-decoration-none text-reset #{active_link(account_organization_gifts_url)}" do
               .change-color.d-flex.justify-content-between.m-1

@@ -1,22 +1,28 @@
 class Account::GiftsController < Account::AccountsController
+  before_action :add_index_breadcrumb, except: :index
+
   def index
     @gifts = collection.paginate(page: params[:page], per_page: 10)
     authorize([:account, @gifts])
+    add_breadcrumb('Organization Gifts')
   end
 
   def show
     @gift = resource
     authorize([:account, @gift])
+    add_breadcrumb(@gift.id)
   end
 
   def new
     @gift = collection.new
     authorize([:account, @gift])
+    add_breadcrumb('New Gift')
   end
 
   def edit
     @gift = resource
     authorize([:account, @gift])
+    add_breadcrumb('Edit Gift')
   end
 
   def create
@@ -63,5 +69,9 @@ class Account::GiftsController < Account::AccountsController
 
   def resource
     collection.find(params[:id])
+  end
+
+  def add_index_breadcrumb
+    add_breadcrumb('Organization Gifts', account_gifts_path)
   end
 end

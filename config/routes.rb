@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'about', to: 'static_pages#about'
   get 'pricing', to: 'static_pages#pricing'
   get 'help', to: 'articles#help'
+  mount ActionCable.server, at: '/cable'
 
   resource :feedback, path: :contact_us, only: [:create, :new]
  
@@ -31,7 +32,7 @@ Rails.application.routes.draw do
               only: [:edit, :update],
               controller: :organization
     resource  :profile,
-              only: [:edit, :update],
+              only: [:show, :edit, :update],
               controller: :profile
     resources :organization_gifts, path: :rewards, only: [:index, :show]
     resources :gifts, path: :rewards, only: [:show] do
@@ -48,6 +49,7 @@ Rails.application.routes.draw do
         post 'receive'
       end
     end
+    get '/telegram_profile/connect', to: 'telegram_profiles#create'
 
     resource :transaction, only: [:create, :new], controller: :transaction
     resources :charts, only: [:index]
@@ -69,4 +71,6 @@ Rails.application.routes.draw do
       resources :my_gifts, only: [:index, :show]
     end
   end
+
+  telegram_webhook TelegramBotController
 end

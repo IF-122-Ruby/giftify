@@ -30,7 +30,7 @@ class User < ApplicationRecord
 
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
-  
+
   attr_accessor :skip_password_validation
 
   scope :admins, -> { joins(:role).where(roles: { role: Role::ADMIN }) }
@@ -42,6 +42,7 @@ class User < ApplicationRecord
   has_one :role, dependent: :destroy
   has_one :owned_organization, class_name: 'Organization'
   has_one :organization, through: :role
+  has_one :telegram_profile
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_gifts, through: :favorites, dependent: :destroy, source: :gift
@@ -126,6 +127,10 @@ class User < ApplicationRecord
     :success
   end
 
+  def amount_points_of_gifts_for_month
+    sender_transactions.where(created_at: Date.today.beginning_of_month..Date.today.end_of_month, receiver_type: 'Gift').sum(:amount)
+  end
+
   def self.organization_statistic_csv
     attributes = ['id', 'full_name', 'balance', 'used_points_for_month', 'used_points']
 
@@ -170,8 +175,8 @@ class User < ApplicationRecord
       end
     end
     google_user
-  end 
-  
+  end
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if session["devise.google_data"].present?

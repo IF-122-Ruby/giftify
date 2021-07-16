@@ -1,5 +1,11 @@
 class Account::ProfileController < Account::AccountsController
+  def show
+    add_breadcrumb('Profile')
+  end
+
   def edit
+    add_breadcrumb('Profile', account_profile_path)
+    add_breadcrumb('Edit')
   end
 
   def update
@@ -15,6 +21,6 @@ class Account::ProfileController < Account::AccountsController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email)
+    params.require(:user).permit(:first_name, :last_name, :email, :avatar)
   end
 end

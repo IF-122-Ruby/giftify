@@ -1,18 +1,18 @@
 class Account::GiftPolicy < ApplicationPolicy
   def index?
-    true
+    user.admin? || user.superadmin?
   end
 
   def show?
-    true
+    user.admin? || user.superadmin?
   end
 
   def new?
-    user.admin?
+    user.admin? || user.superadmin?
   end
 
   def edit?
-    user.admin?
+    user.admin? || user.superadmin?
   end
 
   def create?
@@ -24,7 +24,7 @@ class Account::GiftPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.admin?
+    user.admin? || user.superadmin?
   end
 
   class Scope < Scope

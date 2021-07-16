@@ -4,7 +4,7 @@
   .mt-3.mb-3.col-10.offset-1 id="comments_for_#{commentable.id}"
     - commentable.comments.limit(2).each do |comment|
       = render 'account/comments/comment', comment: comment
-    - unless commentable.comments.count < 2
+    - if commentable.comments.count > 2
       .d-flex.justify-content-center
         button.bg-transparent.border-0.text-secondary onclick="hideComments(#{commentable.id})"
           | All comments

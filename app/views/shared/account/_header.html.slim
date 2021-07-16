@@ -43,3 +43,6 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-white.shadow-sm.p-3.bg-white.rounded
             .d-flex.align-items-center.change-color
               i.fas.fa-sign-out-alt.m-1
               = link_to "Sign Out", destroy_user_session_path, class:"text-decoration-none text-reset", method: :delete
+
+      .hide-toggle-menu.border-0.shadow-none
+        = render 'shared/account/sidebar'

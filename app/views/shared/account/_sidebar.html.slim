@@ -53,12 +53,12 @@
                   i.fas.fa-user-plus
                   span.px-3 Invites
                 i.fas.fa-chevron-right
-          td class="py-3 px-2 change-bg-color #{active_link(account_organization_gifts_url)}"
-            = link_to account_microposts_path, class: "text-decoration-none text-reset #{active_link(account_organization_gifts_url)}" do
+          td class="py-3 px-2 change-bg-color #{active_link(account_microposts_path)}"
+            = link_to account_microposts_path, class: "text-decoration-none text-reset #{active_link(account_microposts_path)}" do
               .change-color.d-flex.justify-content-between.m-1
                 span
-                  i.fas.fa-gift
-                  span.px-3 Gifts
+                  i.fas.fa-newspaper
+                  span.px-3 Microposts
                 i.fas.fa-chevron-right      
           td class="py-3 px-2 change-bg-color #{active_link(account_organization_gifts_url)}"
             = link_to account_organization_gifts_path, class: "text-decoration-none text-reset #{active_link(account_organization_gifts_url)}" do

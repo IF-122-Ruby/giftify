@@ -1,8 +1,9 @@
 .container
   .card.card-body
     .row
-      .col-md-4
-        .text-center = image_tag current_user.avatar.small.url
+      - if current_user.avatar.present?
+        .col-md-4
+          .text-center = image_tag current_user.avatar.small.url
       .col-md-8
         table.table.table-borderless.mb-0.text-muted.position-relative
           tbody

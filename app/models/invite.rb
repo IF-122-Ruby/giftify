@@ -37,6 +37,6 @@ class Invite < ApplicationRecord
   private
 
   def generate_token
-    self.invite_token = Digest::SHA1.hexdigest([organization_id, Time.now, rand].join)
+    self.invite_token = Digest::SHA1.hexdigest([organization_id, Time.zone.now, rand].join)
   end
 end

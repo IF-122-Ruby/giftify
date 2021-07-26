@@ -7,7 +7,7 @@
   .m-4  
     = f.input :last_name, autocomplete: "last name"
   .m-4    
-    = f.input :birthday, label: "Birthday", start_year: 1970, end_year: Time.now.year, order: [:day, :month, :year], required: true, prompt: true, default: nil
+    = f.input :birthday, label: "Birthday", start_year: 1970, end_year: Time.zone.now.year, order: [:day, :month, :year], required: true, prompt: true, default: nil
   .d-flex.justify-content-between
     = link_to 'Back', account_user_path, class: "btn btn-light"
     = f.submit class: 'btn btn-primary gift-card__button'

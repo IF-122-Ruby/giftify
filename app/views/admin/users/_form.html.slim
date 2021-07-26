@@ -5,7 +5,7 @@
     = organization.input :organizations, collection: Organization.all , input_html: { class: 'form-control form__input' }
     = f.input :first_name, autocomplete: "first name" , input_html: { class: 'form-control form__input' }
     = f.input :last_name, autocomplete: "last name", input_html: { class: 'form-control form__input' }
-    = f.input :birthday, label: "Birthday", start_year: 1970, end_year: Time.now.year, order: [:day, :month, :year], required: true, prompt: true, default: nil
+    = f.input :birthday, label: "Birthday", start_year: 1970, end_year: Time.zone.now.year, order: [:day, :month, :year], required: true, prompt: true, default: nil
     .mt-2.d-flex.justify-content-between
         = f.submit 'Update',  class: 'btn btn-outline-primary'
         = link_to "Delete",  [:account, @user] , method: :delete , data: { confirm: 'Are you sure?'}, class: 'btn btn-outline-danger'

@@ -9,13 +9,13 @@ class TelegramBotController < Telegram::Bot::UpdatesController
       respond_with :message, text: 'You are connected, let`s do some action'
     else
       telegram_profile = TelegramProfile.find_or_create_by(telegram_id: from['id'],
-                                                first_name: from['first_name'],
-                                                last_name: from['last_name'],
-                                                username: from['username'])
+                                                           first_name: from['first_name'],
+                                                           last_name: from['last_name'],
+                                                           username: from['username'])
       respond_with :message, text: 'Click on the button below to connect to your Giftify account',
                              reply_markup: { inline_keyboard: [
                                             [
-                                              { text: "Connect",
+                                              { text: 'Connect',
                                                 url: "http://www.#{Rails.application.routes.default_url_options[:host]}/" +
                                                      "account/telegram_profile/connect?connection_token=#{telegram_profile.connection_token}" }
                                             ]
@@ -36,7 +36,7 @@ class TelegramBotController < Telegram::Bot::UpdatesController
     if session[:user_id]
       respond_with :message, text: "Your balance - #{pluralize(current_user.balance, 'point')}"
     else
-      respond_with :message, text: "You couldn`t watch your balance unless you are not authorized"
+      respond_with :message, text: 'You couldn`t watch your balance unless you are not authorized'
     end
   end
 

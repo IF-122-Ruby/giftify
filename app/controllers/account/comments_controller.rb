@@ -25,15 +25,16 @@ class Account::CommentsController < Account::AccountsController
   end
 
   private
-    def comment_params
-      params.require(:comment).permit(:body, :commentable_id, :commentable_type)
-    end
 
-    def resource
-      if params[:gift_id]
-        current_organization.gifts.find(params[:gift_id])
-      elsif params[:micropost_id]
-        current_organization.microposts.find(params[:micropost_id])
-      end
+  def comment_params
+    params.require(:comment).permit(:body, :commentable_id, :commentable_type)
+  end
+
+  def resource
+    if params[:gift_id]
+      current_organization.gifts.find(params[:gift_id])
+    elsif params[:micropost_id]
+      current_organization.microposts.find(params[:micropost_id])
     end
+  end
 end

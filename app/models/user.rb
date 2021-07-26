@@ -48,10 +48,10 @@ class User < ApplicationRecord
   has_many :favorite_gifts, through: :favorites, dependent: :destroy, source: :gift
   has_many :colleagues, ->(user) { where.not(id: user.id) }, through: :organization, source: :users, class_name: 'User'
   has_many :invites, foreign_key: 'user_id'
-  has_many :sender_transactions, as: :sender, class_name: "Transaction"
-  has_many :receiver_transactions, as: :receiver, class_name: "Transaction"
+  has_many :sender_transactions, as: :sender, class_name: 'Transaction'
+  has_many :receiver_transactions, as: :receiver, class_name: 'Transaction'
   has_many :own_notifications, class_name: 'Notification', dependent: :destroy
-  has_many :microposts, class_name: "Micropost", foreign_key: "author_id"
+  has_many :microposts, class_name: 'Micropost', foreign_key: 'author_id'
   has_many :reactions, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :my_gifts, through: :sender_transactions, source: :receiver, source_type: 'Gift'
@@ -96,7 +96,7 @@ class User < ApplicationRecord
   end
 
   def used_points_for_month
-    sender_transactions.where(["created_at >= ? and created_at <= ?", Date.today.beginning_of_month.beginning_of_day, Date.today.end_of_month.end_of_day]).sum(:amount)
+    sender_transactions.where(['created_at >= ? and created_at <= ?', Date.today.beginning_of_month.beginning_of_day, Date.today.end_of_month.end_of_day]).sum(:amount)
   end
 
   def used_points
@@ -128,11 +128,11 @@ class User < ApplicationRecord
   end
 
   def amount_points_of_gifts_for_month
-    sender_transactions.where(created_at: Date.today.beginning_of_month..Date.today.end_of_month, receiver_type: 'Gift').sum(:amount)
+    sender_transactions.where(created_at: Date.today.all_month, receiver_type: 'Gift').sum(:amount)
   end
 
   def self.organization_statistic_csv
-    attributes = ['id', 'full_name', 'balance', 'used_points_for_month', 'used_points']
+    attributes = %w[id full_name balance used_points_for_month used_points]
 
     CSV.generate(headers: true) do |csv|
       csv << attributes
@@ -162,7 +162,7 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    google_user = User.find_or_initialize_by(email: auth.info.email).tap do |user|
+    User.find_or_initialize_by(email: auth.info.email).tap do |user|
       if user.new_record?
         user.assign_attributes(
           provider: auth[:provider],
@@ -174,12 +174,11 @@ class User < ApplicationRecord
         user.save
       end
     end
-    google_user
   end
 
   def self.new_with_session(params, session)
     super.tap do |user|
-      if session["devise.google_data"].present?
+      if session['devise.google_data'].present?
         user.provider = session.dig('devise.google_data', 'provider') if user.provider.blank?
         user.uid = session.dig('devise.google_data', 'uid') if user.uid.blank?
         user.first_name = session.dig('devise.google_data', 'info', 'first_name') if user.first_name.blank?

@@ -3,7 +3,7 @@ require 'sidekiq-scheduler'
 class MonthlyPointsWorker
   include Sidekiq::Worker
 
-  def perform 
+  def perform
     Organization.eager_load(:users).each do |organization|
       organization_transactions = organization.users.map do |user|
         Transaction.new(amount: organization.monthly_point, receiver_type: 'User',

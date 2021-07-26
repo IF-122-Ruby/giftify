@@ -27,5 +27,5 @@ class Reaction < ApplicationRecord
   belongs_to :reactionable, polymorphic: true
 
   validates :reaction, inclusion: { in: reactions.keys }
-  validates :reaction, uniqueness: { scope: [:user_id, :reactionable_id, :reactionable_type] }
+  validates :reaction, uniqueness: { scope: %i[user_id reactionable_id reactionable_type] }
 end

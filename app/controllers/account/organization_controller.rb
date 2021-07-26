@@ -1,13 +1,13 @@
 class Account::OrganizationController < Account::AccountsController
   def edit
     @organization = current_organization
-    authorize [:account, :organization], :edit?
+    authorize %i[account organization], :edit?
   end
 
   def update
     @organization = current_organization
-    authorize [:account, :organization], :update?
-    
+    authorize %i[account organization], :update?
+
     if @organization.update(organization_params)
       flash[:notice] = 'Organization update succesfully!'
       redirect_to account_gifts_path

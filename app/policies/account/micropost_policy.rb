@@ -10,7 +10,7 @@ class Account::MicropostPolicy < ApplicationPolicy
   def create?
     new?
   end
-  
+
   def update?
     user.admin? || user.superadmin?
   end

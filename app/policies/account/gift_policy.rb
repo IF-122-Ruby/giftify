@@ -18,7 +18,7 @@ class Account::GiftPolicy < ApplicationPolicy
   def create?
     new?
   end
-  
+
   def update?
     edit?
   end

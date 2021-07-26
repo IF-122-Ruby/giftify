@@ -13,7 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     build_resource(sign_up_params)
-    resource.skip_password_validation = true if session["devise.google_data"]
+    resource.skip_password_validation = true if session['devise.google_data']
     resource.save
     yield resource if block_given?
 
@@ -88,7 +88,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :email,
       :password,
       :password_confirmation,
-      owned_organization_attributes: [ :name ]
+      owned_organization_attributes: [:name]
     )
   end
 end

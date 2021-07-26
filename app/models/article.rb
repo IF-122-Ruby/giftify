@@ -20,6 +20,6 @@ class Article < ApplicationRecord
   validates :title, presence: true, uniqueness: true
   validates :body, presence: true
   validates :page_name, presence: true, uniqueness: true
-  validates :page_name, inclusion: { in: page_names.keys}
+  validates :page_name, inclusion: { in: page_names.keys }
 
 end

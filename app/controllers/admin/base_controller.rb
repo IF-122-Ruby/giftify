@@ -2,7 +2,7 @@ class Admin::BaseController < ApplicationController
   before_action :authenticate_user!
   before_action :require_superadmin
   helper_method :current_organization
-  layout "admin"
+  layout 'admin'
 
   private
 

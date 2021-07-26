@@ -25,8 +25,8 @@ class Feedback < ApplicationRecord
   validates :name, :email, :reason, :subject, :message, presence: true
 
   validates :email, length: { maximum: 255 },
-                    format: { with: Devise::email_regexp,
-                              message: "Email seems invalid" }
+                    format: { with: Devise.email_regexp,
+                              message: 'Email seems invalid' }
 
   validates :subject, length: { maximum: 15 }
 
@@ -36,7 +36,7 @@ class Feedback < ApplicationRecord
 
   def mark_as_viewed!
     self.viewed = true
-    self.save!
+    save!
   end
 
   def new_feedback_notification_to_superadmins

@@ -6,7 +6,7 @@ class Account::TelegramProfilesController < Account::AccountsController
       Telegram.bot.send_message(chat_id: @telegram_profile.telegram_id,
                                 text: 'You are connected to giftify successfully',
                                 reply_markup: {
-                                  keyboard: [["Balance"]],
+                                  keyboard: [['Balance']],
                                   resize_keyboard: true
                                   }
                                 )

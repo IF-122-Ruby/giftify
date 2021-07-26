@@ -7,6 +7,6 @@ RSpec.describe MonthlyBalanceMailWorker, type: :worker do
   it 'checks deliveries count' do
     expect do
       MonthlyBalanceMailWorker.new.perform
-    end.to change { ApplicationMailer.deliveries.count }.by(1)  
+    end.to change { ApplicationMailer.deliveries.count }.by(1)
   end
 end

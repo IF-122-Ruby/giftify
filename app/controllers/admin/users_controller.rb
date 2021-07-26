@@ -22,7 +22,7 @@ class Admin::UsersController < Admin::BaseController
     @user = resource
     authorize([:admin, @user])
     add_breadcrumb(@user.full_name, admin_user_path(@user))
-    add_breadcrumb("Edit")
+    add_breadcrumb('Edit')
   end
 
   def create
@@ -41,7 +41,7 @@ class Admin::UsersController < Admin::BaseController
     @user = resource
     authorize([:admin, @user])
     @user.assign_attributes(user_update_params)
-    add_breadcrumb("Update")
+    add_breadcrumb('Update')
 
     respond_to do |format|
       if @user.save(context: user_role_context)

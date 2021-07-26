@@ -34,7 +34,7 @@ gem 'sidekiq'
 gem 'sidekiq-scheduler'
 gem 'activerecord-import'
 gem 'ransack'
-gem "chartkick"
+gem 'chartkick'
 gem 'groupdate'
 gem 'telegram-bot'
 gem 'redis-rails'
@@ -57,7 +57,7 @@ group :test do
   gem 'shoulda-matchers', '~> 4.0'
   gem 'simplecov', require: false
   gem 'rails-controller-testing'
-  gem "timecop"
+  gem 'timecop'
 end
 
 group :development do

@@ -6,7 +6,7 @@ class Account::SearchController < Account::AccountsController
           "must": {
             "multi_match": {
               "query": params[:search].to_s,
-              "fields": [ "first_name", "last_name", "description", "name" ]
+              "fields": %w[first_name last_name description name]
             }
           },
           "filter":

@@ -5,10 +5,10 @@ class Account::MicropostsController < Account::AccountsController
     respond_to do |format|
       format.html
       format.json {
-        render json: { entries: render_to_string(partial: "microposts", 
+        render json: { entries: render_to_string(partial: 'microposts',
                                                  formats: [:html],
                                                  locals: { microposts: @microposts }),
-                       pagination: render_to_string(partial: "paginate",
+                       pagination: render_to_string(partial: 'paginate',
                                                     formats: [:html],
                                                     locals: { microposts: @microposts }) }
       }
@@ -23,8 +23,8 @@ class Account::MicropostsController < Account::AccountsController
   def create
     @micropost = collection.build(micropost_params.merge(author: current_user))
     authorize([:account, @micropost])
-    
-    respond_to do |format|    
+
+    respond_to do |format|
       if @micropost.save
         format.js
       else
@@ -53,12 +53,12 @@ class Account::MicropostsController < Account::AccountsController
     @micropost = resource
     authorize([:account, @micropost])
     @micropost.destroy
-    flash[:notice] = 'Micropost succesfully deleted!'
+    flash[:notice] = 'Micropost successfully deleted!'
     redirect_to account_microposts_path
   end
-  
+
   private
-  
+
   def micropost_params
     params.require(:micropost).permit(:title, :description, :image)
   end

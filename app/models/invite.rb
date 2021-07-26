@@ -23,12 +23,12 @@ class Invite < ApplicationRecord
 
   validates :invite_token, uniqueness: true, presence: true
   validates :recipient_email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates :recipient_role, inclusion: { in: Role::roles.values.excluding('superadmin') }
+  validates :recipient_role, inclusion: { in: Role.roles.values.excluding('superadmin') }
 
   before_validation :generate_token, on: :create
   after_commit :send_invite_email, on: :create
 
-  scope :by_created_at, -> { order(created_at: :desc)}
+  scope :by_created_at, -> { order(created_at: :desc) }
 
   def send_invite_email
     InviteMailer.new_user_invite(self).deliver_now
@@ -37,6 +37,6 @@ class Invite < ApplicationRecord
   private
 
   def generate_token
-    self.invite_token = Digest::SHA1.hexdigest([organization_id, Time.now, rand].join)
+    self.invite_token = Digest::SHA1.hexdigest([organization_id, Time.zone.now, rand].join)
   end
 end

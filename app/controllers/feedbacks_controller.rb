@@ -9,16 +9,17 @@ class FeedbacksController < ApplicationController
     respond_to do |format|
       if @feedback.save
         format.html { redirect_to root_path, notice: "#{@feedback.name}, thank you for your feedback. The administration will contact you shourtly." }
-        ActionCable.server.broadcast 'feedbacks', message: "New feedback created!"
+        ActionCable.server.broadcast 'feedbacks', message: 'New feedback created!'
       else
         format.html { render :new }
       end
     end
   end
 
-  private 
-    def feedback_params
-      params.require(:feedback).permit(:name, :email, :reason,
-                                       :subject, :message)
-    end
+  private
+
+  def feedback_params
+    params.require(:feedback).permit(:name, :email, :reason,
+                                     :subject, :message)
+  end
 end

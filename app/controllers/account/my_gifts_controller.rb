@@ -1,8 +1,8 @@
 class Account::MyGiftsController < Account::AccountsController
   REWARD_STATUSES = {
-    not_enough_points: "There are not enough points on your balance",
-    no_more_gifts: "The gifts are over",
-    success: "Gift successfully added"
+    not_enough_points: 'There are not enough points on your balance',
+    no_more_gifts: 'The gifts are over',
+    success: 'Gift successfully added'
   }
 
   def index

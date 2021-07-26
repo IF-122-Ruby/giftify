@@ -24,7 +24,7 @@
 class Micropost < ApplicationRecord
   mount_uploader :image, ImageUploader
 
-  belongs_to :author, class_name: "User"
+  belongs_to :author, class_name: 'User'
   belongs_to :organization
   has_many :comments, -> { order(created_at: :desc) }, as: :commentable
   has_many :reactions, as: :reactionable
@@ -34,6 +34,6 @@ class Micropost < ApplicationRecord
   validates :title, :description, presence: true
 
   def add_author_organization
-    self.organization = self.author.organization
+    self.organization = author.organization
   end
 end
